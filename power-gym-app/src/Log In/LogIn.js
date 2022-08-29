@@ -1,17 +1,10 @@
-import { LockClosedIcon } from '@heroicons/react/20/solid'
+import { LockClosedIcon } from '@heroicons/react/20/solid';
+import LoginButton from "./loginButton";
 
 export default function LogIn() {
   return (
     <>
-      {/*
-        This example requires updating your template:
-
-        ```
-        <html class="h-full bg-gray-50">
-        <body class="h-full">
-        ```
-      */}
-      <div className="flex min-h-full items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
+      {/* <div className="flex min-h-full items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
         <div className="w-full max-w-md space-y-8">
           <div>
             <img
@@ -95,7 +88,8 @@ export default function LogIn() {
             </div>
           </form>
         </div>
-      </div>
+      </div> */}
+      <LoginButton></LoginButton>
     </>
   )
 }
