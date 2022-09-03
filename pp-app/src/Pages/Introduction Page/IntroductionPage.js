@@ -1,14 +1,15 @@
 import { Fragment } from 'react'
 import { Popover, Transition } from '@headlessui/react'
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
+import LoginButton from '../../Components/Registration Buttons/loginButton'
 
 const navigation = [
 
 
-  { name: 'Product', href: '#' },
-  { name: 'Features', href: '#' },
-  { name: 'Marketplace', href: '#' },
-  { name: 'Company', href: '#' },
+  { name: '¿Por qué desnutrición?', href: 'https://patapila.org/desnutricion.php' },
+  { name: 'Nuestro Trabajo', href: 'https://patapila.org/impacto.php' },
+  { name: 'Sobre Nosotros', href: 'https://patapila.org/nosotros.php' },
+  { name: 'Involucrate', href: 'https://patapila.org/involucrate.php' },
 ]
 
 export default function IntroductionPage() {
@@ -31,7 +32,7 @@ export default function IntroductionPage() {
               <nav className="relative flex items-center justify-between sm:h-10 lg:justify-start" aria-label="Global">
                 <div className="flex flex-shrink-0 flex-grow items-center lg:flex-grow-0">
                   <div className="flex w-full items-center justify-between md:w-auto">
-                    <a href="#">
+                    <a href="https://patapila.org/index.php">
                       <span className="sr-only">Workflow</span>
                       <img
                         alt="Workflow"
@@ -53,9 +54,7 @@ export default function IntroductionPage() {
                       {item.name}
                     </a>
                   ))}
-                  <a href="#" className="font-medium text-indigo-600 hover:text-indigo-500">
-                    Log in
-                  </a>
+                    <LoginButton style = {"font-medium text-indigo-600 hover:text-indigo-500"}></LoginButton>
                 </div>
               </nav>
             </div>
@@ -100,12 +99,7 @@ export default function IntroductionPage() {
                       </a>
                     ))}
                   </div>
-                  <a
-                    href="#"
-                    className="block w-full bg-gray-50 px-5 py-3 text-center font-medium text-indigo-600 hover:bg-gray-100"
-                  >
-                    Log in
-                  </a>
+                    <LoginButton style = {"block w-full bg-gray-50 px-5 py-3 text-center font-medium text-indigo-600 hover:bg-gray-100"}></LoginButton>
                 </div>
               </Popover.Panel>
             </Transition>
@@ -130,12 +124,7 @@ export default function IntroductionPage() {
                   </a>
                 </div>
                 <div className="mt-3 sm:mt-0 sm:ml-3">
-                  <a
-                    href="#"
-                    className="flex w-full items-center justify-center rounded-md border border-transparent bg-indigo-100 px-8 py-3 text-base font-medium text-indigo-700 hover:bg-indigo-200 md:py-4 md:px-10 md:text-lg"
-                  >
-                    Log in
-                  </a>
+                    <LoginButton style={"flex w-full items-center justify-center rounded-md border border-transparent bg-indigo-100 px-8 py-3 text-base font-medium text-indigo-700 hover:bg-indigo-200 md:py-4 md:px-10 md:text-lg"}></LoginButton>
                 </div>
               </div>
             </div>
@@ -145,7 +134,7 @@ export default function IntroductionPage() {
       <div className="lg:absolute lg:inset-y-0 lg:right-0 lg:w-1/2">
         <img
           className="h-56 w-full object-cover sm:h-72 md:h-96 lg:h-full lg:w-full"
-          src="https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/gettyimages-200341804-001-1620911664.jpg"
+          src="https://drive.google.com/drive/folders/1JH6j4vYwj123mJdZr69j24cn5WuhidcK"
           alt=""
         />
       </div>
