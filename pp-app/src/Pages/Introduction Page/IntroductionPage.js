@@ -37,7 +37,7 @@ export default function IntroductionPage() {
                       <img
                         alt="Workflow"
                         className="h-8 w-auto sm:h-10"
-                        src="https://tailwindui.com/img/logos/workflow-mark.svg?color=indigo&shade=600"
+                        src={require('../../Components/Images/Copia de Logo-Pata Pila-03.png')}
                       />
                     </a>
                     <div className="-mr-2 flex items-center md:hidden">
@@ -77,7 +77,7 @@ export default function IntroductionPage() {
                     <div>
                       <img
                         className="h-8 w-auto"
-                        src="https://tailwindui.com/img/logos/workflow-mark.svg?color=indigo&shade=600"
+                        src={require('../../Components/Images/Copia de Logo-Pata Pila-03.png')}
                         alt=""
                       />
                     </div>
@@ -106,35 +106,35 @@ export default function IntroductionPage() {
           </Popover>
 
           <main className="mx-auto mt-10 max-w-7xl px-4 sm:mt-12 sm:px-6 md:mt-16 lg:mt-20 lg:px-8 xl:mt-28">
-            <div className="sm:text-center lg:text-left">
-              <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl md:text-6xl">
+           <div className="sm:text-center lg:text-left">
+              {/* <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl md:text-6xl">
                 <span className="block xl:inline">Super Power Gym</span>{' '}
                 <span className="block text-indigo-600 xl:inline">moradito</span>
               </h1>
               <p className="mt-3 text-base text-gray-500 sm:mx-auto sm:mt-5 sm:max-w-xl sm:text-lg md:mt-5 md:text-xl lg:mx-0">
                 Comenza con una experiencia única, sumate a nuestras clases presenciales de spinning, pilates, funcional y más...
-              </p>
+              </p> */}
               <div className="mt-5 sm:mt-8 sm:flex sm:justify-center lg:justify-start">
                 <div className="rounded-md shadow">
-                  <a
+                  {/* <a
                     href="#"
                     className="flex w-full items-center justify-center rounded-md border border-transparent bg-indigo-600 px-8 py-3 text-base font-medium text-white hover:bg-indigo-700 md:py-4 md:px-10 md:text-lg"
                   >
                     Register
-                  </a>
+                  </a> */}
                 </div>
                 <div className="mt-3 sm:mt-0 sm:ml-3">
-                    <LoginButton style={"flex w-full items-center justify-center rounded-md border border-transparent bg-indigo-100 px-8 py-3 text-base font-medium text-indigo-700 hover:bg-indigo-200 md:py-4 md:px-10 md:text-lg"}></LoginButton>
+                    {/* <LoginButton style={"flex w-full items-center justify-center rounded-md border border-transparent bg-indigo-100 px-8 py-3 text-base font-medium text-indigo-700 hover:bg-indigo-200 md:py-4 md:px-10 md:text-lg"}></LoginButton> */}
                 </div>
               </div>
             </div>
-          </main>
+          </main> 
         </div>
       </div>
       <div className="lg:absolute lg:inset-y-0 lg:right-0 lg:w-1/2">
         <img
           className="h-56 w-full object-cover sm:h-72 md:h-96 lg:h-full lg:w-full"
-          src="https://drive.google.com/drive/folders/1JH6j4vYwj123mJdZr69j24cn5WuhidcK"
+          src={require('../../Components/Images/ImagenNinaSonriendo.jpg')}
           alt=""
         />
       </div>
