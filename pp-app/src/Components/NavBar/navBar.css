@@ -3,30 +3,60 @@
     src: local("Poppins-Bold"),
       url("../../Fonts/Poppins-Bold.ttf") format("truetype");
 }
+
+@font-face {
+    font-family: "Poppins";   /*Can be any text*/
+    src: local("Poppins"),
+      url("../../Fonts/Poppins-Medium.ttf") format("truetype");
+}
   
 .navBarText {
     font-family: "Poppins-Bold";
     text-transform: uppercase;
     color: #FFFFFF; 
-    font-weight: bold;
+    font-weight: 700;
     transition: 0.3s;
-    font-size: 14px;
+    font-size: 17px;
 
     position: relative;
     white-space: nowrap;
     padding: 38px 15px 0 15px;
     margin-left: 5px;
-    transition: 0.3s;
-
+   
     letter-spacing: 0.5px !important;
     display: inline-block !important;
     padding: 10px 28px !important;
 }
 
-.navBarButtonBorder{
-    border: 2px solid #FFFFFF !important;
-    border-radius: 0.25rem !important;
+.navBarTextButton {
+    font-family: "Poppins";
+    text-transform: uppercase;
+    color: #FFFFFF; 
+    transition: 0.3s;
+    font-size: 16px;
+
+    position: relative;
+    white-space: nowrap;
+    padding: 12px 40px 12px 40px;
+    margin-left: 5px;
+   
+    letter-spacing: 0.5px !important;
+    display: inline-block !important;
 }
+
+.navBarButtonBorder:hover{
+    border: 2.5px solid #FFFFFF !important;
+    border-radius: 0.4rem !important;
+}
+
+.navBarButtonBorder{
+    border: 2.5px solid #FFFFFF !important;
+    background-color: #FFFFFF;
+    font-weight: 600;
+    color: #0F6938;
+    border-radius: 0.3rem !important;
+}
+
 
 .navBarText:hover{
     color: #eb8301;
@@ -41,6 +71,32 @@
 
 .navBarLogo {
     max-width: 600px;
-    width: 230px;
+    width: 260px;
     height: auto;
+}
+
+.greenBackground {
+    background-color: #0F6938;
+}
+
+.mobile-nav-toggle {
+    position: relative;
+    border: 0;
+    background: 0 0;
+    outline: none;
+    color: #FFFFFF;
+}
+
+.mobile-nav-toggle:focus {
+    color: #e7e6e6;
+}
+
+.popUpText {
+    font-family: "Poppins-Bold";
+    text-transform: uppercase;
+    color: #2e2a25; 
+    font-weight: 700;
+    font-size: 17px;   
+    letter-spacing: 0.5px !important;
+
 }

@@ -4,17 +4,18 @@ import { Profile } from './Components/Profile/Profile';
 import IntroductionPage from './Pages/Introduction Page/IntroductionPage';
 
 export default function App() {
-  const { isAuthenticated } = useAuth0();
+  /* const { isAuthenticated } = useAuth0(); */
   return (
     <>
-        {isAuthenticated ? (
+        {/* {isAuthenticated ? (
           <>
             <Profile />
             <LogoutButton />
           </>
         ) : (
           <IntroductionPage></IntroductionPage>
-        )}
+        )} */}
+        <IntroductionPage></IntroductionPage>
     </>
   );
 }
