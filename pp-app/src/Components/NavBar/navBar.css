@@ -47,6 +47,8 @@
 .navBarButtonBorder:hover{
     border: 2.5px solid #FFFFFF !important;
     border-radius: 0.4rem !important;
+    background-color: transparent;
+    color:#FFFFFF;
 }
 
 .navBarButtonBorder{
@@ -98,5 +100,27 @@
     font-weight: 700;
     font-size: 17px;   
     letter-spacing: 0.5px !important;
+    border-bottom: 1px;
+    border-bottom-style: solid;
+    border-bottom-color: #f3f1f1;
 
+}
+
+.popUpText:focus, .popUpText:hover{
+    color: #eb8301; 
+}
+
+.popUpButton {
+    font-family: "Poppins";
+    text-transform: uppercase;
+    color: #FFFFFF;
+    background-color: #eb8301; 
+    font-weight: 700;
+    font-size: 17px;   
+    letter-spacing: 0.5px !important;
+    border-radius: 20;
+}
+
+.backdrop {
+  background-color: rgba(0,0,0,0.3);
 }
