@@ -30,7 +30,13 @@
     letter-spacing: 60;
 }
 
-.placeholderText:focus{
+.relevantText{
+    font-family: "Poppins-Regular";
+    font-size: 13pt;
+    letter-spacing: 0.5px;
+}
+
+.placeholderTextOnInput:focus{
     border-color: #0F6938;
 }
 
@@ -42,8 +48,8 @@
     color: #6c3333;
 }
 
-.babyPinkTextHover:focus, .babyPinkTextHover:hover{
-    color: #d4af81;
+.yellowTextHover:focus, .yellowTextHover:hover{
+    color: #eb8301;
     transition: 0.5s;
 }
 
@@ -53,6 +59,15 @@
 
 .yellowBg{
     background-color: #eb8301;
+}
+
+.yellowText{
+    color: #eb8301;
+}
+
+.purpleTextHover:focus, .purpleTextHover:hover{
+    color: #6c3333;
+    transition: 0.5s;
 }
 
 .hoverYellowBg:hover, .hoverYellowBg:focus{
