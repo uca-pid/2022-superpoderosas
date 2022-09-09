@@ -1,11 +1,13 @@
-import { LockClosedIcon } from '@heroicons/react/20/solid'
 import "./LogIn.css"
 import LogoCorazon from "../Images/LogoCorazon.png"
 import SeparationLine from '../Utiles/SeparationLine'
-import GreenSolidButton from '../Utiles/Butttons'
+import SolidButton from '../Utiles/Butttons'
 import ClassicInput from '../Utiles/Inputs'
 
-export default function LogIn() {
+export default function LogIn(props) {
+  function openRegistration(event) {
+    props.onChange(event.target.userWantsToRegister);
+  }
   return (
     <>
       <div className="min-h-full md:items-center justify-items-center grid px-4 sm:px-6 pt-10 lg:px-8 mt-3 lg:mt-20 lg:justify-items-end">
@@ -25,7 +27,7 @@ export default function LogIn() {
               <ClassicInput htmlFor={"password"} placeholder={"Contraseña"} id={"password"} autoComplete={"current-password"}/>
             </div>
     
-            <GreenSolidButton text={"Iniciar Sesión"}/>
+            <SolidButton text={"Iniciar Sesión"} color={"greenBg"} margins={"my-5 md:my-8"}/>
 
             <div className="grid justify-items-center">
                 <a href="#" className="yellowTextHover purpleText placeholderText font-semibold">
@@ -33,16 +35,15 @@ export default function LogIn() {
                 </a>
             </div> 
 
-            <SeparationLine text={"O"}/>
+            <SeparationLine text={"O"} margins="mt-4"/>
             <div className="flex flex-rows justify-center mt-5 mb-4">
-                <div className="gray-300 relevantText">
+                <div className="gray-300 relevantText text-[13pt]">
                   ¿No tienes una cuenta?
                 </div>
-                <a href="#" className="ml-3 greenText yellowTextHover relevantText font-semibold">
+                <button className="ml-3 greenText yellowTextHover relevantText text-[13pt] font-semibold" onClick={openRegistration}>
                   Regístrate
-                </a>
+                </button>
             </div> 
-
             
           </form>
         </div>

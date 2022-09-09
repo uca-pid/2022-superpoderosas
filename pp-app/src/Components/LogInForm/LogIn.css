@@ -32,7 +32,6 @@
 
 .relevantText{
     font-family: "Poppins-Regular";
-    font-size: 13pt;
     letter-spacing: 0.5px;
 }
 
@@ -77,5 +76,9 @@
 
 .greenBg{
     background-color: #0F6938;
+}
+
+.purpleBg{
+    background-color: #6c3333;
 }
 
