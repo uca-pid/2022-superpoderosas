@@ -1,20 +1,26 @@
-import React from "react"; 
-import { useAuth0 } from "@auth0/auth0-react";
-
-export const Profile = () => {
-  const { user, isAuthenticated, isLoading } = useAuth0();
-
-  if (isLoading) {
-    return <div>Loading...</div>;
-  }
-
+import React from "react";
+import AuthService from "../../services/auth.service";
+const Profile = () => {
+  const currentUser = AuthService.getCurrentUser();
   return (
-    isAuthenticated && (
-      <div>
-        <img src={user.picture} alt={user.name} />
-        <h2>{user.name}</h2>
-        <p>Email: {user.email}</p>
-      </div>
-    )
+    <div className="container">
+      <header className="jumbotron">
+        <h3>
+          <strong>{currentUser.username}</strong> Profile
+        </h3>
+      </header>
+      <p>
+        <strong>Id:</strong> {currentUser.id}
+      </p>
+      <p>
+        <strong>Email:</strong> {currentUser.email}
+      </p>
+      <strong>Authorities:</strong>
+      <ul>
+        {currentUser.roles &&
+          currentUser.roles.map((role, index) => <li key={index}>{role}</li>)}
+      </ul>
+    </div>
   );
 };
+export default Profile;

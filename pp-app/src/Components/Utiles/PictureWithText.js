@@ -7,7 +7,7 @@ const  PictureWithText = ({ picture, title, text }) => {
   return (
     <>  
       <div className="greenBg py-5 md:py-20 lg:px-20 flex space-y-2 flex-col lg:flex-row ">  
-        <div class="grid justify-items-center basis-1/2 ml-40">
+        <div className="grid justify-items-center basis-1/2 ml-40">
           <img
                 className="object-scale-down h-200 w-auto"
                 src={picture}
