@@ -7,6 +7,9 @@ import BoardUser from "./Components/Example/BoardUser";
 import BoardAdmin from "./Components/Example/BoardAdmin";
 import AuthVerify from "./common/AuthVerify";
 import EventBus from "./common/EventBus";
+import { useForm } from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers/yup';
+import * as Yup from 'yup';
 
 export default function App() {
 /*   const [showAdminBoard, setShowAdminBoard] = useState(false); //nos va a permitir mostrar la pagina que corresp a usuario o a admin

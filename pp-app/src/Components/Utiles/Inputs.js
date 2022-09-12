@@ -3,7 +3,7 @@ import "../LogInForm/LogIn.css"
 const ClassicInput = (props) => {
   const onChangeInput = (e) => {
     const input = e.target.value;
-    props.onChangeInput(input);
+    props.onChange(input);
   };
   return (
     <>        

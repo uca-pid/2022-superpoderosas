@@ -1,25 +1,36 @@
 import React, { useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
-import "./LogIn.css"
-import LogoCorazon from "../Images/LogoCorazon.png"
-import SeparationLine from '../Utiles/SeparationLine'
-import SolidButton from '../Utiles/Butttons'
-import ClassicInput from '../Utiles/Inputs'
+import "./LogIn.css";
+import LogoCorazon from "../Images/LogoCorazon.png";
+import SeparationLine from '../Utiles/SeparationLine';
+import SolidButton from '../Utiles/Butttons';
+import ClassicInput from '../Utiles/Inputs';
 import Form from "react-validation/build/form";
-import AuthService from "../../services/auth.service"
+import CheckButton from "react-validation/build/button";
+import AuthService from "../../services/auth.service";
+import {isEmail} from "validator";
 
 /* Ver esto como se pone */
 const required = value => {
   if (!value) {
     return (
-      <div className="invalid-feedback d-block">
+      <div className="invalid-feedback d-block alert alert-danger" role="alert">
         This field is required!
       </div>
     );
   }
 };
+const email = value => {
+  if (!isEmail(value)) {
+    return (
+      <div className="alert alert-danger" role="alert">
+        This is not a valid email.
+      </div>
+    );
+  }
+};
 
-export default function LogIn(props) {
+export default function Login(props) {
   const form = useRef();
   const checkBtn = useRef();
   const [username, setUsername] = useState("");
@@ -32,12 +43,10 @@ export default function LogIn(props) {
     props.onChange(event.target.userWantsToRegister);
   }
 
-  const onChangeUsername = (e) => {
-    const username = e.target.value;
+  const onChangeUsername = (username) => {
     setUsername(username);
   };
-  const onChangePassword = (e) => {
-    const password = e.target.value;
+  const onChangePassword = (password) => {
     setPassword(password);
   };
   const handleLogin = (e) => {
@@ -45,6 +54,7 @@ export default function LogIn(props) {
     setMessage("");
     setLoading(true);
     form.current.validateAll();
+    console.log(checkBtn);
     if (checkBtn.current.context._errors.length === 0) {
       AuthService.login(username, password).then(
         () => {
@@ -82,11 +92,11 @@ export default function LogIn(props) {
           <Form className="" onSubmit={handleLogin} ref={form}>
 
             <div className="-space-y-px rounded-md shadow-sm">       
-              <ClassicInput type={"text"} onChange={onChangeUsername} validations={[required]} htmlFor={"email-address"} placeholder={"Email"} id={"email"} autoComplete={"email"}/>
-              <ClassicInput type={"password"} onChange={onChangePassword} validations={[required]} htmlFor={"password"} placeholder={"Contraseña"} id={"password"} autoComplete={"current-password"}/>
+              <ClassicInput type={"text"} onChange={onChangeUsername} validations={[required]} htmlFor={"email-address"} placeholder={"Username"} id={"username"} autoComplete={"username"}  className="form-control" name="username"/>
+              <ClassicInput type={"password"} onChange={onChangePassword} validations={[required]} htmlFor={"password"} placeholder={"Contraseña"} id={"password"} autoComplete={"current-password"}  className="form-control" name="password"/>
             </div>
     
-            <SolidButton text={"Iniciar Sesión"} color={"greenBg"} margins={"my-5 md:my-8"}/>
+            <SolidButton text={"Iniciar Sesión"} color={"greenBg"} margins={"my-5 md:my-8"} /> 
 
             <div className="grid justify-items-center">
                 <a href="#" className="yellowTextHover purpleText placeholderText font-semibold">
@@ -99,12 +109,12 @@ export default function LogIn(props) {
                 <div className="gray-300 relevantText text-[13pt]">
                   ¿No tienes una cuenta?
                 </div>
-                <button className="ml-3 greenText yellowTextHover relevantText text-[13pt] font-semibold" onClick={openRegistration}>
+                <button className="ml-3 greenText yellowTextHover relevantText text-[13pt] font-semibold" onClick={openRegistration} ref={checkBtn}>
                   Regístrate
                 </button>
             </div> 
             
-            {/* Ver como queda cuando lo conectamos con al BD */}
+            {/* Ver como queda el mensaje de error cuando lo conectamos con al BD */}
             {message && (
             <div className="form-group">
               <div className="alert alert-danger" role="alert">
@@ -112,11 +122,10 @@ export default function LogIn(props) {
               </div>
             </div>
             )}
-
-
+            <CheckButton style={{ display: "none" }} ref={checkBtn} />
           </Form>
         </div>
       </div>
     </>
-  )
-}
+  );
+};
