@@ -1,5 +1,4 @@
 import "../LogInForm/LogIn.css"
-import CheckButton from "react-validation/build/button";
 import React, { useRef } from "react";
 
 const SolidButton = ({ text, color, margins}) => {

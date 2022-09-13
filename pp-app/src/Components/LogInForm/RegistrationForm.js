@@ -5,6 +5,7 @@ import SolidButton from '../Utiles/Butttons'
 import ClassicInput from '../Utiles/Inputs'
 import React, { useState, useRef } from "react";
 import Form from "react-validation/build/form";
+import CheckButton from "react-validation/build/button";
 import { isEmail } from "validator";
 import AuthService from "../../services/auth.service";
 const required = (value) => {
@@ -57,16 +58,13 @@ export default function RegistrationForm(props) {
     props.onChange(event.target.userWantsToRegister);
   }
 
-  const onChangeUsername = (e) => {
-    const username = e.target.value;
+  const onChangeUsername = (username) => {
     setUsername(username);
   };
-  const onChangeEmail = (e) => {
-    const email = e.target.value;
+  const onChangeEmail = (email) => {
     setEmail(email);
   };
-  const onChangePassword = (e) => {
-    const password = e.target.value;
+  const onChangePassword = (password) => {
     setPassword(password);
   };
   const handleRegister = (e) => {
@@ -141,6 +139,7 @@ export default function RegistrationForm(props) {
               </div>
             </div>
           )}
+          <CheckButton style={{ display: "none" }} ref={checkBtn} />
             
           </Form>
         </div>
