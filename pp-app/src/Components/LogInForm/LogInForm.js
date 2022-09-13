@@ -23,9 +23,11 @@ const required = value => {
 const email = value => {
   if (!isEmail(value)) {
     return (
-      <div className="alert alert-danger" role="alert">
-        This is not a valid email.
+      <div className="grid form-group justify-items-center pb-4">
+      <div className="alert redText alert-danger text-[13pt] justify-items-center" role="alert">
+      This is not a valid email.
       </div>
+    </div>
     );
   }
 };
@@ -54,7 +56,6 @@ export default function Login(props) {
     setMessage("");
     setLoading(true);
     form.current.validateAll();
-    console.log(checkBtn);
     if (checkBtn.current.context._errors.length === 0) {
       AuthService.login(username, password).then(
         () => {
@@ -80,7 +81,7 @@ export default function Login(props) {
   return (
     <>
       <div className="min-h-full md:items-center justify-items-center grid px-4 sm:px-6 pt-10 lg:px-8 mt-3 lg:mt-20 lg:justify-items-end">
-        <div className="grid content-center w-full rounded-3xl max-w-md space-y-2 bg-white bg-opacity-90 lg:mx-60 drop-shadow-2xl p-8 md:p-16 h-4/5 md:h-2/3 lg:h-4/5 my-5 lg:my-10">
+        <div className="grid content-center w-full rounded-3xl max-w-md space-y-2 bg-white bg-opacity-90 lg:mx-60 drop-shadow-2xl p-8 md:p-16 h-4/5 md:h-2/3 lg:h-4/5 my-5 lg:my-10 ">
           <div className="">
               <img
               className="mx-auto h-40 w-auto"
@@ -98,6 +99,8 @@ export default function Login(props) {
     
             <SolidButton text={"Iniciar Sesión"} color={"greenBg"} margins={"my-5 md:my-8"} /> 
 
+            {/* Ver como queda el mensaje de error cuando lo conectamos con al BD */}
+
             <div className="grid justify-items-center">
                 <a href="#" className="yellowTextHover purpleText placeholderText font-semibold">
                   ¿Olvidaste tu contraseña?
@@ -109,19 +112,19 @@ export default function Login(props) {
                 <div className="gray-300 relevantText text-[13pt]">
                   ¿No tienes una cuenta?
                 </div>
-                <button className="ml-3 greenText yellowTextHover relevantText text-[13pt] font-semibold" onClick={openRegistration} ref={checkBtn}>
+                <button className="ml-3 mb-3 greenText yellowTextHover relevantText text-[13pt] font-semibold" onClick={openRegistration} ref={checkBtn}>
                   Regístrate
                 </button>
             </div> 
-            
-            {/* Ver como queda el mensaje de error cuando lo conectamos con al BD */}
+
             {message && (
-            <div className="form-group">
-              <div className="alert alert-danger" role="alert">
+            <div className="grid form-group justify-items-center pb-4">
+              <div className="alert redText alert-danger text-[13pt] justify-items-center" role="alert">
                 {message}
               </div>
             </div>
             )}
+            
             <CheckButton style={{ display: "none" }} ref={checkBtn} />
           </Form>
         </div>

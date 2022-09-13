@@ -10,6 +10,7 @@ import { isEmail } from "validator";
 import AuthService from "../../services/auth.service";
 const required = (value) => {
   if (!value) {
+    console.log("required!");
     return (
       <div className="invalid-feedback d-blockalert alert-danger" role="alert">
         This field is required!
@@ -19,6 +20,7 @@ const required = (value) => {
 };
 const validEmail = (value) => {
   if (!isEmail(value)) {
+    console.log("invalid email!");
     return (
       <div className="invalid-feedback d-block alert alert-danger" role="alert">
         This is not a valid email.
@@ -126,20 +128,15 @@ export default function RegistrationForm(props) {
                 </button>
             </div> 
 
-          {/* Ver como queda cuando lo conectamoscon SQL */}
+          <CheckButton style={{ display: "none" }} ref={checkBtn} />
+
           {message && (
-            <div className="form-group">
-              <div
-                className={
-                  successful ? "alert alert-success" : "alert alert-danger"
-                }
-                role="alert"
-              >
+            <div className="grid form-group justify-items-center pb-4">
+              <div className="alert redText alert-danger text-[13pt] justify-items-center" role="alert">
                 {message}
               </div>
             </div>
-          )}
-          <CheckButton style={{ display: "none" }} ref={checkBtn} />
+            )}
             
           </Form>
         </div>
