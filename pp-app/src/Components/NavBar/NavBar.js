@@ -3,6 +3,7 @@ import { Popover, Transition } from '@headlessui/react'
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
 import LoginButton from '../Registration Buttons/loginButton'
 import "../../Fonts/Poppins-Bold.ttf"
+import { useNavigate } from "react-router-dom"
 import "./navBar.css"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { navIcon } from '@fortawesome/fontawesome-free-solid'
@@ -18,6 +19,12 @@ const navigation = [
 ]
 
 export default function NavBar() {
+  const navigate = useNavigate();
+  function navigateToLogIn(){
+      navigate("/login");
+      window.location.reload();
+    
+  }
   return (
           <Popover>
               <nav className="bg-transparent container sm:h-10 fix mx-auto z-20 top-0 left-0 px-4 pt-6 sm:px-6 lg:px-8 pt-10" aria-label="Global">
@@ -44,7 +51,7 @@ export default function NavBar() {
                       {item.name}
                     </a>
                   ))}
-                    <LoginButton style = {"navBarTextButton navBarButtonBorder mt-1"}></LoginButton>
+                    <button onClick={navigateToLogIn} className = {"navBarTextButton navBarButtonBorder mt-1"}>Log In</button>
                   </div>
                 </div>
               </nav>
@@ -82,7 +89,7 @@ export default function NavBar() {
                       </a>
                     ))}
                   </div>
-                    <LoginButton style = {"block w-full px-5 py-4 text-center popUpButton"}></LoginButton>
+                    <button onClick={navigateToLogIn} className = {"block w-full px-5 py-4 text-center popUpButton"}>Log In</button>
                 </div>
               </Popover.Panel>
             </Transition>
