@@ -4,6 +4,7 @@ import SeparationLine from '../Utiles/SeparationLine'
 import SolidButton from '../Utiles/Butttons'
 import ClassicInput from '../Utiles/Inputs'
 import React, { useState, useRef } from "react";
+import { useNavigate } from "react-router-dom"
 import Form from "react-validation/build/form";
 import CheckButton from "react-validation/build/button";
 import { isEmail } from "validator";
@@ -55,6 +56,7 @@ export default function RegistrationForm(props) {
   const [password, setPassword] = useState("");
   const [successful, setSuccessful] = useState(false);
   const [message, setMessage] = useState("");
+  const navigate = useNavigate();
 
   function openLogIn(event) {
     props.onChange(event.target.userWantsToRegister);
@@ -91,6 +93,8 @@ export default function RegistrationForm(props) {
           setSuccessful(false);
         }
       );
+      navigate("/login");
+      window.location.reload();
     }
   };
 
