@@ -41,8 +41,6 @@ export default function App() {
           <Route exact path={"/"} element={<IntroductionPage />} />
           <Route exact path={"/login"} element={<IntroductionPage />} />
           <Route exact path="/profile" element={<Profile />} />
-          <Route path="/user" element={<BoardUser />} /> 
-          <Route path="/admin" element={<BoardAdmin />} />
         </Routes> 
       </div>   
        {/* <AuthVerify logOut={logOut}/> */}
