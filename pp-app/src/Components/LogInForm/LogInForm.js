@@ -9,25 +9,15 @@ import Form from "react-validation/build/form";
 import CheckButton from "react-validation/build/button";
 import AuthService from "../../services/auth.service";
 import {isEmail} from "validator";
+import Input from "react-validation/build/input";
 
 /* Ver esto como se pone */
 const required = value => {
   if (!value) {
     return (
-      <div className="invalid-feedback d-block alert alert-danger" role="alert">
+      <div className="alert redText alert-danger text-base m-0" role="alert">
         This field is required!
       </div>
-    );
-  }
-};
-const email = value => {
-  if (!isEmail(value)) {
-    return (
-      <div className="grid form-group justify-items-center pb-4">
-      <div className="alert redText alert-danger text-[13pt] justify-items-center" role="alert">
-      This is not a valid email.
-      </div>
-    </div>
     );
   }
 };
@@ -80,8 +70,8 @@ export default function Login(props) {
 
   return (
     <>
-      <div className="min-h-full md:items-center mb-10 justify-items-center grid px-4 sm:px-6 pt-10 lg:px-8 mt-3 lg:mt-20 lg:justify-items-end">
-        <div className="grid content-center w-full rounded-3xl max-w-md space-y-2 bg-white bg-opacity-90 lg:mx-60 drop-shadow-2xl p-8 md:p-16 h-4/5 md:h-2/3 lg:h-4/5 my-5 lg:my-10">
+      <div className="min-h-full md:items-center mb-10 justify-items-center grid px-4 sm:px-6 pt-10 lg:px-8 mt-3 lg:mt-16 lg:justify-items-end">
+        <div className="grid content-center w-full rounded-3xl max-w-md space-y-5 bg-white bg-opacity-90 lg:mx-60 drop-shadow-2xl p-8 md:p-16 h-4/5 md:h-2/3 lg:h-4/5 my-5 lg:my-10">
           <div className="">
               <img
               className="mx-auto h-40 w-auto"
@@ -92,15 +82,32 @@ export default function Login(props) {
 
           <Form className="" onSubmit={handleLogin} ref={form}>
 
-            <div className="-space-y-px rounded-md shadow-sm">       
-              <ClassicInput type={"text"} onChange={onChangeUsername} validations={[required]} htmlFor={"email-address"} placeholder={"Username"} id={"username"} autoComplete={"username"}  className="form-control" name="username"/>
-              <ClassicInput type={"password"} onChange={onChangePassword} validations={[required]} htmlFor={"password"} placeholder={"Contraseña"} id={"password"} autoComplete={"current-password"}  className="form-control" name="password"/>
+            <div className="space-y-3 rounded-md">       
+              {/* <ClassicInput type={"text"} onChange={onChangeUsername} validations={[required]} htmlFor={"email-address"} placeholder={"Username"} id={"username"} autoComplete={"username"}  className="form-control" name="username"/>
+              <ClassicInput type={"password"} onChange={onChangePassword} validations={[required]} htmlFor={"password"} placeholder={"Contraseña"} id={"password"} autoComplete={"current-password"}  className="form-control" name="password"/> */}
+                <Input
+                  type="text"
+                  className="relative bg-transparent h-12 block w-full rounded-xl   border border-gray-300 px-6 py-2 text-gray-900 placeholder-gray-600 focus:z-10 placeholderText focus:outline-none placeholderTextOnInput sm:text-sm form-control"
+                  name="username"
+                  value={username}
+                  placeholder="Nombre de Usuario"
+                  onChange={onChangeUsername}
+                  validations={[required]}
+                />             
+                <Input
+                  type="password"
+                  className="relative bg-transparent h-12 block w-full rounded-xl   border border-gray-300 px-6 py-2 text-gray-900 placeholder-gray-600 focus:z-10 placeholderText focus:outline-none placeholderTextOnInput sm:text-sm form-control"
+                  name="password"
+                  value={password}
+                  placeholder="Contraseña"
+                  onChange={onChangePassword}
+                  validations={[required]}
+                />
             </div>
     
-            <SolidButton text={"Iniciar Sesión"} color={"greenBg"} margins={"my-5 md:my-8"} onClick={{}}/> 
+            <SolidButton text={"Iniciar Sesión"} color={"greenBg"} margins={"my-4 md:my-7"} onClick={{}}/> 
 
-            {/* Ver como queda el mensaje de error cuando lo conectamos con al BD */}
-
+            {/* Mensaje de error cuando lo conectamos con al BD */}
             <div className="grid justify-items-center">
                 <a href="#" className="yellowTextHover purpleText placeholderText font-semibold">
                   ¿Olvidaste tu contraseña?

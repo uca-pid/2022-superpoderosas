@@ -20,7 +20,8 @@ const ClassicInput = (props) => {
             placeholder={props.placeholder}
             validations={props.validations}
             onChange={onChangeInput}
-            />
+            /> 
+            
         </div>           
     </>
   )

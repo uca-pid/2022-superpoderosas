@@ -10,12 +10,14 @@ import CheckButton from "react-validation/build/button";
 import { isEmail } from "validator";
 import AuthService from "../../services/auth.service";
 import Modal from "../Utiles/Modal"
+import Input from "react-validation/build/input";
+
 
 const required = (value) => {
   if (!value) {
     console.log("required!");
     return (
-      <div className="invalid-feedback d-blockalert alert-danger" role="alert">
+      <div className="alert redText alert-danger text-base m-0" role="alert">
         This field is required!
       </div>
     );
@@ -25,7 +27,7 @@ const validEmail = (value) => {
   if (!isEmail(value)) {
     console.log("invalid email!");
     return (
-      <div className="invalid-feedback d-block alert alert-danger" role="alert">
+      <div className="alert redText alert-danger text-base m-0" role="alert">
         This is not a valid email.
       </div>
     );
@@ -34,7 +36,7 @@ const validEmail = (value) => {
 const vusername = (value) => {
   if (value.length < 3 || value.length > 20) {
     return (
-      <div className="invalid-feedback d-block alert alert-danger" role="alert">
+      <div className="alert redText alert-danger text-base m-0" role="alert">
         The username must be between 3 and 20 characters.
       </div>
     );
@@ -43,7 +45,7 @@ const vusername = (value) => {
 const vpassword = (value) => {
   if (value.length < 6 || value.length > 40) {
     return (
-      <div className="invalid-feedback d-block alert alert-danger" role="alert">
+      <div className="alert redText alert-danger text-base m-0" role="alert">
         The password must be between 6 and 40 characters.
       </div>
     );
@@ -61,6 +63,7 @@ export default function RegistrationForm(props) {
   const [message, setMessage] = useState("");
   const navigate = useNavigate();
 
+
   function closeModal() {
     setShowModal(false);
     navigate("/login");
@@ -71,15 +74,21 @@ export default function RegistrationForm(props) {
     props.onChange(event.target.userWantsToRegister);
   };
 
-  const onChangeUsername = (username) => {
+  const onChangeUsername = (e) => {
+    const username = e.target.value;
     setUsername(username);
   };
-  const onChangeEmail = (email) => {
+
+  const onChangeEmail = (e) => {
+    const email = e.target.value;
     setEmail(email);
   };
-  const onChangePassword = (password) => {
+
+  const onChangePassword = (e) => {
+    const password = e.target.value;
     setPassword(password);
   };
+
   const continuePostNavigationSuccessful = () =>{
     setShowModal(true);
   };
@@ -90,6 +99,7 @@ export default function RegistrationForm(props) {
     setSuccessful(false);
     form.current.validateAll();
     if (checkBtn.current.context._errors.length === 0) {
+
       AuthService.register(username, email, password).then(
         (response) => {
           setMessage(response.data.message);
@@ -117,8 +127,8 @@ export default function RegistrationForm(props) {
         <Modal value={showModal} onChange={closeModal} header={"Ya tienes una cuenta!"} body={" Para formar parte de la comunidad y comenzar a tener un impacto, junto a Pata Pila, inicie sesión."} buttonText={"Ir a iniciar sesión"}></Modal>
       ) : null}
       {!successful && (
-      <div className="min-h-full md:items-center justify-items-center grid px-4 sm:px-6 pt-10 lg:px-8 mt-3 lg:mt-20 lg:justify-items-end">
-        <div className="grid content-center w-full rounded-3xl max-w-md space-y-2 bg-white bg-opacity-90 lg:mx-60 drop-shadow-2xl p-8 md:p-16 h-4/5 md:h-2/3 lg:h-4/5 mt-5 mb-2 lg:mt-10 lg:mb-5">
+      <div className="min-h-full md:items-center justify-items-center grid px-4 sm:px-6 pt-10 lg:px-8 mt-3 lg:mt-16 lg:justify-items-end">
+        <div className="grid content-center w-full rounded-3xl max-w-md space-y-5 bg-white bg-opacity-90 lg:mx-60 drop-shadow-2xl p-8 md:p-16 h-4/5 md:h-2/3 lg:h-4/5 mt-5 mb-2 lg:mt-10 lg:mb-5">
           <div className="">
               <img
               className="mx-auto h-40 w-auto"
@@ -129,21 +139,52 @@ export default function RegistrationForm(props) {
 
            <Form className="" onSubmit={handleRegister} ref={form}>
 
-            <div className="-space-y-px rounded-md shadow-sm mb-[-5px]">       
-              <ClassicInput type={"text"} onChange={onChangeEmail} validations={[required, validEmail]} htmlFor={"email-address"} placeholder={"Email"} id={"email"} autoComplete={"email"}/>
+            <div className="space-y-3 rounded-md mb-[-5px]">       
+              {/* <ClassicInput type={"text"} onChange={onChangeEmail} validations={[required, validEmail]} htmlFor={"email-address"} placeholder={"Email"} id={"email"} autoComplete={"email"}/> 
               <ClassicInput type={"text"} onChange={onChangeUsername} validations={[required, vusername]} htmlFor={"username"} placeholder={"Nombre de usuario"} id={"username"} autoComplete={"username"}/>
-              <ClassicInput type={"password"} onChange={onChangePassword} validations={[required, vpassword]} htmlFor={"password"} placeholder={"Contraseña"} id={"password"} autoComplete={"current-password"}/>
+              <ClassicInput type={"password"} onChange={onChangePassword} validations={[required, vpassword]} htmlFor={"password"} placeholder={"Contraseña"} id={"password"} autoComplete={"current-password"}/>*/}
+              
+                <Input
+                  type="text"
+                  className="relative bg-transparent h-12 block w-full rounded-xl border border-gray-300 px-6 py-2 text-gray-900 placeholder-gray-600 focus:z-10 placeholderText focus:outline-none placeholderTextOnInput sm:text-sm form-control"
+                  name="username"
+                  value={username}
+                  placeholder="Nombre de Usuario"
+                  onChange={onChangeUsername}
+                  validations={[required, vusername]}
+                />
+          
+                <Input
+                  type="text"
+                  className="relative bg-transparent h-12 block w-full rounded-xl  border border-gray-300 px-6 py-2 text-gray-900 placeholder-gray-600 focus:z-10 placeholderText focus:outline-none placeholderTextOnInput sm:text-sm form-control"
+                  name="email"
+                  value={email}
+                  placeholder="Email"
+                  onChange={onChangeEmail}
+                  validations={[required, validEmail]}
+                />
+             
+                <Input
+                  type="password"
+                  className="relative bg-transparent h-12 block w-full rounded-xl border border-gray-300 px-6 py-2 text-gray-900 placeholder-gray-600 focus:z-10 placeholderText focus:outline-none placeholderTextOnInput sm:text-sm form-control"
+                  name="password"
+                  value={password}
+                  placeholder="Contraseña"
+                  onChange={onChangePassword}
+                  validations={[required, vpassword]}
+                />
+              
             </div>
     
-            <SolidButton text={"Registrarte"} color={"purpleBg"} margins={"my-2 md:my-6"} onClick={{}}/>
+            <SolidButton text={"Registrarte"} color={"purpleBg"} margins={"my-6 md:my-6"} onClick={{}}/>
 
             <SeparationLine text={"O"} margins="mt-2"/>
 
             <div className="flex flex-rows justify-center mt-5 mb-4">
-                <div className="gray-300 relevantText text-[12pt]">
+                <div className="gray-300 relevantText text-[11pt] md:text-[12pt]">
                   ¿Ya tienes una cuenta?
                 </div>
-                <button className="ml-2 greenText yellowTextHover relevantText text-[12.5pt] font-semibold" onClick={openLogIn}>
+                <button className="ml-2 greenText yellowTextHover relevantText text-[11.5pt] md:text-[12.5pt] font-semibold" onClick={openLogIn}>
                   Iniciar Sesión
                 </button>
             </div> 
