@@ -31,6 +31,10 @@ export default function Login(props) {
   const [message, setMessage] = useState("");
   const navigate = useNavigate();
 
+  const navigateToChangePassword = () => {
+    navigate('/changePasswordPage');
+  }
+
   function openRegistration(event) {
     props.onChange(event.target.userWantsToRegister);
   }
@@ -109,7 +113,7 @@ export default function Login(props) {
 
             {/* Mensaje de error cuando lo conectamos con al BD */}
             <div className="grid justify-items-center">
-                <a href="#" className="yellowTextHover purpleText placeholderText font-semibold">
+                <a href="#" className="yellowTextHover purpleText placeholderText font-semibold" onClick={navigateToChangePassword()}>
                   ¿Olvidaste tu contraseña?
                 </a>
             </div> 
