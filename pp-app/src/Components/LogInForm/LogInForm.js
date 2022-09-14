@@ -97,7 +97,7 @@ export default function Login(props) {
               <ClassicInput type={"password"} onChange={onChangePassword} validations={[required]} htmlFor={"password"} placeholder={"Contraseña"} id={"password"} autoComplete={"current-password"}  className="form-control" name="password"/>
             </div>
     
-            <SolidButton text={"Iniciar Sesión"} color={"greenBg"} margins={"my-5 md:my-8"} /> 
+            <SolidButton text={"Iniciar Sesión"} color={"greenBg"} margins={"my-5 md:my-8"} onClick={{}}/> 
 
             {/* Ver como queda el mensaje de error cuando lo conectamos con al BD */}
 

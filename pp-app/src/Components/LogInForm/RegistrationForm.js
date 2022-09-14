@@ -9,6 +9,8 @@ import Form from "react-validation/build/form";
 import CheckButton from "react-validation/build/button";
 import { isEmail } from "validator";
 import AuthService from "../../services/auth.service";
+import Modal from "../Utiles/Modal"
+
 const required = (value) => {
   if (!value) {
     console.log("required!");
@@ -49,6 +51,7 @@ const vpassword = (value) => {
 };
 
 export default function RegistrationForm(props) {
+  const [showModal, setShowModal] = React.useState(false);
   const form = useRef();
   const checkBtn = useRef();
   const [username, setUsername] = useState("");
@@ -58,9 +61,15 @@ export default function RegistrationForm(props) {
   const [message, setMessage] = useState("");
   const navigate = useNavigate();
 
+  function closeModal() {
+    setShowModal(false);
+    navigate("/login");
+    window.location.reload();
+  };
+
   function openLogIn(event) {
     props.onChange(event.target.userWantsToRegister);
-  }
+  };
 
   const onChangeUsername = (username) => {
     setUsername(username);
@@ -71,6 +80,10 @@ export default function RegistrationForm(props) {
   const onChangePassword = (password) => {
     setPassword(password);
   };
+  const continuePostNavigationSuccessful = () =>{
+    setShowModal(true);
+  };
+
   const handleRegister = (e) => {
     e.preventDefault();
     setMessage("");
@@ -81,6 +94,7 @@ export default function RegistrationForm(props) {
         (response) => {
           setMessage(response.data.message);
           setSuccessful(true);
+          continuePostNavigationSuccessful();
         },
         (error) => {
           const resMessage =
@@ -91,15 +105,17 @@ export default function RegistrationForm(props) {
             error.toString();
           setMessage(resMessage);
           setSuccessful(false);
-        }
+        },
       );
-      navigate("/login");
-      window.location.reload();
+      
     }
   };
 
   return (
-    <>
+    <>  
+      {showModal ? (
+        <Modal value={showModal} onChange={closeModal} header={"Ya tienes una cuenta!"} body={" Para formar parte de la comunidad y comenzar a tener un impacto, junto a Pata Pila, inicie sesión."} buttonText={"Ir a iniciar sesión"}></Modal>
+      ) : null}
       {!successful && (
       <div className="min-h-full md:items-center justify-items-center grid px-4 sm:px-6 pt-10 lg:px-8 mt-3 lg:mt-20 lg:justify-items-end">
         <div className="grid content-center w-full rounded-3xl max-w-md space-y-2 bg-white bg-opacity-90 lg:mx-60 drop-shadow-2xl p-8 md:p-16 h-4/5 md:h-2/3 lg:h-4/5 mt-5 mb-2 lg:mt-10 lg:mb-5">
@@ -119,7 +135,7 @@ export default function RegistrationForm(props) {
               <ClassicInput type={"password"} onChange={onChangePassword} validations={[required, vpassword]} htmlFor={"password"} placeholder={"Contraseña"} id={"password"} autoComplete={"current-password"}/>
             </div>
     
-            <SolidButton text={"Registrarte"} color={"purpleBg"} margins={"my-2 md:my-6"}/>
+            <SolidButton text={"Registrarte"} color={"purpleBg"} margins={"my-2 md:my-6"} onClick={{}}/>
 
             <SeparationLine text={"O"} margins="mt-2"/>
 
