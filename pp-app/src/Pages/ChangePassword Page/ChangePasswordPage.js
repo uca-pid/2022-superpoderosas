@@ -1,7 +1,6 @@
 import "../../Fonts/Poppins-Bold.ttf"
 import "../../Components/NavBar/navBar.css"
 import "./ChangePasswordPage.css"
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import VerifyEmailForm from "../../Components/ChangePasswordForms/VerifyEmailForm"
 import "../../App.css"
 import React, { useState } from 'react';
