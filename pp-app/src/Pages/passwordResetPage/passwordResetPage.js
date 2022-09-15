@@ -59,6 +59,7 @@ export default function RegistrationForm(props) {
 
       AuthService.updatePassword(params.id,password).then(
         (response) => {
+          navigateToLogIn()
           /*setMessage(response.data.message);
           setSuccessful(true);
           continuePostNavigationSuccessful();*/
@@ -114,7 +115,7 @@ export default function RegistrationForm(props) {
 
            <div className="grid justify-items-center mb-9">
                 <div className="gray-300 titleText text-[18pt] font-semibold text-center">
-                  Cambiar la contraseña
+                  Cambiar contraseña
                 </div>
           </div>
 
