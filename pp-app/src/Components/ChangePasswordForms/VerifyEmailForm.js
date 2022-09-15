@@ -1,7 +1,7 @@
 import React, { useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import "./changePassword.css";
-import "../LogInForm/LogInForm.css";
+import "../LogInForm/LogIn.css";
 import LogoHerramienta from "../Images/logoHerramienta.png";
 import SeparationLine from '../Utiles/SeparationLine';
 import SolidButton from '../Utiles/Butttons';
@@ -15,7 +15,7 @@ import Input from "react-validation/build/input";
 const required = value => {
   if (!value) {
     return (
-      <div className="invalid-feedback d-block alert alert-danger" role="alert">
+      <div className="alert redText alert-danger text-base m-0" role="alert">
         This field is required!
       </div>
     );
@@ -50,7 +50,7 @@ export default function Login(props) {
           setConfirmationMessage("Mail Enviado");
         },
         (error) => {
-          /*Erro de la bd de si el mail no existe*/
+          /*Error de la bd de si el mail no existe*/
           const resMessage =
             (error.response &&
               error.response.data &&
