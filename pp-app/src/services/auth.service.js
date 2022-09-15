@@ -22,7 +22,6 @@ const login = (username, password) => {
 };
 
 const changeMail = (email) => {
-  alert(email);
   return axios.post(API_URL + "resetPassword", {
       email,
     })
