@@ -39,10 +39,13 @@ export default function Login(props) {
     props.onChange(event.target.userWantsToRegister);
   }
 
-  const onChangeUsername = (username) => {
+  const onChangeUsername = (e) => {
+    const username = e.target.value;
     setUsername(username);
   };
-  const onChangePassword = (password) => {
+
+  const onChangePassword = (e) => {
+    const password = e.target.value;
     setPassword(password);
   };
   const handleLogin = (e) => {

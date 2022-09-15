@@ -9,8 +9,9 @@ import Form from "react-validation/build/form";
 import CheckButton from "react-validation/build/button";
 import AuthService from "../../services/auth.service";
 import {isEmail} from "validator";
+import Input from "react-validation/build/input";
 
-/* Ver esto como se pone */
+/* Ver esto como se pone y validar tmb que el email existe */
 const required = value => {
   if (!value) {
     return (
@@ -20,17 +21,7 @@ const required = value => {
     );
   }
 };
-const email = value => {
-  if (!isEmail(value)) {
-    return (
-      <div className="grid form-group justify-items-center pb-4">
-      <div className="alert redText alert-danger text-[13pt] justify-items-center" role="alert">
-      This is not a valid email.
-      </div>
-    </div>
-    );
-  }
-};
+
 
 export default function Login(props) {
   const form = useRef();
@@ -41,19 +32,13 @@ export default function Login(props) {
   const [message, setMessage] = useState("");
   const navigate = useNavigate();
 
-  const navigateToChangePassword = () => {
-    navigate('/changePasswordPage');
-  }
 
-  function openRegistration(event) {
-    props.onChange(event.target.userWantsToRegister);
-  }
-
-  const onChangeEmail = (email) => {
+  const onChangeEmail = (e) => {
+    const email = e.target.value;
     setEmail(email);
   };
 
-  const handleChange = (e) => {
+  const handleEmailChangeRequest = (e) => {
     e.preventDefault();
     setMessage("");
     setLoading(true);
@@ -109,11 +94,19 @@ export default function Login(props) {
           </div>
           <Form className="" ref={form}>
 
-            <div className="-space-y-px rounded-md shadow-sm mt-2">       
-              <ClassicInput type={"text"} onChange={onChangeEmail} validations={[required]} htmlFor={"email-address"} placeholder={"Email"} id={"email"} autoComplete={"email"}  className="form-control" name="email"/>
+            <div className="-space-y-px rounded-md shadow-sm mt-2">
+            <Input
+                  type="text"
+                  className="relative bg-transparent h-12 block w-full rounded-xl   border border-gray-300 px-6 py-2 text-gray-900 placeholder-gray-600 focus:z-10 placeholderText focus:outline-none placeholderTextOnInput sm:text-sm form-control"
+                  name="email"
+                  value={email}
+                  placeholder="Email"
+                  onChange={onChangeEmail}
+                  validations={[required]}
+                />       
            </div>
     
-            <SolidButton text={"Enviar enlace"} color={"greenBg"} margins={"my-5 md:my-7"} onClick={{handleChange}}/> 
+            <SolidButton text={"Enviar enlace"} color={"greenBg"} margins={"my-5 md:my-7"} onClick={handleEmailChangeRequest}/> 
 
             <div className="flex flex-rows justify-center mt-4 mb-5 md:mb-10">
                 <div className="gray-300 relevantText  text-[11pt] md:text-[12pt]">
