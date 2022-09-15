@@ -42,7 +42,6 @@ export default function Login(props) {
     e.preventDefault();
     setMessage("");
     setLoading(true);
-    alert("hola")
     form.current.validateAll();
     if (checkBtn.current.context._errors.length === 0) {
       AuthService.changeMail(email)
@@ -94,7 +93,7 @@ export default function Login(props) {
           </div>
           <Form className="" ref={form}>
 
-            <div className="-space-y-px rounded-md shadow-sm mt-2">
+            <div className="-space-y-px rounded-md mt-2">
             <Input
                   type="text"
                   className="relative bg-transparent h-12 block w-full rounded-xl   border border-gray-300 px-6 py-2 text-gray-900 placeholder-gray-600 focus:z-10 placeholderText focus:outline-none placeholderTextOnInput sm:text-sm form-control"
