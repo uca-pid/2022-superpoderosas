@@ -91,35 +91,35 @@ export default function Login(props) {
         <div className="grid content-center w-full rounded-3xl max-w-md space-y-2 bg-white bg-opacity-90 lg:mx-60 drop-shadow-2xl p-8 md:p-16 h-4/5 md:h-2/3 lg:h-4/5 my-5 lg:my-10">
           <div className="md:mt-8">
               <img
-              className="mx-auto h-40 w-auto"
+              className="mx-auto h-[150px] md:h-40 w-auto "
               src={LogoHerramienta}
               alt="LogoHerramienta"
               />
           </div>
 
           <div className="grid justify-items-center mb-4">
-                <div className="gray-300 titleText text-[17pt] font-semibold text-center">
+                <div className="gray-300 titleText text-[18pt] font-semibold text-center">
                   ¿Tienes problemas para iniciar sesión?
                 </div>
           </div>
           <div className="grid justify-items-center mb-10">
-                <div className="gray-300 infoText text-[11pt]">
+                <div className="text-slate-600 text-center infoText text-[11pt]">
                 Ingresa tu correo electrónico y te enviaremos un enlace para que recuperes el acceso a tu cuenta.
                 </div>
           </div>
           <Form className="" ref={form}>
 
-            <div className="-space-y-px rounded-md shadow-sm mt-5">       
+            <div className="-space-y-px rounded-md shadow-sm mt-2">       
               <ClassicInput type={"text"} onChange={onChangeEmail} validations={[required]} htmlFor={"email-address"} placeholder={"Email"} id={"email"} autoComplete={"email"}  className="form-control" name="email"/>
            </div>
     
-            <SolidButton text={"Enviar enlace"} color={"greenBg"} margins={"my-5 md:my-8"} onClick={{handleChange}}/> 
+            <SolidButton text={"Enviar enlace"} color={"greenBg"} margins={"my-5 md:my-7"} onClick={{handleChange}}/> 
 
-            <div className="flex flex-rows justify-center mt-5 mb-5 md:mb-10">
-                <div className="gray-300 relevantText text-[13pt]">
+            <div className="flex flex-rows justify-center mt-4 mb-5 md:mb-10">
+                <div className="gray-300 relevantText  text-[11pt] md:text-[12pt]">
                   ¿No tienes una cuenta?
                 </div>
-                <button className="ml-3 mb-3 yellowText greenTextHover relevantText text-[13pt] font-semibold"  >
+                <button className="ml-3 mb-3 yellowText greenTextHover relevantText text-[12pt] md:text-[12pt] font-semibold"  >
                   Regístrate
                 </button>
             </div> 
