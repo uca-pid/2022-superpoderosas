@@ -1,15 +1,11 @@
 import React, { useState, useRef } from "react";
-import { useNavigate } from "react-router-dom";
 import "./changePassword.css";
 import "../LogInForm/LogIn.css";
 import LogoHerramienta from "../Images/logoHerramienta.png";
-import SeparationLine from '../Utiles/SeparationLine';
 import SolidButton from '../Utiles/Butttons';
-import ClassicInput from '../Utiles/Inputs';
 import Form from "react-validation/build/form";
 import CheckButton from "react-validation/build/button";
 import AuthService from "../../services/auth.service";
-import {isEmail} from "validator";
 import Input from "react-validation/build/input";
 
 const required = value => {
@@ -23,15 +19,12 @@ const required = value => {
 };
 
 
-export default function Login(props) {
+export default function VerifyEmailForm(props) {
   const form = useRef();
   const checkBtn = useRef();
   const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState("");
   const [confirmationMessage, setConfirmationMessage] = useState ("");
-  const navigate = useNavigate();
 
 
   const onChangeEmail = (e) => {
@@ -42,46 +35,24 @@ export default function Login(props) {
   const handleEmailChangeRequest = (e) => {
     e.preventDefault();
     setMessage("");
-    setLoading(true);
+    setConfirmationMessage("");
     form.current.validateAll();
     if (checkBtn.current.context._errors.length === 0) {
       AuthService.changeMail(email).then(
         () => {
-          setConfirmationMessage("Mail Enviado");
+          setConfirmationMessage("El mail para cambiar la contraseña ha sido enviado");
         },
         (error) => {
-          /*Error de la bd de si el mail no existe*/
           const resMessage =
             (error.response &&
               error.response.data &&
               error.response.data.message) ||
             error.message ||
             error.toString();
-          setLoading(false);
           setMessage(resMessage);
         })
     }
-  }/*.then(
-      
-        () => {
-          navigate("/profile");
-          window.location.reload();
-        },
-        (error) => {
-          const resMessage =
-            (error.response &&
-              error.response.data &&
-              error.response.data.message) ||
-            error.message ||
-            error.toString();
-          setLoading(false);
-          setMessage(resMessage);
-        }
-      );
-    } else {
-      setLoading(false);
-    }
-  };*/
+  }
 
 
   return (
@@ -131,15 +102,15 @@ export default function Login(props) {
                 </button>
             </div> 
             {message && (
-            <div className="grid form-group justify-items-center pb-4">
-              <div className="alert redText alert-danger text-[13pt] justify-items-center" role="alert">
+            <div className="grid form-group justify-items-center pb-4 mb:-mt-10 lg:-mt-7">
+              <div className="alert text-center redText infoText uppercase alert-danger text-[13pt] justify-items-center" role="alert">
                 {message}
               </div>
             </div>
             )}
             {confirmationMessage && (
-              <div className="grid form-group justify-items-center pb-4">
-              <div className="alert greenText alert-danger text-[13pt] justify-items-center" role="alert">
+              <div className="grid form-group justify-items-center pb-4 mb:-mt-10  lg:-mt-7">
+              <div className="alert text-center greenText infoText uppercase alert-danger text-[13pt] justify-items-center" role="alert">
                 {confirmationMessage}
               </div>
               </div>
