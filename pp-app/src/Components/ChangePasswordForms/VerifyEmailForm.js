@@ -7,6 +7,7 @@ import Form from "react-validation/build/form";
 import CheckButton from "react-validation/build/button";
 import AuthService from "../../services/auth.service";
 import Input from "react-validation/build/input";
+import { useNavigate } from "react-router-dom";
 
 const required = value => {
   if (!value) {
@@ -24,8 +25,13 @@ export default function VerifyEmailForm(props) {
   const checkBtn = useRef();
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
+  const navigate = useNavigate();
   const [confirmationMessage, setConfirmationMessage] = useState ("");
 
+  function navigateToRegister(){
+    navigate("/login");
+    window.location.reload();
+  }
 
   const onChangeEmail = (e) => {
     const email = e.target.value;
@@ -53,7 +59,6 @@ export default function VerifyEmailForm(props) {
         })
     }
   }
-
 
   return (
     <>
@@ -97,7 +102,7 @@ export default function VerifyEmailForm(props) {
                 <div className="gray-300 relevantText  text-[11pt] md:text-[12pt]">
                   ¿No tienes una cuenta?
                 </div>
-                <button className="ml-3 mb-3 yellowText greenTextHover relevantText text-[12pt] md:text-[12pt] font-semibold"  >
+                <button className="ml-3 mb-3 yellowText greenTextHover relevantText text-[12pt] md:text-[12pt] font-semibold" onClick={navigateToRegister} >
                   Regístrate
                 </button>
             </div> 

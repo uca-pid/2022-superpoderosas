@@ -40,8 +40,11 @@ export default function App() {
        {/*  Probar que no sepuede saltar el log in por la barra de navegacion */}
       <div>
         <Routes>
-          <Route exact path={"/"} element={<IntroductionPage />} />
-          <Route exact path={"/login"} element={<IntroductionPage />} />
+          {/* <Route exact path={"/"} render={(props) => <IntroductionPage userWantsToRegister={false} {...props} /> } />
+          <Route exact path="/login" render={(props) => <IntroductionPage userWantsToRegister={false} {...props} /> } />
+          <Route exact path="/register" render={(props) => <IntroductionPage userWantsToRegister={true} {...props} /> } /> */}
+          <Route exact path={"/"} element={<IntroductionPage /> } />
+          <Route exact path="/login" element={<IntroductionPage /> } />
           <Route exact path="/profile" element={<Profile />} />
           <Route exact path="/ChangePasswordPage" element={<ChangePasswordPage />} />
           <Route exact path="/resetPassword/:id/:token" element={<PasswordResetPage />} />
