@@ -7,6 +7,12 @@ const register = (username, email, password) => {
     password,
   });
 };
+const updatePassword = (id, password) => {
+  return axios.post(API_URL + "updatePassword", {
+    id,
+    password,
+  });
+};
 const login = (username, password) => {
   return axios
     .post(API_URL + "signin", {
@@ -42,5 +48,6 @@ const AuthService = {
   logout,
   getCurrentUser,
   changeMail,
+  updatePassword,
 }
 export default AuthService;
