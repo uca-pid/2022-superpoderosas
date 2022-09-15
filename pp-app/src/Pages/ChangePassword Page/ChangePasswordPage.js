@@ -22,7 +22,7 @@ export default function ChangePasswordPage() {
 
   return (
     <>
-    <div className="mx-auto relative z-10 pb-8 sm:pb-16 md:pb-20 lg:pb-28 xl:pb-32 greenBg bg-cover h-screen bg-cover place-content-center">
+    <div className="mx-auto relative z-10 pb-8 sm:pb-16 md:pb-20 lg:pb-28 xl:pb-32 greenBg bg-cover min-h-screen bg-cover place-content-center">
               <Popover>
               <nav className="bg-transparent container sm:h-10 fix mx-auto z-20 top-0 left-0 px-6 md:px-8 lg:px-8 pt-10" aria-label="Global">
                 <div className="mt-8 mx-auto flex flex-row justify-around lg:mx-8">
@@ -44,8 +44,8 @@ export default function ChangePasswordPage() {
               </nav>
               </Popover>
          
-            <VerifyEmailForm></VerifyEmailForm>
-      </div>  
+              <VerifyEmailForm></VerifyEmailForm>
+      </div> 
    </>
   )
 }
