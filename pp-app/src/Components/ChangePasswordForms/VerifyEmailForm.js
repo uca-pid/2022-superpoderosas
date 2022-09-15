@@ -1,6 +1,7 @@
 import React, { useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import "./changePassword.css";
+import "../LogInForm/LogInForm.css";
 import LogoHerramienta from "../Images/logoHerramienta.png";
 import SeparationLine from '../Utiles/SeparationLine';
 import SolidButton from '../Utiles/Butttons';
@@ -11,7 +12,6 @@ import AuthService from "../../services/auth.service";
 import {isEmail} from "validator";
 import Input from "react-validation/build/input";
 
-/* Ver esto como se pone y validar tmb que el email existe */
 const required = value => {
   if (!value) {
     return (
@@ -30,6 +30,7 @@ export default function Login(props) {
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState("");
+  const [confirmationMessage, setConfirmationMessage] = useState ("");
   const navigate = useNavigate();
 
 
@@ -44,7 +45,21 @@ export default function Login(props) {
     setLoading(true);
     form.current.validateAll();
     if (checkBtn.current.context._errors.length === 0) {
-      AuthService.changeMail(email)
+      AuthService.changeMail(email).then(
+        () => {
+          setConfirmationMessage("Mail Enviado");
+        },
+        (error) => {
+          /*Erro de la bd de si el mail no existe*/
+          const resMessage =
+            (error.response &&
+              error.response.data &&
+              error.response.data.message) ||
+            error.message ||
+            error.toString();
+          setLoading(false);
+          setMessage(resMessage);
+        })
     }
   }/*.then(
       
@@ -115,7 +130,20 @@ export default function Login(props) {
                   Regístrate
                 </button>
             </div> 
-            
+            {message && (
+            <div className="grid form-group justify-items-center pb-4">
+              <div className="alert redText alert-danger text-[13pt] justify-items-center" role="alert">
+                {message}
+              </div>
+            </div>
+            )}
+            {confirmationMessage && (
+              <div className="grid form-group justify-items-center pb-4">
+              <div className="alert greenText alert-danger text-[13pt] justify-items-center" role="alert">
+                {confirmationMessage}
+              </div>
+              </div>
+            )}
             <CheckButton style={{ display: "none" }} ref={checkBtn} />
           </Form>
         </div>
