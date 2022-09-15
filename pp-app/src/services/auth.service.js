@@ -23,8 +23,7 @@ const login = (username, password) => {
 
 const changeMail = (email) => {
   alert("Se solicita un cambio de contraseña, esperando una rta del backend");
-  return axios
-    .get(API_URL + "resetPassword", {
+  return axios.get(API_URL + "resetPassword", {
       email,
     })
 };

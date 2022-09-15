@@ -112,13 +112,13 @@ export default function Login(props) {
                 />
             </div>
     
-            <SolidButton text={"Iniciar Sesión"} color={"greenBg"} margins={"my-4 md:my-7"} onClick={{}}/> 
+            <SolidButton text={"Iniciar Sesión"} color={"greenBg"} margins={"my-4 md:my-7"} onClick={null}/> 
 
             {/* Mensaje de error cuando lo conectamos con al BD */}
             <div className="grid justify-items-center">
-                <a href="#" className="yellowTextHover purpleText placeholderText font-semibold" onClick={navigateToChangePassword()}>
+                <button className="yellowTextHover purpleText placeholderText font-semibold" onClick={navigateToChangePassword}>
                   ¿Olvidaste tu contraseña?
-                </a>
+                </button>
             </div> 
 
             <SeparationLine text={"O"} margins="mt-4"/>

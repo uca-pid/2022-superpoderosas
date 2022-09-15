@@ -176,7 +176,7 @@ export default function RegistrationForm(props) {
               
             </div>
     
-            <SolidButton text={"Registrarte"} color={"purpleBg"} margins={"my-6 md:my-6"} onClick={{}}/>
+            <SolidButton text={"Registrarte"} color={"purpleBg"} margins={"my-6 md:my-6"} onClick={null}/>
 
             <SeparationLine text={"O"} margins="mt-2"/>
 
