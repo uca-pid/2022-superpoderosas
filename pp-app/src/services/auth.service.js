@@ -20,6 +20,15 @@ const login = (username, password) => {
       return response.data;
     });
 };
+
+const changeMail = (email) => {
+  alert("hola")
+  return axios
+    .get(API_URL + "resetPassword", {
+      email,
+    })
+};
+
 const logout = () => {
   localStorage.removeItem("user");
   return axios.post(API_URL + "signout").then((response) => {
@@ -34,5 +43,6 @@ const AuthService = {
   login,
   logout,
   getCurrentUser,
+  changeMail,
 }
 export default AuthService;

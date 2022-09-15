@@ -53,6 +53,37 @@ export default function Login(props) {
     setEmail(email);
   };
 
+  const handleChange = (e) => {
+    e.preventDefault();
+    setMessage("");
+    setLoading(true);
+    alert("hola")
+    form.current.validateAll();
+    if (checkBtn.current.context._errors.length === 0) {
+      AuthService.changeMail(email)
+    }
+  }/*.then(
+      
+        () => {
+          navigate("/profile");
+          window.location.reload();
+        },
+        (error) => {
+          const resMessage =
+            (error.response &&
+              error.response.data &&
+              error.response.data.message) ||
+            error.message ||
+            error.toString();
+          setLoading(false);
+          setMessage(resMessage);
+        }
+      );
+    } else {
+      setLoading(false);
+    }
+  };*/
+
 
   return (
     <>
@@ -82,7 +113,7 @@ export default function Login(props) {
               <ClassicInput type={"text"} onChange={onChangeEmail} validations={[required]} htmlFor={"email-address"} placeholder={"Email"} id={"email"} autoComplete={"email"}  className="form-control" name="email"/>
            </div>
     
-            <SolidButton text={"Enviar enlace"} color={"greenBg"} margins={"my-5 md:my-8"} onClick={{}}/> 
+            <SolidButton text={"Enviar enlace"} color={"greenBg"} margins={"my-5 md:my-8"} onClick={{handleChange}}/> 
 
             <div className="flex flex-rows justify-center mt-5 mb-5 md:mb-10">
                 <div className="gray-300 relevantText text-[13pt]">

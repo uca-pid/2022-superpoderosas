@@ -1,6 +1,7 @@
 import Profile from './Components/Profile/Profile';
 import IntroductionPage from './Pages/Introduction Page/IntroductionPage';
 import ChangePasswordPage from './Pages/ChangePassword Page/ChangePasswordPage';
+import PasswordResetPage from './Pages/passwordResetPage/passwordResetPage';
 import React, { useState, useEffect } from "react";
 import { Routes, Route, Link } from "react-router-dom";
 import AuthService from "./services/auth.service";
@@ -43,6 +44,7 @@ export default function App() {
           <Route exact path={"/login"} element={<IntroductionPage />} />
           <Route exact path="/profile" element={<Profile />} />
           <Route exact path="/ChangePasswordPage" element={<ChangePasswordPage />} />
+          <Route exact path="/resetPassword/:id/:token" element={<PasswordResetPage />} />
         </Routes> 
       </div>   
        {/* <AuthVerify logOut={logOut}/> */}
