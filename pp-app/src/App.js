@@ -1,9 +1,9 @@
 import Profile from './Components/Profile/Profile';
 import LoginPage from './Pages/Registration-Autentification.js/LoginPage';
-import ChangePasswordPage from './Pages/ChangePassword Page/ChangePasswordPage';
-import PasswordResetPage from './Pages/passwordResetPage/passwordResetPage';
-import React, { useState, useEffect } from "react";
-import { Routes, Route, Link } from "react-router-dom";
+import ChangePasswordPage from './Pages/ChangePassword Page/PasswordResetEmailPage';
+import PasswordResetPage from './Pages/ChangePassword Page/PasswordResetPage';
+import React from "react";
+import { Routes, Route } from "react-router-dom";
 import RegistrationPage from './Pages/Registration-Autentification.js/RegistrationPage';
 
 export default function App() {

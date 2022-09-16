@@ -1,7 +1,7 @@
 import "../NavBar/navBar.css"
 import "../../App.css"
 import "../../Pages/Registration-Autentification.js/IntroductionPage.css"
-import SolidButton from "./Butttons"
+import Buttons from "./Butttons"
 
 const Modal = (props) =>{
     function closeModal(event) {
@@ -29,7 +29,7 @@ const Modal = (props) =>{
                 </div>
                 {/*footer*/}
                 <div className="flex items-center justify-end">
-                  <SolidButton text={props.buttonText} color={"greenBg"} margins={"mr-1 mb-1"} onClick={closeModal}></SolidButton>
+                  <Buttons.SolidGreenButton text={props.buttonText} color={"greenBg"} margins={"mr-1 mb-1"} onClick={closeModal}/>
                 </div>
               </div>
             </div>

@@ -3,11 +3,10 @@ import "../../Components/NavBar/navBar.css"
 import "./IntroductionPage.css"
 import NavBar from '../../Components/NavBar/NavBar'
 import LogInForm from "../../Components/LogInForm/LogInForm"
-import RegistrationForm from "../../Components/LogInForm/RegistrationForm"
 import "../../App.css"
 import ImagenNinaSonriendo from "../../Components/Images/ImagenNinaSonriendo.jpg"
 import PictureWithText from "../../Components/Utiles/PictureWithText"
-import React, { useState } from 'react';
+import React from 'react';
 
 export default function LoginPage(props) {
   return (

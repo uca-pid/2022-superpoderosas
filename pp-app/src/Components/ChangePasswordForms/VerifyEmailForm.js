@@ -2,22 +2,13 @@ import React, { useState, useRef } from "react";
 import "./changePassword.css";
 import "../LogInForm/LogIn.css";
 import LogoHerramienta from "../Images/logoHerramienta.png";
-import SolidButton from '../Utiles/Butttons';
+import Buttons from '../Utiles/Butttons';
 import Form from "react-validation/build/form";
 import CheckButton from "react-validation/build/button";
 import AuthService from "../../services/auth.service";
 import Input from "react-validation/build/input";
 import { useNavigate } from "react-router-dom";
-
-const required = value => {
-  if (!value) {
-    return (
-      <div className="alert redText alert-danger text-base m-0" role="alert">
-        This field is required!
-      </div>
-    );
-  }
-};
+import ValidationFunctions from "../../functions/validations";
 
 
 export default function VerifyEmailForm(props) {
@@ -91,11 +82,11 @@ export default function VerifyEmailForm(props) {
                   value={email}
                   placeholder="Email"
                   onChange={onChangeEmail}
-                  validations={[required]}
+                  validations={[ValidationFunctions.required]}
                 />       
            </div>
     
-            <SolidButton text={"Enviar enlace"} color={"greenBg"} margins={"my-5 md:my-7"} onClick={handleEmailChangeRequest}/> 
+            <Buttons.SolidGreenButton text={"Enviar enlace"} color={"greenBg"} margins={"my-5 md:my-7"} onClick={handleEmailChangeRequest}/> 
 
             <div className="flex flex-rows justify-center mt-4 mb-5 md:mb-10">
                 <div className="gray-300 relevantText  text-[11pt] md:text-[12pt]">

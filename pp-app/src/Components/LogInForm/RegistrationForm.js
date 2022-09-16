@@ -1,56 +1,15 @@
 import "./LogIn.css"
 import LogoLucha from "../Images/Lucha.png"
 import SeparationLine from '../Utiles/SeparationLine'
-import SolidButton from '../Utiles/Butttons'
-import ClassicInput from '../Utiles/Inputs'
+import Buttons from '../Utiles/Butttons'
 import React, { useState, useRef } from "react";
 import { useNavigate } from "react-router-dom"
 import Form from "react-validation/build/form";
 import CheckButton from "react-validation/build/button";
-import { isEmail } from "validator";
 import AuthService from "../../services/auth.service";
 import Modal from "../Utiles/Modal"
 import Input from "react-validation/build/input";
-
-
-const required = (value) => {
-  if (!value) {
-    console.log("required!");
-    return (
-      <div className="alert redText alert-danger text-base m-0" role="alert">
-        This field is required!
-      </div>
-    );
-  }
-};
-const validEmail = (value) => {
-  if (!isEmail(value)) {
-    console.log("invalid email!");
-    return (
-      <div className="alert redText alert-danger text-base m-0" role="alert">
-        This is not a valid email.
-      </div>
-    );
-  }
-};
-const vusername = (value) => {
-  if (value.length < 3 || value.length > 20) {
-    return (
-      <div className="alert redText alert-danger text-base m-0" role="alert">
-        The username must be between 3 and 20 characters.
-      </div>
-    );
-  }
-};
-const vpassword = (value) => {
-  if (value.length < 6 || value.length > 40) {
-    return (
-      <div className="alert redText alert-danger text-base m-0" role="alert">
-        The password must be between 6 and 40 characters.
-      </div>
-    );
-  }
-};
+import ValidationFunctions from "../../functions/validations"
 
 export default function RegistrationForm(props) {
   const [showModal, setShowModal] = React.useState(false);
@@ -63,7 +22,6 @@ export default function RegistrationForm(props) {
   const [successful, setSuccessful] = useState(false);
   const [message, setMessage] = useState("");
   const navigate = useNavigate();
-
 
   function closeModal() {
     setShowModal(false);
@@ -96,7 +54,7 @@ export default function RegistrationForm(props) {
   };
 
   const validateSamePassword = () =>{
-    if (password != password2) {
+    if (password !== password2) {
       setMessage('Las contraseñas deben coincidir!');
       return false;
     }else{
@@ -136,6 +94,39 @@ export default function RegistrationForm(props) {
     }
   };
 
+  const inputs = [
+    {
+      type:"text",
+      name:"email",
+      value: email,
+      placeholder: "Email",
+      onChange: onChangeEmail,
+      validations: [ValidationFunctions.required, ValidationFunctions.validEmail],
+    },{
+      type:"text",
+      name:"username",
+      value: username,
+      placeholder: "Nombre de Usuario",
+      onChange: onChangeUsername,
+      validations: [ValidationFunctions.required, ValidationFunctions.vusername],
+    },{
+      type:"password",
+      name:"password",
+      value:password,
+      placeholder:"Contraseña",
+      onChange:onChangePassword,
+      validations:[ValidationFunctions.required, ValidationFunctions.vpassword],
+      },{
+        type:"password",
+        name:"password2",
+        value: password2,
+        placeholder: "Confirma el contraseña",
+        onChange: onChangePassword2,
+        validations: [ValidationFunctions.required, ValidationFunctions.vpassword],
+      }
+  ];
+
+
   return (
     <>  
       {showModal ? (
@@ -154,49 +145,22 @@ export default function RegistrationForm(props) {
 
            <Form className="" onSubmit={handleRegister} ref={form}>
 
-            <div className="space-y-3 rounded-md mb-[-5px]">                     
+            <div className="space-y-3 rounded-md mb-[-5px]">
+            {inputs.map((input) => {
+              return (
                 <Input
-                  type="text"
+                  type={input.type}
                   className="relative bg-transparent h-12 block w-full rounded-xl border border-gray-300 px-6 py-2 text-gray-900 placeholder-gray-600 focus:z-10 placeholderText focus:outline-none placeholderTextOnInput sm:text-sm form-control"
-                  name="username"
-                  value={username}
-                  placeholder="Nombre de Usuario"
-                  onChange={onChangeUsername}
-                  validations={[required, vusername]}
+                  name={input.name}
+                  value={input.value}
+                  placeholder={input.placeholder}
+                  onChange={input.onChange}
+                  validations={input.validations}
                 />
-          
-                <Input
-                  type="text"
-                  className="relative bg-transparent h-12 block w-full rounded-xl  border border-gray-300 px-6 py-2 text-gray-900 placeholder-gray-600 focus:z-10 placeholderText focus:outline-none placeholderTextOnInput sm:text-sm form-control"
-                  name="email"
-                  value={email}
-                  placeholder="Email"
-                  onChange={onChangeEmail}
-                  validations={[required, validEmail]}
-                />
-             
-                <Input
-                  type="password"
-                  className="relative bg-transparent h-12 block w-full rounded-xl border border-gray-300 px-6 py-2 text-gray-900 placeholder-gray-600 focus:z-10 placeholderText focus:outline-none placeholderTextOnInput sm:text-sm form-control"
-                  name="password"
-                  value={password}
-                  placeholder="Contraseña"
-                  onChange={onChangePassword}
-                  validations={[required, vpassword]}
-                />
-              
-                <Input
-                    type="password"
-                    className="relative bg-transparent h-12 block w-full rounded-xl border border-gray-300 px-6 py-2 text-gray-900 placeholder-gray-600 focus:z-10 placeholderText focus:outline-none placeholderTextOnInput sm:text-sm form-control"
-                    name="password2"
-                    value={password2}
-                    placeholder="Confirmar contraseña"
-                    onChange={onChangePassword2}
-                    validations={[required, vpassword]}
-                  />
+              );})} 
             </div>
     
-            <SolidButton text={"Registrarte"} color={"purpleBg"} margins={"my-6 md:my-6"} onClick={null} ref={checkBtn}/>
+            <Buttons.SolidGreenButton text={"Registrarte"} color={"purpleBg"} margins={"my-6 md:my-6"} onClick={null} ref={checkBtn}/>
 
             <SeparationLine text={"O"} margins="mt-2"/>
 

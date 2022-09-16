@@ -1,6 +1,6 @@
 import "../../Components/LogInForm/LogIn.css";
 import LogoHerramienta from "../../Components/Images/logoHerramienta.png";
-import SolidButton from '../../Components/Utiles/Butttons';
+import Buttons from '../../Components/Utiles/Butttons';
 import React, { useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import Form from "react-validation/build/form";
@@ -11,26 +11,7 @@ import Input from "react-validation/build/input";
 import { useParams } from 'react-router-dom';
 import { Popover} from '@headlessui/react';
 import Modal from "../../Components/Utiles/Modal"
-
-const required = (value) => {
-  if (!value) {
-    console.log("required!");
-    return (
-      <div className="alert redText alert-danger text-base m-0" role="alert">
-        This field is required!
-      </div>
-    );
-  }
-};
-const vpassword = (value) => {
-  if (value.length < 6 || value.length > 40) {
-    return (
-      <div className="alert redText alert-danger text-base m-0" role="alert">
-        The password must be between 6 and 40 characters.
-      </div>
-    );
-  }
-};
+import ValidationFunctions from "../../functions/validations";
 
 export default function RegistrationForm(props) {
   const form = useRef();
@@ -69,7 +50,7 @@ export default function RegistrationForm(props) {
   };
 
   const validateSamePassword = () =>{
-    if (password != password2) {
+    if (password !== password2) {
       setMessage('Las contraseñas deben coincidir!');
       return false;
     }else{
@@ -86,9 +67,6 @@ export default function RegistrationForm(props) {
 
       AuthService.updatePassword(params.id,password).then(
         (response) => {
-          /*setMessage(response.data.message);
-          setSuccessful(true);
-          continuePostNavigationSuccessful();*/
           continuePostNavigationSuccessful();
         },
         (error) => {
@@ -157,7 +135,7 @@ export default function RegistrationForm(props) {
                   value={password}
                   placeholder="Contraseña nueva"
                   onChange={onChangePassword}
-                  validations={[required, vpassword]}
+                  validations={[ValidationFunctions.required, ValidationFunctions.vpassword]}
                 />
                 <Input
                   type="password"
@@ -166,12 +144,12 @@ export default function RegistrationForm(props) {
                   value={password2}
                   placeholder="Confirmar contraseña"
                   onChange={onChangePassword2}
-                  validations={[required, vpassword]}
+                  validations={[ValidationFunctions.required]}
                 />
               
             </div>
     
-            <SolidButton text={"Guardar cambios"} color={"purpleBg"} margins={"my-6 md:my-6"} onClick={null}/>
+            <Buttons.SolidGreenButton text={"Guardar cambios"} color={"purpleBg"} margins={"my-6 md:my-6"} onClick={null}/>
             <CheckButton style={{ display: "none" }} ref={checkBtn} />
 
           {message && (

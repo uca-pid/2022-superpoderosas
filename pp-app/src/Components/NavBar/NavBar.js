@@ -1,17 +1,13 @@
 import { Fragment } from 'react'
 import { Popover, Transition } from '@headlessui/react'
-import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
-import LoginButton from '../Registration Buttons/loginButton'
+import { XMarkIcon } from '@heroicons/react/24/outline'
 import "../../Fonts/Poppins-Bold.ttf"
 import { useNavigate } from "react-router-dom"
 import "./navBar.css"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { navIcon } from '@fortawesome/fontawesome-free-solid'
-
+import Buttons from "../Utiles/Butttons"
 
 const navigation = [
-
-
   { name: '¿Por qué desnutrición?', href: 'https://patapila.org/desnutricion.php' },
   { name: 'Nuestro Trabajo', href: 'https://patapila.org/impacto.php' },
   { name: 'Sobre Nosotros', href: 'https://patapila.org/nosotros.php' },
@@ -89,7 +85,7 @@ export default function NavBar() {
                       </a>
                     ))}
                   </div>
-                    <button onClick={navigateToLogIn} className = {"block w-full px-5 py-4 text-center popUpButton"}>Log In</button>
+                    <Buttons.SolidWhiteButton onClick={navigateToLogIn} text={"Log In"}/> 
                 </div>
               </Popover.Panel>
             </Transition>

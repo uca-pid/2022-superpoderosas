@@ -1,7 +1,8 @@
 import "../LogInForm/LogIn.css"
-import React, { useRef } from "react";
+import React from "react";
+import "../NavBar/navBar.css";
 
-const SolidButton = ({ text, color, margins, onClick}) => {
+const SolidGreenButton = ({ text, color, margins, onClick}) => {
   return (
     <>   
             <div>
@@ -16,5 +17,23 @@ const SolidButton = ({ text, color, margins, onClick}) => {
   )
 }
 
+const SolidWhiteButton = ({ text, onClick}) => {
+  return (
+    <>   
+            <div>
+              <button
+                className = "block w-full px-5 py-4 text-center popUpButton"
+                onClick = {onClick}
+              >
+                {text}
+              </button >
+            </div>
+    </>
+  )
+}
 
-export default SolidButton;
+const Buttons = {
+  SolidGreenButton,
+  SolidWhiteButton,
+}
+export default Buttons;

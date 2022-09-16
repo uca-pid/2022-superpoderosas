@@ -3,31 +3,18 @@ import { useNavigate } from "react-router-dom";
 import "./LogIn.css";
 import LogoCorazon from "../Images/LogoCorazon.png";
 import SeparationLine from '../Utiles/SeparationLine';
-import SolidButton from '../Utiles/Butttons';
-import ClassicInput from '../Utiles/Inputs';
+import Buttons from '../Utiles/Butttons';
 import Form from "react-validation/build/form";
 import CheckButton from "react-validation/build/button";
 import AuthService from "../../services/auth.service";
-import {isEmail} from "validator";
 import Input from "react-validation/build/input";
-
-/* Ver esto como se pone */
-const required = value => {
-  if (!value) {
-    return (
-      <div className="alert redText alert-danger text-base m-0" role="alert">
-        This field is required!
-      </div>
-    );
-  }
-};
+import ValidationFunctions from "../../functions/validations";
 
 export default function Login(props) {
   const form = useRef();
   const checkBtn = useRef();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState("");
   const navigate = useNavigate();
 
@@ -51,7 +38,6 @@ export default function Login(props) {
   const handleLogin = (e) => {
     e.preventDefault();
     setMessage("");
-    setLoading(true);
     form.current.validateAll();
     if (checkBtn.current.context._errors.length === 0) {
       AuthService.login(username, password).then(
@@ -66,14 +52,30 @@ export default function Login(props) {
               error.response.data.message) ||
             error.message ||
             error.toString();
-          setLoading(false);
           setMessage(resMessage);
         }
       );
-    } else {
-      setLoading(false);
-    }
+    } 
   };
+
+  const inputs = [
+    {
+    type:"text",
+    name:"username",
+    value:username,
+    placeholder:"Nombre de Usuario",
+    onChange:onChangeUsername,
+    validations:[ValidationFunctions.required],
+  },{             
+ 
+    type:"password",
+    name:"password",
+    value:password,
+    placeholder:"Contraseña",
+    onChange:onChangePassword,
+    validations:[ValidationFunctions.required],
+  }
+  ];
 
   return (
     <>
@@ -90,27 +92,21 @@ export default function Login(props) {
           <Form className="" onSubmit={handleLogin} ref={form}>
 
             <div className="space-y-3 rounded-md">       
+            {inputs.map((input) => {
+              return (
                 <Input
-                  type="text"
+                  type={input.type}
                   className="relative bg-transparent h-12 block w-full rounded-xl   border border-gray-300 px-6 py-2 text-gray-900 placeholder-gray-600 focus:z-10 placeholderText focus:outline-none placeholderTextOnInput sm:text-sm form-control"
-                  name="username"
-                  value={username}
-                  placeholder="Nombre de Usuario"
-                  onChange={onChangeUsername}
-                  validations={[required]}
-                />             
-                <Input
-                  type="password"
-                  className="relative bg-transparent h-12 block w-full rounded-xl   border border-gray-300 px-6 py-2 text-gray-900 placeholder-gray-600 focus:z-10 placeholderText focus:outline-none placeholderTextOnInput sm:text-sm form-control"
-                  name="password"
-                  value={password}
-                  placeholder="Contraseña"
-                  onChange={onChangePassword}
-                  validations={[required]}
+                  name={input.name}
+                  value={input.value}
+                  placeholder={input.placeholder}
+                  onChange={input.onChange}
+                  validations={input.validations}
                 />
+              );})} 
             </div>
     
-            <SolidButton text={"Iniciar Sesión"} color={"greenBg"} margins={"my-4 md:my-7"} onClick={null} ref={checkBtn}/> 
+            <Buttons.SolidGreenButton text={"Iniciar Sesión"} color={"greenBg"} margins={"my-4 md:my-7"} onClick={null} ref={checkBtn}/> 
 
             {/* Mensaje de error cuando lo conectamos con al BD */}
             <div className="grid justify-items-center">
