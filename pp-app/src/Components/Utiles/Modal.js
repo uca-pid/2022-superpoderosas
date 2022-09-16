@@ -1,6 +1,6 @@
 import "../NavBar/navBar.css"
 import "../../App.css"
-import "../../Pages/Introduction Page/IntroductionPage.css"
+import "../../Pages/Registration-Autentification.js/IntroductionPage.css"
 import SolidButton from "./Butttons"
 
 const Modal = (props) =>{

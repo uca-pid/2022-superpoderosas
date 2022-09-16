@@ -59,6 +59,7 @@ export default function RegistrationForm(props) {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [password2, setPassword2] = useState("");
   const [successful, setSuccessful] = useState(false);
   const [message, setMessage] = useState("");
   const navigate = useNavigate();
@@ -70,8 +71,8 @@ export default function RegistrationForm(props) {
     window.location.reload();
   };
 
-  function openLogIn(event) {
-    props.onChange(event.target.userWantsToRegister);
+  function navigateToLogInPage(event) {
+    navigate("/login");
   };
 
   const onChangeUsername = (e) => {
@@ -89,6 +90,20 @@ export default function RegistrationForm(props) {
     setPassword(password);
   };
 
+  const onChangePassword2 = (e) => {
+    const password2 = e.target.value;
+    setPassword2(password2);
+  };
+
+  const validateSamePassword = () =>{
+    if (password != password2) {
+      setMessage('Las contraseñas deben coincidir!');
+      return false;
+    }else{
+      return true;
+    }
+  }
+
   const continuePostNavigationSuccessful = () =>{
     setShowModal(true);
   };
@@ -98,7 +113,7 @@ export default function RegistrationForm(props) {
     setMessage("");
     setSuccessful(false);
     form.current.validateAll();
-    if (checkBtn.current.context._errors.length === 0) {
+    if (checkBtn.current.context._errors.length === 0 && validateSamePassword()) {
 
       AuthService.register(username, email, password).then(
         (response) => {
@@ -139,11 +154,7 @@ export default function RegistrationForm(props) {
 
            <Form className="" onSubmit={handleRegister} ref={form}>
 
-            <div className="space-y-3 rounded-md mb-[-5px]">       
-              {/* <ClassicInput type={"text"} onChange={onChangeEmail} validations={[required, validEmail]} htmlFor={"email-address"} placeholder={"Email"} id={"email"} autoComplete={"email"}/> 
-              <ClassicInput type={"text"} onChange={onChangeUsername} validations={[required, vusername]} htmlFor={"username"} placeholder={"Nombre de usuario"} id={"username"} autoComplete={"username"}/>
-              <ClassicInput type={"password"} onChange={onChangePassword} validations={[required, vpassword]} htmlFor={"password"} placeholder={"Contraseña"} id={"password"} autoComplete={"current-password"}/>*/}
-              
+            <div className="space-y-3 rounded-md mb-[-5px]">                     
                 <Input
                   type="text"
                   className="relative bg-transparent h-12 block w-full rounded-xl border border-gray-300 px-6 py-2 text-gray-900 placeholder-gray-600 focus:z-10 placeholderText focus:outline-none placeholderTextOnInput sm:text-sm form-control"
@@ -174,9 +185,18 @@ export default function RegistrationForm(props) {
                   validations={[required, vpassword]}
                 />
               
+                <Input
+                    type="password"
+                    className="relative bg-transparent h-12 block w-full rounded-xl border border-gray-300 px-6 py-2 text-gray-900 placeholder-gray-600 focus:z-10 placeholderText focus:outline-none placeholderTextOnInput sm:text-sm form-control"
+                    name="password2"
+                    value={password2}
+                    placeholder="Confirmar contraseña"
+                    onChange={onChangePassword2}
+                    validations={[required, vpassword]}
+                  />
             </div>
     
-            <SolidButton text={"Registrarte"} color={"purpleBg"} margins={"my-6 md:my-6"} onClick={null}/>
+            <SolidButton text={"Registrarte"} color={"purpleBg"} margins={"my-6 md:my-6"} onClick={null} ref={checkBtn}/>
 
             <SeparationLine text={"O"} margins="mt-2"/>
 
@@ -184,7 +204,7 @@ export default function RegistrationForm(props) {
                 <div className="gray-300 relevantText text-[11pt] md:text-[12pt]">
                   ¿Ya tienes una cuenta?
                 </div>
-                <button className="ml-2 greenText yellowTextHover relevantText text-[11.5pt] md:text-[12.5pt] font-semibold" onClick={openLogIn}>
+                <button className="ml-2 greenText yellowTextHover relevantText text-[11.5pt] md:text-[12.5pt] font-semibold" onClick={navigateToLogInPage}>
                   Iniciar Sesión
                 </button>
             </div> 

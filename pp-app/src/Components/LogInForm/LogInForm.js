@@ -35,8 +35,8 @@ export default function Login(props) {
     navigate('/changePasswordPage');
   }
 
-  function openRegistration(event) {
-    props.onChange(event.target.userWantsToRegister);
+  function navigateToRegistrationPage(event) {
+    navigate("/signup");
   }
 
   const onChangeUsername = (e) => {
@@ -90,8 +90,6 @@ export default function Login(props) {
           <Form className="" onSubmit={handleLogin} ref={form}>
 
             <div className="space-y-3 rounded-md">       
-              {/* <ClassicInput type={"text"} onChange={onChangeUsername} validations={[required]} htmlFor={"email-address"} placeholder={"Username"} id={"username"} autoComplete={"username"}  className="form-control" name="username"/>
-              <ClassicInput type={"password"} onChange={onChangePassword} validations={[required]} htmlFor={"password"} placeholder={"Contraseña"} id={"password"} autoComplete={"current-password"}  className="form-control" name="password"/> */}
                 <Input
                   type="text"
                   className="relative bg-transparent h-12 block w-full rounded-xl   border border-gray-300 px-6 py-2 text-gray-900 placeholder-gray-600 focus:z-10 placeholderText focus:outline-none placeholderTextOnInput sm:text-sm form-control"
@@ -112,7 +110,7 @@ export default function Login(props) {
                 />
             </div>
     
-            <SolidButton text={"Iniciar Sesión"} color={"greenBg"} margins={"my-4 md:my-7"} onClick={null}/> 
+            <SolidButton text={"Iniciar Sesión"} color={"greenBg"} margins={"my-4 md:my-7"} onClick={null} ref={checkBtn}/> 
 
             {/* Mensaje de error cuando lo conectamos con al BD */}
             <div className="grid justify-items-center">
@@ -126,7 +124,7 @@ export default function Login(props) {
                 <div className="gray-300 relevantText text-[13pt]">
                   ¿No tienes una cuenta?
                 </div>
-                <button className="ml-3 mb-3 greenText yellowTextHover relevantText text-[13pt] font-semibold" onClick={openRegistration} ref={checkBtn}>
+                <button className="ml-3 mb-3 greenText yellowTextHover relevantText text-[13pt] font-semibold" onClick={navigateToRegistrationPage}>
                   Regístrate
                 </button>
             </div> 

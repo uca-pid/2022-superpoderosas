@@ -28,9 +28,8 @@ export default function VerifyEmailForm(props) {
   const navigate = useNavigate();
   const [confirmationMessage, setConfirmationMessage] = useState ("");
 
-  function navigateToRegister(){
-    navigate("/login");
-    window.location.reload();
+  function navigateToRegistrationPage(){
+    navigate("/signup");
   }
 
   const onChangeEmail = (e) => {
@@ -102,7 +101,7 @@ export default function VerifyEmailForm(props) {
                 <div className="gray-300 relevantText  text-[11pt] md:text-[12pt]">
                   ¿No tienes una cuenta?
                 </div>
-                <button className="ml-3 mb-3 yellowText greenTextHover relevantText text-[12pt] md:text-[12pt] font-semibold" onClick={navigateToRegister} >
+                <button className="ml-3 mb-3 yellowText greenTextHover relevantText text-[12pt] md:text-[12pt] font-semibold" onClick={navigateToRegistrationPage} >
                   Regístrate
                 </button>
             </div> 

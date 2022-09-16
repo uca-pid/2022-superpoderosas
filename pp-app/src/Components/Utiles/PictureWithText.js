@@ -1,6 +1,6 @@
 import "../../Fonts/Poppins-Bold.ttf"
 import "../NavBar/navBar.css"
-import "../../Pages/Introduction Page/IntroductionPage.css"
+import "../../Pages/Registration-Autentification.js/IntroductionPage.css"
 import "../../App.css"
 
 const  PictureWithText = ({ picture, title, text }) => {

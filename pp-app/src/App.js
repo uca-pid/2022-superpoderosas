@@ -1,17 +1,10 @@
 import Profile from './Components/Profile/Profile';
-import IntroductionPage from './Pages/Introduction Page/IntroductionPage';
+import LoginPage from './Pages/Registration-Autentification.js/LoginPage';
 import ChangePasswordPage from './Pages/ChangePassword Page/ChangePasswordPage';
 import PasswordResetPage from './Pages/passwordResetPage/passwordResetPage';
 import React, { useState, useEffect } from "react";
 import { Routes, Route, Link } from "react-router-dom";
-import AuthService from "./services/auth.service";
-import BoardUser from "./Components/Example/BoardUser";
-import BoardAdmin from "./Components/Example/BoardAdmin";
-import AuthVerify from "./common/AuthVerify";
-import EventBus from "./common/EventBus";
-import { useForm } from 'react-hook-form';
-import { yupResolver } from '@hookform/resolvers/yup';
-import * as Yup from 'yup';
+import RegistrationPage from './Pages/Registration-Autentification.js/RegistrationPage';
 
 export default function App() {
 /*   const [showAdminBoard, setShowAdminBoard] = useState(false); //nos va a permitir mostrar la pagina que corresp a usuario o a admin
@@ -40,11 +33,9 @@ export default function App() {
        {/*  Probar que no sepuede saltar el log in por la barra de navegacion */}
       <div>
         <Routes>
-          {/* <Route exact path={"/"} render={(props) => <IntroductionPage userWantsToRegister={false} {...props} /> } />
-          <Route exact path="/login" render={(props) => <IntroductionPage userWantsToRegister={false} {...props} /> } />
-          <Route exact path="/register" render={(props) => <IntroductionPage userWantsToRegister={true} {...props} /> } /> */}
-          <Route exact path={"/"} element={<IntroductionPage /> } />
-          <Route exact path="/login" element={<IntroductionPage /> } />
+          <Route exact path={"/"} element={<LoginPage />} />
+          <Route exact path={"/login"} element={<LoginPage />} />
+          <Route exact path={"/signup"} element={<RegistrationPage/>} />
           <Route exact path="/profile" element={<Profile />} />
           <Route exact path="/ChangePasswordPage" element={<ChangePasswordPage />} />
           <Route exact path="/resetPassword/:id/:token" element={<PasswordResetPage />} />
