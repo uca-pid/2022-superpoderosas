@@ -9,9 +9,9 @@ import ImagenNinaSonriendo from "../../Components/Images/ImagenNinaSonriendo.jpg
 import PictureWithText from "../../Components/Utiles/PictureWithText"
 import React, { useState } from 'react';
 
-export default function IntroductionPage() {
+export default function IntroductionPage(props) {
 
-  const [userWantsToRegister, setIfUserWantsToRegister] = useState(false);
+  const [userWantsToRegister, setIfUserWantsToRegister] = useState(true);
 
   function openRegistrationForm() {
     setIfUserWantsToRegister(true);
