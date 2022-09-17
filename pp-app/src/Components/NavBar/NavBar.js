@@ -47,7 +47,7 @@ export default function NavBar() {
                       {item.name}
                     </a>
                   ))}
-                    <button onClick={navigateToLogIn} className = {"navBarTextButton navBarButtonBorder mt-1"}>Log In</button>
+                    <button onClick={navigateToLogIn} className = {"navBarTextButton navBarButtonBorder mt-1"}>Iniciar Sesión</button>
                   </div>
                 </div>
               </nav>
@@ -85,7 +85,7 @@ export default function NavBar() {
                       </a>
                     ))}
                   </div>
-                    <Buttons.SolidWhiteButton onClick={navigateToLogIn} text={"Log In"}/> 
+                    <Buttons.SolidWhiteButton onClick={navigateToLogIn} text={"LIniciar Sesión"}/> 
                 </div>
               </Popover.Panel>
             </Transition>

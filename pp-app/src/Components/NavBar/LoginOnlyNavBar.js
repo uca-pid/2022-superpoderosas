@@ -34,8 +34,8 @@ export default function LoginOnlyNavBar() {
             </div>
         </div>
         <div className="justify-end flex-1 mx-auto mt-6 md:mt-7 lg:mt-2 lg:basis-3/5 lg:pr-4 lg:pt-8 lg:flex lg:flex-row">
-            <Buttons.SolidWhiteButton onClick={navigateToLogIn} text={"Log In"}/> 
-        </div>
+            <button onClick={navigateToLogIn} className = {"navBarLoginTextButton navBarLoginButtonBorder"}>Iniciar Sesión</button>
+          </div>
     </div>
     </nav>
     </Popover> 

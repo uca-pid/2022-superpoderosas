@@ -134,7 +134,7 @@ export default function RegistrationForm(props) {
         type:"password",
         name:"password2",
         value: password2,
-        placeholder: "Confirma el contraseña",
+        placeholder: "Confirma contraseña",
         onChange: onChangePassword2,
         validations: [ValidationFunctions.required, ValidationFunctions.vpassword],
       }

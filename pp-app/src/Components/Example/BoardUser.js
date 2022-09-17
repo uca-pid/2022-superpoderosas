@@ -33,7 +33,7 @@ const BoardUser = () => {
     <div className="container">
       <header className="jumbotron">
         <h3>{content}</h3>
-        <button onClick={logOut}>Log Out</button>
+        <button onClick={logOut}>Cerrar Sesión</button>
       </header>
     </div>
   );

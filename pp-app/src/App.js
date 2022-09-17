@@ -30,7 +30,7 @@ export default function App() {
   
   return (
     <>  
-       {/*  Probar que no sepuede saltar el log in por la barra de navegacion */}
+       {/*  Probar que no sepuede saltar el Iniciar Sesión por la barra de navegacion */}
       <div>
         <Routes>
           <Route exact path={"/"} element={<LoginPage />} />

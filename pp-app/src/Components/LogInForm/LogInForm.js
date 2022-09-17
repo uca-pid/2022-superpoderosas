@@ -63,7 +63,7 @@ export default function Login(props) {
     type:"text",
     name:"email",
     value:email,
-    placeholder:"Email del usuario",
+    placeholder:"Email",
     onChange:onChangeEmail,
     validations:[ValidationFunctions.required],
   },{             
