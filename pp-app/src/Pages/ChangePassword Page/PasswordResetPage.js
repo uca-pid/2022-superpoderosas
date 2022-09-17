@@ -65,7 +65,7 @@ export default function RegistrationForm(props) {
     form.current.validateAll();
     if (checkBtn.current.context._errors.length === 0 && validateSamePassword()) {
 
-      AuthService.updatePassword(params.id,password).then(
+      AuthService.updatePassword(params.token,password).then(
         (response) => {
           continuePostNavigationSuccessful();
         },

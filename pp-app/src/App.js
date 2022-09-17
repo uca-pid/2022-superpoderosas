@@ -38,7 +38,7 @@ export default function App() {
           <Route exact path={"/signup"} element={<RegistrationPage/>} />
           <Route exact path="/profile" element={<Profile />} />
           <Route exact path="/ChangePasswordPage" element={<ChangePasswordPage />} />
-          <Route exact path="/resetPassword/:id/:token" element={<PasswordResetPage />} />
+          <Route exact path="/resetPassword/:token" element={<PasswordResetPage />} />
         </Routes> 
       </div>   
        {/* <AuthVerify logOut={logOut}/> */}
