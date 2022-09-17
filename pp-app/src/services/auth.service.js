@@ -7,9 +7,9 @@ const register = (username, email, password) => {
     password,
   });
 };
-const updatePassword = (id, password) => {
+const updatePassword = (token, password) => {
   return axios.post(API_URL + "updatePassword", {
-    id,
+    token,
     password,
   });
 };

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import UserService from "../../services/user.service";
 import AuthService from "../../services/auth.service";
 import { useNavigate } from "react-router-dom"
+
 const BoardUser = () => {
   const navigate = useNavigate();
   const [content, setContent] = useState("");

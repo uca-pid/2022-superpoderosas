@@ -1,4 +1,5 @@
 import { isEmail } from "validator";
+
 const required = (value) => {
     if (!value) {
       console.log("required!");
