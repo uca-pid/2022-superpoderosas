@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom"
 
 const Profile = () => {
   const currentUser = AuthService.getCurrentUser();
+  alert(currentUser)
   const navigate = useNavigate();
   const logOut = () => {
     AuthService.logout();
@@ -17,14 +18,17 @@ const Profile = () => {
     <div className="container">
       <header className="jumbotron">
         <h3>
-          <strong>{currentUser.username}</strong> Profile
+          <strong>{currentUser.email}</strong> Profile
         </h3>
       </header>
       <p>
         <strong>Id:</strong> {currentUser.id}
       </p>
       <p>
-        <strong>Email:</strong> {currentUser.email}
+        <strong>Email:</strong> {currentUser.name}
+      </p>
+      <p>
+        <strong>Email:</strong> {currentUser.lastname}
       </p>
       <strong>Authorities:</strong>
       <ul>

@@ -15,7 +15,8 @@ export default function RegistrationForm(props) {
   const [showModal, setShowModal] = React.useState(false);
   const form = useRef();
   const checkBtn = useRef();
-  const [username, setUsername] = useState("");
+  const [name, setName] = useState("");
+  const [lastname, setLastname] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [password2, setPassword2] = useState("");
@@ -33,9 +34,14 @@ export default function RegistrationForm(props) {
     navigate("/login");
   };
 
-  const onChangeUsername = (e) => {
-    const username = e.target.value;
-    setUsername(username);
+  const onChangeName = (e) => {
+    const name = e.target.value;
+    setName(name);
+  };
+
+  const onChangeLastname = (e) => {
+    const lastname = e.target.value;
+    setLastname(lastname);
   };
 
   const onChangeEmail = (e) => {
@@ -73,7 +79,7 @@ export default function RegistrationForm(props) {
     form.current.validateAll();
     if (checkBtn.current.context._errors.length === 0 && validateSamePassword()) {
 
-      AuthService.register(username, email, password).then(
+      AuthService.register(name, lastname, email, password).then(
         (response) => {
           setMessage(response.data.message);
           setSuccessful(true);
@@ -104,11 +110,19 @@ export default function RegistrationForm(props) {
       validations: [ValidationFunctions.required, ValidationFunctions.validEmail],
     },{
       type:"text",
-      name:"username",
-      value: username,
-      placeholder: "Nombre de Usuario",
-      onChange: onChangeUsername,
-      validations: [ValidationFunctions.required, ValidationFunctions.vusername],
+      name:"name",
+      value: name,
+      placeholder: "Nombre",
+      onChange: onChangeName,
+      validations: [ValidationFunctions.required, ValidationFunctions.vstrings],
+    },
+    {
+      type:"text",
+      name:"lastname",
+      value: lastname,
+      placeholder: "Apellido",
+      onChange: onChangeLastname,
+      validations: [ValidationFunctions.required, ValidationFunctions.vstrings],
     },{
       type:"password",
       name:"password",

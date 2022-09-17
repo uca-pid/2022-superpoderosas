@@ -13,7 +13,7 @@ import ValidationFunctions from "../../functions/validations";
 export default function Login(props) {
   const form = useRef();
   const checkBtn = useRef();
-  const [username, setUsername] = useState("");
+  const [email, setMail] = useState("");
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState("");
   const navigate = useNavigate();
@@ -26,9 +26,9 @@ export default function Login(props) {
     navigate("/signup");
   }
 
-  const onChangeUsername = (e) => {
-    const username = e.target.value;
-    setUsername(username);
+  const onChangeEmail = (e) => {
+    const email = e.target.value;
+    setMail(email);
   };
 
   const onChangePassword = (e) => {
@@ -40,7 +40,7 @@ export default function Login(props) {
     setMessage("");
     form.current.validateAll();
     if (checkBtn.current.context._errors.length === 0) {
-      AuthService.login(username, password).then(
+      AuthService.login(email, password).then(
         () => {
           navigate("/profile");
           window.location.reload();
@@ -61,10 +61,10 @@ export default function Login(props) {
   const inputs = [
     {
     type:"text",
-    name:"username",
-    value:username,
-    placeholder:"Nombre de Usuario",
-    onChange:onChangeUsername,
+    name:"email",
+    value:email,
+    placeholder:"Email del usuario",
+    onChange:onChangeEmail,
     validations:[ValidationFunctions.required],
   },{             
  

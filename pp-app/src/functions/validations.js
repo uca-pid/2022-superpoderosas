@@ -20,13 +20,14 @@ const required = (value) => {
       );
     }
   };
-  const vusername = (value) => {
-    if (value.length < 3 || value.length > 20) {
-      return (
-        <div className="alert redText alert-danger text-base m-0" role="alert">
-          The username must be between 3 and 20 characters.
+  const vstrings = (value) => {
+    var regName = /^[a-zA-Z]+ [a-zA-Z]+$/;
+    if(!regName.test(value)){
+      <div className="alert redText alert-danger text-base m-0" role="alert">
+          This is not a valid name.
         </div>
-      );
+    }else{
+      alert('Valid name given.');
     }
   };
   const vpassword = (value) => {
@@ -43,6 +44,6 @@ const ValidationFunctions = {
     required,
     validEmail,
     vpassword,
-    vusername,
+    vstrings,
 }
 export default ValidationFunctions;
