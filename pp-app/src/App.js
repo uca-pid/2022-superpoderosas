@@ -1,4 +1,4 @@
-import Profile from './Components/Profile/Profile';
+import Profile from './Pages/Profile Page/ProfilePage';
 import LoginPage from './Pages/Registration-Autentification.js/LoginPage';
 import ChangePasswordPage from './Pages/ChangePassword Page/PasswordResetEmailPage';
 import PasswordResetPage from './Pages/ChangePassword Page/PasswordResetPage';
