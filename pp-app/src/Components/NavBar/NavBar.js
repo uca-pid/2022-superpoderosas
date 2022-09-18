@@ -6,6 +6,9 @@ import { useNavigate } from "react-router-dom"
 import "./navBar.css"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import Buttons from "../Utiles/Butttons"
+import fontawesome from '@fortawesome/fontawesome'
+import { faBars } from '@fortawesome/fontawesome-free-solid'
+fontawesome.library.add(faBars);
 
 const navigation = [
   { name: '¿Por qué desnutrición?', href: 'https://patapila.org/desnutricion.php' },

@@ -148,7 +148,7 @@ export default function RegistrationForm(props) {
       ) : null}
       {!successful && (
       <div className="min-h-full md:items-center justify-items-center grid px-4 sm:px-6 pt-10 lg:px-8 mt-3 lg:mt-16 lg:justify-items-end">
-        <div className="grid content-center w-full rounded-3xl max-w-md space-y-5 bg-white bg-opacity-90 lg:mx-60 drop-shadow-2xl p-8 md:p-16 h-4/5 md:h-2/3 lg:h-4/5 mt-5 mb-2 lg:mt-10 lg:mb-5">
+        <div className="grid content-center w-full rounded-3xl max-w-md space-y-5 bg-white bg-opacity-90 lg:mx-60 drop-shadow-2xl p-8 md:p-16 h-4/5 md:h-4/5 lg:h-4/5 mt-5 mb-2 lg:mt-10 lg:mb-5">
           <div className="">
               <img
               className="mx-auto h-40 w-auto"
