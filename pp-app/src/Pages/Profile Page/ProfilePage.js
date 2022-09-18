@@ -11,7 +11,7 @@ const Profile = () => {
     navigate("/login");
     window.location.reload();
   };
-  return (
+  /*return (
     <>
       <div className="mx-auto relative z-10 pb-8 sm:pb-16 md:pb-20 lg:pb-28 xl:pb-32 h-screen bg-cover place-content-center">
         <ProfileNavBar currentUser={currentUser}></ProfileNavBar> 
@@ -39,6 +39,23 @@ const Profile = () => {
     )}
     </div> 
     </>
+  );*/
+  return(
+    <div>
+      <div>
+        <span></span>
+      </div>
+      <div className="pinkBg lg:flex lg:items-center lg:justify-between">
+        <div className="min-w-0 flex-1">
+          <h2 className="welcomeText leading-7 text-gray-900 sm:truncate sm:text-3xl sm:tracking-tight">
+            Bienvenido al portal web de pata pila
+          </h2>
+          <div>
+            <span className="descriptionText leading-7 text-gray-900 sm:truncate sm:text-3xl sm:tracking-tight">en este espacio va la informacion de pp</span>
+          </div>
+        </div>
+      </div>
+    </div>
   );
 };
 export default Profile;
