@@ -110,12 +110,12 @@
     color: #e7e6e6;
 }
 
-.popUpText {
-    font-family: "Poppins-Bold";
+.userNavegationText {
+    font-family: "Poppins";
     text-transform: uppercase;
-    color: #2e2a25; 
-    font-weight: 700;
-    font-size: 17px;   
+    color: #353330; 
+    font-weight: 300;
+    font-size: 13px;   
     letter-spacing: 0.5px !important;
     border-bottom: 1px;
     border-bottom-style: solid;
@@ -127,13 +127,13 @@
     color: #eb8301; 
 }
 
-.popUpButton {
+.profilePopUpButton {
     font-family: "Poppins";
     text-transform: uppercase;
-    color: #FFFFFF;
-    background-color: #eb8301; 
-    font-weight: 700;
-    font-size: 17px;   
+    color: #0F6938;
+    background-color: #FFFFFF; 
+    font-weight: 300;
+    font-size: 14px;   
     letter-spacing: 0.5px !important;
     border-radius: 20;
 }

@@ -71,7 +71,7 @@ export default function NavBar() {
               >
                 
                 <div className="px-5 pt-4 justify-self-end grid ">
-                    <Popover.Button className="rounded-md p-2 text-white place-self-end">
+                    <Popover.Button className="rounded-md p-2 text-white place-self-end" >
                     <XMarkIcon className="h-8 w-8" aria-hidden="true" />
                     </Popover.Button>
                 </div>
@@ -88,7 +88,7 @@ export default function NavBar() {
                       </a>
                     ))}
                   </div>
-                    <Buttons.SolidWhiteButton onClick={navigateToLogIn} text={"LIniciar Sesión"}/> 
+                    <Buttons.SolidWhiteButton onClick={navigateToLogIn} text={"Iniciar Sesión"}/> 
                 </div>
               </Popover.Panel>
             </Transition>

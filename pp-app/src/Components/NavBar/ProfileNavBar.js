@@ -1,6 +1,6 @@
-import { Fragment } from 'react'
+
 import { Popover, Transition } from '@headlessui/react'
-import { XMarkIcon } from '@heroicons/react/24/outline'
+import AuthService from "../../services/auth.service";
 import "../../Fonts/Poppins-Bold.ttf"
 import { useNavigate } from "react-router-dom"
 import "./profileNavBar.css";
@@ -16,18 +16,30 @@ const navigation = [
   { name: 'Involucrate', href: 'https://patapila.org/involucrate.php' },
 ]
 
+const userNavigation =[
+    { name: 'Mi Cuenta' },
+    { name: 'Mi Impacto'},
+]
+
 export default function ProfileNavBar(props) {
   const navigate = useNavigate();
   const userName = props.currentUser.name;
   const userLastName = props.currentUser.lastname;
+
+
+
   function navigateToLogIn(){
       navigate("/login");
       window.location.reload();
     
   }
+  const logOut = () => {
+    AuthService.logout();
+    navigate("/login");
+    window.location.reload();
+  };
   return (
     <>
-          <Popover>
               <nav className="bg-transparent container sm:h-10 fix mx-auto z-20 top-0 left-0 px-4 sm:px-6 lg:px-8 pt-1" aria-label="Global">
                 <div className="mx-auto flex flex-row justify-start lg:mt-5">
                     <div className="justify-start flex mx-1 lg:mx-0 lg:basis-1/7 mt-1">
@@ -40,11 +52,6 @@ export default function ProfileNavBar(props) {
                             />
                             </a>
                         </div>
-                        <div className="mt-6 flex items-center block mobile-nav-toggle lg:hidden">
-                            <Popover.Button className="inline-flex items-center justify-center rounded-md bg-transparent p-2 text-gray-400 hover:text-gray-500">
-                                <FontAwesomeIcon icon="fa-bars" className="h-10 w-10 mobile-nav-toggle" aria-hidden="true"/>
-                            </Popover.Button>
-                        </div>
                     </div>
                   <div className="justify-start mx-auto hidden lg:basis-5/7 lg:pr-20 lg:flex lg:flex-row mt-5">
                   {navigation.map((item) => (
@@ -53,54 +60,31 @@ export default function ProfileNavBar(props) {
                     </a>
                   ))}
                   </div>
-                  <div className="flex justify-end lg:basis-1/7 -space-x-2 overflow-hidden mt-5 mx-auto flex-1 lg:pr-20 lg:flex lg:flex-row">
-                    <img className="flex inline-block h-9 w-9 rounded-full ring-2 ring-white" src={avatar} alt="avatar"></img>
-                    <div className='flex pl-5 userNameText mt-2'>
-                      {userName} {userLastName}
+                  <div className="mt-3">
+                  <Popover>
+                    <Popover.Button className="rounded-md place-self-end">
+                    <div className="ml-5 flex justify-end lg:basis-1/7 -space-x-2 overflow-hidden mt-3 mb-3 mx-auto flex-1 lg:flex lg:flex-row mr-10">
+                        <img className="flex inline-block h-9 w-9 rounded-full ring-2 ring-white" src={avatar} alt="avatar"></img>
+                        <div className='flex pl-5 userNameText mt-2'>
+                        {userName} {userLastName}
+                        </div>
+                        <div className="pl-5 justify-end inline-block pt-2">
+                        <FontAwesomeIcon icon="fa-solid fa-angle-down" className="arrow-down-icon" />
+                        </div>
                     </div>
-                    <div className="pl-5 justify-end inline-block pt-2">
-                    <FontAwesomeIcon icon="fa-solid fa-angle-down" className="arrow-down-icon" />
+                    </Popover.Button>
+                    <Popover.Panel>
+                    {userNavigation.map((item) => (
+                    <div className='userNavegationText mt-2 block rounded-md px-1 py-2 text-base'>
+                      {item.name}
                     </div>
-                  </div>
+                  ))}
+                  <Buttons.ProfileNavBarButton onClick={logOut} text={"Cerrar Sesión"}/> 
+                    </Popover.Panel>
+                    </Popover>
+                    </div>
                 </div>
               </nav>
-            <Transition
-              as={Fragment}
-              enter="duration-150 ease-out"
-              enterFrom="opacity-0 scale-95"
-              enterTo="opacity-100 scale-100"
-              leave="duration-100 ease-in"
-              leaveFrom="opacity-100 scale-100"
-              leaveTo="opacity-0 scale-95"
-            >
-              <Popover.Panel
-                focus
-                className="backdrop absolute h-full top-0 inset-x-0 z-10 origin-top-right transform p-2 transition lg:hidden"
-              >
-                
-                <div className="px-5 pt-4 justify-self-end grid ">
-                    <Popover.Button className="rounded-md p-2 text-white place-self-end">
-                    <XMarkIcon className="h-8 w-8" aria-hidden="true" />
-                    </Popover.Button>
-                </div>
-                  
-                <div className="overflow-hidden rounded-lg bg-white shadow-md ring-1 ring-black ring-opacity-5">
-                  <div className="space-y-1 px-2 pt-2">
-                    {navigation.map((item) => (
-                      <a
-                        key={item.name}
-                        href={item.href}
-                        className="block rounded-md px-3 py-4 text-base popUpText"
-                      >
-                        {item.name}
-                      </a>
-                    ))}
-                  </div>
-                    <Buttons.SolidWhiteButton onClick={navigateToLogIn} text={"LIniciar Sesión"}/> 
-                </div>
-              </Popover.Panel>
-            </Transition>
-          </Popover>
           </>
   )
 }

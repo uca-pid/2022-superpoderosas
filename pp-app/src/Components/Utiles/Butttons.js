@@ -32,8 +32,24 @@ const SolidWhiteButton = ({ text, onClick}) => {
   )
 }
 
+const ProfileNavBarButton = ({ text, onClick}) => {
+    return (
+      <>   
+              <div>
+                <button
+                  className = "block w-full px-1 py-2 text-left profilePopUpButton"
+                  onClick = {onClick}
+                >
+                  {text}
+                </button >
+              </div>
+      </> 
+  )
+}
+
 const Buttons = {
   SolidGreenButton,
   SolidWhiteButton,
+  ProfileNavBarButton
 }
 export default Buttons;
