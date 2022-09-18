@@ -1,15 +1,7 @@
 import React from "react";
 import AuthService from "../../services/auth.service";
 import { useNavigate } from "react-router-dom"
-<<<<<<< Updated upstream:pp-app/src/Pages/Profile Page/ProfilePage.js
 import ProfileNavBar from "../../Components/NavBar/ProfileNavBar.js"
-=======
-import "./profile.css";
-
-function classNames(...classes) {
-  return classes.filter(Boolean).join(' ')
-}
->>>>>>> Stashed changes:pp-app/src/Components/Profile/Profile.js
 
 const Profile = () => {
   const currentUser = AuthService.getCurrentUser();
