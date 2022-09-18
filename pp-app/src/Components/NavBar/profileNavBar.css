@@ -10,7 +10,7 @@
       url("../../Fonts/Poppins-Medium.ttf") format("truetype");
 }
   
-.navBarText {
+.profileNavBarText {
     font-family: "Poppins-Bold";
     text-transform: uppercase;
     color: #6c3333; 
@@ -73,7 +73,7 @@
 }
 
 
-.navBarText:hover{
+.profileNavBarText:hover{
     color: #eb8301;
 }
 
@@ -84,9 +84,9 @@
     margin-left: auto;
 }
 
-.navBarLogo {
-    max-width: 320px;
-    width: 180px;
+.profileNavBarLogo {
+    max-width: 220px;
+    width: 160px;
     height: auto;
 }
 
@@ -103,7 +103,7 @@
 }
 
 .arrow-down-icon{
-    color: #6c3333;
+    color: #979797;
 }
 
 .mobile-nav-toggle:focus {

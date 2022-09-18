@@ -30,11 +30,11 @@ export default function ProfileNavBar(props) {
           <Popover>
               <nav className="bg-transparent container sm:h-10 fix mx-auto z-20 top-0 left-0 px-4 sm:px-6 lg:px-8 pt-1" aria-label="Global">
                 <div className="mx-auto flex flex-row justify-start lg:mt-5">
-                    <div className="justify-start flex mx-1 lg:mx-0 lg:basis-1/7">
+                    <div className="justify-start flex mx-1 lg:mx-0 lg:basis-1/7 mt-1">
                         <div className=''>
                             <a href="https://patapila.org/index.php">
                             <img
-                                className="sm:h-9 navBarLogo"
+                                className="sm:h-9 profileNavBarLogo"
                                 alt="LogoPataPila_Colores"
                                 src={LogoPataPila_Colores}
                             />
@@ -48,7 +48,7 @@ export default function ProfileNavBar(props) {
                     </div>
                   <div className="justify-start mx-auto hidden lg:basis-5/7 lg:pr-20 lg:flex lg:flex-row mt-5">
                   {navigation.map((item) => (
-                    <a key={item.name} href={item.href} className='navBarText mt-2'>
+                    <a key={item.name} href={item.href} className='profileNavBarText mt-2'>
                       {item.name}
                     </a>
                   ))}
@@ -58,7 +58,7 @@ export default function ProfileNavBar(props) {
                     <div className='flex pl-5 userNameText mt-2'>
                       {userName} {userLastName}
                     </div>
-                    <div className="pl-5 justify-end inline-block mt-3 flex">
+                    <div className="pl-5 justify-end inline-block pt-2">
                     <FontAwesomeIcon icon="fa-solid fa-angle-down" className="arrow-down-icon" />
                     </div>
                   </div>
