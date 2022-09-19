@@ -119,8 +119,8 @@ const ChangePasswordFromProfileForm = (props) =>{
             </div>
 
             {message && (
-              <div className="grid form-group pb-4">
-                <div className="alert redText alert-danger text-[13pt] justify-items-center" role="alert">
+              <div className="grid form-group pb-4 justify-items-center pb-4 mb:-mt-10  lg:-mt-7">
+                <div className="alert text-center redText infoText uppercase alert-danger text-[13pt] justify-items-center" role="alert">
                   {message}
                 </div>
               </div>
