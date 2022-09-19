@@ -34,7 +34,7 @@ export default function VerifyEmailForm(props) {
     setConfirmationMessage("");
     form.current.validateAll();
     if (checkBtn.current.context._errors.length === 0) {
-      AuthService.changeMail(email).then(
+      AuthService.sendMailTokenToResetPassword(email).then(
         () => {
           setConfirmationMessage("El mail para cambiar la contraseña ha sido enviado");
         },

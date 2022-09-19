@@ -63,7 +63,7 @@ export default function ChangePasswordForm(props)  {
     setMessage("");
     form.current.validateAll();
     if (checkBtn.current.context._errors.length === 0 && validateSamePassword()) {
-      AuthService.updatePassword(params.token,password).then(
+      AuthService.updatePasswordViaEmail(params.token,password).then(
         (response) => {
           continuePostNavigationSuccessful();
         },

@@ -22,7 +22,7 @@ const SolidWhiteButton = ({ text, onClick}) => {
     <>   
             <div>
               <button
-                className = "block w-full px-5 py-4 text-center popUpButton"
+                className = "navBarLoginTextButton navBarLoginButtonBorder"
                 onClick = {onClick}
               >
                 {text}

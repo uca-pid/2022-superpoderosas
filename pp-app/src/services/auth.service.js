@@ -8,9 +8,16 @@ const register = (name,lastname, email, password) => {
     password,
   });
 };
-const updatePassword = (token, password) => {
-  return axios.post(API_URL + "updatePassword", {
+const updatePasswordViaEmail = (token, password) => {
+  return axios.post(API_URL + "updatePasswordViaEmail", {
     token,
+    password,
+  });
+};
+const updatePasswordViaSettings= (id,oldpassword, password) => {
+  return axios.post(API_URL + "changePasswordViaSettings", {
+    id,
+    oldpassword,
     password,
   });
 };
@@ -28,11 +35,13 @@ const login = (email, password) => {
     });
 };
 
-const changeMail = (email) => {
-  return axios.post(API_URL + "resetPassword", {
+const sendMailTokenToResetPassword = (email) => {
+  return axios.post(API_URL + "sendMailTokenToResetPassword", {
       email,
     })
 };
+
+
 
 const logout = () => {
   localStorage.removeItem("user");
@@ -40,15 +49,20 @@ const logout = () => {
     return response.data;
   });
 };
+
 const getCurrentUser = () => {
   return JSON.parse(localStorage.getItem("user"));
 };
+
+
+
 const AuthService = {
   register,
   login,
   logout,
   getCurrentUser,
-  changeMail,
-  updatePassword,
+  sendMailTokenToResetPassword,
+  updatePasswordViaEmail,
+  updatePasswordViaSettings,
 }
 export default AuthService;
