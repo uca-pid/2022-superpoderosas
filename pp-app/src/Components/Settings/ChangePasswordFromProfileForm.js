@@ -11,7 +11,7 @@ import AuthService from "../../services/auth.service";
 import Input from "react-validation/build/input";
 import { useParams } from 'react-router-dom';
 import ValidationFunctions from "../../functions/validations";
-import bcrypt from 'bcryptjs';
+//import bcrypt from 'bcryptjs';
 
 const ChangePasswordFromProfileForm = (props) =>{
   const form = useRef();
@@ -23,6 +23,7 @@ const ChangePasswordFromProfileForm = (props) =>{
   const params = useParams();
   const currentUser = AuthService.getCurrentUser();
   const [confirmationMessage, setConfirmationMessage] = useState ("");
+  const bcrypt = require("bcryptjs");
 
   function closeForm(event) {
     props.onClose();
@@ -57,7 +58,7 @@ const ChangePasswordFromProfileForm = (props) =>{
     setConfirmationMessage("");
     form.current.validateAll();
     if (checkBtn.current.context._errors.length === 0 && validateSamePassword()) {
-      AuthService.updatePasswordViaSettings(currentUser.id,bcrypt.hashSync(oldpassword, 8), password).then(
+      AuthService.updatePasswordViaSettings(currentUser.id, oldpassword, password).then(
         (response) => {
           setConfirmationMessage("La contraseña se ha cambiado exitosamente");
         },
