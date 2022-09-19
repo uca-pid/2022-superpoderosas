@@ -9,6 +9,8 @@ import CheckButton from "react-validation/build/button";
 import "../ChangePasswordForms/changePassword.css";
 import AuthService from "../../services/auth.service";
 import Input from "react-validation/build/input";
+import Modal from "../Utiles/Modal"
+import { useNavigate } from "react-router-dom";
 import { useParams } from 'react-router-dom';
 import ValidationFunctions from "../../functions/validations";
 //import bcrypt from 'bcryptjs';
@@ -16,6 +18,8 @@ import ValidationFunctions from "../../functions/validations";
 const ChangePasswordFromProfileForm = (props) =>{
   const form = useRef();
   const checkBtn = useRef();
+  const navigate = useNavigate();
+  const [showModal, setShowModal] = React.useState(false);
   const [password, setPassword] = useState("");
   const [password2, setPassword2] = useState("");
   const [oldpassword, setOldPassword] = useState("");
@@ -24,6 +28,18 @@ const ChangePasswordFromProfileForm = (props) =>{
   const currentUser = AuthService.getCurrentUser();
   const [confirmationMessage, setConfirmationMessage] = useState ("");
   const bcrypt = require("bcryptjs");
+
+  const continuePostNavigationSuccessful = () =>{
+    setShowModal(true);
+    // props.onClose();
+  };
+
+  
+  function closeModal() {
+    setShowModal(false);
+    navigate("/profile");
+    window.location.reload();
+  };
 
   function closeForm(event) {
     props.onClose();
@@ -60,7 +76,7 @@ const ChangePasswordFromProfileForm = (props) =>{
     if (checkBtn.current.context._errors.length === 0 && validateSamePassword()) {
       AuthService.updatePasswordViaSettings(currentUser.id, oldpassword, password).then(
         (response) => {
-          setConfirmationMessage("La contraseña se ha cambiado exitosamente");
+          continuePostNavigationSuccessful();
         },
         (error) => {
           const resMessage =
@@ -77,6 +93,10 @@ const ChangePasswordFromProfileForm = (props) =>{
   };
     return(
         <>
+
+      {showModal ? (
+        <Modal value={showModal} onChange={closeModal} header={"Tu contraseña ha sido cambiada con exito!"} body={""} buttonText={"Continuar"}></Modal>
+      ) : null}
 
             <Form className="p-11 blackText flex flex-col space-y-5" onSubmit={handlePasswordChange} ref={form}>
             
