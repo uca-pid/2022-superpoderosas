@@ -67,10 +67,10 @@ export default function ProfileNavBar(props) {
                   </div>
                   <div className="mt-3 z-50">
                   <Popover>
-                    <Popover.Button className="rounded-md place-self-end">
-                    <div className="z-50 ml-5 flex justify-end lg:basis-1/7 -space-x-2 overflow-hidden mt-3 mb-3 mx-auto flex-1 lg:flex lg:flex-row mr-10">
+                    <Popover.Button className="userNavBarButton rounded-md place-self-end">
+                    <div className="z-50 ml-5 flex justify-end lg:basis-1/7 -space-x-2 overflow-hidden mt-3 mb-3 mx-auto flex-1 lg:flex lg:flex-row lg:mr-10">
                         <img className="flex inline-block h-9 w-9 rounded-full ring-2 ring-white" src={avatar} alt="avatar"></img>
-                        <div className='flex pl-5 userNameText mt-2'>
+                        <div className='flex pl-5 userNameText mt-2 '>
                         {userName} {userLastName}
                         </div>
                         <div className="pl-5 justify-end inline-block pt-2">
@@ -79,10 +79,11 @@ export default function ProfileNavBar(props) {
                     </div>
                     </Popover.Button>
                     <Popover.Panel>
+                    <div className="pt-2 md-round">
                     {(props.currentUser.roles.includes('ROLE_ADMIN')) ? (
                       <>
                       {adminNavigation.map((item) => (
-                        <div className='z-50 relative userNavegationText block rounded-md px-1 py-2 text-base'>
+                        <div className='z-50 relative userNavegationText block px-1 py-2 text-base'>
                           {item.name}
                         </div>
                         ))}
@@ -90,13 +91,13 @@ export default function ProfileNavBar(props) {
                     ) : (
                       <>
                       {userNavigation.map((item) => (
-                        <div className='z-50 relative userNavegationText block rounded-md px-1 py-2 text-base'>
+                        <div className='z-50 relative userNavegationText block px-1 py-2 text-base'>
                           {item.name}
                         </div>
                         ))}
                         </>
                     )}
-
+                    </div>
                   <Buttons.ProfileNavBarButton onClick={logOut} text={"Cerrar Sesión"}/> 
                     </Popover.Panel>
                     </Popover>

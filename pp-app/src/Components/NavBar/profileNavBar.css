@@ -110,6 +110,10 @@
     color: #e7e6e6;
 }
 
+.userNavBarButton:focus, .userNavBarButton:hover {
+    background-color:  #f3f1f1;
+}
+
 .userNavegationText {
     font-family: "Poppins";
     text-transform: uppercase;
@@ -122,6 +126,10 @@
     border-bottom-color: #f3f1f1;
     background-color: #FFFFFF;
 
+}
+
+.userNavegationText:hover, .userNavegationText:focus {
+    background-color:  #f3f1f1;
 }
 
 .popUpText:focus, .popUpText:hover{
@@ -137,6 +145,10 @@
     font-size: 14px;   
     letter-spacing: 0.5px !important;
     border-radius: 20;
+}
+
+.profilePopUpButton:hover, .profilePopUpButton:focus {
+    background-color: #f3f1f1;
 }
 
 .backdrop {
