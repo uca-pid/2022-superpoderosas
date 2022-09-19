@@ -14,30 +14,29 @@ const Profile = () => {
   return (
     <>
       <div className="mx-auto relative z-10 pb-8 sm:pb-16 md:pb-20 lg:pb-28 xl:pb-32 h-screen bg-cover place-content-center">
-        {/* <ProfileNavBar></ProfileNavBar>  */}
-        {currentUser ? (
-        <Settings></Settings>
-        /* <div className="container">
-          <header className="jumbotron">
-            <h3>
-              <strong>{currentUser.name} {currentUser.lastname} Perfil</strong>
-            </h3>
-          </header>
-          <p>
-            <strong>Mail:</strong> {currentUser.email}
-          </p>
-          <p>
-            <strong>Id:</strong> {currentUser.id}
-          </p>
-          <strong>Authorities:</strong>
-          <ul>
-            {currentUser.roles &&
-              currentUser.roles.map((role, index) => <li key={index}>{role}</li>)}
-          </ul>
-          <button onClick={logOut}>Cerrar Sesión</button>
-        </div> */) : (
-          <></>
-        )}
+        {/* <ProfileNavBar currentUser={currentUser}></ProfileNavBar>  */}
+    {currentUser ? (
+    <div className="container">
+      <header className="jumbotron">
+        <h3>
+          <strong>{currentUser.name} {currentUser.lastname} Perfil</strong>
+        </h3>
+      </header>
+      <p>
+        <strong>Mail:</strong> {currentUser.email}
+      </p>
+      <p>
+        <strong>Id:</strong> {currentUser.id}
+      </p>
+      <strong>Authorities:</strong>
+      <ul>
+        {currentUser.roles &&
+          currentUser.roles.map((role, index) => <li key={index}>{role}</li>)}
+      </ul>
+      <button onClick={logOut}>Cerrar Sesión</button>
+    </div>) : (
+      <></>
+    )}
     </div> 
     </>
   );

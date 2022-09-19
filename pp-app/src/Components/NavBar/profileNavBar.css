@@ -10,7 +10,7 @@
       url("../../Fonts/Poppins-Medium.ttf") format("truetype");
 }
   
-.navBarText {
+.profileNavBarText {
     font-family: "Poppins-Bold";
     text-transform: uppercase;
     color: #6c3333; 
@@ -18,14 +18,27 @@
     transition: 0.3s;
     font-size: 14px;
 
-    position: relative;
     white-space: nowrap;
-    padding: 38px 15px 0 15px;
     margin-left: 5px;
+
    
     letter-spacing: 0.5px !important;
     display: inline-block !important;
-    padding: 10px 28px !important;
+    padding: 0px 28px !important;
+}
+
+.userNameText{
+    font-family: "Poppins";
+    text-transform: uppercase;
+    color: #2e2a25; 
+    font-weight: 500;
+    transition: 0.3s;
+    font-size: 13px;
+
+    white-space: nowrap;
+
+    letter-spacing: 0.5px !important;
+    display: inline-block !important;
 }
 
 .navBarTextButton {
@@ -60,7 +73,7 @@
 }
 
 
-.navBarText:hover{
+.profileNavBarText:hover{
     color: #eb8301;
 }
 
@@ -71,9 +84,9 @@
     margin-left: auto;
 }
 
-.navBarLogo {
-    max-width: 420px;
-    width: 180px;
+.profileNavBarLogo {
+    max-width: 220px;
+    width: 160px;
     height: auto;
 }
 
@@ -89,16 +102,20 @@
     color: #FFFFFF;
 }
 
+.arrow-down-icon{
+    color: #979797;
+}
+
 .mobile-nav-toggle:focus {
     color: #e7e6e6;
 }
 
-.popUpText {
-    font-family: "Poppins-Bold";
+.userNavegationText {
+    font-family: "Poppins";
     text-transform: uppercase;
-    color: #2e2a25; 
-    font-weight: 700;
-    font-size: 17px;   
+    color: #353330; 
+    font-weight: 300;
+    font-size: 13px;   
     letter-spacing: 0.5px !important;
     border-bottom: 1px;
     border-bottom-style: solid;
@@ -110,13 +127,13 @@
     color: #eb8301; 
 }
 
-.popUpButton {
+.profilePopUpButton {
     font-family: "Poppins";
     text-transform: uppercase;
-    color: #FFFFFF;
-    background-color: #eb8301; 
-    font-weight: 700;
-    font-size: 17px;   
+    color: #0F6938;
+    background-color: #FFFFFF; 
+    font-weight: 300;
+    font-size: 14px;   
     letter-spacing: 0.5px !important;
     border-radius: 20;
 }
