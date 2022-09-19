@@ -83,8 +83,8 @@ const ChangePasswordFromProfileForm = (props) =>{
             
             <div className="tracking-wide poppinsMediumWithWeight uppercase blackText font-bold">Cambiar contraseña </div>
 
-              <div className="space-y-4 rounded-md mb-[-5px]">
-                <div className="flex flex-rows space-x-4">
+              <div className="space-y-4 rounded-md mb-[-5px] flex-rows">
+                <div className="flex flex-col space-x-4">
                   <Input
                     type="password"
                     className="relative bg-transparent h-12 block w-full rounded-xl border border-gray-300 px-6 py-2 text-gray-900 placeholder-gray-600 focus:z-10 placeholderText focus:outline-none placeholderTextOnInput sm:text-sm form-control"
@@ -94,9 +94,8 @@ const ChangePasswordFromProfileForm = (props) =>{
                     onChange={onChangeOldPassword}
                     validations={[ValidationFunctions.required]}
                   />   
-                  <div></div>
                 </div>
-                <div className="flex flex-rows space-x-4">   
+                <div className="flex flex-col space-x-4">   
                   <Input
                     type="password"
                     className="relative bg-transparent h-12 block w-full rounded-xl border border-gray-300 px-6 py-2 text-gray-900 placeholder-gray-600 focus:z-10 placeholderText focus:outline-none placeholderTextOnInput sm:text-sm form-control"
@@ -106,6 +105,8 @@ const ChangePasswordFromProfileForm = (props) =>{
                     onChange={onChangePassword}
                     validations={[ValidationFunctions.required, ValidationFunctions.vpassword]}
                   />
+                </div>
+                <div className="flex flex-col space-x-4"> 
                   <Input
                     type="password"
                     className="relative bg-transparent h-12 block w-full rounded-xl border border-gray-300 px-6 py-2 text-gray-900 placeholder-gray-600 focus:z-10 placeholderText focus:outline-none placeholderTextOnInput sm:text-sm form-control"
@@ -127,8 +128,8 @@ const ChangePasswordFromProfileForm = (props) =>{
               )}
 
             <div className="flex flex-rows justify-between pt-4">
-              <button onClick={closeForm} className="py-3 h-fit px-10 grayBg rounded-xl tracking-widest poppinsMedium uppercase font-medium text-gray-500 duration-700 hover:bg-gray-300 focus:bg-gray-300  hover:text-white focus:text-white text-lg">Cancelar</button>
-              <button onClick={null} className="py-3 h-fit px-10 bg-[#0F6938] text-white rounded-xl tracking-widest poppinsMedium uppercase font-medium duration-700 hover:bg-[#6c3333] focus:bg-[#6c3333]  text-lg">Cambiar Contraseña</button>
+              <button onClick={closeForm} className="mx-3 py-3 h-fit px-7 grayBg rounded-xl tracking-widest poppinsMedium uppercase font-medium text-gray-500 duration-700 hover:bg-gray-300 focus:bg-gray-300  hover:text-white focus:text-white text-lg">Cancelar</button>
+              <button onClick={null} className="mx-3 py-3 h-fit px-7 bg-[#0F6938] text-white rounded-xl tracking-widest poppinsMedium uppercase font-medium duration-700 hover:bg-[#6c3333] focus:bg-[#6c3333]  text-lg">Guardar Cambios</button>
             </div> 
 
             <CheckButton style={{ display: "none" }} ref={checkBtn} />

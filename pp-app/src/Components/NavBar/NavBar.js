@@ -77,12 +77,12 @@ export default function NavBar() {
                 </div>
                   
                 <div className="overflow-hidden rounded-lg bg-white shadow-md ring-1 ring-black ring-opacity-5">
-                  <div className="space-y-1 px-2 pt-2">
+                  <div className="space-y-1 px-2 pt-2 z-50">
                     {navigation.map((item) => (
                       <a
                         key={item.name}
                         href={item.href}
-                        className="block rounded-md px-3 py-4 text-base popUpText"
+                        className="z-50 block rounded-md px-3 py-4 text-base popUpText"
                       >
                         {item.name}
                       </a>

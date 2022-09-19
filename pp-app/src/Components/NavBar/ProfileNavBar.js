@@ -16,16 +16,22 @@ const navigation = [
   { name: 'Involucrate', href: 'https://patapila.org/involucrate.php' },
 ]
 
-const userNavigation =[
+const benefactorNavigation =[
     { name: 'Mi Cuenta' },
     { name: 'Mi Impacto'},
+]
+
+const adminNavigation =[
+  { name: 'Reportes' },
+  { name: 'Transacciones'},
 ]
 
 export default function ProfileNavBar(props) {
   const navigate = useNavigate();
   const userName = props.currentUser.name;
   const userLastName = props.currentUser.lastname;
-
+  console.log(props.currentUser);
+  const userNavigation = benefactorNavigation;
 
 
   function navigateToLogIn(){
