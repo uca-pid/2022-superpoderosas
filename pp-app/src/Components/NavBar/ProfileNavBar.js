@@ -3,6 +3,7 @@ import { Popover } from '@headlessui/react'
 import AuthService from "../../services/auth.service";
 import "../../Fonts/Poppins-Bold.ttf"
 import { useNavigate } from "react-router-dom"
+import React, { useState, useEffect } from "react";
 import "./profileNavBar.css";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import Buttons from "../Utiles/Butttons";
@@ -16,7 +17,7 @@ const navigation = [
   { name: 'Involucrate', href: 'https://patapila.org/involucrate.php' },
 ]
 
-const benefactorNavigation =[
+const userNavigation =[
     { name: 'Mi Cuenta' },
     { name: 'Mi Impacto'},
 ]
@@ -30,9 +31,6 @@ export default function ProfileNavBar(props) {
   const navigate = useNavigate();
   const userName = props.currentUser.name;
   const userLastName = props.currentUser.lastname;
-  console.log(props.currentUser);
-  const userNavigation = benefactorNavigation;
-
 
   function navigateToLogIn(){
       navigate("/login");
@@ -44,10 +42,11 @@ export default function ProfileNavBar(props) {
     navigate("/login");
     window.location.reload();
   };
+
   return (
     <>
-              <nav className="bg-transparent container sm:h-10 fix mx-auto z-20 top-0 left-0 px-4 sm:px-6 lg:px-8 pt-1" aria-label="Global">
-                <div className="mx-auto flex flex-row justify-start lg:mt-5">
+              <nav className="z-50 bg-transparent container sm:h-10 fix mx-auto z-20 top-0 left-0 px-4 sm:px-6 lg:px-8 pt-1" aria-label="Global">
+                <div className="z-50 mx-auto flex flex-row justify-start lg:mt-5">
                     <div className="justify-start flex mx-1 lg:mx-0 lg:basis-1/7 mt-1">
                         <div className=''>
                             <a href="https://patapila.org/index.php">
@@ -66,10 +65,10 @@ export default function ProfileNavBar(props) {
                     </a>
                   ))}
                   </div>
-                  <div className="mt-3">
+                  <div className="mt-3 z-50">
                   <Popover>
                     <Popover.Button className="rounded-md place-self-end">
-                    <div className="ml-5 flex justify-end lg:basis-1/7 -space-x-2 overflow-hidden mt-3 mb-3 mx-auto flex-1 lg:flex lg:flex-row mr-10">
+                    <div className="z-50 ml-5 flex justify-end lg:basis-1/7 -space-x-2 overflow-hidden mt-3 mb-3 mx-auto flex-1 lg:flex lg:flex-row mr-10">
                         <img className="flex inline-block h-9 w-9 rounded-full ring-2 ring-white" src={avatar} alt="avatar"></img>
                         <div className='flex pl-5 userNameText mt-2'>
                         {userName} {userLastName}
@@ -80,11 +79,24 @@ export default function ProfileNavBar(props) {
                     </div>
                     </Popover.Button>
                     <Popover.Panel>
-                    {userNavigation.map((item) => (
-                    <div className='userNavegationText mt-2 block rounded-md px-1 py-2 text-base'>
-                      {item.name}
-                    </div>
-                  ))}
+                    {(props.currentUser.roles.includes('ROLE_ADMIN')) ? (
+                      <>
+                      {adminNavigation.map((item) => (
+                        <div className='z-50 relative userNavegationText block rounded-md px-1 py-2 text-base'>
+                          {item.name}
+                        </div>
+                        ))}
+                      </>
+                    ) : (
+                      <>
+                      {userNavigation.map((item) => (
+                        <div className='z-50 relative userNavegationText block rounded-md px-1 py-2 text-base'>
+                          {item.name}
+                        </div>
+                        ))}
+                        </>
+                    )}
+
                   <Buttons.ProfileNavBarButton onClick={logOut} text={"Cerrar Sesión"}/> 
                     </Popover.Panel>
                     </Popover>

@@ -51,7 +51,6 @@ const ChangePasswordFromProfileForm = (props) =>{
     }
   }
 
-
   const handlePasswordChange = (e) => {
     e.preventDefault();
     setMessage("");
@@ -77,7 +76,6 @@ const ChangePasswordFromProfileForm = (props) =>{
   };
     return(
         <>
-  
 
             <Form className="p-11 blackText flex flex-col space-y-5" onSubmit={handlePasswordChange} ref={form}>
             

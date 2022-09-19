@@ -12,7 +12,7 @@ const Settings = () => {
 
   return (
     <>
-    <div className="z-10 flex flex-col space-y-10 min-w-screen">
+    <div className="static z-10 flex flex-col space-y-10 min-w-screen">
         <div className = "z-10 px-80 basis-1/3 grayBg grayBorder space-y-4 py-16 mt-20">
             <div className="z-10 boldSubtitle blackText">Bievenida {currentUser.name}!</div>
             <div className="z-10 descriptionText blackText">Gracias por ser parte de nuestra comunidad</div>
