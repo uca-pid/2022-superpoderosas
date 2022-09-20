@@ -71,8 +71,7 @@
 }
 
 .boldSubtitle{
-    font-family: "Poppins-SemiB";
-    font-size: 32px;   
+    font-family: "Poppins-SemiB"; 
     letter-spacing: 0.8px !important;
 }
 
@@ -91,7 +90,6 @@
 .poppinsMediumWithWeight{
     font-family: "Poppins-Medium";
     font-weight:500;
-    font-size: 19px;
 }
 
 .blackText{
@@ -104,7 +102,6 @@
 
 .descriptionText{
     font-family: "Poppins-Light";
-    font-size: 22px;
 }
 
 .slideInModal{

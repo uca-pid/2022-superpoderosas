@@ -40,8 +40,8 @@ export default function ProfileNavBar(props) {
 
   return (
     <>
-              <nav className="z-50 bg-transparent container fix mx-auto z-20 top-0 left-0 px-4 mt-10 lg:mt-3 sm:px-6 lg:px-4 pt-1" aria-label="Global">
-                <div className="z-50 mx-auto flex flex-row justify-start lg:mt-5">
+              <nav className="z-50 bg-transparent  h-6 lg:h-12 container fix mx-auto z-20 top-0 left-0 px-4 mt-10 lg:mt-3 sm:px-6 lg:px-4 pt-1" aria-label="Global">
+                <div className="z-50 mx-auto flex flex-row justify-start lg:mt-5 justify-between">
                     <div className="justify-start flex mx-1 lg:mx-0 lg:basis-1/7">
                         <div className=''>
                             <a href="https://patapila.org/index.php">
@@ -61,11 +61,11 @@ export default function ProfileNavBar(props) {
                   ))}
                   </div>
                   <div className="mt-3 z-50">
-                  <Popover>
-                    <Popover.Button className="userNavBarButton rounded-xl lg:basis-2/7 w-fit py-2 px-5">
+                  <Popover className={"grid"}>
+                    <Popover.Button className="justify-self-end userNavBarButton rounded-3xl md:rounded-xl lg:basis-2/7 w-fit py-2 px-5">
                     <div className="justify-center flex z-50 space-x-4 overflow-hidden mx-auto lg:flex-row">
                         <img className="mt-1 h-9 w-9 rounded-full ring-2 ring-white" src={avatar} alt="avatar"></img>
-                        <div className='userNameText mt-2 text-lg'>
+                        <div className='mt-2 hidden md:flex lg:flex userNameText md:text-xl lg:text-lg'>
                           {userName} {userLastName}
                         </div>
                         <div className="mt-1">
@@ -74,26 +74,26 @@ export default function ProfileNavBar(props) {
                     </div>
                     </Popover.Button>
                     <Popover.Panel className={"mt-4 p-3 rounded-2xl lightGrayBgNoHover grayBorder space-y-2"}>
-                    <div className="md-round space-y-2">
-                    {(props.currentUser.roles.includes('ROLE_ADMIN')) ? (
-                      <>
-                      {adminNavigation.map((item) => (
-                        <div className='z-50 relative userNavegationText block px-1 py-2 text-[12pt] duration-300 hover:text-[13pt] focus:text-[13pt]'>
-                          {item.name}
-                        </div>
-                        ))}
-                      </>
-                    ) : (
-                      <>
-                      {userNavigation.map((item) => (
-                        <div className='z-50 relative userNavegationText block px-1 py-2 text-[12pt] duration-300 hover:text-[13pt] focus:text-[13pt]'>
-                          {item.name}
-                        </div>
-                        ))}
-                        </>
-                    )}
-                    </div>
-                    <Buttons.ProfileNavBarButton onClick={logOut} text={"Cerrar Sesión"}/> 
+                      <div className="md-round space-y-2">
+                        {(props.currentUser.roles.includes('ROLE_ADMIN')) ? (
+                          <>
+                          {adminNavigation.map((item) => (
+                            <div className='z-50 relative userNavegationText block px-1 py-2 text-[12pt] duration-300 hover:text-[13pt] focus:text-[13pt]'>
+                              {item.name}
+                            </div>
+                            ))}
+                          </>
+                        ) : (
+                          <>
+                          {userNavigation.map((item) => (
+                            <div className='z-50 relative userNavegationText block px-1 py-2 text-[12pt] duration-300 hover:text-[13pt] focus:text-[13pt]'>
+                              {item.name}
+                            </div>
+                            ))}
+                            </>
+                        )}
+                      </div>
+                      <Buttons.ProfileNavBarButton onClick={logOut} text={"Cerrar Sesión"}/> 
                     </Popover.Panel>
                     </Popover>
                     </div>
