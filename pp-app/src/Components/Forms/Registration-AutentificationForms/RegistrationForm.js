@@ -1,15 +1,15 @@
 import "./LogIn.css"
-import LogoLucha from "../Images/Lucha.png"
-import SeparationLine from '../Utiles/SeparationLine'
-import Buttons from '../Utiles/Butttons'
+import LogoLucha from "../../Images/Lucha.png"
+import SeparationLine from '../../Utiles/SeparationLine'
+import Buttons from '../../Utiles/Butttons'
 import React, { useState, useRef } from "react";
 import { useNavigate } from "react-router-dom"
 import Form from "react-validation/build/form";
 import CheckButton from "react-validation/build/button";
-import AuthService from "../../services/auth.service";
-import Modal from "../Utiles/Modal"
+import AuthService from "../../../services/auth.service";
+import Modal from "../../Utiles/Modal"
 import Input from "react-validation/build/input";
-import ValidationFunctions from "../../functions/validations"
+import ValidationFunctions from "../../../functions/validations"
 
 export default function RegistrationForm(props) {
   const [showModal, setShowModal] = React.useState(false);

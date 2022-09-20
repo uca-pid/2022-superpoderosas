@@ -1,14 +1,14 @@
 import React, { useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import "./LogIn.css";
-import LogoCorazon from "../Images/LogoCorazon.png";
-import SeparationLine from '../Utiles/SeparationLine';
-import Buttons from '../Utiles/Butttons';
+import LogoCorazon from "../../Images/LogoCorazon.png";
+import SeparationLine from '../../Utiles/SeparationLine';
+import Buttons from '../../Utiles/Butttons';
 import Form from "react-validation/build/form";
 import CheckButton from "react-validation/build/button";
-import AuthService from "../../services/auth.service";
+import AuthService from "../../../services/auth.service";
 import Input from "react-validation/build/input";
-import ValidationFunctions from "../../functions/validations";
+import ValidationFunctions from "../../../functions/validations";
 
 export default function Login(props) {
   const form = useRef();
@@ -107,8 +107,7 @@ export default function Login(props) {
             </div>
     
             <Buttons.SolidGreenButton text={"Iniciar Sesión"} color={"greenBg"} margins={"my-4 md:my-7"} onClick={null} ref={checkBtn}/> 
-
-            {/* Mensaje de error cuando lo conectamos con al BD */}
+            
             <div className="grid justify-items-center">
                 <button className="yellowTextHover purpleText placeholderText font-semibold" onClick={navigateToChangePassword}>
                   ¿Olvidaste tu contraseña?

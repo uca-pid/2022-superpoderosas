@@ -1,7 +1,7 @@
 import "../../../../App.css"
 import '../../../../Pages/UserHomePage/profile.css'
 import "../../../../Pages/Registration-Autentification.js/IntroductionPage.css"
-import "../../../../Components/Registration-AutentificationForms/LogIn.css";
+import "../../Registration-AutentificationForms/LogIn.css";
 import React, { useState, useRef } from "react";
 import Form from "react-validation/build/form";
 import CheckButton from "react-validation/build/button";

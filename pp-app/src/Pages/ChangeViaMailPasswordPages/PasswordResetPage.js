@@ -1,4 +1,4 @@
-import "../../Components/Registration-AutentificationForms/LogIn.css";
+import "../../Components/Forms/Registration-AutentificationForms/LogIn.css";
 import React from "react";
 import ChangePasswordForm from "../../Components/Forms/PasswordModificationForms/PasswordModificationsViaEmail/ChangePasswordForm"
 import "./ChangePasswordPage.css"

@@ -2,7 +2,7 @@ import "../../Fonts/Poppins-Bold.ttf"
 import "../../Components/NavBars/navBar.css"
 import "./IntroductionPage.css"
 import NavBar from '../../Components/NavBars/NavBar'
-import RegistrationForm from "../../Components/Registration-AutentificationForms/RegistrationForm"
+import RegistrationForm from "../../Components/Forms/Registration-AutentificationForms/RegistrationForm"
 import "../../App.css"
 import ImagenNinaSonriendo from "../../Components/Images/ImagenNinaSonriendo.jpg"
 import PictureWithText from "../../Components/Utiles/PictureWithText"

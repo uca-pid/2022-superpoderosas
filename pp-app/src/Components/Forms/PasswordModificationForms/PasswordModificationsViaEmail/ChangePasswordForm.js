@@ -1,4 +1,4 @@
-import "../../../Registration-AutentificationForms/LogIn.css";
+import "../../Registration-AutentificationForms/LogIn.css";
 import LogoHerramienta from "../../../../Components/Images/logoHerramienta.png";
 import Buttons from '../../../../Components/Utiles/Butttons';
 import React, { useState, useRef } from "react";

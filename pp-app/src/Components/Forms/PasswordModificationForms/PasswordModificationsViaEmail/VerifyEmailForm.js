@@ -1,6 +1,6 @@
 import React, { useState, useRef } from "react";
 import "../changePassword.css";
-import "../../../Registration-AutentificationForms/LogIn.css";
+import "../../Registration-AutentificationForms/LogIn.css";
 import LogoHerramienta from "../../../Images/logoHerramienta.png";
 import Buttons from "../../../Utiles/Butttons";
 import Form from "react-validation/build/form";

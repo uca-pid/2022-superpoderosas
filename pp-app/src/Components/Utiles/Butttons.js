@@ -1,4 +1,4 @@
-import "../Registration-AutentificationForms/LogIn.css"
+import "../Forms/Registration-AutentificationForms/LogIn.css"
 import React from "react";
 import "../NavBars/navBar.css";
 
