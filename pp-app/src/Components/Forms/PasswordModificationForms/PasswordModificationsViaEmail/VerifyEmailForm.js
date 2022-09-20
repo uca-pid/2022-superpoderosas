@@ -1,14 +1,14 @@
 import React, { useState, useRef } from "react";
-import "./changePassword.css";
-import "../LogInForm/LogIn.css";
-import LogoHerramienta from "../Images/logoHerramienta.png";
-import Buttons from '../Utiles/Butttons';
+import "../changePassword.css";
+import "../../../Registration-AutentificationForms/LogIn.css";
+import LogoHerramienta from "../../../Images/logoHerramienta.png";
+import Buttons from "../../../Utiles/Butttons";
 import Form from "react-validation/build/form";
 import CheckButton from "react-validation/build/button";
-import AuthService from "../../services/auth.service";
+import AuthService from "../../../../services/auth.service";
 import Input from "react-validation/build/input";
 import { useNavigate } from "react-router-dom";
-import ValidationFunctions from "../../functions/validations";
+import ValidationFunctions from "../../../../functions/validations";
 
 
 export default function VerifyEmailForm(props) {

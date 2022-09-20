@@ -1,7 +1,7 @@
 import React from "react";
 import AuthService from "../../services/auth.service";
 import Settings from "../../Components/Settings/Settings";
-import ProfileNavBar from "../../Components/NavBar/ProfileNavBar";
+import ProfileNavBar from "../../Components/NavBars/ProfileNavBar";
 
 const Profile = () => {
   const currentUser = AuthService.getCurrentUser();

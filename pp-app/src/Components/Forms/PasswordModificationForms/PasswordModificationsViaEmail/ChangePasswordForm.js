@@ -1,16 +1,16 @@
-import "../../Components/LogInForm/LogIn.css";
-import LogoHerramienta from "../../Components/Images/logoHerramienta.png";
-import Buttons from '../../Components/Utiles/Butttons';
+import "../../../Registration-AutentificationForms/LogIn.css";
+import LogoHerramienta from "../../../../Components/Images/logoHerramienta.png";
+import Buttons from '../../../../Components/Utiles/Butttons';
 import React, { useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import Form from "react-validation/build/form";
 import CheckButton from "react-validation/build/button";
-import "./changePassword.css"
-import AuthService from "../../services/auth.service";
+import "../changePassword.css"
+import AuthService from "../../../../services/auth.service";
 import Input from "react-validation/build/input";
 import { useParams } from 'react-router-dom';
-import Modal from "../Utiles/Modal"
-import ValidationFunctions from "../../functions/validations";
+import Modal from "../../../Utiles/Modal"
+import ValidationFunctions from "../../../../functions/validations";
 
 export default function ChangePasswordForm(props)  {
   const form = useRef();

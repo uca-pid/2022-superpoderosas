@@ -1,16 +1,16 @@
-import "../../App.css"
-import '../../Pages/Profile Page/profile.css'
-import "../../Pages/Registration-Autentification.js/IntroductionPage.css"
-import "../../Components/LogInForm/LogIn.css";
+import "../../../../App.css"
+import '../../../../Pages/UserHomePage/profile.css'
+import "../../../../Pages/Registration-Autentification.js/IntroductionPage.css"
+import "../../../../Components/Registration-AutentificationForms/LogIn.css";
 import React, { useState, useRef } from "react";
 import Form from "react-validation/build/form";
 import CheckButton from "react-validation/build/button";
-import "../ChangePasswordForms/changePassword.css";
-import AuthService from "../../services/auth.service";
+import "../changePassword.css";
+import AuthService from "../../../../services/auth.service";
 import Input from "react-validation/build/input";
-import Modal from "../Utiles/Modal"
+import Modal from "../../../Utiles/Modal"
 import { useNavigate } from "react-router-dom";
-import ValidationFunctions from "../../functions/validations";
+import ValidationFunctions from "../../../../functions/validations";
 
 const ChangePasswordFromProfileForm = (props) =>{
   const form = useRef();

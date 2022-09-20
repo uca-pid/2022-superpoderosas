@@ -1,4 +1,4 @@
-import "../NavBar/navBar.css"
+import "../NavBars/navBar.css"
 import "../../App.css"
 import "../../Pages/Registration-Autentification.js/IntroductionPage.css"
 import Buttons from "./Butttons"

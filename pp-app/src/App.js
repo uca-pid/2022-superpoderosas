@@ -1,7 +1,7 @@
-import Profile from './Pages/Profile Page/ProfilePage';
+import Profile from './Pages/UserHomePage/ProfilePage';
 import LoginPage from './Pages/Registration-Autentification.js/LoginPage';
-import ChangePasswordPage from './Pages/ChangePassword Page/PasswordResetEmailPage';
-import PasswordResetPage from './Pages/ChangePassword Page/PasswordResetPage';
+import ChangePasswordPage from './Pages/ChangeViaMailPasswordPages/PasswordResetEmailPage';
+import PasswordResetPage from './Pages/ChangeViaMailPasswordPages/PasswordResetPage';
 import React from "react";
 import { Routes, Route } from "react-router-dom";
 import RegistrationPage from './Pages/Registration-Autentification.js/RegistrationPage';
@@ -30,7 +30,6 @@ export default function App() {
   
   return (
     <>  
-       {/*  Probar que no sepuede saltar el Iniciar Sesión por la barra de navegacion */}
       <div>
         <Routes>
           <Route exact path={"/"} element={<LoginPage />} />
@@ -41,7 +40,6 @@ export default function App() {
           <Route exact path="/resetPassword/:token" element={<PasswordResetPage />} />
         </Routes> 
       </div>   
-       {/* <AuthVerify logOut={logOut}/> */}
     </>
   );
 }

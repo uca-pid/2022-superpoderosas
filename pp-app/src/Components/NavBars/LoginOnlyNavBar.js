@@ -1,6 +1,6 @@
 import "../../Fonts/Poppins-Bold.ttf"
 import "./navBar.css"
-import "../../Pages/ChangePassword Page/ChangePasswordPage.css"
+import "../../Pages/ChangeViaMailPasswordPages/ChangePasswordPage.css"
 import "../../App.css"
 import React from 'react';
 import { useNavigate } from "react-router-dom";

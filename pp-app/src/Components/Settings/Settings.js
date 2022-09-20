@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import AuthService from "../../services/auth.service";
-import '../../Pages/Profile Page/profile.css'
-import ChangePasswordFromProfileForm from "./ChangePasswordFromProfileForm";
+import '../../Pages/UserHomePage/profile.css'
+import ChangePasswordFromProfileForm from "../Forms/PasswordModificationForms/PasswordModificationsViaSettings/ChangePasswordFromProfileForm";
 
 const Settings = () => {
   const [requestToChangePassword, setRequestToChangePassword] = useState(false);

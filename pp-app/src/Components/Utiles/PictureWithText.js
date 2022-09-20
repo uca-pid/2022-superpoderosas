@@ -1,5 +1,5 @@
 import "../../Fonts/Poppins-Bold.ttf"
-import "../NavBar/navBar.css"
+import "../NavBars/navBar.css"
 import "../../Pages/Registration-Autentification.js/IntroductionPage.css"
 import "../../App.css"
 

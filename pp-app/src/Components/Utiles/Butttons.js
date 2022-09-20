@@ -1,6 +1,6 @@
-import "../LogInForm/LogIn.css"
+import "../Registration-AutentificationForms/LogIn.css"
 import React from "react";
-import "../NavBar/navBar.css";
+import "../NavBars/navBar.css";
 
 const SolidGreenButton = ({ text, color, margins, onClick}) => {
   return (

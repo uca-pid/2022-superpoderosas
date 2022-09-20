@@ -1,8 +1,8 @@
-import "../../Components/LogInForm/LogIn.css";
+import "../../Components/Registration-AutentificationForms/LogIn.css";
 import React from "react";
-import ChangePasswordForm from "../../Components/ChangePasswordForms/ChangePasswordForm"
-import "../ChangePassword Page/ChangePasswordPage.css"
-import LoginOnlyNavBar from "../../Components/NavBar/LoginOnlyNavBar"
+import ChangePasswordForm from "../../Components/Forms/PasswordModificationForms/PasswordModificationsViaEmail/ChangePasswordForm"
+import "./ChangePasswordPage.css"
+import LoginOnlyNavBar from "../../Components/NavBars/LoginOnlyNavBar"
 
 export default function RegistrationForm(props) {
 

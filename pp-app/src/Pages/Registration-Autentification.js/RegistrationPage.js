@@ -1,8 +1,8 @@
 import "../../Fonts/Poppins-Bold.ttf"
-import "../../Components/NavBar/navBar.css"
+import "../../Components/NavBars/navBar.css"
 import "./IntroductionPage.css"
-import NavBar from '../../Components/NavBar/NavBar'
-import RegistrationForm from "../../Components/LogInForm/RegistrationForm"
+import NavBar from '../../Components/NavBars/NavBar'
+import RegistrationForm from "../../Components/Registration-AutentificationForms/RegistrationForm"
 import "../../App.css"
 import ImagenNinaSonriendo from "../../Components/Images/ImagenNinaSonriendo.jpg"
 import PictureWithText from "../../Components/Utiles/PictureWithText"

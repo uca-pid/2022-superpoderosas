@@ -1,10 +1,10 @@
 import "../../Fonts/Poppins-Bold.ttf"
-import "../../Components/NavBar/navBar.css"
+import "../../Components/NavBars/navBar.css"
 import "./ChangePasswordPage.css"
-import VerifyEmailForm from "../../Components/ChangePasswordForms/VerifyEmailForm"
+import VerifyEmailForm from "../../Components/Forms/PasswordModificationForms/PasswordModificationsViaEmail/VerifyEmailForm"
 import "../../App.css"
 import React from 'react';
-import LoginOnlyNavBar from "../../Components/NavBar/LoginOnlyNavBar"
+import LoginOnlyNavBar from "../../Components/NavBars/LoginOnlyNavBar"
 
 export default function ChangePasswordPage() {
 
