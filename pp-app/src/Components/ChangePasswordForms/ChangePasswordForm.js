@@ -33,11 +33,6 @@ export default function ChangePasswordForm(props)  {
     window.location.reload();
   };
 
-  function navigateToLogIn(){
-      navigate("/login");
-      window.location.reload(); 
-  }
-
   const onChangePassword = (e) => {
     const password = e.target.value;
     setPassword(password);

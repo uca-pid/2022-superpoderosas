@@ -37,7 +37,7 @@ const ProfileNavBarButton = ({ text, onClick}) => {
       <>   
               <div>
                 <button
-                  className = "block w-full px-1 py-2 text-left profilePopUpButton"
+                  className = "block w-full px-1 py-2 text-left profilePopUpButton text-[12pt] duration-300 hover:text-[13pt] focus:text-[13pt]"
                   onClick = {onClick}
                 >
                   {text}

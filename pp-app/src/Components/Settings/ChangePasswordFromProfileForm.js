@@ -1,7 +1,6 @@
 import "../../App.css"
 import '../../Pages/Profile Page/profile.css'
 import "../../Pages/Registration-Autentification.js/IntroductionPage.css"
-import Buttons from "../Utiles/Butttons"
 import "../../Components/LogInForm/LogIn.css";
 import React, { useState, useRef } from "react";
 import Form from "react-validation/build/form";
@@ -11,9 +10,7 @@ import AuthService from "../../services/auth.service";
 import Input from "react-validation/build/input";
 import Modal from "../Utiles/Modal"
 import { useNavigate } from "react-router-dom";
-import { useParams } from 'react-router-dom';
 import ValidationFunctions from "../../functions/validations";
-//import bcrypt from 'bcryptjs';
 
 const ChangePasswordFromProfileForm = (props) =>{
   const form = useRef();
@@ -24,10 +21,8 @@ const ChangePasswordFromProfileForm = (props) =>{
   const [password2, setPassword2] = useState("");
   const [oldpassword, setOldPassword] = useState("");
   const [message, setMessage] = useState("");
-  const params = useParams();
   const currentUser = AuthService.getCurrentUser();
   const [confirmationMessage, setConfirmationMessage] = useState ("");
-  const bcrypt = require("bcryptjs");
 
   const continuePostNavigationSuccessful = () =>{
     setShowModal(true);
