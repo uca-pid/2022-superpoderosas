@@ -4,7 +4,8 @@ import AuthService from "../../services/auth.service";
 import "../../Fonts/Poppins-Bold.ttf"
 import { useNavigate } from "react-router-dom"
 import React from "react";
-import "./profileNavBar.css";
+import "./navBar.css"
+import "../../App.css"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import Buttons from "../Utiles/Butttons";
 import LogoPataPila_Colores from "../Images/LogoPataPila_Colores.jpg";
@@ -46,7 +47,7 @@ export default function ProfileNavBar(props) {
                         <div className=''>
                             <a href="https://patapila.org/index.php">
                             <img
-                                className="sm:h-9 profileNavBarLogo"
+                                className="h-auto w-[210px]"
                                 alt="LogoPataPila_Colores"
                                 src={LogoPataPila_Colores}
                             />
@@ -55,17 +56,17 @@ export default function ProfileNavBar(props) {
                     </div>
                   <div className="justify-start mx-auto hidden lg:basis-4/7 lg:pr-20 lg:flex lg:flex-row mt-5">
                   {navigation.map((item) => (
-                    <a key={item.name} href={item.href} className='profileNavBarText text-lg mt-2'>
+                    <a key={item.name} href={item.href} className=' font-bold ml-[5px] tracking-[0.5px] inline-block px-[28px] position-relative-nowrap font-Pop-M uppercase purpleText font-bold duration-[0.3s] yellowTextHover text-lg mt-2'>
                       {item.name}
                     </a>
                   ))}
                   </div>
                   <div className="mt-3 z-50">
                   <Popover className={"grid"}>
-                    <Popover.Button className="justify-self-end userNavBarButton rounded-3xl md:rounded-xl lg:basis-2/7 w-fit py-2 px-5">
+                    <Popover.Button className="justify-self-end lightGrayBgTranslucentHover rounded-3xl md:rounded-xl lg:basis-2/7 w-fit py-2 px-5">
                     <div className="justify-center flex z-50 space-x-4 overflow-hidden mx-auto lg:flex-row">
                         <img className="mt-1 h-9 w-9 rounded-full ring-2 ring-white" src={avatar} alt="avatar"></img>
-                        <div className='mt-2 hidden md:flex lg:flex userNameText md:text-xl lg:text-lg'>
+                        <div className='mt-2 hidden md:flex lg:flex font-Pop-M uppercase blackText font-medium duration-[0.3s] tracking-[0.5px] md:text-xl lg:text-lg'>
                           {userName} {userLastName}
                         </div>
                         <div className="mt-1">
@@ -73,12 +74,12 @@ export default function ProfileNavBar(props) {
                         </div>
                     </div>
                     </Popover.Button>
-                    <Popover.Panel className={"mt-4 p-3 rounded-2xl lightGrayBgNoHover grayBorder space-y-2"}>
+                    <Popover.Panel className={"mt-4 p-3 rounded-2xl reallyLightGrayBg grayBorder space-y-2"}>
                       <div className="md-round space-y-2">
                         {(props.currentUser.roles.includes('ROLE_ADMIN')) ? (
                           <>
                           {adminNavigation.map((item) => (
-                            <div className='z-50 relative userNavegationText block px-1 py-2 text-[12pt] duration-300 hover:text-[13pt] focus:text-[13pt]'>
+                            <div className='z-50 relative font-Pop-M uppercase darkGrayText font-medium tracking-[0.5px] grayBottomBorder block px-1 py-2 text-[12pt] duration-300 hover:text-[13pt] focus:text-[13pt]'>
                               {item.name}
                             </div>
                             ))}
@@ -86,7 +87,7 @@ export default function ProfileNavBar(props) {
                         ) : (
                           <>
                           {userNavigation.map((item) => (
-                            <div className='z-50 relative userNavegationText block px-1 py-2 text-[12pt] duration-300 hover:text-[13pt] focus:text-[13pt]'>
+                            <div className='z-50 relative font-Pop-M uppercase darkGrayText font-medium tracking-[0.5px] grayBottomBorderfont-Pop-M uppercase darkGrayText font-medium tracking-[0.5px] grayBottomBorder block px-1 py-2 text-[12pt] duration-300 hover:text-[13pt] focus:text-[13pt]'>
                               {item.name}
                             </div>
                             ))}

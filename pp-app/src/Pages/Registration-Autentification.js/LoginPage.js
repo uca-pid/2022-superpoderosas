@@ -1,6 +1,4 @@
 import "../../Fonts/Poppins-Bold.ttf"
-import "../../Components/NavBars/navBar.css"
-import "./IntroductionPage.css"
 import NavBar from '../../Components/NavBars/NavBar'
 import LogInForm from "../../Components/Forms/Registration-AutentificationForms/LogInForm"
 import "../../App.css"

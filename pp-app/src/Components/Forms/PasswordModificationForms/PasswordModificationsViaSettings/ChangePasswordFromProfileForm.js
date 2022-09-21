@@ -1,10 +1,6 @@
-import '../../../../Pages/UserHomePage/profile.css'
-import "../../../../Pages/Registration-Autentification.js/IntroductionPage.css"
-import "../../Registration-AutentificationForms/LogIn.css";
 import React, { useState, useRef } from "react";
 import Form from "react-validation/build/form";
 import CheckButton from "react-validation/build/button";
-import "../changePassword.css";
 import AuthService from "../../../../services/auth.service";
 import Input from "react-validation/build/input";
 import Modal from "../../../Utiles/Modal"
@@ -94,13 +90,13 @@ const ChangePasswordFromProfileForm = (props) =>{
 
             <Form className="p-11 blackText flex flex-col space-y-5" onSubmit={handlePasswordChange} ref={form}>
             
-            <div className="tracking-wide poppinsMediumWithWeight uppercase blackText font-bold">Cambiar contraseña </div>
+            <div className="tracking-wide font-Pop-M font-medium uppercase blackText font-bold">Cambiar contraseña </div>
 
               <div className="space-y-4 rounded-md mb-[-5px] flex-rows">
                 <div className="flex flex-col space-x-4">
                   <Input
                     type="password"
-                    className="relative bg-transparent h-12 block w-full rounded-xl border border-gray-300 px-6 py-2 text-gray-900 placeholder-gray-600 focus:z-10 placeholderText focus:outline-none placeholderTextOnInput sm:text-sm form-control"
+                    className="relative bg-transparent h-12 block w-full rounded-xl border border-gray-300 px-6 py-2 text-gray-900 placeholder-gray-600 focus:z-10 font-Pop-R tracking-[0.5px] text-[12pt] focus:outline-none greenBorderWhenFocus form-control"
                     name="oldpassword"
                     value={oldpassword}
                     placeholder="Contraseña antigua"
@@ -111,7 +107,7 @@ const ChangePasswordFromProfileForm = (props) =>{
                 <div className="flex flex-col space-x-4">   
                   <Input
                     type="password"
-                    className="relative bg-transparent h-12 block w-full rounded-xl border border-gray-300 px-6 py-2 text-gray-900 placeholder-gray-600 focus:z-10 placeholderText focus:outline-none placeholderTextOnInput sm:text-sm form-control"
+                    className="relative bg-transparent h-12 block w-full rounded-xl border border-gray-300 px-6 py-2 text-gray-900 placeholder-gray-600 focus:z-10 font-Pop-R tracking-[0.5px] text-[12pt] focus:outline-none greenBorderWhenFocus form-control"
                     name="password"
                     value={password}
                     placeholder="Contraseña nueva"
@@ -122,7 +118,7 @@ const ChangePasswordFromProfileForm = (props) =>{
                 <div className="flex flex-col space-x-4"> 
                   <Input
                     type="password"
-                    className="relative bg-transparent h-12 block w-full rounded-xl border border-gray-300 px-6 py-2 text-gray-900 placeholder-gray-600 focus:z-10 placeholderText focus:outline-none placeholderTextOnInput sm:text-sm form-control"
+                    className="relative bg-transparent h-12 block w-full rounded-xl border border-gray-300 px-6 py-2 text-gray-900 placeholder-gray-600 focus:z-10 font-Pop-R tracking-[0.5px] text-[12pt] focus:outline-none greenBorderWhenFocus form-control"
                     name="password2"
                     value={password2}
                     placeholder="Confirmar contraseña"
@@ -134,22 +130,22 @@ const ChangePasswordFromProfileForm = (props) =>{
 
             {message && (
               <div className="grid form-group pb-4 justify-items-center pb-4 mb:-mt-10  lg:-mt-7">
-                <div className="alert text-center redText font-Pop-M infoText uppercase alert-danger text-[13pt] justify-items-center" role="alert">
+                <div className="alert text-center redText font-Pop-M tracking-[0.5px] uppercase alert-danger text-[13pt] justify-items-center" role="alert">
                   {message}
                 </div>
               </div>
               )}
               {confirmationMessage && (
               <div className="grid form-group justify-items-center pb-4 mb:-mt-10  lg:-mt-7">
-              <div className="alert text-center greenText font-Pop-M infoText uppercase alert-danger text-[13pt] justify-items-center" role="alert">
+              <div className="alert text-center greenText font-Pop-M tracking-[0.5px] uppercase alert-danger text-[13pt] justify-items-center" role="alert">
                 {confirmationMessage}
               </div>
               </div>
             )}
 
             <div className="flex flex-rows justify-between pt-4">
-              <button onClick={closeForm} className="mx-3 py-3 h-fit px-7 grayBg rounded-xl tracking-widest poppinsMedium uppercase font-medium text-gray-500 duration-700 hover:bg-gray-300 focus:bg-gray-300  hover:text-white focus:text-white text-lg">Cancelar</button>
-              <button onClick={null} className="mx-3 py-3 h-fit px-7 bg-[#0F6938] text-white rounded-xl tracking-widest poppinsMedium uppercase font-medium duration-700 hover:bg-[#6c3333] focus:bg-[#6c3333]  text-lg">Guardar Cambios</button>
+              <button onClick={closeForm} className="mx-3 py-3 h-fit px-7 grayBg rounded-xl tracking-widest font-Pop-M uppercase font-medium text-gray-500 duration-700 hover:bg-gray-300 focus:bg-gray-300  hover:text-white focus:text-white text-lg">Cancelar</button>
+              <button onClick={null} className="mx-3 py-3 h-fit px-7 bg-[#0F6938] text-white rounded-xl tracking-widest font-Pop-M uppercase font-medium duration-700 hover:bg-[#6c3333] focus:bg-[#6c3333]  text-lg">Guardar Cambios</button>
             </div> 
 
             <CheckButton style={{ display: "none" }} ref={checkBtn} />

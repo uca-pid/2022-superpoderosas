@@ -1,6 +1,4 @@
 import "../../Fonts/Poppins-Bold.ttf"
-import "../../Components/NavBars/navBar.css"
-import "./ChangePasswordPage.css"
 import VerifyEmailForm from "../../Components/Forms/PasswordModificationForms/PasswordModificationsViaEmail/VerifyEmailForm"
 import "../../App.css"
 import React from 'react';

@@ -7,8 +7,6 @@ import AuthService from "../../../../services/auth.service";
 import Input from "react-validation/build/input";
 import { useNavigate } from "react-router-dom";
 import ValidationFunctions from "../../../../functions/validations";
-import "../changePassword.css";
-import "../../Registration-AutentificationForms/LogIn.css";
 import "../../../../App.css"
 export default function VerifyEmailForm(props) {
   const form = useRef();
@@ -62,12 +60,12 @@ export default function VerifyEmailForm(props) {
           </div>
 
           <div className="grid justify-items-center mb-4">
-                <div className="gray-300 font-Pop-R titleText text-[18pt] font-semibold text-center">
+                <div className="gray-300 font-Pop-R tracking-[0.5px] uppercase text-[18pt] font-semibold text-center">
                   ¿Tienes problemas para iniciar sesión?
                 </div>
           </div>
           <div className="grid justify-items-center mb-10">
-                <div className="text-slate-600 text-center font-Pop-M infoText text-[11pt]">
+                <div className="text-slate-600 text-center font-Pop-M tracking-[0.5px] text-[11pt]">
                 Ingresa tu correo electrónico y te enviaremos un enlace para que recuperes el acceso a tu cuenta.
                 </div>
           </div>
@@ -76,7 +74,7 @@ export default function VerifyEmailForm(props) {
             <div className="-space-y-px rounded-md mt-2">
             <Input
                   type="text"
-                  className="relative bg-transparent h-12 block w-full rounded-xl   border border-gray-300 px-6 py-2 text-gray-900 placeholder-gray-600 focus:z-10 placeholderText focus:outline-none placeholderTextOnInput sm:text-sm form-control"
+                  className="relative bg-transparent h-12 block w-full rounded-xl border border-gray-300 px-6 py-2 text-gray-900 placeholder-gray-600 focus:z-10 font-Pop-R text-[12pt] tracking-[0.5px] focus:outline-none greenBorderWhenFocus form-control"
                   name="email"
                   value={email}
                   placeholder="Email"
@@ -88,23 +86,23 @@ export default function VerifyEmailForm(props) {
             <Buttons.SolidGreenButton text={"Enviar enlace"} color={"greenBg"} margins={"my-5 md:my-7"} onClick={handleEmailChangeRequest}/> 
 
             <div className="flex flex-rows justify-center mt-4 mb-5 md:mb-10">
-                <div className="gray-300 relevantText  text-[11pt] md:text-[12pt]">
+                <div className="gray-300 font-Pop-R tracking-[0.5px] text-[11pt] md:text-[12pt]">
                   ¿No tienes una cuenta?
                 </div>
-                <button className="ml-3 mb-3 yellowText greenTextHover relevantText text-[12pt] md:text-[12pt] font-semibold" onClick={navigateToRegistrationPage} >
+                <button className="ml-3 mb-3 yellowText greenTextHover font-Pop-R tracking-[0.5px] text-[12pt] md:text-[12pt] font-semibold" onClick={navigateToRegistrationPage} >
                   Regístrate
                 </button>
             </div> 
             {message && (
             <div className="grid form-group justify-items-center pb-4 mb:-mt-10 lg:-mt-7">
-              <div className="alert text-center redText font-Pop-M  infoText uppercase alert-danger text-[13pt] justify-items-center" role="alert">
+              <div className="alert text-center redText font-Pop-M  tracking-[0.5px] uppercase alert-danger text-[13pt] justify-items-center" role="alert">
                 {message}
               </div>
             </div>
             )}
             {confirmationMessage && (
               <div className="grid form-group justify-items-center pb-4 mb:-mt-10  lg:-mt-7">
-              <div className="alert text-center greenText font-Pop-M infoText uppercase alert-danger text-[13pt] justify-items-center" role="alert">
+              <div className="alert text-center greenText font-Pop-M tracking-[0.5px] uppercase alert-danger text-[13pt] justify-items-center" role="alert">
                 {confirmationMessage}
               </div>
               </div>

@@ -1,6 +1,6 @@
 import React, { useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
-import "./LogIn.css";
+import "../../../App.css";
 import LogoCorazon from "../../Images/LogoCorazon.png";
 import SeparationLine from '../../Utiles/SeparationLine';
 import Buttons from '../../Utiles/Butttons';
@@ -96,7 +96,7 @@ export default function Login(props) {
               return (
                 <Input
                   type={input.type}
-                  className="relative bg-transparent h-12 block w-full rounded-xl   border border-gray-300 px-6 py-2 text-gray-900 placeholder-gray-600 focus:z-10 placeholderText focus:outline-none placeholderTextOnInput sm:text-sm form-control"
+                  className="relative bg-transparent h-12 block w-full rounded-xl border border-gray-300 px-6 py-2 text-gray-900 placeholder-gray-600 focus:z-10 font-Pop-R tracking-[0.5px] text-[12pt] focus:outline-none greenBorderWhenFocus form-control"
                   name={input.name}
                   value={input.value}
                   placeholder={input.placeholder}
@@ -109,17 +109,17 @@ export default function Login(props) {
             <Buttons.SolidGreenButton text={"Iniciar Sesión"} color={"greenBg"} margins={"my-4 md:my-7"} onClick={null} ref={checkBtn}/> 
             
             <div className="grid justify-items-center">
-                <button className="yellowTextHover purpleText placeholderText font-semibold" onClick={navigateToChangePassword}>
+                <button className="yellowTextHover purpleText font-Pop-R tracking-[0.5px] text-[12pt] font-semibold" onClick={navigateToChangePassword}>
                   ¿Olvidaste tu contraseña?
                 </button>
             </div> 
 
             <SeparationLine text={"O"} margins="mt-4"/>
             <div className="flex flex-rows justify-center mt-5 mb-4">
-                <div className="gray-300 relevantText text-[13pt]">
+                <div className="gray-300 font-Pop-R tracking-[0.5px] text-[13pt]">
                   ¿No tienes una cuenta?
                 </div>
-                <button className="ml-3 mb-3 greenText yellowTextHover relevantText text-[13pt] font-semibold" onClick={navigateToRegistrationPage}>
+                <button className="ml-3 mb-3 greenText yellowTextHover font-Pop-R tracking-[0.5px] text-[13pt] font-semibold" onClick={navigateToRegistrationPage}>
                   Regístrate
                 </button>
             </div> 

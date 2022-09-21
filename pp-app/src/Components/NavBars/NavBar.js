@@ -4,8 +4,8 @@ import { XMarkIcon } from '@heroicons/react/24/outline'
 import "../../Fonts/Poppins-Bold.ttf"
 import { useNavigate } from "react-router-dom"
 import "./navBar.css"
+import "../../App.css"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import Buttons from "../Utiles/Butttons"
 import fontawesome from '@fortawesome/fontawesome'
 import { faBars } from '@fortawesome/fontawesome-free-solid'
 fontawesome.library.add(faBars);
@@ -32,7 +32,7 @@ export default function NavBar() {
                         <div className=''>
                             <a href="https://patapila.org/index.php">
                             <img
-                                className="sm:h-10 navBarLogo"
+                                className="mt-0 md:mt-2 h-auto w-[260px]"
                                 src="https://patapila.org/assets/img/logo_3.svg"
                                 alt="Pata Pila Logo"
                             />
@@ -46,11 +46,11 @@ export default function NavBar() {
                     </div>
                   <div className="justify-end mx-auto flex-1 hidden lg:basis-3/5 lg:pr-4 lg:pt-8 lg:flex lg:flex-row">
                   {navigation.map((item) => (
-                    <a key={item.name} href={item.href} className='navBarText mt-2'>
+                    <a key={item.name} href={item.href} className='font-Pop-B uppercase text-white font-bold duration-[0.3s] ml-[5px] text-[17px] tracking-[0.5px] px-[28px] inline-block py-[10px]  position-relative-nowrap mt-2 yellowTextHover'>
                       {item.name}
                     </a>
                   ))}
-                    <button onClick={navigateToLogIn} className = {"navBarTextButton navBarButtonBorder mt-1"}>Iniciar Sesión</button>
+                    <button onClick={navigateToLogIn} className = {"font-Pop-M uppercase text-white text-[17px] px-[40px] py-[12px] position-relative-nowrap font-bold duration-[0.3s] tracking-[0.5px] ml-[5px] inline-block mt-1 bg-white greenText rounded-lg font-semibold hover:bg-transparent whiteBorder hover:text-white  focus:bg-transparent focus:text-white"}>Iniciar Sesión</button>
                   </div>
                 </div>
               </nav>
@@ -82,13 +82,13 @@ export default function NavBar() {
                       <a
                         key={item.name}
                         href={item.href}
-                        className="z-50 block rounded-md px-3 py-4 text-base popUpText"
+                        className="z-50 block rounded-md px-3 py-4 text-base font-Pop-B uppercase blackText font-bold text-[17px] tracking-[0.5px] grayBottomBorder"
                       >
                         {item.name}
                       </a>
                     ))}
                   </div>
-                    <Buttons.SolidWhiteButton onClick={navigateToLogIn} text={"Iniciar Sesión"}/> 
+                    <button className="z-50 block rounded-md px-5 py-5 text-base font-Pop-B uppercase font-bold text-[17px] tracking-[0.5px] yellowBg text-white w-full greenBgHover" onClick={navigateToLogIn}>Iniciar Sesión</button> 
                 </div>
               </Popover.Panel>
             </Transition>

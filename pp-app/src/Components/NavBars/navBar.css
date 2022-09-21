@@ -17,13 +17,14 @@
     font-weight: 700;
     transition: 0.3s;
     font-size: 17px;
+    margin-left: 5px;
+    letter-spacing: 0.5px !important;
 
     position: relative;
     white-space: nowrap;
     padding: 38px 15px 0 15px;
-    margin-left: 5px;
    
-    letter-spacing: 0.5px !important;
+    
     display: inline-block !important;
     padding: 10px 28px !important;
 }
@@ -81,18 +82,6 @@
     background-color: #0F6938;
 }
 
-.mobile-nav-toggle {
-    position: relative;
-    border: 0;
-    background: 0 0;
-    outline: none;
-    color: #FFFFFF;
-}
-
-.mobile-nav-toggle:focus {
-    color: #e7e6e6;
-}
-
 .popUpText {
     font-family: "Poppins-Bold";
     text-transform: uppercase;
@@ -123,4 +112,17 @@
 
 .backdrop {
   background-color: rgba(0,0,0,0.3);
+}
+
+/*ESTE CODIGO SE QUEDA*/
+.mobile-nav-toggle {
+    position: relative;
+    border: 0;
+    background: 0 0;
+    outline: none;
+    color: #FFFFFF;
+}
+
+.mobile-nav-toggle:focus {
+    color: #e7e6e6;
 }
