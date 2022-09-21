@@ -1,4 +1,3 @@
-import "../../../../App.css"
 import '../../../../Pages/UserHomePage/profile.css'
 import "../../../../Pages/Registration-Autentification.js/IntroductionPage.css"
 import "../../Registration-AutentificationForms/LogIn.css";
@@ -27,7 +26,6 @@ const ChangePasswordFromProfileForm = (props) =>{
 
   const continuePostNavigationSuccessful = () =>{
     setShowModal(true);
-    // props.onClose();
   };
 
   
@@ -141,6 +139,13 @@ const ChangePasswordFromProfileForm = (props) =>{
                 </div>
               </div>
               )}
+              {confirmationMessage && (
+              <div className="grid form-group justify-items-center pb-4 mb:-mt-10  lg:-mt-7">
+              <div className="alert text-center greenText font-Pop-M infoText uppercase alert-danger text-[13pt] justify-items-center" role="alert">
+                {confirmationMessage}
+              </div>
+              </div>
+            )}
 
             <div className="flex flex-rows justify-between pt-4">
               <button onClick={closeForm} className="mx-3 py-3 h-fit px-7 grayBg rounded-xl tracking-widest poppinsMedium uppercase font-medium text-gray-500 duration-700 hover:bg-gray-300 focus:bg-gray-300  hover:text-white focus:text-white text-lg">Cancelar</button>

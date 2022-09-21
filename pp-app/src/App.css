@@ -16,8 +16,18 @@
     src: local("Poppins-Medium"),
       url("./Fonts/Poppins-Medium.ttf") format("truetype");
 }
-
 .poppinsRegular{
+    font-family: "Poppins-Regular";
+}
+.font-Pop-M{
+    font-family: "Poppins-Medium";
+}
+
+.font-Pop-SB{
+    font-family: "Poppins-SemiB";
+}
+
+.font-Pop-R{
     font-family: "Poppins-Regular";
 }
 
