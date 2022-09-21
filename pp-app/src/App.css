@@ -1,15 +1,58 @@
+/**Fonts**/
+@font-face {
+    font-family: "Poppins-SemiB";   /*Can be any text*/
+    src: local("Poppins-SemiB"),
+      url("./Fonts/Poppins-SemiBold.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: "Poppins-Regular";   /*Can be any text*/
+    src: local("Poppins-Regular"),
+      url("./Fonts/Poppins-Regular.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: "Poppins-Medium";   /*Can be any text*/
+    src: local("Poppins-Medium"),
+      url("./Fonts/Poppins-Medium.ttf") format("truetype");
+}
+
+.poppinsRegular{
+    font-family: "Poppins-Regular";
+}
+
+/*Text Color*/
+.redText{
+    color: #DA1212;
+}
+.greenText{
+    color:#0F6938;
+}
+
+.purpleText{
+    color: #6c3333;
+}
+
+/*Border Color*/
+.greenBorderWhenFocus:focus{
+    border-color: #0F6938;
+}
+
+/*Background Color*/
 .greenBg{
     background-color: #0F6938;
 }
-
-.font-Pop-M{
-    font-family: "Poppins-Medium";
+.purpleBg{
+    background-color: #6c3333;
+}
+.lightGreyBg{
+    background-color: #e7e6e6;
 }
 
-.font-Pop-SB{
-    font-family: "Poppins-SemiB";
+.yellowBg{
+    background-color: #eb8301;
 }
-
-.font-Pop-R{
-    font-family: "Poppins-Regular";
+.yellowBgHover:hover, .yellowBgHocer:focus{
+    transition: 0.7s;
+    background-color: #eb8301;
 }

@@ -1,17 +1,19 @@
-import "../../Registration-AutentificationForms/LogIn.css";
 import LogoHerramienta from "../../../../Components/Images/logoHerramienta.png";
 import Buttons from '../../../../Components/Utiles/Butttons';
 import React, { useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import Form from "react-validation/build/form";
 import CheckButton from "react-validation/build/button";
-import "../changePassword.css"
 import AuthService from "../../../../services/auth.service";
 import Input from "react-validation/build/input";
 import { useParams } from 'react-router-dom';
 import Modal from "../../../Utiles/Modal"
 import "../../../../App.css"
 import ValidationFunctions from "../../../../functions/validations";
+
+//import "../../Registration-AutentificationForms/LogIn.css";
+//import "../changePassword.css"
+import "../../../../App.css"
 
 export default function ChangePasswordForm(props)  {
   const form = useRef();
@@ -95,7 +97,7 @@ export default function ChangePasswordForm(props)  {
            <Form className="" onSubmit={handlePasswordChange} ref={form}>
 
            <div className="grid justify-items-center mb-9">
-                <div className="gray-300 titleText font-Pop-R text-[18pt] font-semibold text-center">
+                <div className="gray-300 poppinsRegular uppercase tracking-[0.5px] text-[18pt] font-semibold text-center">
                   Cambiar contraseña
                 </div>
           </div>
@@ -103,7 +105,7 @@ export default function ChangePasswordForm(props)  {
             <div className="space-y-3 rounded-md mb-[-5px]">       
                 <Input
                   type="password"
-                  className="relative bg-transparent h-12 block w-full rounded-xl border border-gray-300 px-6 py-2 text-gray-900 placeholder-gray-600 focus:z-10 placeholderText focus:outline-none placeholderTextOnInput sm:text-sm form-control"
+                  className="relative bg-transparent h-12 block w-full rounded-xl border border-gray-300 px-6 py-2 text-gray-900 placeholder-gray-600 focus:z-10  poppinsRegular text-[12pt] tracking-[0.5px] focus:outline-none greenBorderWhenFocus sm:text-sm form-control"
                   name="password"
                   value={password}
                   placeholder="Contraseña nueva"
@@ -112,7 +114,7 @@ export default function ChangePasswordForm(props)  {
                 />
                 <Input
                   type="password"
-                  className="relative bg-transparent h-12 block w-full rounded-xl border border-gray-300 px-6 py-2 text-gray-900 placeholder-gray-600 focus:z-10 placeholderText focus:outline-none placeholderTextOnInput sm:text-sm form-control"
+                  className="relative bg-transparent h-12 block w-full rounded-xl border border-gray-300 px-6 py-2 text-gray-900 placeholder-gray-600 focus:z-10 poppinsRegular text-[12pt] tracking-[0.5px] focus:outline-none greenBorderWhenFocus sm:text-sm form-control"
                   name="password2"
                   value={password2}
                   placeholder="Confirmar contraseña"
