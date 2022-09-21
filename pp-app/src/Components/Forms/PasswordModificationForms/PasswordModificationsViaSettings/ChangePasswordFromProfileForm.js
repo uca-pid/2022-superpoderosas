@@ -11,6 +11,7 @@ import Input from "react-validation/build/input";
 import Modal from "../../../Utiles/Modal"
 import { useNavigate } from "react-router-dom";
 import ValidationFunctions from "../../../../functions/validations";
+import "../../../../App.css"
 
 const ChangePasswordFromProfileForm = (props) =>{
   const form = useRef();
@@ -135,7 +136,7 @@ const ChangePasswordFromProfileForm = (props) =>{
 
             {message && (
               <div className="grid form-group pb-4 justify-items-center pb-4 mb:-mt-10  lg:-mt-7">
-                <div className="alert text-center redText infoText uppercase alert-danger text-[13pt] justify-items-center" role="alert">
+                <div className="alert text-center redText font-Pop-M infoText uppercase alert-danger text-[13pt] justify-items-center" role="alert">
                   {message}
                 </div>
               </div>
@@ -148,13 +149,6 @@ const ChangePasswordFromProfileForm = (props) =>{
 
             <CheckButton style={{ display: "none" }} ref={checkBtn} />
 
-              {confirmationMessage && (
-              <div className="grid form-group justify-items-center pb-4 mb:-mt-10  lg:-mt-7">
-              <div className="alert text-center greenText infoText uppercase alert-danger text-[13pt] justify-items-center" role="alert">
-                {confirmationMessage}
-              </div>
-              </div>
-            )}
               
             </Form>
         </>

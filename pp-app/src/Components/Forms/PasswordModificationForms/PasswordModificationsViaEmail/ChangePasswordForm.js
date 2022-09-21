@@ -10,6 +10,7 @@ import AuthService from "../../../../services/auth.service";
 import Input from "react-validation/build/input";
 import { useParams } from 'react-router-dom';
 import Modal from "../../../Utiles/Modal"
+import "../../../../App.css"
 import ValidationFunctions from "../../../../functions/validations";
 
 export default function ChangePasswordForm(props)  {
@@ -94,7 +95,7 @@ export default function ChangePasswordForm(props)  {
            <Form className="" onSubmit={handlePasswordChange} ref={form}>
 
            <div className="grid justify-items-center mb-9">
-                <div className="gray-300 titleText text-[18pt] font-semibold text-center">
+                <div className="gray-300 titleText font-Pop-R text-[18pt] font-semibold text-center">
                   Cambiar contraseña
                 </div>
           </div>

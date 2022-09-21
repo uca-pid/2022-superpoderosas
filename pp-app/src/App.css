@@ -1,3 +1,15 @@
 .greenBg{
     background-color: #0F6938;
 }
+
+.font-Pop-M{
+    font-family: "Poppins-Medium";
+}
+
+.font-Pop-SB{
+    font-family: "Poppins-SemiB";
+}
+
+.font-Pop-R{
+    font-family: "Poppins-Regular";
+}

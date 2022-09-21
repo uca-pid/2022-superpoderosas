@@ -9,7 +9,7 @@ import AuthService from "../../../../services/auth.service";
 import Input from "react-validation/build/input";
 import { useNavigate } from "react-router-dom";
 import ValidationFunctions from "../../../../functions/validations";
-
+import "../../../../App.css"
 
 export default function VerifyEmailForm(props) {
   const form = useRef();
@@ -63,12 +63,12 @@ export default function VerifyEmailForm(props) {
           </div>
 
           <div className="grid justify-items-center mb-4">
-                <div className="gray-300 titleText text-[18pt] font-semibold text-center">
+                <div className="gray-300 font-Pop-R titleText text-[18pt] font-semibold text-center">
                   ¿Tienes problemas para iniciar sesión?
                 </div>
           </div>
           <div className="grid justify-items-center mb-10">
-                <div className="text-slate-600 text-center infoText text-[11pt]">
+                <div className="text-slate-600 text-center font-Pop-M infoText text-[11pt]">
                 Ingresa tu correo electrónico y te enviaremos un enlace para que recuperes el acceso a tu cuenta.
                 </div>
           </div>
@@ -98,14 +98,14 @@ export default function VerifyEmailForm(props) {
             </div> 
             {message && (
             <div className="grid form-group justify-items-center pb-4 mb:-mt-10 lg:-mt-7">
-              <div className="alert text-center redText infoText uppercase alert-danger text-[13pt] justify-items-center" role="alert">
+              <div className="alert text-center redText font-Pop-M  infoText uppercase alert-danger text-[13pt] justify-items-center" role="alert">
                 {message}
               </div>
             </div>
             )}
             {confirmationMessage && (
               <div className="grid form-group justify-items-center pb-4 mb:-mt-10  lg:-mt-7">
-              <div className="alert text-center greenText infoText uppercase alert-danger text-[13pt] justify-items-center" role="alert">
+              <div className="alert text-center greenText font-Pop-M infoText uppercase alert-danger text-[13pt] justify-items-center" role="alert">
                 {confirmationMessage}
               </div>
               </div>
