@@ -16,20 +16,7 @@
       url("../../../Fonts/Poppins-Medium.ttf") format("truetype");
 }
 
-.font-Pop-M{
-    font-family: "Poppins-Medium";
-}
-
-.font-Pop-SB{
-    font-family: "Poppins-SemiB";
-}
-
-.font-Pop-R{
-    font-family: "Poppins-Regular";
-}
-
 .buttonText{
-    font-family: "Poppins-Medium";
     font-size: 14pt;
     letter-spacing: 0.5px;
     text-transform: uppercase;

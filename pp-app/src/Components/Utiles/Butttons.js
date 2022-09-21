@@ -1,13 +1,14 @@
 import "../Forms/Registration-AutentificationForms/LogIn.css"
 import React from "react";
 import "../NavBars/navBar.css";
+import "../../App.css"
 
 const SolidGreenButton = ({ text, color, margins, onClick}) => {
   return (
     <>   
             <div>
               <button
-                className={`group relative flex w-full justify-center rounded-lg border border-transparent hoverYellowBg py-3 px-4 buttonText text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 ${color} ${margins}`}
+                className={`group font-Pop-M relative flex w-full justify-center rounded-lg border border-transparent hoverYellowBg py-3 px-4 buttonText text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 ${color} ${margins}`}
                 onClick = {onClick}
               >
                 {text}
