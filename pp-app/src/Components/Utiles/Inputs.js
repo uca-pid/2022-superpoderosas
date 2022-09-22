@@ -1,4 +1,4 @@
-import "../LogInForm/LogIn.css"
+import "../../App.css";
 
 const ClassicInput = (props) => {
   const onChangeInput = (e) => {

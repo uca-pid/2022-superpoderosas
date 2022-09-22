@@ -67,7 +67,7 @@ export default function NavBar() {
             >
               <Popover.Panel
                 focus
-                className="backdrop absolute h-full top-0 inset-x-0 z-10 origin-top-right transform p-2 transition lg:hidden"
+                className="darkGreyBg absolute h-full top-0 inset-x-0 z-10 origin-top-right transform p-2 transition lg:hidden"
               >
                 
                 <div className="px-5 pt-4 justify-self-end grid ">

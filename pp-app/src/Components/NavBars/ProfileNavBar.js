@@ -63,7 +63,7 @@ export default function ProfileNavBar(props) {
                   </div>
                   <div className="mt-3 z-50">
                   <Popover className={"grid"}>
-                    <Popover.Button className="justify-self-end lightGrayBgTranslucentHover rounded-3xl md:rounded-xl lg:basis-2/7 w-fit py-2 px-5">
+                    <Popover.Button className="justify-self-end lightgreyBgTranslucentHover rounded-3xl md:rounded-xl lg:basis-2/7 w-fit py-2 px-5">
                     <div className="justify-center flex z-50 space-x-4 overflow-hidden mx-auto lg:flex-row">
                         <img className="mt-1 h-9 w-9 rounded-full ring-2 ring-white" src={avatar} alt="avatar"></img>
                         <div className='mt-2 hidden md:flex lg:flex font-Pop-M uppercase blackText font-medium duration-[0.3s] tracking-[0.5px] md:text-xl lg:text-lg'>
@@ -74,7 +74,7 @@ export default function ProfileNavBar(props) {
                         </div>
                     </div>
                     </Popover.Button>
-                    <Popover.Panel className={"mt-4 p-3 rounded-2xl reallyLightGrayBg grayBorder space-y-2"}>
+                    <Popover.Panel className={"mt-4 p-3 rounded-2xl reallyLightgreyBg grayBorder space-y-2"}>
                       <div className="md-round space-y-2">
                         {(props.currentUser.roles.includes('ROLE_ADMIN')) ? (
                           <>

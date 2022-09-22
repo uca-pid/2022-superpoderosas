@@ -1,6 +1,5 @@
 import "../NavBars/navBar.css"
 import "../../App.css"
-import "../../Pages/Registration-Autentification.js/IntroductionPage.css"
 import Buttons from "./Butttons"
 
 const Modal = (props) =>{
@@ -10,20 +9,20 @@ const Modal = (props) =>{
     return(
         <>
           <div
-            className="backdrop justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none"
+            className="darkGreyBg justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none"
           >
             <div className="relative w-auto my-6 mx-auto max-w-3xl p-10">
               {/*content*/}
               <div className="  space-y-9 p-12 rounded-lg relative flex flex-col w-auto bg-white outline-none focus:outline-none">
                 {/*header*/}
                 <div className="flex items-start justify-between rounded-t">
-                  <h3 className="modalTitle">
+                  <h3 className="font-Pop-SB text-[20pt] tracking-[0px] blackText">
                     {props.header}
                   </h3>
                 </div>
                 {/*body*/}
                 <div className="relative flex-auto">
-                  <p className="leading-relaxed modalText">
+                  <p className="leading-relaxed font-Pop-R text-[15pt] text-medium tracking-[0.2px] blackText">
                    {props.body}
                   </p>
                 </div>

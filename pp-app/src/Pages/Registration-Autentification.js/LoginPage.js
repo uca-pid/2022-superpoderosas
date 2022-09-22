@@ -1,7 +1,8 @@
 import "../../Fonts/Poppins-Bold.ttf"
 import NavBar from '../../Components/NavBars/NavBar'
 import LogInForm from "../../Components/Forms/Registration-AutentificationForms/LogInForm"
-import "../../App.css"
+import "../../App.css";
+import "./loginPage.css";
 import ImagenNinaSonriendo from "../../Components/Images/ImagenNinaSonriendo.jpg"
 import PictureWithText from "../../Components/Utiles/PictureWithText"
 import React from 'react';
@@ -9,7 +10,7 @@ import React from 'react';
 export default function LoginPage(props) {
   return (
     <>
-      <div className="mx-auto relative z-10 pb-8 sm:pb-16 md:pb-20 lg:pb-28 xl:pb-32 image h-screen bg-cover place-content-center">
+      <div className="mx-auto relative z-10 pb-8 sm:pb-16 md:pb-20 lg:pb-28 xl:pb-32 imageBg h-screen bg-cover place-content-center">
         <NavBar></NavBar>
         <LogInForm></LogInForm>
       </div>  

@@ -70,6 +70,10 @@
     color: #eb8301;
     transition: 0.5s;
 }
+.purpleTextHover:focus, .purpleTextHover:hover{
+    color: #6c3333;
+    transition: 0.5s;
+}
 .greenTextHover:focus, .greenTextHover:hover{
     color:#0F6938;
     transition: 0.5s;
@@ -113,11 +117,14 @@
 .lightGreyBg{
     background-color: #e7e6e6;
 }
-.lighterGrayBg{
+.lighterGreyBg{
     background-color: #e7e6e61c;
 }
-.grayBg{
+.greyBg{
     background-color: #e7e6e649;
+}
+.darkGreyBg{
+    background-color: rgba(0,0,0,0.3);
 }
 .yellowBg{
     background-color: #eb8301;
@@ -126,14 +133,14 @@
     transition: 0.7s;
     background-color: #eb8301;
 }
-.reallyLightGrayBg{
+.reallyLightgreyBg{
     background-color: #fdfcfc;;
 }
 .greenBgHover:hover, .greenBgHover:focus{
     transition: 0.7s;
     background-color: #0F6938;
 }
-.lightGrayBgTranslucentHover:focus, .lightGrayBgTranslucentHover:hover {
+.lightgreyBgTranslucentHover:focus, .lightgreyBgTranslucentHover:hover {
     background-color:  #f3f1f1;
 }
 
