@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react"
 import "../NavBars/navBar.css";
 import "../../App.css"
 
@@ -47,9 +47,22 @@ const ProfileNavBarButton = ({ text, onClick}) => {
   )
 }
 
+const Switch = ({ text1, text2}) => {
+  const [button1Active, SetButton1Active] = useState(true);
+  return (
+    <>   
+             <div className="w-full flex flex-row font-Pop-SB text-[23px]">
+                    <button className={`basis-1/2 p-4 border-[#eb8301] border-4 rounded-l-lg ${(button1Active ? 'text-white yellowBg' : 'yellowText')}`} onClick={()=>SetButton1Active(true)}>{text1}</button>
+                    <button  className={`basis-1/2 p-4 border-[#eb8301] border-4 rounded-r-lg ${(!button1Active ? 'text-white yellowBg' : 'yellowText')}`} onClick={()=>SetButton1Active(false)}>{text2}</button>
+                </div>
+    </> 
+)
+}
+
 const Buttons = {
   SolidGreenButton,
   SolidWhiteButton,
-  ProfileNavBarButton
+  ProfileNavBarButton,
+  Switch,
 }
 export default Buttons;

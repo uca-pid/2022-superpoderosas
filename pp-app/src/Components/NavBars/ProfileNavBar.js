@@ -19,8 +19,9 @@ const navigation = [
 ]
 
 const userNavigation =[
-    { name: 'Mi Cuenta' },
-    { name: 'Mi Impacto'},
+    { name: 'Mi Cuenta', path:"/profile"},
+    { name: 'Mi Impacto', path: "/profile"},
+    { name: "Donar", path:"/donar"},
 ]
 
 const adminNavigation =[
@@ -87,9 +88,9 @@ export default function ProfileNavBar(props) {
                         ) : (
                           <>
                           {userNavigation.map((item) => (
-                            <div className='z-50 relative font-Pop-M uppercase darkGrayText font-medium tracking-[0.5px] grayBottomBorderfont-Pop-M uppercase darkGrayText font-medium tracking-[0.5px] grayBottomBorder block px-1 py-2 text-[12pt] duration-300 hover:text-[13pt] focus:text-[13pt]'>
+                            <button onClick={()=>navigate(item.path)} className='w-full text-left z-50 relative font-Pop-M uppercase darkGrayText font-medium tracking-[0.5px] grayBottomBorderfont-Pop-M uppercase darkGrayText font-medium tracking-[0.5px] grayBottomBorder block px-1 py-2 text-[12pt] duration-300 hover:text-[13pt] focus:text-[13pt]'>
                               {item.name}
-                            </div>
+                            </button>
                             ))}
                             </>
                         )}

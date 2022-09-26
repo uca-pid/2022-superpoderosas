@@ -5,6 +5,7 @@ import PasswordResetPage from './Pages/ChangeViaMailPasswordPages/PasswordResetP
 import React from "react";
 import { Routes, Route } from "react-router-dom";
 import RegistrationPage from './Pages/Registration-Autentification.js/RegistrationPage';
+import DonarPage from './Pages/Donations/Donar';
 
 export default function App() {
 /*   const [showAdminBoard, setShowAdminBoard] = useState(false); //nos va a permitir mostrar la pagina que corresp a usuario o a admin
@@ -36,6 +37,7 @@ export default function App() {
           <Route exact path={"/login"} element={<LoginPage />} />
           <Route exact path={"/signup"} element={<RegistrationPage/>} />
           <Route exact path="/profile" element={<Profile />} />
+          <Route exact path="/donar" element={<DonarPage/>} />
           <Route exact path="/ChangePasswordPage" element={<ChangePasswordPage />} />
           <Route exact path="/resetPassword/:token" element={<PasswordResetPage />} />
         </Routes> 
