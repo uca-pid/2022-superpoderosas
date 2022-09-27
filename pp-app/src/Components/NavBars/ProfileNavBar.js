@@ -19,8 +19,7 @@ const navigation = [
 ]
 
 const userNavigation =[
-    { name: 'Mi Cuenta', path:"/profile"},
-    { name: 'Mi Impacto', path: "/profile"},
+    { name: 'Ajustes', path: "/profile"},
     { name: "Donar", path:"/donar"},
 ]
 
