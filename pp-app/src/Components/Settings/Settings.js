@@ -39,19 +39,24 @@ const Settings = () => {
                 );})} 
                 </div>
             </div>
-            <div className="lg:basis-1/2 darkGrayBorder rounded-lg h-fit lg:mb-0">
-                <div className="greyBg darkGrayBottomBorder p-7 blackText font-Pop-M uppercase text-lg md:text-xl tracking-wider font-medium">Modificar Cuenta</div>
-                    {!requestToChangePassword ? (
-                        <div className="p-11 blackText flex flex-rows justify-between">
-                            <div className="font-Pop-R text-lg md:text-xl blackText">Contraseña</div>
-                            <button onClick={onOpenChangePasswordForm} className="font-Pop-R font-semibold yellowTextHover greenText uppercase text-base text-end md:text-lg">Modificar Contraseña</button>
-                        </div>
-                    ): (
-                        <>
-                            <ChangePasswordFromProfileForm onClose={onCloseChangePasswordForm}></ChangePasswordFromProfileForm>
-                        </>
-                    )}
-            </div>    
+            <div className="flex flex-col space-y-10">
+                <div className="lg:basis-1/2 darkGrayBorder rounded-lg h-fit">
+                    <div className="greyBg darkGrayBottomBorder p-7 blackText font-Pop-M uppercase text-lg md:text-xl tracking-wider font-medium">Modificar Cuenta</div>
+                        {!requestToChangePassword ? (
+                            <div className="p-11 blackText flex flex-row space-x-2 justify-between">
+                                <div className="font-Pop-R text-lg md:text-xl blackText">Contraseña</div>
+                                <button onClick={onOpenChangePasswordForm} className="font-Pop-R font-semibold yellowTextHover greenText uppercase text-base text-end md:text-lg">Modificar Contraseña</button>
+                            </div>
+                        ): (
+                            <>
+                                <ChangePasswordFromProfileForm onClose={onCloseChangePasswordForm}></ChangePasswordFromProfileForm>
+                            </>
+                        )}
+                </div> 
+                <div className="lg:basis-1/2 darkGrayBorder rounded-lg h-fit lg:mb-0">
+                    <div className="greyBg darkGrayBottomBorder p-7 blackText font-Pop-M uppercase text-lg md:text-xl tracking-wider font-medium">Modificar donación mensual</div>
+                </div>   
+            </div> 
         </div> 
     </div>  
     </>
