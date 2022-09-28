@@ -48,7 +48,11 @@ const ChangeDonationFromProfileForm = (props) =>{
                   />   
                 </div>
                 <div className="flex flex-col space-x-4">   
-                    <Select options={frecuencyOptions} />
+                    <Select className="relative bg-transparent h-12 block w-full py-2 text-gray-900 placeholder-gray-600 focus:z-10 font-Pop-R tracking-[0.5px] text-[12pt] focus:outline-none greenBorderWhenFocus form-control" 
+                        options={frecuencyOptions}
+                        value={frecuency} 
+                        placeholder="Seleccione la frecuencia de pago"
+                        onChange={onChangeFrecuency}/>
                 </div>
                 <div className="flex flex-col space-x-4"> 
                   <Input
