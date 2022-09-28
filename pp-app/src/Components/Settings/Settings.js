@@ -39,19 +39,33 @@ const Settings = () => {
                 );})} 
                 </div>
             </div>
-            <div className="lg:basis-1/2 darkGrayBorder rounded-lg h-fit lg:mb-0">
-                <div className="greyBg darkGrayBottomBorder p-7 blackText font-Pop-M uppercase text-lg md:text-xl tracking-wider font-medium">Modificar Cuenta</div>
-                    {!requestToChangePassword ? (
-                        <div className="p-11 blackText flex flex-rows justify-between">
-                            <div className="font-Pop-R text-lg md:text-xl blackText">Contraseña</div>
-                            <button onClick={onOpenChangePasswordForm} className="font-Pop-R font-semibold yellowTextHover greenText uppercase text-base text-end md:text-lg">Modificar Contraseña</button>
+            <div className="flex flex-col space-y-10">
+                <div className="lg:basis-1/2 darkGrayBorder rounded-lg h-fit">
+                    <div className="greyBg darkGrayBottomBorder p-7 blackText font-Pop-M uppercase text-lg md:text-xl tracking-wider font-medium">Modificar Cuenta</div>
+                        {!requestToChangePassword ? (
+                            <div className="p-11 blackText flex flex-row space-x-2 justify-between">
+                                <div className="font-Pop-R text-lg md:text-xl blackText">Contraseña</div>
+                                <button onClick={onOpenChangePasswordForm} className="font-Pop-R font-semibold yellowTextHover greenText uppercase text-base text-end md:text-lg">Modificar Contraseña</button>
+                            </div>
+                        ): (
+                            <>
+                                <ChangePasswordFromProfileForm onClose={onCloseChangePasswordForm}></ChangePasswordFromProfileForm>
+                            </>
+                        )}
+                </div> 
+                <div className="lg:basis-1/2 darkGrayBorder rounded-lg h-fit lg:mb-0">
+                    <div className="greyBg darkGrayBottomBorder p-7 blackText font-Pop-M uppercase text-lg md:text-xl tracking-wider font-medium">Modificar donación mensual</div>
+                    <div className="p-7 space-y-5 md:space-y-6 lg:space-y-10 ">
+                        <div className="blackText flex flex-col space-y-2 lg:space-y-3">
+                            <div className="tracking-wide font-Pop-M font-medium  uppercase blackText font-bold">monto</div>
+                            <div className="font-Pop-R text-lg md:text-xl">Obtener del bacK</div>
+                            <div className="tracking-wide font-Pop-M font-medium  uppercase blackText font-bold">Frecuencia</div>
+                            <div className="font-Pop-R text-lg md:text-xl">1 vez al mes</div>
+                            <button className="font-Pop-R font-semibold yellowTextHover greenText uppercase md:text-lg">Modificar donación</button>
                         </div>
-                    ): (
-                        <>
-                            <ChangePasswordFromProfileForm onClose={onCloseChangePasswordForm}></ChangePasswordFromProfileForm>
-                        </>
-                    )}
-            </div>    
+                    </div>
+                </div>   
+            </div> 
         </div> 
     </div>  
     </>
