@@ -2,13 +2,17 @@ import React, { useState } from "react";
 import "../../App.css"
 import AuthService from "../../services/auth.service";
 import ChangePasswordFromProfileForm from "../Forms/PasswordModificationForms/PasswordModificationsViaSettings/ChangePasswordFromProfileForm";
+import ChangeDonationFromProfileForm from "../Forms/DonationModification/ChangeDonarionFromProfileForm";
 
 const Settings = () => {
   const [requestToChangePassword, setRequestToChangePassword] = useState(false);
+  const [requestToChangeDonation, setRequestToChangeDonation] = useState(false);
   const currentUser = AuthService.getCurrentUser();
   const userData = [{title: "Nombre", information: currentUser.name+' '+currentUser.lastname},{title:"Email", information:currentUser.email}];
   const onOpenChangePasswordForm = () => setRequestToChangePassword(true);
   const onCloseChangePasswordForm = () => setRequestToChangePassword(false);
+  const onOpenChangeDonationForm = () => setRequestToChangeDonation(true);
+  const onCloseChangeDonationForm = () => setRequestToChangeDonation(false);
 
   return (
     <>
@@ -55,15 +59,22 @@ const Settings = () => {
                 </div> 
                 <div className="lg:basis-1/2 darkGrayBorder rounded-lg h-fit lg:mb-0">
                     <div className="greyBg darkGrayBottomBorder p-7 blackText font-Pop-M uppercase text-lg md:text-xl tracking-wider font-medium">Modificar donación mensual</div>
+                    {!requestToChangeDonation ? (
                     <div className="p-7 space-y-5 md:space-y-6 lg:space-y-10 ">
                         <div className="blackText flex flex-col space-y-2 lg:space-y-3">
-                            <div className="tracking-wide font-Pop-M font-medium  uppercase blackText font-bold">monto</div>
-                            <div className="font-Pop-R text-lg md:text-xl">Obtener del bacK</div>
-                            <div className="tracking-wide font-Pop-M font-medium  uppercase blackText font-bold">Frecuencia</div>
-                            <div className="font-Pop-R text-lg md:text-xl">1 vez al mes</div>
-                            <button className="font-Pop-R font-semibold yellowTextHover greenText uppercase md:text-lg">Modificar donación</button>
+                        <div className="tracking-wide font-Pop-M font-medium  uppercase blackText font-bold">monto</div>
+                        <div className="font-Pop-R text-lg md:text-xl">Obtener del bacK</div>
+                        <div className="tracking-wide font-Pop-M font-medium  uppercase blackText font-bold">Frecuencia</div>
+                        <div className="font-Pop-R text-lg md:text-xl">1 vez al mes</div>
+                        <button onClick={onOpenChangeDonationForm} className="font-Pop-R font-semibold yellowTextHover greenText uppercase md:text-lg">Modificar donación</button>
                         </div>
                     </div>
+                    ):(
+                        <>
+                        <ChangeDonationFromProfileForm onClose={onCloseChangeDonationForm}></ChangeDonationFromProfileForm>
+                        </>
+                    )}
+                    
                 </div>   
             </div> 
         </div> 
