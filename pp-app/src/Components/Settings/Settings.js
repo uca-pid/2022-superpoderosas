@@ -43,8 +43,8 @@ const Settings = () => {
                 );})} 
                 </div>
             </div>
-            <div className="flex flex-col space-y-10">
-                <div className="lg:basis-1/2 darkGrayBorder rounded-lg h-fit">
+            <div className="lg:basis-1/2  flex flex-col space-y-10">
+                <div className="darkGrayBorder rounded-lg h-fit">
                     <div className="greyBg darkGrayBottomBorder p-7 blackText font-Pop-M uppercase text-lg md:text-xl tracking-wider font-medium">Modificar Cuenta</div>
                         {!requestToChangePassword ? (
                             <div className="p-11 blackText flex flex-row space-x-2 justify-between">
