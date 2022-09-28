@@ -83,6 +83,9 @@
 .whiteBorder{
     border: 2.5px solid #FFFFFF !important;
 }
+.purpleBorder{
+    border: 3px solid #6c3333 !important;
+}
 
 .greenBorderWhenFocus:focus{
     border-color: #0F6938;
@@ -113,6 +116,10 @@
 }
 .purpleBg{
     background-color: #6c3333;
+}
+.purpleBgHover:hover, .purpleBgHover:focus{
+    background-color: #6c333349;
+    transition: 2s;
 }
 .lightGreyBg{
     background-color: #e7e6e6;
