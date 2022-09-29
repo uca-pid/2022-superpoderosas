@@ -10,7 +10,7 @@ export function AmountContextProvider(props) {
   const [selectedAmount, setSelectedAmount] = useState()
 
   useEffect(() => {
-    setSelectedAmount(amounts[2])
+    setSelectedAmount(0)
     setAmounts(amountsValues[selectedFrequency])
   }, [amounts, selectedFrequency])
 

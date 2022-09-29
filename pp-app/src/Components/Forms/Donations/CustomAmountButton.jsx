@@ -1,10 +1,17 @@
+import { useFrequency } from  '../../../Context/FrequencyContext'
 const CustomAmountButton = ({ onClick }) => {
+  const { selectedFrequency } = useFrequency()
   return (
-    <div className='w-2/3 p-1'>
+    <div className='col-span-2 p-1'>
       <button
         onClick={onClick}
-        className='rounded text-center p-3 flex-auto w-full h-12 w-6/8 border m-1 hover:bg-gray-100 bg-gray-200 border-gray-400 text-gray-400'>
-        Otro monto
+        className='text-center space-x-3 justify-center flex-auto flex flex-rows w-full h-auto m-1 purpleBgHover purpleBorder border-gray-400 purpleText rounded-lg uppercase font-Pop-M py-4 px-6'>
+          <div className='text-xl'>
+          $
+          </div>
+          <div className='text-lg'>
+            {(selectedFrequency === 1)  ? "ARS" : "ARS/MES"}
+          </div>
       </button>
     </div>
   )

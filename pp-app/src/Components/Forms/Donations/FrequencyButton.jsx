@@ -8,7 +8,7 @@ const FrequencyButton = ({ label, value, position }) => {
   return (
     <button
       onClick={changeFrequency}
-      className={`basis-1/2 p-4 border-[#eb8301] border-4 ${(position === "left") ? 'rounded-l-lg' : 'rounded-r-lg'} ${((selectedFrequency === value) ? 'text-white yellowBg' : 'yellowText')}`}>
+      className={`basis-1/2 p-2 border-[#eb8301] border-4 ${(position === "left") ? 'rounded-l-lg' : 'rounded-r-lg'} ${((selectedFrequency === value) ? 'text-white yellowBg' : 'yellowText')}`}>
         {label}
     </button>
   )

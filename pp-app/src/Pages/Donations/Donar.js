@@ -17,15 +17,19 @@ const DonarPage = () => {
       <ProfileNavBar currentUser={currentUser}></ProfileNavBar>
         {currentUser ? (
         <div className="min-h-screen greenBg mt-20 p-20 flex flex-row">
-            <div className="bg-white rounded-2xl lg:basis-2/5 p-16">
+            <div className="bg-white h-fit rounded-xl lg:basis-2/5 p-20 space-y-3">
                 <FrequencyContextProvider>
                     <FrequencySection></FrequencySection>
-                    <StepTitle titleText={step === 0 ? 'Únase a nosotros para combatir la desnutrición infantil' : 'Donando $3000 por mes'}/>
+                    <StepTitle titleText={step === 0 ? 'Únase a la lucha contra la desnutrición infantil' : ""}/>           
+                    <FirstStep/>
+                    {
+                    //Por ahora solo hay un paso al ser la donación un MONTO
+                    /* <StepTitle titleText={step === 0 ? 'Únase a nosotros para combatir la desnutrición infantil' : 'Donando $3000 por mes'}/>
                     {
                     step === 0 ?
                     <FirstStep setStep={setStep}/>
-                    : <SecondStep/>
-                    }
+                    : <SecondStep/> 
+                    }*/}
                 </FrequencyContextProvider>
             </div>
         </div>
