@@ -4,6 +4,8 @@ import StartDonation from './StartDonation'
 import DonationImpactMessage from './DonationImpactMessage'
 import DashedLine from '../../Utiles/DashedLine'
 import { useFrequency } from  '../../../Context/FrequencyContext'
+import SelectSubscriptionPeriod from './SelectSubscriptionPeriod'
+import { SubscriptionContextProvider } from '../../../Context/SubscriptionContext'
 
 const FirstStep = ({ setStep }) => {
   const { selectedFrequency } = useFrequency()
@@ -16,7 +18,11 @@ const FirstStep = ({ setStep }) => {
       :
       <>
       <DashedLine></DashedLine>
-      <div> Poner Campos para seleccionar que día del mes, cada cuanto y un checkbox si arranca a pagar este mes</div>
+      <div>
+        <SubscriptionContextProvider>
+        <SelectSubscriptionPeriod></SelectSubscriptionPeriod>
+        </SubscriptionContextProvider> 
+      </div>
       </>
       }
       <DashedLine></DashedLine>

@@ -2,10 +2,10 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
-import { Auth0Provider } from "@auth0/auth0-react";
+//import { Auth0Provider } from "@auth0/auth0-react";
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from "react-router-dom";
-import * as serviceWorker from "./serviceWorker";
+//import * as serviceWorker from "./serviceWorker";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

@@ -9,7 +9,7 @@ const ChangeDonationFromProfileForm = (props) =>{
     const [frecuency, setFrecuency] = useState("");
     const [paymentDay, setPaymentDay] = useState("");
     const frecuencyOptions = [
-        { value: '1', label: '1 vez al mes' },
+        { value: '1', label: '1 vez al mes'},
         { value: '2', label: '1 vez cada 3 meses'},
         { value: '3', label: '1 vez cada 6 meses'}
       ]

@@ -4,13 +4,12 @@ import AuthService from "../../services/auth.service";
 import ProfileNavBar from "../../Components/NavBars/ProfileNavBar";
 import FirstStep from '../../Components/Forms/Donations/FirstStep';
 import FrequencySection from '../../Components/Forms/Donations/FrequencySection';
-import SecondStep from '../../Components/Forms/Donations/SecondStep';
 import StepTitle from '../../Components/Forms/Donations/StepTitle';
 import { FrequencyContextProvider } from '../../Context/FrequencyContext';
 
 const DonarPage = () => {
   const currentUser = AuthService.getCurrentUser();
-  const [step, setStep] = useState(0);
+  const [step] = useState(0);
   return (
     <>
       <div className="mx-auto relative z-10 pb-8 sm:pb-16 md:pb-20 lg:pb-28 xl:pb-32 h-screen bg-cover place-content-center">
