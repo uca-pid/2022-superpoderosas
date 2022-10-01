@@ -61,7 +61,6 @@ const ChangeDonationFromProfileForm = (props) =>{
                 <div className="flex flex-col space-x-4"> 
                   <LocalizationProvider dateAdapter={AdapterDayjs}>
                     <DatePicker
-                      className="font-Pop-R tracking-[0.5px] text-[12pt] text-green-900"
                       label="Fecha de pago"
                       value={paymentDay}
                       onChange={(newPaymentDay) => {
