@@ -2,12 +2,16 @@ import React, { useState } from "react";
 import Form from "react-validation/build/form";
 import Input from "react-validation/build/input";
 import Select from 'react-select'
+import TextField from '@mui/material/TextField';
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
+import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
+import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import "../../../App.css"
 
 const ChangeDonationFromProfileForm = (props) =>{
     const [monto, setMonto] = useState("");
     const [frecuency, setFrecuency] = useState("");
-    const [paymentDay, setPaymentDay] = useState("");
+    const [paymentDay, setPaymentDay] = useState(null);
     const frecuencyOptions = [
         { value: '1', label: '1 vez al mes'},
         { value: '2', label: '1 vez cada 3 meses'},
@@ -55,14 +59,17 @@ const ChangeDonationFromProfileForm = (props) =>{
                         onChange={onChangeFrecuency}/>
                 </div>
                 <div className="flex flex-col space-x-4"> 
-                  <Input
-                    type="text"
-                    className="relative bg-transparent h-12 block w-full rounded-xl border border-gray-300 px-6 py-2 text-gray-900 placeholder-gray-600 focus:z-10 font-Pop-R tracking-[0.5px] text-[12pt] focus:outline-none greenBorderWhenFocus form-control"
-                    name="paymentDay"
-                    value={paymentDay}
-                    placeholder="Ingrese nuevo día de cobro"
-                    onChange={onChangePaymentDay}
-                  />
+                  <LocalizationProvider dateAdapter={AdapterDayjs}>
+                    <DatePicker
+                      className="font-Pop-R tracking-[0.5px] text-[12pt] text-green-900"
+                      label="Fecha de pago"
+                      value={paymentDay}
+                      onChange={(newPaymentDay) => {
+                        setPaymentDay(newPaymentDay);
+                      }}
+                      renderInput={(params) => <TextField {...params} />}
+                    />
+                  </LocalizationProvider>
                 </div>
             </div>
             <div>
