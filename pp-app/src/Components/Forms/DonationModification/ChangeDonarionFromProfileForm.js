@@ -1,81 +1,41 @@
-import React, { useState } from "react";
-import Form from "react-validation/build/form";
-import Input from "react-validation/build/input";
-import Select from 'react-select'
-import TextField from '@mui/material/TextField';
-import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
-import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
-import { DatePicker } from '@mui/x-date-pickers/DatePicker';
+import React from "react";
 import "../../../App.css"
+import { AmountContextProvider } from  '../../../Context/AmountContext'
+import Amounts from './Amounts'
+import DashedLine from '../../Utiles/DashedLine'
+import SelectSubscriptionPeriod from './SelectSubscriptionPeriod'
+import SelectPaymentDay from './SelectPaymentDay'
+import { FrequencyContextProvider } from "../../../Context/FrequencyContext";
+import { SubscriptionContextProvider } from "../../../Context/SubscriptionContext";
+import { useSubModContext } from "../../../Context/SubscriptionModificationContext";
+import Buttons from "../../Utiles/Butttons";
 
 const ChangeDonationFromProfileForm = (props) =>{
-    const [monto, setMonto] = useState("");
-    const [frecuency, setFrecuency] = useState("");
-    const [paymentDay, setPaymentDay] = useState(null);
-    const frecuencyOptions = [
-        { value: '1', label: '1 vez al mes'},
-        { value: '2', label: '1 vez cada 3 meses'},
-        { value: '3', label: '1 vez cada 6 meses'}
-      ]
-
-    function closeForm(event) {
-        props.onClose();
-    }
-
-    const onChangeMonto = (e) => {
-        const monto = e.target.value;
-        setMonto(monto);
-    };
-    const onChangeFrecuency = (e) => {
-        const frecuency = e.target.value;
-        setFrecuency(frecuency);
-    };
-    const onChangePaymentDay = (e) => {
-        const paymentDay = e.target.value;
-        setPaymentDay(paymentDay);
-    };
- 
-    return(
-        <Form className="p-11 blackText flex flex-col space-y-5">
-            
-            <div className="tracking-wide font-Pop-M font-medium uppercase blackText font-bold">Cambiar contraseña </div>
-
-              <div className="space-y-4 rounded-md mb-[-5px] flex-rows">
-                <div className="flex flex-col space-x-4">
-                  <Input
-                    type="text"
-                    className="relative bg-transparent h-12 block w-full rounded-xl border border-gray-300 px-6 py-2 text-gray-900 placeholder-gray-600 focus:z-10 font-Pop-R tracking-[0.5px] text-[12pt] focus:outline-none greenBorderWhenFocus form-control"
-                    name="monto"
-                    value={monto}
-                    placeholder="Ingrese nuevo monto"
-                    onChange={onChangeMonto}
-                  />   
-                </div>
-                <div className="flex flex-col space-x-4">   
-                    <Select className="relative bg-transparent h-12 block w-full py-2 text-gray-900 placeholder-gray-600 focus:z-10 font-Pop-R tracking-[0.5px] text-[12pt] focus:outline-none greenBorderWhenFocus form-control" 
-                        options={frecuencyOptions}
-                        value={frecuency} 
-                        placeholder="Seleccione la frecuencia de pago"
-                        onChange={onChangeFrecuency}/>
-                </div>
-                <div className="flex flex-col space-x-4"> 
-                  <LocalizationProvider dateAdapter={AdapterDayjs}>
-                    <DatePicker
-                      label="Fecha de pago"
-                      value={paymentDay}
-                      onChange={(newPaymentDay) => {
-                        setPaymentDay(newPaymentDay);
-                      }}
-                      renderInput={(params) => <TextField {...params} />}
-                    />
-                  </LocalizationProvider>
-                </div>
-            </div>
-            <div>
-                <button onClick={closeForm} className="mx-3 py-3 h-fit px-7 greyBg rounded-xl tracking-widest font-Pop-M uppercase font-medium text-gray-500 duration-700 hover:bg-gray-300 focus:bg-gray-300  hover:text-white focus:text-white text-lg">Cancelar</button>
-            </div>
-        </Form>
-    );
+  const {userWantsToModifySubs, setIfUserWantsToModifySubs} = useSubModContext()
+  return(
+    <div className="p-11">
+    <FrequencyContextProvider>
+    <AmountContextProvider>
+    <div className='flex flex-col space-y-6'>
+      <Amounts></Amounts>
+      <DashedLine></DashedLine>
+      <div className='space-y-6'>
+        <SubscriptionContextProvider>
+        <SelectSubscriptionPeriod></SelectSubscriptionPeriod>
+        <SelectPaymentDay></SelectPaymentDay>
+        </SubscriptionContextProvider> 
+      </div>
+      {userWantsToModifySubs ?
+        <Buttons.IndicationButton text={"Cancelar"} onClick={()=>setIfUserWantsToModifySubs(false)} customStyle={" text-gray-500 greyBg w-full text-gray-500 hover:bg-gray-300 focus:bg-gray-300 "}></Buttons.IndicationButton>
+      :
+        <Buttons.IndicationButton  text={"Modificar Donación"} customStyle={"w-full text-white greenBg yellowBgHover "} onClick={()=>setIfUserWantsToModifySubs(true)}></Buttons.IndicationButton>
+      }
+     
+    </div>
+    </AmountContextProvider>
+    </FrequencyContextProvider>
+    </div>
+  );
 }
 
 export default ChangeDonationFromProfileForm;

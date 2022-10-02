@@ -1,9 +1,12 @@
 import subscriptionPeriod from "../../../Values/subscriptionPeriod"
 import {useSubscriptionPeriod} from  '../../../Context/SubscriptionContext'
 import Select from 'react-select';
+import { useSubModContext } from "../../../Context/SubscriptionModificationContext";
 
 const SelectSubscriptionPeriod = ( ) => {
+  //EL VALOR POR DEFAULT DEBERÍA DE VENIR DEL BACKEND
   const { subsPeriod, setSubsPeriod} = useSubscriptionPeriod()
+  const {userWantsToModifySubs} = useSubModContext()
   const onChangeSubsPeriod = (e) => {
     setSubsPeriod(e);
   };
@@ -42,6 +45,8 @@ const SelectSubscriptionPeriod = ( ) => {
   };
   
     return (
+      <>
+      {userWantsToModifySubs ? 
       <div className="space-y-4">
       <div className="font-Pop-R text-lg text-gray-400">¿Cada cuanto desea donar?</div>
         <div className="flex flex-row">
@@ -53,6 +58,13 @@ const SelectSubscriptionPeriod = ( ) => {
                         isSearchable={false}/>
         </div>
       </div>
+      :
+      <div className="flex flex-row space-x-6">
+         <div className="font-Pop-R text-lg text-gray-400" >Usted realiza una donación: </div> 
+         <div className="font-Pop-M text-xl purpleText" >{subsPeriod.label}</div>
+      </div>
+      }
+      </>
     )
   }
   

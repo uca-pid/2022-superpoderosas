@@ -1,20 +1,24 @@
-import React, { useState, useEffect, useMemo } from 'react'
+import React, { useState, useMemo, useEffect } from 'react'
 import subscriptionPeriod from '../Values/subscriptionPeriod'
 const SubscriptionContext = React.createContext()
 
 export function SubscriptionContextProvider(props) {
-  const [subsPeriod, setSubsPeriod] = useState(subscriptionPeriod[1])
+  const [subsPeriod, setSubsPeriod] = useState('')
+  const [paymentDay, setPaymentDay] = useState(null)
 
   useEffect(() => {
-    setSubsPeriod(subscriptionPeriod[1])
-  }, [subsPeriod])
+    setSubsPeriod(subscriptionPeriod[0]);
+    setPaymentDay(null);
+  }, [])
 
   const value = useMemo(() => {
     return {
       subsPeriod,
       setSubsPeriod,
+      paymentDay, 
+      setPaymentDay
     }
-  }, [subsPeriod])
+  }, [subsPeriod, paymentDay])
 
   return (
     <SubscriptionContext.Provider value={value}>
