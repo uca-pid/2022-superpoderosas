@@ -15,8 +15,8 @@ const DonarPage = () => {
       <div className="mx-auto relative z-10 pb-8 sm:pb-16 md:pb-20 lg:pb-28 xl:pb-32 h-screen bg-cover place-content-center">
       <ProfileNavBar currentUser={currentUser}></ProfileNavBar>
         {currentUser ? (
-        <div className="min-h-screen greenBg mt-20 p-20 flex flex-row">
-            <div className="bg-white h-fit rounded-xl lg:basis-2/5 p-20 space-y-3">
+        <div className="min-h-screen min-w-screen greenBg mt-20 px-5 py-16 md:p-16 md:p-20 flex flex-row justify-cente">
+            <div className="bg-white h-fit w-screen rounded-xl lg:basis-2/5 p-10 md:p-16 lg:p-20 space-y-3">
                 <FrequencyContextProvider>
                     <FrequencySection></FrequencySection>
                     <StepTitle titleText={step === 0 ? 'Únase a la lucha contra la desnutrición infantil' : ""}/>           

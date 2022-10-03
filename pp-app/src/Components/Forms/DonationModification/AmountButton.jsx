@@ -13,7 +13,7 @@ const AmountButton = ({ amount, selected }) => {
   return (
     <div className='m-1'>
       <button className={`space-x-3 justify-center flex flex-row rounded-3xl uppercase font-Pop-M py-1 w-full h-auto border m-1 ${getSelectedColors(selected)}`} onClick={handleClick}>
-        <div className='text-lg'>
+        <div className='text-base md:text-lg lg:text-lg'>
           ${amount}
         </div>
       </button>

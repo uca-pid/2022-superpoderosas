@@ -79,7 +79,7 @@ export default function ProfileNavBar(props) {
                         {(props.currentUser.roles.includes('ROLE_ADMIN')) ? (
                           <>
                           {adminNavigation.map((item) => (
-                            <div className='z-50 relative font-Pop-M uppercase darkGrayText font-medium tracking-[0.5px] grayBottomBorder block px-1 py-2 text-[12pt] duration-300 hover:text-[13pt] focus:text-[13pt]'>
+                            <div key={item.name} className='z-50 relative font-Pop-M uppercase darkGrayText font-medium tracking-[0.5px] grayBottomBorder block px-1 py-2 text-[12pt] duration-300 hover:text-[13pt] focus:text-[13pt]'>
                               {item.name}
                             </div>
                             ))}

@@ -1,21 +1,24 @@
 import { useFrequency } from  '../../../Context/FrequencyContext'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useAmount } from '../../../Context/AmountContext'
 import { useSubscriptionPeriod } from '../../../Context/SubscriptionContext'
 
 const StartDonation = ({ setStep }) => {
   const { selectedFrequency } = useFrequency();
   const {selectedAmount} = useAmount();
-  const { paymentDay} = useSubscriptionPeriod;
+  const { paymentDay} = useSubscriptionPeriod();
   const [message, setMessage] = useState("");
 
-  const isFormValid = () =>{
+  useEffect(() => {
+    setMessage("");
+  }, [selectedFrequency])
 
+  const isFormValid = () =>{
     if (selectedFrequency === 2 && (paymentDay===null || paymentDay=== undefined)){
       setMessage("Para realizar una donación frecuentemente debe la fecha de pago");
       return false
     }
-    if (selectedAmount <= 0 || selectedAmount===undefined){
+    if (selectedAmount < 1 || selectedAmount===undefined){
       setMessage("El monto ingresado a donar debe de ser al menos $1");
       return false
     }
@@ -47,7 +50,7 @@ const StartDonation = ({ setStep }) => {
   return (
     <>
       <button onClick={submitDonation}
-        className="rounded-xl p-4 h-auto w-full text-center greenBg yellowBgHover font-Pop-SB text-2xl text-white">
+        className="rounded-xl p-4 h-auto w-full text-center greenBg yellowBgHover font-Pop-SB text-xl md:text-2xl text-white">
         {(selectedFrequency === 1)  ? "Donar" : "Donar Mensualmente"}
       </button>
        {message && (

@@ -36,7 +36,7 @@ const Settings = () => {
                 <div className="p-7 space-y-5 md:space-y-6 lg:space-y-10 ">
                 {userData.map((data) => {
                     return (
-                        <div className="blackText flex flex-col space-y-2 lg:space-y-3">
+                        <div key={data.title} className="blackText flex flex-col space-y-2 lg:space-y-3">
                             <div className="tracking-wide font-Pop-M font-medium  uppercase blackText font-bold">{data.title}</div>
                             <div className="font-Pop-R text-lg md:text-xl">{data.information}</div>
                         </div>

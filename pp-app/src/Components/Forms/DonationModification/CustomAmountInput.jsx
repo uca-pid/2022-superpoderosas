@@ -12,8 +12,8 @@ const CustomAmountInput = () => {
     setSelectedAmount(amount)
   }
   return (
-    <div className={`w-full px-7 block flex flex-row justify-around font-Pop-M purpleText rounded-md uppercase font-Pop-M h-auto py-1 focus:purpleBorder ${useSubModContext ? "border-2 border-gray-300":"border-1 border-gray-100"}`}>
-      <div className='self-center basis-1/8 text-xl'>
+    <div className={`inline-block w-full px-7 block flex flex-row justify-around font-Pop-M purpleText rounded-md uppercase h-auto py-2 md:py-1 focus:purpleBorder border-[1px] ${useSubModContext ? "border-gray-300":"border-gray-100"}`}>
+      <div className='self-center md:basis-1/8 text-sm md:text-xl lg:text-xl'>
           $
       </div>
       <input
@@ -22,9 +22,9 @@ const CustomAmountInput = () => {
         autoFocus
         onChange={onChange}
         value = {selectedAmount}
-        className='basis-3/4 self-center border-none focus:outline-none focus:border-transparent focus:ring-0 text-xl '>
+        className='shrink md:basis-3/4 self-center border-none focus:outline-none focus:border-transparent focus:ring-0 text-sm md:text-xl lg:text-xl '>
       </input>
-      <div className='self-center basis-1/8 text-xl text-end'>
+      <div className='self-center md:basis-1/8 text-sm md:text-xl lg:text-xl'>
           {(selectedFrequency === 1)  ? "ARS" : "ARS/MES"}
       </div>
     </div>

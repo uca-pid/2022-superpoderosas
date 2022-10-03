@@ -17,14 +17,14 @@ const SelectPaymentDay = ( ) => {
         :"¿Qué día quiere comenzar a donar?"}
       </div>
       <div className="flex flex-row">
-            <div className="basis-1/2"> 
+            <div className="md:basis-1/2"> 
                   <LocalizationProvider dateAdapter={AdapterDayjs}>
                     <DesktopDatePicker
                       inputFormat="MM/DD/YYYY"
                       disablePast
                       value={paymentDay}
                       onChange={(newPaymentDay) => {
-                        setPaymentDay(newPaymentDay)
+                        setPaymentDay(newPaymentDay);
                       }}
                       renderInput={(params) => 
                       <TextField {...params} className="text-3xl"

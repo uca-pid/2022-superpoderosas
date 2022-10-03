@@ -20,8 +20,8 @@ const SelectPaymentDay = ( ) => {
       : "Fecha del Próximo Pago"
       }
       </div>
-      <div className="flex flex-row">
-            <div className="basis-1/2"> 
+      <div className="md:flex md:flex-row">
+            <div className="md:basis-1/2"> 
                   <LocalizationProvider dateAdapter={AdapterDayjs}>
                     <DesktopDatePicker
                       disabled = {!userWantsToModifySubs}
@@ -32,7 +32,7 @@ const SelectPaymentDay = ( ) => {
                         setPaymentDay(newPaymentDay)
                       }}
                       renderInput={(params) => 
-                      <TextField {...params} className="text-3xl"
+                      <TextField {...params}
                         sx={{
                            '.MuiInputBase-input': {
                             padding: 2,
