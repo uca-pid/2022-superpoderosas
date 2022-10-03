@@ -2,12 +2,15 @@ import { useFrequency } from  '../../../Context/FrequencyContext'
 import { useState, useEffect } from 'react'
 import { useAmount } from '../../../Context/AmountContext'
 import { useSubscriptionPeriod } from '../../../Context/SubscriptionContext'
+import DonationService from '../../../services/donations.service'
+import AuthService from '../../../services/auth.service'
 
 const StartDonation = ({ setStep }) => {
   const { selectedFrequency } = useFrequency();
   const {selectedAmount} = useAmount();
-  const { paymentDay} = useSubscriptionPeriod();
+  const { paymentDay, subsPeriod} = useSubscriptionPeriod();
   const [message, setMessage] = useState("");
+  const currentUser = AuthService.getCurrentUser();
 
   useEffect(() => {
     setMessage("");
@@ -29,9 +32,10 @@ const StartDonation = ({ setStep }) => {
     e.preventDefault();
     setMessage("");
     if (isFormValid()) {
-      alert("se realizo la donación");
-      /*AuthService.login(email, password).then(
+      if(selectedFrequency === 2){
+      DonationService.generateSubscription(currentUser.id, selectedAmount, selectedFrequency, subsPeriod.value, null, paymentDay).then(
         () => {
+          alert("Se Creo la Subcripción")
           //navigate("a donde querramos mandar");
           //window.location.reload();
         },
@@ -43,10 +47,27 @@ const StartDonation = ({ setStep }) => {
             error.message ||
             error.toString();
           setMessage(resMessage);
+        })
         }
-      );*/
+        DonationService.generateTransaction(currentUser.id, selectedAmount, paymentDay, selectedFrequency).then(
+          () => {
+            alert("Se Creo la trasaccion")
+            //navigate("a donde querramos mandar");
+            //window.location.reload();
+          },
+          (error) => {
+            const resMessage =
+              (error.response &&
+                error.response.data &&
+                error.response.data.message) ||
+              error.message ||
+              error.toString();
+            setMessage(resMessage);
+          }
+      );
     } 
   };
+
   return (
     <>
       <button onClick={submitDonation}

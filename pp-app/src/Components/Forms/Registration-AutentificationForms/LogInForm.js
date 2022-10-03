@@ -9,6 +9,7 @@ import CheckButton from "react-validation/build/button";
 import AuthService from "../../../services/auth.service";
 import Input from "react-validation/build/input";
 import ValidationFunctions from "../../../functions/validations";
+//import { FaEye, FaEyeSlash } from "react-icons/fa";
 
 export default function Login(props) {
   const form = useRef();
@@ -16,6 +17,7 @@ export default function Login(props) {
   const [email, setMail] = useState("");
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
 
   const navigateToChangePassword = () => {
@@ -94,8 +96,9 @@ export default function Login(props) {
             <div className="space-y-3 rounded-md">       
             {inputs.map((input) => {
               return (
+                <>
                 <Input
-                  type={input.type}
+                  type={(input.type==="password" && !showPassword)? "password" : "text"}
                   className="relative bg-transparent h-12 block w-full rounded-xl border border-gray-300 px-6 py-2 text-gray-900 placeholder-gray-600 focus:z-10 font-Pop-R tracking-[0.5px] text-[12pt] focus:outline-none greenBorderWhenFocus form-control"
                   name={input.name}
                   value={input.value}
@@ -103,6 +106,11 @@ export default function Login(props) {
                   onChange={input.onChange}
                   validations={input.validations}
                 />
+{/*               /*(input.type === "password") ?
+                    (showPassword ? <FaEyeSlash></FaEyeSlash> : <FaEye></FaEye>) 
+                  :
+              null*/}
+                </>
               );})} 
             </div>
     
