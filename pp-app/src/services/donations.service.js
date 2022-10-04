@@ -9,7 +9,6 @@ const generateTransaction = (userId, amount, paymentDay, type) => {
   });
 };
 const generateSubscription = (userId, amount, type, frequency, lastPaymentDat, nextPaymentDay) => {
-  console.log(nextPaymentDay);
   return axios.post(API_URL + "createSubscription", {
     userId, 
     amount, 
