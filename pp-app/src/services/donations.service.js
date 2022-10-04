@@ -18,9 +18,19 @@ const generateSubscription = (userId, amount, type, frequency, lastPaymentDat, n
     nextPaymentDay
   });
 };
+const getSubscription = async (userId) => {
+  const response = await axios.post(API_URL + "getSubscription", {
+    userId,
+  });
+  if (response.data.id) {
+    console.log(response.data);
+  }
+  return response.data;
+}
 
 const DonationService = {
   generateTransaction,
   generateSubscription,
+  getSubscription
 }
 export default DonationService;

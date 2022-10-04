@@ -33,6 +33,7 @@ const StartDonation = ({ setStep }) => {
     setMessage("");
     if (isFormValid()) {
       if(selectedFrequency === 2){
+        //la subscripció no tiene un tipo, la trasacción unida a la subscripcion debería de tener un tipo?
       DonationService.generateSubscription(currentUser.id, selectedAmount, selectedFrequency, subsPeriod.value, null, paymentDay).then(
         () => {
           alert("Se Creo la Subcripción")

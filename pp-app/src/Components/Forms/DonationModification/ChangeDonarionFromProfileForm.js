@@ -9,11 +9,13 @@ import { FrequencyContextProvider } from "../../../Context/FrequencyContext";
 import { SubscriptionContextProvider } from "../../../Context/SubscriptionContext";
 import { useSubModContext } from "../../../Context/SubscriptionModificationContext";
 import Buttons from "../../Utiles/Butttons";
+import { CurrentUserContextProvider } from "../../../Context/CurrentUserContext";
 
 const ChangeDonationFromProfileForm = (props) =>{
   const {userWantsToModifySubs, setIfUserWantsToModifySubs} = useSubModContext()
   return(
     <div className="p-8 md:p-11 lg:p-11">
+    <CurrentUserContextProvider>
     <FrequencyContextProvider>
     <AmountContextProvider>
     <div className='flex flex-col space-y-8 md:space-y-6'>
@@ -37,6 +39,7 @@ const ChangeDonationFromProfileForm = (props) =>{
     </div>
     </AmountContextProvider>
     </FrequencyContextProvider>
+    </CurrentUserContextProvider>
     </div>
   );
 }
