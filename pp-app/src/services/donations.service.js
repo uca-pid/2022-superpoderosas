@@ -19,7 +19,7 @@ const generateSubscription = (userId, amount, type, frequency, lastPaymentDat, n
   });
 };
 const getSubscription = async (userId) => {
-  const response = await axios.get(API_URL + "getSubscription", {
+  const response = await axios.post(API_URL + "getSubscription", {
     userId,
   });
   if (response.data.id) {
