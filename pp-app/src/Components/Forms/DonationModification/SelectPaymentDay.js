@@ -1,15 +1,19 @@
-import React from "react"
+import React, {useEffect} from "react"
 import {useSubscriptionPeriod} from  '../../../Context/SubscriptionContext'
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider'
 import { DesktopDatePicker } from '@mui/x-date-pickers/DesktopDatePicker'
 import TextField from '@mui/material/TextField'
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs'
 import { useSubModContext } from "../../../Context/SubscriptionModificationContext"
+import { useCurrentUser } from "../../../Context/CurrentUserContext"
 
 const SelectPaymentDay = ( ) => {
   const { subsPeriod, paymentDay, setPaymentDay} = useSubscriptionPeriod()
   const {userWantsToModifySubs} = useSubModContext()
-  //EL VALOR POR DEFAULT DEBERÍA DE VENIR DEL BACKEND
+  const {subscriptionData} = useCurrentUser()
+  useEffect(() => {
+    setPaymentDay(subscriptionData.nextPaymentDate);
+  }, [subscriptionData, setPaymentDay])
     return (
       <div className="space-y-4">
       <div className="font-Pop-R text-lg text-gray-400">

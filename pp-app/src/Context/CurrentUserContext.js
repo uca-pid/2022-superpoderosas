@@ -10,7 +10,7 @@ export function CurrentUserContextProvider (props) {
   const [subscriptionData, setSubscriptionData] = useState(null);
   useEffect(() => {
     DonationService.getSubscription(currentUser.id).then(res=>{res? setSubscriptionData(res.data) : setSubscriptionData(null)});
-  }, [])
+  }, [currentUser.id])
 
   const value = useMemo(() => {
     return {
