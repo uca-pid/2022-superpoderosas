@@ -1,20 +1,23 @@
-import frequencyEnum from '../Values/frequency.enum'
 import React, { useState, useMemo } from 'react'
 import AuthService from '../services/auth.service'
 import DonationService from '../services/donations.service'
+import { useEffect } from 'react'
 
 const CurrentUserContext = React.createContext()
 
 export function CurrentUserContextProvider (props) {
-    const currentUser = AuthService.getCurrentUser();
-    const currentUserSubscription = DonationService.getSubscription(currentUser.id);
+  const currentUser = AuthService.getCurrentUser();
+  const [subscriptionData, setSubscriptionData] = useState(null);
+  useEffect(() => {
+    DonationService.getSubscription(currentUser.id).then(res=>{res? setSubscriptionData(res.data) : setSubscriptionData(null)});
+  }, [])
 
   const value = useMemo(() => {
     return {
         currentUser,
-        currentUserSubscription,
+        subscriptionData,
     }
-  }, [currentUser])
+  }, [currentUser, subscriptionData])
 
   return (
     <CurrentUserContext.Provider value={value}>

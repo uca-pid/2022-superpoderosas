@@ -2,14 +2,19 @@ import subscriptionPeriod from "../../../Values/subscriptionPeriod"
 import {useSubscriptionPeriod} from  '../../../Context/SubscriptionContext'
 import Select from 'react-select';
 import { useSubModContext } from "../../../Context/SubscriptionModificationContext";
+import { useEffect } from "react";
+import { useCurrentUser } from "../../../Context/CurrentUserContext";
 
 const SelectSubscriptionPeriod = ( ) => {
-  //EL VALOR POR DEFAULT DEBERÍA DE VENIR DEL BACKEND
   const { subsPeriod, setSubsPeriod} = useSubscriptionPeriod()
   const {userWantsToModifySubs} = useSubModContext()
+  const {subscriptionData} = useCurrentUser()
   const onChangeSubsPeriod = (e) => {
     setSubsPeriod(e);
   };
+  useEffect(() => {
+    setSubsPeriod(2)
+  }, [])
   const colourStyles = {
     control: (base, state) => ({
       ...base,

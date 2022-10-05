@@ -3,8 +3,9 @@ import "../../App.css"
 import AuthService from "../../services/auth.service";
 import ChangePasswordFromProfileForm from "../Forms/PasswordModificationForms/PasswordModificationsViaSettings/ChangePasswordFromProfileForm";
 import ChangeDonationFromProfileForm from "../Forms/DonationModification/ChangeDonarionFromProfileForm";
-import { SubModContextProvider
- } from "../../Context/SubscriptionModificationContext";
+import { SubModContextProvider} from "../../Context/SubscriptionModificationContext";
+import { useCurrentUser } from "../../Context/CurrentUserContext";
+
 const Settings = () => {
   const [requestToChangePassword, setRequestToChangePassword] = useState(false);
   const [setRequestToChangeDonation] = useState(false);
@@ -13,6 +14,7 @@ const Settings = () => {
   const onOpenChangePasswordForm = () => setRequestToChangePassword(true);
   const onCloseChangePasswordForm = () => setRequestToChangePassword(false);
   const onCloseChangeDonationForm = () => setRequestToChangeDonation(false);
+  const {subscriptionData} = useCurrentUser()
 
   return (
     <>
@@ -57,12 +59,15 @@ const Settings = () => {
                             </>
                         )}
                 </div> 
+                {subscriptionData ?
                 <div className="lg:basis-1/2 darkGrayBorder rounded-lg h-fit lg:mb-0">
-                    <div className="greyBg darkGrayBottomBorder p-7 blackText font-Pop-M uppercase text-lg md:text-xl tracking-wider font-medium">Modificar donación periódica</div>
+                    <div className="greyBg darkGrayBottomBorder p-7 blackText font-Pop-M uppercase text-lg md:text-xl tracking-wider font-medium">Modificar donación periódica</div>              
                     <SubModContextProvider>
                     <ChangeDonationFromProfileForm onClose={onCloseChangeDonationForm}></ChangeDonationFromProfileForm>
-                    </SubModContextProvider>
-                </div>   
+                    </SubModContextProvider>    
+                </div> 
+                : null
+                }  
             </div> 
         </div> 
     </div>  

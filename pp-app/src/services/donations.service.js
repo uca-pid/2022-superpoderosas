@@ -2,30 +2,30 @@ import axios from "axios";
 const API_URL = "http://localhost:8080/api/payment/";
 const generateTransaction = (userId, amount, paymentDay, type) => {
   return axios.post(API_URL + "createTransaction", {
-    userId, 
-    amount, 
-    paymentDay, 
+    userId,
+    amount,
+    paymentDay,
     type
   });
 };
-const generateSubscription = (userId, amount, type, frequency, lastPaymentDat, nextPaymentDay) => {
+const generateSubscription = (userId, amount, type, frequency, nextPaymentDate) => {
   return axios.post(API_URL + "createSubscription", {
-    userId, 
-    amount, 
+    userId,
+    amount,
     type,
-    frequency, 
-    lastPaymentDat, 
-    nextPaymentDay
+    frequency,
+    nextPaymentDate
   });
 };
 const getSubscription = async (userId) => {
-  const response = await axios.post(API_URL + "getSubscription", {
-    userId,
-  });
-  if (response.data.id) {
-    console.log(response.data);
+  try {
+    const response = await axios.post(API_URL + "getSubscription", {
+      userId,
+    });
+    return response;
+  } catch (e) {
+      console.log(e);
   }
-  return response.data;
 }
 
 const DonationService = {
