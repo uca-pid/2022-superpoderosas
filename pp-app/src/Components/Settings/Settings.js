@@ -5,6 +5,9 @@ import ChangePasswordFromProfileForm from "../Forms/PasswordModificationForms/Pa
 import ChangeDonationFromProfileForm from "../Forms/DonationModification/ChangeDonarionFromProfileForm";
 import { SubModContextProvider} from "../../Context/SubscriptionModificationContext";
 import { useCurrentUser } from "../../Context/CurrentUserContext";
+import { AmountContextProvider } from  '../../Context/AmountContext'
+import { FrequencyContextProvider } from "../../Context/FrequencyContext";
+import { SubscriptionContextProvider } from "../../Context/SubscriptionContext";
 
 const Settings = () => {
   const [requestToChangePassword, setRequestToChangePassword] = useState(false);
@@ -62,9 +65,15 @@ const Settings = () => {
                 {subscriptionData ?
                 <div className="lg:basis-1/2 darkGrayBorder rounded-lg h-fit lg:mb-0">
                     <div className="greyBg darkGrayBottomBorder p-7 blackText font-Pop-M uppercase text-lg md:text-xl tracking-wider font-medium">Modificar donación periódica</div>              
+                    <SubscriptionContextProvider>
+                    <FrequencyContextProvider>
                     <SubModContextProvider>
+                    <AmountContextProvider>
                     <ChangeDonationFromProfileForm onClose={onCloseChangeDonationForm}></ChangeDonationFromProfileForm>
-                    </SubModContextProvider>    
+                    </AmountContextProvider>
+                    </SubModContextProvider>  
+                    </FrequencyContextProvider>  
+                    </SubscriptionContextProvider>
                 </div> 
                 : null
                 }  
