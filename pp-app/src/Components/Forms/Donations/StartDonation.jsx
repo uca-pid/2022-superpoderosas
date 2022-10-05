@@ -73,7 +73,7 @@ const StartDonation = ({ setStep }) => {
     <>
       <button onClick={submitDonation}
         className="rounded-xl p-4 h-auto w-full text-center greenBg yellowBgHover font-Pop-SB text-xl md:text-2xl text-white">
-        {(selectedFrequency === 1)  ? "Donar" : "Donar Mensualmente"}
+        {(selectedFrequency === 1)  ? "Donar" : "Donar periódicamente"}
       </button>
        {message && (
         <div className="grid form-group justify-items-center pb-4">

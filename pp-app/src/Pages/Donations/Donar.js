@@ -4,8 +4,8 @@ import AuthService from "../../services/auth.service";
 import ProfileNavBar from "../../Components/NavBars/ProfileNavBar";
 import FirstStep from '../../Components/Forms/Donations/FirstStep';
 import FrequencySection from '../../Components/Forms/Donations/FrequencySection';
-import StepTitle from '../../Components/Forms/Donations/StepTitle';
 import { FrequencyContextProvider } from '../../Context/FrequencyContext';
+import { CurrentUserContextProvider } from '../../Context/CurrentUserContext'
 
 const DonarPage = () => {
   const currentUser = AuthService.getCurrentUser();
@@ -19,8 +19,9 @@ const DonarPage = () => {
             <div className="bg-white h-fit w-screen rounded-xl lg:basis-2/5 p-10 md:p-16 lg:p-20 space-y-3">
                 <FrequencyContextProvider>
                     <FrequencySection></FrequencySection>
-                    <StepTitle titleText={step === 0 ? 'Únase a la lucha contra la desnutrición infantil' : ""}/>           
+                    <CurrentUserContextProvider>       
                     <FirstStep/>
+                    </CurrentUserContextProvider>
                     {
                     //Por ahora solo hay un paso al ser la donación un MONTO
                     /* <StepTitle titleText={step === 0 ? 'Únase a nosotros para combatir la desnutrición infantil' : 'Donando $3000 por mes'}/>
