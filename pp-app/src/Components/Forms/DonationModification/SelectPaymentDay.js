@@ -11,6 +11,7 @@ const SelectPaymentDay = ( ) => {
   const { subsPeriod, paymentDay, setPaymentDay} = useSubscriptionPeriod()
   const {userWantsToModifySubs} = useSubModContext()
   const {subscriptionData} = useCurrentUser()
+  console.log(subscriptionData);
   useEffect(() => {
     setPaymentDay(subscriptionData.nextPaymentDate);
   }, [subscriptionData, setPaymentDay])
@@ -30,7 +31,7 @@ const SelectPaymentDay = ( ) => {
                     <DesktopDatePicker
                       disabled = {!userWantsToModifySubs}
                       disablePast
-                      inputFormat="MM/DD/YYYY"
+                      inputFormat="YYYY-MM-DD"
                       value={paymentDay}
                       onChange={(newPaymentDay) => {
                         setPaymentDay(newPaymentDay)

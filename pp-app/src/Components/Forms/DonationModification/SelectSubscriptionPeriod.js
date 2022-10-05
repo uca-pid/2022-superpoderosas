@@ -57,11 +57,11 @@ const SelectSubscriptionPeriod = ( ) => {
       <div className="font-Pop-R text-lg text-gray-400">¿Cada cuanto desea donar?</div>
         <div className="flex flex-row">
           <Select className="md:basis-1/2 border-gray-300 relative bg-transparent h-auto w-full placeholder-gray-600 focus:z-10 font-Pop-M tracking-[0.5px] text-lg focus:outline-none greenBorderWhenFocus form-control" styles={colourStyles} 
-                        options={subscriptionPeriod}
-                        value={subsPeriod} 
-                        placeholder="Seleccione la frecuencia de pago"
-                        onChange={onChangeSubsPeriod}
-                        isSearchable={false}/>
+                  options={subscriptionPeriod}
+                  value={subsPeriod} 
+                  placeholder="Seleccione la frecuencia de pago"
+                  onChange={onChangeSubsPeriod}
+                  isSearchable={false}/>
         </div>
       </div>
       :
