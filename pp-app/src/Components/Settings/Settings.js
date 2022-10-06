@@ -6,6 +6,9 @@ import ChangeDonationFromProfileForm from "../Forms/DonationModification/ChangeD
 import { SubModContextProvider} from "../../Context/SubscriptionModificationContext";
 import { useCurrentUser } from "../../Context/CurrentUserContext";
 import ModifyStatePopUp from "../Forms/DonationModification/ModifyStatePopUp";
+import { AmountContextProvider } from  '../../Context/AmountContext'
+import { FrequencyContextProvider } from "../../Context/FrequencyContext";
+import { SubscriptionContextProvider } from "../../Context/SubscriptionContext";
 
 const Settings = () => {
   const [requestToChangePassword, setRequestToChangePassword] = useState(false);
@@ -61,8 +64,11 @@ const Settings = () => {
                         )}
                 </div> 
                 {subscriptionData ?
-                <div className="lg:basis-1/2 darkGrayBorder rounded-lg h-fit lg:mb-0">
+                <div className="lg:basis-1/2 darkGrayBorder rounded-lg h-fit lg:mb-0">           
+                    <SubscriptionContextProvider>
+                    <FrequencyContextProvider>
                     <SubModContextProvider>
+                    <AmountContextProvider>
                     <div className="greyBg flex flex-row justify-around darkGrayBottomBorder py-7 px-2 blackText font-Pop-M uppercase text-lg md:text-xl tracking-wider font-medium">
                         <div>
                         Modificar donación periódica
@@ -70,7 +76,10 @@ const Settings = () => {
                         <ModifyStatePopUp></ModifyStatePopUp>              
                     </div>
                     <ChangeDonationFromProfileForm onClose={onCloseChangeDonationForm}></ChangeDonationFromProfileForm>
-                    </SubModContextProvider>    
+                    </AmountContextProvider>
+                    </SubModContextProvider>  
+                    </FrequencyContextProvider>  
+                    </SubscriptionContextProvider>
                 </div> 
                 : null
                 }  

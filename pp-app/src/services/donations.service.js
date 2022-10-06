@@ -22,6 +22,14 @@ const modifySubscriptionState  = (subscriptionId, state) => {
   return axios.post(API_URL + "modifySubscriptionState", {
     subscriptionId,
     state,
+  }); };
+  
+const modifySubscription = (userId, amount, frequency, nextPaymentDate) => {
+  return axios.post(API_URL + "modifySubscription", {
+    userId,
+    amount,
+    frequency,
+    nextPaymentDate
   });
 };
 
@@ -40,6 +48,7 @@ const DonationService = {
   generateTransaction,
   generateSubscription,
   getSubscription,
-  modifySubscriptionState
+  modifySubscriptionState,
+  modifySubscription
 }
 export default DonationService;
