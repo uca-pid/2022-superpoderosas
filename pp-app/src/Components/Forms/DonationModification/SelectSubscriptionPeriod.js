@@ -16,7 +16,7 @@ const SelectSubscriptionPeriod = ( ) => {
   useEffect(() => {
     const currentperiod = subscriptionPeriod.find(period => period.value === (subscriptionData.frequency).toString());
     setSubsPeriod(currentperiod);
-  },)
+  },[])
 
   const colourStyles = {
     control: (base, state) => ({

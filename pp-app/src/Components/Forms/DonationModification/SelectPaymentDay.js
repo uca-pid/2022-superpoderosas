@@ -11,15 +11,9 @@ const SelectPaymentDay = ( ) => {
   const {subscriptionData} = useCurrentUser()
   const { subsPeriod, paymentDay, setPaymentDay} = useSubscriptionPeriod()
   const {userWantsToModifySubs} = useSubModContext()
-<<<<<<< Updated upstream
-  const {subscriptionData} = useCurrentUser()
-=======
 
->>>>>>> Stashed changes
   useEffect(() => {
     setPaymentDay(subscriptionData.nextPaymentDate);
-    console.log(subscriptionData.nextPaymentDate);
-    console.log(paymentDay);
   },[])
 
     return (

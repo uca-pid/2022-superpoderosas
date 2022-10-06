@@ -12,20 +12,33 @@ import { useSubModContext } from "../../../Context/SubscriptionModificationConte
 import Buttons from "../../Utiles/Butttons";
 import { useCurrentUser } from "../../../Context/CurrentUserContext";
 import DonationService from "../../../services/donations.service";
+import ModalWithConfirmation from "../../Utiles/ModalWithConfirmation";
+import Modal from "../../Utiles/Modal";
 
 const ChangeDonationFromProfileForm = (props) =>{
   const {userWantsToModifySubs, setIfUserWantsToModifySubs} = useSubModContext();
   const {subscriptionData} = useCurrentUser();
+  const [showModalWithConfirmation, setShowModalWithConfirmation] = useState(false);
+  const [showModal, setShowModal] = useState(false);
   const currentUser = AuthService.getCurrentUser();
   const { selectedAmount} = useAmount()
   const { subsPeriod, paymentDay} = useSubscriptionPeriod()
   const [message, setMessage] = useState("");
+  console.log(subscriptionData);
+
+  const closeModalWithConfirmation = () => {
+    setShowModalWithConfirmation(false);
+  };
+
+  const closeModal = () => {
+    setShowModal(false);
+    window.location.reload();
+  };
 
   const handleResetDonation = () =>{
     DonationService.modifySubscriptionState(subscriptionData.id, 'A').then(
         () => {
-          alert("Se reactivo");
-          window.location.reload();
+          setShowModal(true);
         },
         (error) => {
           const resMessage =
@@ -55,7 +68,7 @@ const ChangeDonationFromProfileForm = (props) =>{
     if (isFormValid()) {
       DonationService.modifySubscription(currentUser.id, selectedAmount, parseInt(subsPeriod.value), paymentDay.format('YYYY-MM-DD')).then(
         () => {
-          alert("Se modifico la Subcripción")//poner un modal
+          setShowModal(true);
           setIfUserWantsToModifySubs(false);
         },
         (error) => {
@@ -87,6 +100,18 @@ const ChangeDonationFromProfileForm = (props) =>{
   };
 
   return(
+    <>
+    {showModalWithConfirmation ? (
+      <ModalWithConfirmation value={showModalWithConfirmation} onChange={closeModalWithConfirmation} header={(subscriptionData.subscriptionState.state !== 'P') ?
+      "¿Estás seguro de que deseas modificar tu donación recurrente?"  :  "¿Estás seguro de que deseas renaudar tu donación recurrente?"
+          } body={(subscriptionData.subscriptionState.state !== 'P') ? "Si guardas los cambios, tu donación actual se modificará."
+              :   "Si guardas los cambios, tu donación recurrente se renaurá."} saveChanges={(subscriptionData.subscriptionState.state !== 'P') ? modifyDonation : handleResetDonation}></ModalWithConfirmation>
+    ) : null}
+    {showModal ? (
+      <Modal value={showModal} onChange={closeModal} header={(subscriptionData.subscriptionState.state !== 'P') ?
+      "Tu donación ha sido modificada con éxito!"  :  "Tu donación ha sido activada con éxito!"
+          }body={""} buttonText={"Continuar"}></Modal>
+    ) : null}
     <div className="p-8 md:p-11 lg:p-11">
     <div className='flex flex-col space-y-8 md:space-y-6'>
       <Amounts></Amounts>
@@ -105,27 +130,23 @@ const ChangeDonationFromProfileForm = (props) =>{
       {userWantsToModifySubs ?
       <div className="flex flex-row justify-between space-x-6 w-full">
         <Buttons.IndicationButton text={"Cancelar"} onClick={()=>{setIfUserWantsToModifySubs(false); setMessage("")}} customStyle={"w-full basis-1/2 text-gray-500 greyBg w-full text-gray-500 hover:bg-gray-300 focus:bg-gray-300 "}></Buttons.IndicationButton>
-        <Buttons.IndicationButton  text={"Modificar"} customStyle={"basis-1/2 text-white greenBg yellowBgHover w-full"} onClick={modifyDonation}></Buttons.IndicationButton>
+        <Buttons.IndicationButton  text={"Modificar"} customStyle={"basis-1/2 text-white greenBg yellowBgHover w-full"} onClick={()=>{setShowModalWithConfirmation(true)}}></Buttons.IndicationButton>
       </div>
       :
-<<<<<<< Updated upstream
         ((subscriptionData.subscriptionState.state !== 'P') ?
         <Buttons.IndicationButton  text={"Modificar Donación"} customStyle={"w-full text-white greenBg yellowBgHover "} onClick={()=>setIfUserWantsToModifySubs(true)}></Buttons.IndicationButton>
         :
         <>
         <div className="flex flex-col space-y-6">
-          <Buttons.IndicationButton  text={"Renaudar Donación"} customStyle={"w-full text-white greenBg yellowBgHover "} onClick={handleResetDonation}></Buttons.IndicationButton>
+          <Buttons.IndicationButton  text={"Renaudar Donación"} customStyle={"w-full text-white greenBg yellowBgHover "} onClick={()=>{setShowModalWithConfirmation(true)}}></Buttons.IndicationButton>
           <div className="font-Pop-R text-lg text-gray-400 basis-1/2" >Su donación se encuentra pausada, esto significa que no se realizará ninguna pago hasta que usted reactive su subscripión </div> 
         </div>
         </>
         )}
      
-=======
-        <Buttons.IndicationButton  text={"Modificar Donación"} customStyle={"w-full text-white greenBg yellowBgHover "} onClick={()=>{setIfUserWantsToModifySubs(true); setMessage("")}}></Buttons.IndicationButton>
-      }    
->>>>>>> Stashed changes
     </div>
     </div>
+    </>
   );
 }
 

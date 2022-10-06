@@ -17,7 +17,7 @@ const CustomAmountInput = () => {
   }
   useEffect(() => {
     setSelectedAmount(subscriptionData.amount);
-  },)
+  },[])
   
   return (
     <div className={`inline-block w-full px-7 block flex flex-row justify-around font-Pop-M purpleText rounded-md uppercase h-auto py-2 md:py-1 focus:purpleBorder border-[1px] ${useSubModContext ? "border-gray-300":"border-gray-100"}`}>
