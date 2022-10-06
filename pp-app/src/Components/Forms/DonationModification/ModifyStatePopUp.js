@@ -52,7 +52,7 @@ const ModifyStatePopUp = ( ) => {
                 <button onClick={handleCancelledSubs} className='w-full text-left z-50 relative font-Pop-M text-gray-400 duration-700 hover:text-gray-500 focus:text-gray-500 tracking-[0.5px] grayBottomBorder block px-1 py-2 text-base '>
                     Cancelar Subscripción
                 </button>
-                {(subscriptionData.state !== 'P') ?
+                {(subscriptionData.subscriptionState.state !== 'P') ?
                 <button onClick={handlePausedSubs} className='w-full text-left z-50 relative font-Pop-M text-gray-400 duration-700 hover:text-gray-500 focus:text-gray-500 font-Pop-M tracking-[0.5px] block px-1 py-2 text-base'>
                     Pausar Subscripción
                 </button>

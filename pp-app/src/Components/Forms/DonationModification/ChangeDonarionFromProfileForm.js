@@ -108,7 +108,7 @@ const ChangeDonationFromProfileForm = (props) =>{
         <Buttons.IndicationButton  text={"Modificar"} customStyle={"basis-1/2 text-white greenBg yellowBgHover w-full"} onClick={modifyDonation}></Buttons.IndicationButton>
       </div>
       :
-        ((subscriptionData.state !== 'P') ?
+        ((subscriptionData.subscriptionState.state !== 'P') ?
         <Buttons.IndicationButton  text={"Modificar Donación"} customStyle={"w-full text-white greenBg yellowBgHover "} onClick={()=>setIfUserWantsToModifySubs(true)}></Buttons.IndicationButton>
         :
         <>
