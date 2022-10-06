@@ -63,6 +63,9 @@
 .purpleText{
     color: #6c3333;
 }
+.lightGreyText{
+    color: #e7e6e6;
+}
 .yellowText{
     color: #eb8301;
 }
@@ -126,6 +129,9 @@
 }
 .lighterGreyBg{
     background-color: #e7e6e61c;
+}
+.almostWhiteBg{
+    background-color: #fdfdfd;
 }
 .greyBg{
     background-color: #e7e6e649;

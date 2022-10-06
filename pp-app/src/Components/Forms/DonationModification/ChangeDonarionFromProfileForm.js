@@ -9,9 +9,28 @@ import { FrequencyContextProvider } from "../../../Context/FrequencyContext";
 import { SubscriptionContextProvider } from "../../../Context/SubscriptionContext";
 import { useSubModContext } from "../../../Context/SubscriptionModificationContext";
 import Buttons from "../../Utiles/Butttons";
+import { useCurrentUser } from "../../../Context/CurrentUserContext";
+import DonationService from "../../../services/donations.service";
 
 const ChangeDonationFromProfileForm = (props) =>{
-  const {userWantsToModifySubs, setIfUserWantsToModifySubs} = useSubModContext()
+  const {userWantsToModifySubs, setIfUserWantsToModifySubs} = useSubModContext();
+  const {subscriptionData} = useCurrentUser();
+  const handleResetDonation = () =>{
+    DonationService.modifySubscriptionState(subscriptionData.id, 'A').then(
+        () => {
+          alert("Se reactivo");
+          window.location.reload();
+        },
+        (error) => {
+          const resMessage =
+            (error.response &&
+              error.response.data &&
+              error.response.data.message) ||
+            error.message ||
+            error.toString();
+          console.log(resMessage);
+        })
+}
   return(
     <div className="p-8 md:p-11 lg:p-11">
     <FrequencyContextProvider>
@@ -31,8 +50,16 @@ const ChangeDonationFromProfileForm = (props) =>{
         <Buttons.IndicationButton  text={"Modificar"} customStyle={"basis-1/2 text-white greenBg yellowBgHover w-full"} onClick={()=>{setIfUserWantsToModifySubs(false)}}></Buttons.IndicationButton>
       </div>
       :
+        ((subscriptionData.state !== 'P') ?
         <Buttons.IndicationButton  text={"Modificar Donación"} customStyle={"w-full text-white greenBg yellowBgHover "} onClick={()=>setIfUserWantsToModifySubs(true)}></Buttons.IndicationButton>
-      }
+        :
+        <>
+        <div className="flex flex-col space-y-6">
+          <Buttons.IndicationButton  text={"Renaudar Donación"} customStyle={"w-full text-white greenBg yellowBgHover "} onClick={handleResetDonation}></Buttons.IndicationButton>
+          <div className="font-Pop-R text-lg text-gray-400 basis-1/2" >Su donación se encuentra pausada, esto significa que no se realizará ninguna pago hasta que usted reactive su subscripión </div> 
+        </div>
+        </>
+        )}
      
     </div>
     </AmountContextProvider>

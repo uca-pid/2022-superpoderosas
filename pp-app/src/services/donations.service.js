@@ -17,6 +17,14 @@ const generateSubscription = (userId, amount, type, frequency, nextPaymentDate) 
     nextPaymentDate
   });
 };
+
+const modifySubscriptionState  = (subscriptionId, state) => {
+  return axios.post(API_URL + "modifySubscriptionState", {
+    subscriptionId,
+    state,
+  });
+};
+
 const getSubscription = async (userId) => {
   try {
     const response = await axios.post(API_URL + "getSubscription", {
@@ -31,6 +39,7 @@ const getSubscription = async (userId) => {
 const DonationService = {
   generateTransaction,
   generateSubscription,
-  getSubscription
+  getSubscription,
+  modifySubscriptionState
 }
 export default DonationService;

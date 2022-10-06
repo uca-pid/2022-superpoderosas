@@ -19,7 +19,14 @@ const FirstStep = ({ setStep }) => {
   return (
     <AmountContextProvider>
     <SubscriptionContextProvider>
-    <StepTitle titleText={!(subscriptionData) || (selectedFrequency===1) ? 'Únase a la lucha contra la desnutrición infantil' : "Usted ya esta realizando una donación recurrente"}/>  
+    <StepTitle 
+      titleText={!(subscriptionData) || (selectedFrequency===1) ? 
+      'Únase a la lucha contra la desnutrición infantil' 
+      : ((subscriptionData.state !== 'P') ?
+        "Usted ya esta realizando una donación recurrente"
+        :
+        "Usted ya tiene una subscripción pausada"
+        )}/>  
       {(selectedFrequency===1) ? 
       <>
       <div className='flex flex-col space-y-10'>
@@ -47,7 +54,10 @@ const FirstStep = ({ setStep }) => {
       </>
       :
       <>
-      <ModifyDonationMessage></ModifyDonationMessage>
+      <ModifyDonationMessage 
+        text={(subscriptionData.state !=='P') ? 
+        "Vaya a ajustes para visualizar/modificar su suscripcion actual." 
+        :"Su suscripción se encuentra pausada vaya ajustes para renaudar su suscrición y continuar luchando contra la desnutrición infantil."}></ModifyDonationMessage>
       <ModifyDonation/>  
       </>
       }
