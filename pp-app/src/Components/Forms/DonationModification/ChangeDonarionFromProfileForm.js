@@ -2,7 +2,6 @@ import React from "react";
 import "../../../App.css"
 import Amounts from './Amounts'
 import { useState } from 'react'
-import AuthService from '../../../services/auth.service'
 import DashedLine from '../../Utiles/DashedLine'
 import { useAmount } from  '../../../Context/AmountContext'
 import {useSubscriptionPeriod} from  '../../../Context/SubscriptionContext'
@@ -20,7 +19,6 @@ const ChangeDonationFromProfileForm = (props) =>{
   const {subscriptionData} = useCurrentUser();
   const [showModalWithConfirmation, setShowModalWithConfirmation] = useState(false);
   const [showModal, setShowModal] = useState(false);
-  const currentUser = AuthService.getCurrentUser();
   const { selectedAmount} = useAmount()
   const { subsPeriod, paymentDay} = useSubscriptionPeriod()
   const [message, setMessage] = useState("");
@@ -65,7 +63,7 @@ const ChangeDonationFromProfileForm = (props) =>{
     e.preventDefault();
     setMessage("");
     if (isFormValid()) {
-      DonationService.modifySubscription(currentUser.id, selectedAmount, parseInt(subsPeriod.value), paymentDay).then(
+      DonationService.modifySubscription(subscriptionData.id, selectedAmount, parseInt(subsPeriod.value), paymentDay).then(
         () => {
           setShowModal(true);
           setIfUserWantsToModifySubs(false);

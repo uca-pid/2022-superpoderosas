@@ -24,9 +24,9 @@ const modifySubscriptionState  = (subscriptionId, state) => {
     state,
   }); };
   
-const modifySubscription = (userId, amount, frequency, nextPaymentDate) => {
+const modifySubscription = (subscriptionId, amount, frequency, nextPaymentDate) => {
   return axios.post(API_URL + "modifySubscription", {
-    userId,
+    subscriptionId,
     amount,
     frequency,
     nextPaymentDate
