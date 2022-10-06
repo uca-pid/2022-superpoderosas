@@ -8,12 +8,20 @@ import { useSubModContext } from "../../../Context/SubscriptionModificationConte
 import { useCurrentUser } from "../../../Context/CurrentUserContext"
 
 const SelectPaymentDay = ( ) => {
+  const {subscriptionData} = useCurrentUser()
   const { subsPeriod, paymentDay, setPaymentDay} = useSubscriptionPeriod()
   const {userWantsToModifySubs} = useSubModContext()
+<<<<<<< Updated upstream
   const {subscriptionData} = useCurrentUser()
+=======
+
+>>>>>>> Stashed changes
   useEffect(() => {
     setPaymentDay(subscriptionData.nextPaymentDate);
-  }, [subscriptionData, setPaymentDay])
+    console.log(subscriptionData.nextPaymentDate);
+    console.log(paymentDay);
+  },[])
+
     return (
       <div className="space-y-4">
       <div className="font-Pop-R text-lg text-gray-400">

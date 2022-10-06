@@ -9,6 +9,7 @@ const CustomAmountInput = () => {
   const { selectedAmount, setSelectedAmount } = useAmount()
   const {userWantsToModifySubs} = useSubModContext()
   const {subscriptionData} = useCurrentUser()
+
   const onChange = (event) => {
     var amount = parseInt(event.target.value)
     amount = (isNaN(amount) ? 0 : amount);
@@ -16,7 +17,7 @@ const CustomAmountInput = () => {
   }
   useEffect(() => {
     setSelectedAmount(subscriptionData.amount);
-  }, [subscriptionData.amount, setSelectedAmount])
+  },)
   
   return (
     <div className={`inline-block w-full px-7 block flex flex-row justify-around font-Pop-M purpleText rounded-md uppercase h-auto py-2 md:py-1 focus:purpleBorder border-[1px] ${useSubModContext ? "border-gray-300":"border-gray-100"}`}>
