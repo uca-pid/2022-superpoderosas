@@ -1,8 +1,7 @@
 import React from "react";
 import "../../../App.css"
-import { AmountContextProvider } from  '../../../Context/AmountContext'
 import Amounts from './Amounts'
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import AuthService from '../../../services/auth.service'
 import DashedLine from '../../Utiles/DashedLine'
 import { useAmount } from  '../../../Context/AmountContext'
