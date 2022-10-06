@@ -14,7 +14,7 @@ const SelectPaymentDay = ( ) => {
 
   useEffect(() => {
     setPaymentDay(subscriptionData.nextPaymentDate);
-  },[])
+  },[subscriptionData.nextPaymentDate, setPaymentDay])
 
     return (
       <div className="space-y-4">

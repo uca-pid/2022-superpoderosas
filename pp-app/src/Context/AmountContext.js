@@ -7,10 +7,9 @@ const AmountContext = React.createContext()
 export function AmountContextProvider(props) {
   const { selectedFrequency } = useFrequency()
   const [amounts, setAmounts] = useState(amountsValues[selectedFrequency])
-  const [selectedAmount, setSelectedAmount] = useState('')
+  const [selectedAmount, setSelectedAmount] = useState(0)
 
   useEffect(() => {
-    setSelectedAmount(0)
     setAmounts(amountsValues[selectedFrequency])
   }, [amounts, selectedFrequency])
 
