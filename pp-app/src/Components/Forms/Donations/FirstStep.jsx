@@ -57,7 +57,7 @@ const FirstStep = ({ setStep }) => {
       <ModifyDonationMessage 
         text={(subscriptionData.subscriptionState.state !=='P') ? 
         "Vaya a ajustes para visualizar/modificar su suscripcion actual." 
-        :"Su suscripción se encuentra pausada vaya ajustes para renaudar su suscrición y continuar luchando contra la desnutrición infantil."}></ModifyDonationMessage>
+        :"Vaya a ajustes para renaudar su suscrición y continuar luchando contra la desnutrición infantil."}></ModifyDonationMessage>
       <ModifyDonation/>  
       </>
       }
