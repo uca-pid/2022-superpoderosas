@@ -15,11 +15,11 @@ const ModifyStatePopUp = ( ) => {
 
     const closeModalWithConfirmation = () => {
       setShowModalWithConfirmation(false);
-      setCancellationRequest(false);
     };
   
     const closeModal = () => {
       setShowModal(false);
+      setCancellationRequest(false);
       window.location.reload();
     };
 
