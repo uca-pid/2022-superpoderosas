@@ -4,17 +4,27 @@ import { useAmount } from '../../../Context/AmountContext'
 import { useSubscriptionPeriod } from '../../../Context/SubscriptionContext'
 import DonationService from '../../../services/donations.service'
 import AuthService from '../../../services/auth.service'
+import Modal from "../../Utiles/Modal";
+import { useNavigate } from "react-router-dom"
 
 const StartDonation = ({ setStep }) => {
   const { selectedFrequency } = useFrequency();
   const {selectedAmount} = useAmount();
   const { paymentDay, subsPeriod} = useSubscriptionPeriod();
   const [message, setMessage] = useState("");
+  const navigate = useNavigate();
   const currentUser = AuthService.getCurrentUser();
+  const [showModal, setShowModal] = useState(false);
 
   useEffect(() => {
     setMessage("");
   }, [selectedFrequency])
+
+  const closeModal = () => {
+    setShowModal(false);
+    navigate("/profile");
+    window.location.reload();
+  };
 
   const isFormValid = () =>{
     if (selectedFrequency === 2 && (paymentDay===null || paymentDay=== undefined)){
@@ -36,7 +46,6 @@ const StartDonation = ({ setStep }) => {
         //la subscripció no tiene un tipo, la trasacción unida a la subscripcion debería de tener un tipo?
       DonationService.generateSubscription(currentUser.id, selectedAmount, selectedFrequency, subsPeriod.value, paymentDay.format('YYYY-MM-DD')).then(
         () => {
-          alert("Se Creo la Subcripción")
           //navigate("a donde querramos mandar");
           //window.location.reload();
         },
@@ -52,7 +61,7 @@ const StartDonation = ({ setStep }) => {
         }
         DonationService.generateTransaction(currentUser.id, selectedAmount, paymentDay, selectedFrequency).then(
           () => {
-            alert("Se Creo la trasaccion")
+            setShowModal(true);
             //navigate("a donde querramos mandar");
             //window.location.reload();
           },
@@ -71,6 +80,9 @@ const StartDonation = ({ setStep }) => {
 
   return (
     <>
+    {showModal ? (
+      <Modal value={showModal} onChange={closeModal} header={(selectedFrequency === 1) ? "Tu donación ha sido realizada con éxito!" : "Tu suscripción ha sido activada con éxito!"} body={"Muchas gracias por realizar una donación para brindar atención nutricional a niños/as de la comunidad."} buttonText={"Continuar"}></Modal>
+    ) : null}
       <button onClick={submitDonation}
         className="rounded-xl p-4 h-auto w-full text-center greenBg yellowBgHover font-Pop-SB text-xl md:text-2xl text-white">
         {(selectedFrequency === 1)  ? "Donar" : "Donar periódicamente"}
