@@ -11,7 +11,7 @@ import { useSubModContext } from "../../../Context/SubscriptionModificationConte
 import Buttons from "../../Utiles/Butttons";
 import { useCurrentUser } from "../../../Context/CurrentUserContext";
 import DonationService from "../../../services/donations.service";
-import ModalWithConfirmation from "../../Utiles/ModalWithConfirmation";
+import ModalWithConfirmationAndDetails from "../../Utiles/ModalWithConfirmationAndDetails";
 import Modal from "../../Utiles/Modal";
 
 const ChangeDonationFromProfileForm = (props) =>{
@@ -63,7 +63,7 @@ const ChangeDonationFromProfileForm = (props) =>{
     e.preventDefault();
     setMessage("");
     if (isFormValid()) {
-      DonationService.modifySubscription(subscriptionData.id, selectedAmount, parseInt(subsPeriod.value), paymentDay.format('YYYY-MM-DD')).then(
+      DonationService.modifySubscription(subscriptionData.id, selectedAmount, parseInt(subsPeriod.value), paymentDay).then(
         () => {
           setShowModal(true);
           setIfUserWantsToModifySubs(false);
@@ -77,32 +77,22 @@ const ChangeDonationFromProfileForm = (props) =>{
             error.toString();
           setMessage(resMessage);
         })
-        /*DonationService.generateTransaction(currentUser.id, selectedAmount, paymentDay, subsPeriod).then(
-          () => {
-            alert("Se Creo la trasaccion")
-            //navigate("a donde querramos mandar");
-            //window.location.reload();
-          },
-          (error) => {
-            const resMessage =
-              (error.response &&
-                error.response.data &&
-                error.response.data.message) ||
-              error.message ||
-              error.toString();
-            setMessage(resMessage);
-          }
-      );*/
     } 
   };
 
   return(
     <>
     {showModalWithConfirmation ? (
-      <ModalWithConfirmation value={showModalWithConfirmation} onChange={closeModalWithConfirmation} header={(subscriptionData.subscriptionState.state !== 'P') ?
+      <ModalWithConfirmationAndDetails 
+      value={showModalWithConfirmation} 
+      onChange={closeModalWithConfirmation} 
+      header={(subscriptionData.subscriptionState.state !== 'P') ?
       "¿Estás seguro de que deseas modificar tu donación recurrente?"  :  "¿Estás seguro de que deseas renaudar tu donación recurrente?"
-          } body={(subscriptionData.subscriptionState.state !== 'P') ? "Si guardas los cambios, tu donación actual se modificará."
-              :   "Si guardas los cambios, tu donación recurrente se renaurá."} saveChanges={(subscriptionData.subscriptionState.state !== 'P') ? modifyDonation : handleResetDonation}></ModalWithConfirmation>
+          } 
+      body={(subscriptionData.subscriptionState.state !== 'P') ? "Si guardas los cambios, tu donación actual se modificará."
+              :   "Si guardas los cambios, tu donación recurrente se renaurá."} 
+      saveChanges={(subscriptionData.subscriptionState.state !== 'P') ? modifyDonation : handleResetDonation}
+      showDetails={(subscriptionData.subscriptionState.state !== 'P')}></ModalWithConfirmationAndDetails>
     ) : null}
     {showModal ? (
       <Modal value={showModal} onChange={closeModal} header={(subscriptionData.subscriptionState.state !== 'P') ?

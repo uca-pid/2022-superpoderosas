@@ -46,6 +46,7 @@ const StartDonation = ({ setStep }) => {
         //la subscripció no tiene un tipo, la trasacción unida a la subscripcion debería de tener un tipo?
       DonationService.generateSubscription(currentUser.id, selectedAmount, selectedFrequency, subsPeriod.value, paymentDay.format('YYYY-MM-DD')).then(
         () => {
+          setShowModal(true);
           //navigate("a donde querramos mandar");
           //window.location.reload();
         },
@@ -58,8 +59,8 @@ const StartDonation = ({ setStep }) => {
             error.toString();
           setMessage(resMessage);
         })
-        }
-        DonationService.generateTransaction(currentUser.id, selectedAmount, paymentDay, selectedFrequency).then(
+        }else{
+        DonationService.generateTransaction(currentUser.id, selectedAmount,"onlyTime" ).then(
           () => {
             setShowModal(true);
             //navigate("a donde querramos mandar");
@@ -76,10 +77,12 @@ const StartDonation = ({ setStep }) => {
           }
       );
     } 
+    }
   };
 
   return (
     <>
+    
     {showModal ? (
       <Modal value={showModal} onChange={closeModal} header={(selectedFrequency === 1) ? "Tu donación ha sido realizada con éxito!" : "Tu suscripción ha sido activada con éxito!"} body={"Muchas gracias por realizar una donación para brindar atención nutricional a niños/as de la comunidad."} buttonText={"Continuar"}></Modal>
     ) : null}
