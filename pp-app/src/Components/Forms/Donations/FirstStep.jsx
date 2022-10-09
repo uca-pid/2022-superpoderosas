@@ -2,7 +2,7 @@ import { AmountContextProvider } from  '../../../Context/AmountContext'
 import Amounts from './Amounts'
 import StartDonation from './StartDonation'
 import ModifyDonation from './ModifyDonation'
-import DonationImpactMessage from './DonationImpactMessage'
+import DonationAmountImpactMessage from './DonationAmountImpactMessage'
 import ModifyDonationMessage from './ModifyDonationMessage'
 import DashedLine from '../../Utiles/DashedLine'
 import { useFrequency } from  '../../../Context/FrequencyContext'
@@ -32,7 +32,7 @@ const FirstStep = ({ setStep }) => {
       <div className='flex flex-col space-y-10'>
         <Amounts></Amounts>
         <DashedLine></DashedLine>
-        <DonationImpactMessage></DonationImpactMessage>
+        <DonationAmountImpactMessage></DonationAmountImpactMessage>
         <StartDonation setStep={setStep}/>  
       </div>
       </>
@@ -48,7 +48,7 @@ const FirstStep = ({ setStep }) => {
             <SelectPaymentDay></SelectPaymentDay>
           </div>
           <DashedLine></DashedLine>
-          <DonationImpactMessage></DonationImpactMessage>
+          <DonationAmountImpactMessage></DonationAmountImpactMessage>
           <StartDonation setStep={setStep}/>  
         </div>
       </>

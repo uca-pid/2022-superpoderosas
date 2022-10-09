@@ -1,17 +1,15 @@
 import React, { useState, useEffect, useMemo } from 'react'
 import amountsValues from '../Values/amountValues'
-import { useFrequency } from './FrequencyContext'
 
 const AmountContext = React.createContext()
 
 export function AmountContextProvider(props) {
-  const { selectedFrequency } = useFrequency()
-  const [amounts, setAmounts] = useState(amountsValues[selectedFrequency])
+  const [amounts, setAmounts] = useState(amountsValues)
   const [selectedAmount, setSelectedAmount] = useState(0)
 
   useEffect(() => {
-    setAmounts(amountsValues[selectedFrequency])
-  }, [amounts, selectedFrequency])
+    setAmounts(amountsValues)
+  }, [amounts])
 
   const value = useMemo(() => {
     return {

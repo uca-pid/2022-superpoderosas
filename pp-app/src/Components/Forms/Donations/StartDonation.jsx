@@ -15,8 +15,6 @@ const StartDonation = ({ setStep }) => {
   const navigate = useNavigate();
   const currentUser = AuthService.getCurrentUser();
   const [showModal, setShowModal] = useState(false);
-  console.log(paymentDay);
-  console.log(subsPeriod.label);
 
   useEffect(() => {
     setMessage("");

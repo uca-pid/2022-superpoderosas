@@ -13,6 +13,8 @@ import { useCurrentUser } from "../../../Context/CurrentUserContext";
 import DonationService from "../../../services/donations.service";
 import ModalWithConfirmationAndDetails from "../../Utiles/ModalWithConfirmationAndDetails";
 import Modal from "../../Utiles/Modal";
+import SubscriptionAmountImpactMessage from "./SubscriptionAmountImpactMessage";
+import SubscriptionImpactForSelectedAmount from "./SubscriptionImpactForSelectedAmount";
 
 const ChangeDonationFromProfileForm = (props) =>{
   const {userWantsToModifySubs, setIfUserWantsToModifySubs} = useSubModContext();
@@ -22,7 +24,7 @@ const ChangeDonationFromProfileForm = (props) =>{
   const { selectedAmount} = useAmount()
   const { subsPeriod, paymentDay} = useSubscriptionPeriod()
   const [message, setMessage] = useState("");
-  console.log(paymentDay);
+
   const closeModalWithConfirmation = () => {
     setShowModalWithConfirmation(false);
   };
@@ -102,6 +104,7 @@ const ChangeDonationFromProfileForm = (props) =>{
     <div className="p-8 md:p-11 lg:p-11">
     <div className='flex flex-col space-y-8 md:space-y-6'>
       <Amounts></Amounts>
+      <SubscriptionImpactForSelectedAmount></SubscriptionImpactForSelectedAmount>
       <DashedLine></DashedLine>
       <div className='space-y-6'>
         <SelectSubscriptionPeriod></SelectSubscriptionPeriod>
@@ -115,9 +118,13 @@ const ChangeDonationFromProfileForm = (props) =>{
         </div>
         )}
       {userWantsToModifySubs ?
-      <div className="flex flex-row justify-between space-x-6 w-full">
+      <div className="flex flex-col justify-between space-y-8 w-full md:space-y-6">
+        <DashedLine></DashedLine>
+        <SubscriptionAmountImpactMessage></SubscriptionAmountImpactMessage>
+        <div className="flex flex-row justify-between space-x-6 w-full">
         <Buttons.IndicationButton text={"Cancelar"} onClick={()=>{setIfUserWantsToModifySubs(false); setMessage("")}} customStyle={"w-full basis-1/2 text-gray-500 greyBg w-full text-gray-500 hover:bg-gray-300 focus:bg-gray-300 "}></Buttons.IndicationButton>
         <Buttons.IndicationButton  text={"Modificar"} customStyle={"basis-1/2 text-white greenBg yellowBgHover w-full"} onClick={()=>{setShowModalWithConfirmation(true)}}></Buttons.IndicationButton>
+        </div>
       </div>
       :
         ((subscriptionData.subscriptionState.state !== 'P') ?

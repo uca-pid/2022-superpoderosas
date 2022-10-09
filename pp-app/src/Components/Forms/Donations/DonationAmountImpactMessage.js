@@ -3,10 +3,10 @@ import { useFrequency } from  '../../../Context/FrequencyContext'
 import impactSubsValues from '../../../Values/impactSubsValues'
 import { useState, useEffect } from 'react'
 
-const DonationImpactMessage = () => {
+const DonationAmountImpactMessage = () => {;
     const { selectedAmount } = useAmount()
-    const { selectedFrequency } = useFrequency()
-    const [amountImpact , setAmountImpact] = useState(impactSubsValues[selectedAmount])
+    const { selectedFrequency } = useFrequency();
+    const [amountImpact , setAmountImpact] = useState(impactSubsValues[selectedAmount]);
 
     useEffect(() => {
         setAmountImpact(impactSubsValues[selectedAmount])
@@ -16,39 +16,33 @@ const DonationImpactMessage = () => {
     <>
     <div className='text-center font-Pop-R text-xl text-gray-400'>
     {
-    defineImpactMessage(selectedAmount, selectedFrequency, amountImpact)
+    defineDonationImpactMessage(selectedAmount, selectedFrequency, amountImpact)
     }
     </div>
     </>
   )
 }
 
-export default DonationImpactMessage
+export default DonationAmountImpactMessage;
 
-function defineImpactMessage(selectedAmount, selectedFrequency, amountImpact) {
+function defineDonationImpactMessage(selectedAmount, selectedFrequency, amountImpact) {
     return (selectedAmount !== 0) ?
-    defineImpactMessageIfAmountIsNotCero(selectedFrequency, selectedAmount, amountImpact)
+    defineDonationImpactMessageIfAmountIsNotCero(selectedAmount, amountImpact)
     :
-    defineImpactMessageIfAmountIsCero(selectedFrequency)
+    defineDonationImpactMessageIfAmountIsCero(selectedFrequency)
 }
 
-function defineImpactMessageIfAmountIsCero(selectedFrequency) {
+function defineDonationImpactMessageIfAmountIsCero(selectedFrequency) {
     return (selectedFrequency === 1) ?
         "Realiza una donación para brindar atención nutricional a niños/as de la comunidad." :
         "Realiza una donación todos los meses para brindar atención nutricional a niños/as de la comunidad."
 }
 
-function defineImpactMessageIfAmountIsNotCero(selectedFrequency, selectedAmount, amountImpact) {
-    return (selectedFrequency === 1) ?
-        `Con tu donación de $${selectedAmount} brindas atención nutricional a niños/as de la comunidad.` 
-        :
-        defineImpactMessageIfAmountIsCustomize(amountImpact, selectedAmount)
-}
-
-function defineImpactMessageIfAmountIsCustomize(amountImpact, selectedAmount) {
-    return (amountImpact !== undefined) ?
+function defineDonationImpactMessageIfAmountIsNotCero(selectedAmount, amountImpact) {
+    return (amountImpact) ?
         `Con tu donación de $${selectedAmount} brindas atención nutricional a ${amountImpact} niños/as todos los meses.`
         :
         `Con tu donación de $${selectedAmount} brindas atención nutricional a niños/as de la comunidad`
 }
+
 

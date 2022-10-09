@@ -3,6 +3,7 @@ const impactSubsValues ={
     980:1, 
     1960:2, 
     2940:3, 
-    3920:4}
+    3920:4
+}
   
 export default impactSubsValues

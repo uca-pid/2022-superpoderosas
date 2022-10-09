@@ -1,6 +1,7 @@
 import { useAmount } from  '../../../Context/AmountContext'
 import AmountButton from "./AmountButton"
 import CustomAmountInput from './CustomAmountInput'
+import DonationImpactForSelectedAmount from './DonationImpactForSelectedAmount'
 
 const Amounts = () => {
   const { amounts, amountIndex } = useAmount()
@@ -13,6 +14,7 @@ const Amounts = () => {
             return (<AmountButton key={index} amount={amount} selected={index === amountIndex()}/>)
           })}
         </div>
+        <DonationImpactForSelectedAmount></DonationImpactForSelectedAmount>
       </div>
     </>
   )
