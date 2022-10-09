@@ -60,7 +60,7 @@ const StartDonation = ({ setStep }) => {
           setMessage(resMessage);
         })
         }else{
-        DonationService.generateTransaction(currentUser.id, selectedAmount,"onlyTime" ).then(
+        DonationService.generateTransaction(currentUser.id, selectedAmount,"onlyTime").then(
           () => {
             setShowModal(true);
             //navigate("a donde querramos mandar");

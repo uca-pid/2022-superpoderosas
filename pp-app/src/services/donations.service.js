@@ -1,10 +1,9 @@
 import axios from "axios";
 const API_URL = "http://localhost:8080/api/payment/";
-const generateTransaction = (userId, amount, paymentDay, type) => {
+const generateTransaction = (userId, amount, type) => {
   return axios.post(API_URL + "createTransaction", {
     userId,
     amount,
-    paymentDay,
     type
   });
 };
