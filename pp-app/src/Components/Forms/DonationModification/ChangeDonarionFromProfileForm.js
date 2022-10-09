@@ -90,9 +90,9 @@ const ChangeDonationFromProfileForm = (props) =>{
       "¿Estás seguro de que deseas modificar tu donación recurrente?"  :  "¿Estás seguro de que deseas renaudar tu donación recurrente?"
           } 
       body={(subscriptionData.subscriptionState.state !== 'P') ? "Si guardas los cambios, tu donación actual se modificará."
-              :   "Si guardas los cambios, tu donación recurrente se renaurá."} 
+              :   "Si guardas los cambios, tu donación recurrente se renaudará."} 
       saveChanges={(subscriptionData.subscriptionState.state !== 'P') ? modifyDonation : handleResetDonation}
-      showDetails={(subscriptionData.subscriptionState.state !== 'P')}></ModalWithConfirmationAndDetails>
+      showDetails="true" action= {(subscriptionData.subscriptionState.state !== 'P') ? "modificará" : "renaudará"}></ModalWithConfirmationAndDetails>
     ) : null}
     {showModal ? (
       <Modal value={showModal} onChange={closeModal} header={(subscriptionData.subscriptionState.state !== 'P') ?

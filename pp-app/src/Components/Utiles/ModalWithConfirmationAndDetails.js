@@ -1,8 +1,8 @@
 import "../NavBars/navBar.css"
 import "../../App.css"
 import { useAmount } from "../../Context/AmountContext"
-
 import { useSubscriptionPeriod } from "../../Context/SubscriptionContext"
+
 const ModalWithConfirmationAndDetails = (props) =>{
   const { selectedAmount} = useAmount()
   const { subsPeriod, paymentDay} = useSubscriptionPeriod()
@@ -32,11 +32,11 @@ const ModalWithConfirmationAndDetails = (props) =>{
                   {(props.showDetails) ?
                   <>
                     <div className="font-Pop-M flex flex-wrap space-x-1 leading-relaxed font-Pop-R text-[15pt] text-medium tracking-[0.2px] purpleText">
-                      <p>Se realizará una donacion de </p>
+                      <p>Se </p><p>{props.action}</p><p>una donacion de </p>
                       <p className="underline decoration-[#eb8301] decoration-wavy underline-offset-4">${selectedAmount}</p>
                       <p>, </p>
-                      <p className="underline decoration-[#eb8301] decoration-wavy underline-offset-4">{subsPeriod.label}</p>
-                      <p>todos los días </p>
+                      <p className="underline decoration-[#eb8301] decoration-wavy underline-offset-4">{subsPeriod.label},</p>
+                      <p>con el próximo pago el día </p>
                        <p className="underline decoration-[#eb8301] decoration-wavy underline-offset-4">{paymentDay}</p>
                        <p>.</p>
                     </div>

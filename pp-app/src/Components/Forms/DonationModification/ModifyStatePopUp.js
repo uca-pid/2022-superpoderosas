@@ -3,7 +3,7 @@ import { faEllipsisV } from '@fortawesome/free-solid-svg-icons';
 import { Popover } from '@headlessui/react';
 import DonationService from '../../../services/donations.service';
 import { useCurrentUser } from '../../../Context/CurrentUserContext';
-import ModalWithConfirmation from "../../Utiles/ModalWithConfirmation";
+import ModalWithConfirmationAndDetails from "../../Utiles/ModalWithConfirmationAndDetails";
 import Modal from "../../Utiles/Modal";
 import { useState } from 'react'
 
@@ -56,10 +56,12 @@ const ModifyStatePopUp = ( ) => {
     return (
       <>
     {showModalWithConfirmation ? (
-      <ModalWithConfirmation value={showModalWithConfirmation} onChange={closeModalWithConfirmation} header={(!cancellationRequest) ?
+    <ModalWithConfirmationAndDetails 
+    value={showModalWithConfirmation} onChange={closeModalWithConfirmation} header={(!cancellationRequest) ?
       "¿Estás seguro de que deseas pausar tu donación recurrente?"  :  "¿Estás seguro de que deseas cancelar tu donación recurrente?"
           } body={(!cancellationRequest) ? "Si guardas los cambios, tu donación actual se pausará."
-              :   "Si guardas los cambios, tu donación recurrente se cancelará."} saveChanges={(!cancellationRequest) ? handlePausedSubs : handleCancelledSubs}></ModalWithConfirmation>
+              :   "Si guardas los cambios, tu donación recurrente se cancelará."} saveChanges={(!cancellationRequest) ? handlePausedSubs : handleCancelledSubs}
+    showDetails="true" action={(!cancellationRequest) ? "pausará" : "cancelará"}></ModalWithConfirmationAndDetails>
     ) : null}
     {showModal ? (
       <Modal value={showModal} onChange={closeModal} header={(!cancellationRequest) ?
