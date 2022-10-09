@@ -61,7 +61,7 @@ const ModifyStatePopUp = ( ) => {
       "¿Estás seguro de que deseas pausar tu donación recurrente?"  :  "¿Estás seguro de que deseas cancelar tu donación recurrente?"
           } body={(!cancellationRequest) ? "Si guardas los cambios, tu donación actual se pausará."
               :   "Si guardas los cambios, tu donación recurrente se cancelará."} saveChanges={(!cancellationRequest) ? handlePausedSubs : handleCancelledSubs}
-    showDetails="true" action={(!cancellationRequest) ? "pausará" : "cancelará"}></ModalWithConfirmationAndDetails>
+    action={(!cancellationRequest) ? "pausará" : "cancelará"}></ModalWithConfirmationAndDetails>
     ) : null}
     {showModal ? (
       <Modal value={showModal} onChange={closeModal} header={(!cancellationRequest) ?
