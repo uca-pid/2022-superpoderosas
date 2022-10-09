@@ -1,17 +1,32 @@
 import "../NavBars/navBar.css"
 import "../../App.css"
+import { useFrequency } from  '../../Context/FrequencyContext'
 import { useAmount } from "../../Context/AmountContext"
 import { useSubscriptionPeriod } from "../../Context/SubscriptionContext"
+import { DATETIME } from "mysql/lib/protocol/constants/types"
 
 const ModalWithConfirmationAndDetails = (props) =>{
-  const { selectedAmount} = useAmount()
-  const { subsPeriod, paymentDay} = useSubscriptionPeriod()
+  const { selectedAmount} = useAmount();
+  const { subsPeriod, paymentDay} = useSubscriptionPeriod();
+  const { selectedFrequency } = useFrequency();
     function closeModal(event) {
         props.onChange(event.target.userWantsToRegister);
     }
     function saveChangesFromModal(event) {
       props.saveChanges(event);
       closeModal(event);
+    }
+    function calculateDate(){
+      if((typeof(paymentDay) === 'string')){
+        console.log("1");
+        const [dateStr, timeStr] = paymentDay.split('T');
+        const [year, month, day] = dateStr.split('-');
+        const date = day+'/'+month+'/'+year;
+        return date;
+      }else{
+        console.log("2");
+        return paymentDay.format("DD/MM/YYYY");
+      }
     }
     return(
         <>
@@ -35,7 +50,7 @@ const ModalWithConfirmationAndDetails = (props) =>{
                       <p>, </p>
                       <p className="underline decoration-[#eb8301] decoration-wavy underline-offset-4">{subsPeriod.label},</p>
                       <p>con el próximo pago el día </p>
-                       <p className="underline decoration-[#eb8301] decoration-wavy underline-offset-4">{paymentDay}</p>
+                       <p className="underline decoration-[#eb8301] decoration-wavy underline-offset-4">{(calculateDate())}</p>
                        <p>.</p>
                     </div>
                   <p className="text-center font-Pop-R text-lg text-gray-400">

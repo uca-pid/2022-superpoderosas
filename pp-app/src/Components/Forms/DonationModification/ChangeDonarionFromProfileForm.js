@@ -22,7 +22,7 @@ const ChangeDonationFromProfileForm = (props) =>{
   const { selectedAmount} = useAmount()
   const { subsPeriod, paymentDay} = useSubscriptionPeriod()
   const [message, setMessage] = useState("");
-
+  console.log(paymentDay);
   const closeModalWithConfirmation = () => {
     setShowModalWithConfirmation(false);
   };
