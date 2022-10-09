@@ -30,11 +30,11 @@ const StartDonation = ({ setStep }) => {
 
   const isFormValid = () =>{
     if (selectedFrequency === 2 && (paymentDay===null || paymentDay=== undefined)){
-      setMessage("Para realizar una donación frecuentemente debe la fecha de pago");
+      setMessage("Para activar una subscripción debe seleccionar la fecha del primer pago.");
       return false
     }
     if (selectedAmount < 1 || selectedAmount===undefined){
-      setMessage("El monto ingresado a donar debe de ser al menos $1");
+      setMessage("El monto a donar debe ser de al menos $1.");
       return false
     }
     return true
