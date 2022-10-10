@@ -7,6 +7,7 @@ import Modal from "../../../Utiles/Modal"
 import { useNavigate } from "react-router-dom";
 import ValidationFunctions from "../../../../functions/validations";
 import "../../../../App.css"
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const ChangePasswordFromProfileForm = (props) =>{
   const form = useRef();
@@ -19,11 +20,23 @@ const ChangePasswordFromProfileForm = (props) =>{
   const [message, setMessage] = useState("");
   const currentUser = AuthService.getCurrentUser();
   const [confirmationMessage, setConfirmationMessage] = useState ("");
+  const [passwordShown, setPasswordShown] = useState(false);
+  const [newPasswordShown, setNewPasswordShown] = useState(false);
 
   const continuePostNavigationSuccessful = () =>{
     setShowModal(true);
   };
-
+  
+  const togglePassword = () => {
+    // When the handler is invoked
+    // inverse the boolean state of passwordShown
+    setPasswordShown(!passwordShown);
+  };
+  const toggleNewPassword = () => {
+    // When the handler is invoked
+    // inverse the boolean state of passwordShown
+    setNewPasswordShown(!newPasswordShown);
+  };
   
   function closeModal() {
     setShowModal(false);
@@ -94,26 +107,32 @@ const ChangePasswordFromProfileForm = (props) =>{
 
               <div className="space-y-4 rounded-md mb-[-5px] flex-rows">
                 <div className="flex flex-col space-x-4">
+                  <div className= "relative flex flex-row bg-transparent h-12 block w-full rounded-xl border border-gray-300 px-6 py-0 focus:z-10 font-Pop-R tracking-[0.5px] text-[12pt] focus:outline-none greenBorderWhenFocus form-control">
                   <Input
-                    type="password"
-                    className="relative bg-transparent h-12 block w-full rounded-xl border border-gray-300 px-6 py-2 text-gray-900 placeholder-gray-600 focus:z-10 font-Pop-R tracking-[0.5px] text-[12pt] focus:outline-none greenBorderWhenFocus form-control"
+                    type={(!passwordShown)? "password" : "text"}
+                    className="bg-transparent h-12 block w-full border-transparent px-1 py-2 text-gray-900 placeholder-gray-600 focus:border-transparent focus:ring-0 font-Pop-R tracking-[0.5px] text-[12pt] focus:outline-none"
                     name="oldpassword"
                     value={oldpassword}
                     placeholder="Contraseña antigua"
                     onChange={onChangeOldPassword}
                     validations={[ValidationFunctions.required]}
-                  />   
+                  />
+                  <span className="py-3 px-20"><FontAwesomeIcon onClick={togglePassword} icon={passwordShown? "fa-solid fa-eye-slash": "fa-solid fa-eye"} color='#000'size={14} /></span>
+                  </div>   
                 </div>
-                <div className="flex flex-col space-x-4">   
+                <div className="flex flex-col space-x-4">
+                  <div className= "relative flex flex-row bg-transparent h-12 block w-full rounded-xl border border-gray-300 px-6 py-0 focus:z-10 font-Pop-R tracking-[0.5px] text-[12pt] focus:outline-none greenBorderWhenFocus form-control">
                   <Input
-                    type="password"
-                    className="relative bg-transparent h-12 block w-full rounded-xl border border-gray-300 px-6 py-2 text-gray-900 placeholder-gray-600 focus:z-10 font-Pop-R tracking-[0.5px] text-[12pt] focus:outline-none greenBorderWhenFocus form-control"
+                    type={(!newPasswordShown)? "password" : "text"}
+                    className="bg-transparent h-12 block w-full border-transparent px-1 py-2 text-gray-900 placeholder-gray-600 focus:border-transparent focus:ring-0 font-Pop-R tracking-[0.5px] text-[12pt] focus:outline-none"
                     name="password"
                     value={password}
                     placeholder="Contraseña nueva"
                     onChange={onChangePassword}
                     validations={[ValidationFunctions.required, ValidationFunctions.vpassword]}
                   />
+                  <span className="py-3 px-20"><FontAwesomeIcon onClick={toggleNewPassword} icon={newPasswordShown? "fa-solid fa-eye-slash": "fa-solid fa-eye"} color='#000'size={14} /></span>
+                  </div>   
                 </div>
                 <div className="flex flex-col space-x-4"> 
                   <Input

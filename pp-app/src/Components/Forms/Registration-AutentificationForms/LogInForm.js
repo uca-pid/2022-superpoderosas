@@ -8,8 +8,8 @@ import Form from "react-validation/build/form";
 import CheckButton from "react-validation/build/button";
 import AuthService from "../../../services/auth.service";
 import Input from "react-validation/build/input";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import ValidationFunctions from "../../../functions/validations";
-//import { FaEye, FaEyeSlash } from "react-icons/fa";
 
 export default function Login(props) {
   const form = useRef();
@@ -17,9 +17,14 @@ export default function Login(props) {
   const [email, setMail] = useState("");
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState("");
-  const [showPassword] = useState(false);
+  const [passwordShown, setPasswordShown] = useState(false);
   const navigate = useNavigate();
 
+  const togglePassword = () => {
+    // When the handler is invoked
+    // inverse the boolean state of passwordShown
+    setPasswordShown(!passwordShown);
+  };
   const navigateToChangePassword = () => {
     navigate('/changePasswordPage');
   }
@@ -97,15 +102,20 @@ export default function Login(props) {
             {inputs.map((input) => {
               return (
                 <>
+                <div className= "relative flex flex-row bg-transparent h-12 block w-full rounded-xl border border-gray-300 px-6 py-0 focus:z-10 font-Pop-R tracking-[0.5px] text-[12pt] focus:outline-none greenBorderWhenFocus form-control">
                 <Input
-                  type={(input.type==="password" && !showPassword)? "password" : "text"}
-                  className="relative bg-transparent h-12 block w-full rounded-xl border border-gray-300 px-6 py-2 text-gray-900 placeholder-gray-600 focus:z-10 font-Pop-R tracking-[0.5px] text-[12pt] focus:outline-none greenBorderWhenFocus form-control"
+                  type={(input.type==="password" && !passwordShown)? "password" : "text"}
+                  className="bg-transparent h-12 block w-full border-transparent px-1 py-2 text-gray-900 placeholder-gray-600 focus:border-transparent focus:ring-0 font-Pop-R tracking-[0.5px] text-[12pt] focus:outline-none"
                   name={input.name}
                   value={input.value}
                   placeholder={input.placeholder}
                   onChange={input.onChange}
                   validations={input.validations}
                 />
+                {input.type === "password" &&(
+                  <span className="py-3"><FontAwesomeIcon onClick={togglePassword} icon={passwordShown? "fa-solid fa-eye-slash": "fa-solid fa-eye"} color='#000'size={14} /></span>
+                )}
+                </div>
 {/*               /*(input.type === "password") ?
                     (showPassword ? <FaEyeSlash></FaEyeSlash> : <FaEye></FaEye>) 
                   :
