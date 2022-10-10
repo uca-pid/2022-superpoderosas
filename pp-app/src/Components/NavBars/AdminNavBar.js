@@ -11,19 +11,12 @@ import Buttons from "../Utiles/Butttons";
 import LogoPataPila_Colores from "../Images/LogoPataPila_Colores.jpg";
 import avatar from "../Images/avatar.jpeg";
 
-const navigation = [
-  { name: '¿Por qué desnutrición?', href: 'https://patapila.org/desnutricion.php' },
-  { name: 'Nuestro Trabajo', href: 'https://patapila.org/impacto.php' },
-  { name: 'Sobre Nosotros', href: 'https://patapila.org/nosotros.php' },
-  { name: 'Involucrate', href: 'https://patapila.org/involucrate.php' },
+const adminNavigation =[
+  { name: 'Reportes' },
+  { name: 'Transacciones'},
 ]
 
-const userNavigation =[
-    { name: 'Ajustes', path: "/profile"},
-    { name: "Donar", path:"/donar"},
-]
-
-export default function ProfileNavBar(props) {
+export default function AdminNavBar(props) {
   const navigate = useNavigate();
   const userName = props.currentUser.name;
   const userLastName = props.currentUser.lastname;
@@ -49,13 +42,6 @@ export default function ProfileNavBar(props) {
                             </a>
                         </div>
                     </div>
-                  <div className="justify-start mx-auto hidden lg:basis-4/7 lg:pr-20 lg:flex lg:flex-row mt-5">
-                  {navigation.map((item) => (
-                    <a key={item.name} href={item.href} className=' font-bold ml-[5px] tracking-[0.5px] inline-block px-[28px] position-relative-nowrap font-Pop-M uppercase purpleText font-bold duration-[0.3s] yellowTextHover text-lg mt-2'>
-                      {item.name}
-                    </a>
-                  ))}
-                  </div>
                   <div className="mt-3 z-50">
                   <Popover className={"grid"}>
                     <Popover.Button className="justify-self-end lightgreyBgTranslucentHover rounded-3xl md:rounded-xl lg:basis-2/7 w-fit py-2 px-5">
@@ -70,11 +56,11 @@ export default function ProfileNavBar(props) {
                     </div>
                     </Popover.Button>
                     <Popover.Panel className={"mt-4 p-3 rounded-2xl reallyLightgreyBg grayBorder space-y-2"}>
-                      <div className="md-round space-y-2">  
-                      {userNavigation.map((item) => (
-                        <button key={item.name} onClick={()=>navigate(item.path)} className='w-full text-left z-50 relative font-Pop-M uppercase darkGrayText font-medium tracking-[0.5px] grayBottomBorderfont-Pop-M uppercase darkGrayText font-medium tracking-[0.5px] grayBottomBorder block px-1 py-2 text-[12pt] duration-300 hover:text-[13pt] focus:text-[13pt]'>
+                      <div className="md-round space-y-2">                
+                      {adminNavigation.map((item) => (
+                        <div key={item.name} className='z-50 relative font-Pop-M uppercase darkGrayText font-medium tracking-[0.5px] grayBottomBorder block px-1 py-2 text-[12pt] duration-300 hover:text-[13pt] focus:text-[13pt]'>
                           {item.name}
-                        </button>
+                        </div>
                         ))}
                       </div>
                       <Buttons.ProfileNavBarButton onClick={logOut} text={"Cerrar Sesión"}/> 

@@ -17,7 +17,7 @@ export default function Login(props) {
   const [email, setMail] = useState("");
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState("");
-  const [showPassword, setShowPassword] = useState(false);
+  const [showPassword] = useState(false);
   const navigate = useNavigate();
 
   const navigateToChangePassword = () => {

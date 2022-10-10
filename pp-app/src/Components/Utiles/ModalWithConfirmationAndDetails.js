@@ -1,14 +1,11 @@
 import "../NavBars/navBar.css"
 import "../../App.css"
-import { useFrequency } from  '../../Context/FrequencyContext'
 import { useAmount } from "../../Context/AmountContext"
 import { useSubscriptionPeriod } from "../../Context/SubscriptionContext"
-import { DATETIME } from "mysql/lib/protocol/constants/types"
 
 const ModalWithConfirmationAndDetails = (props) =>{
   const { selectedAmount} = useAmount();
   const { subsPeriod, paymentDay} = useSubscriptionPeriod();
-  const { selectedFrequency } = useFrequency();
     function closeModal(event) {
         props.onChange(event.target.userWantsToRegister);
     }
@@ -19,7 +16,7 @@ const ModalWithConfirmationAndDetails = (props) =>{
     function calculateDate(){
       if((typeof(paymentDay) === 'string')){
         console.log("1");
-        const [dateStr, timeStr] = paymentDay.split('T');
+        const [dateStr] = paymentDay.split('T');
         const [year, month, day] = dateStr.split('-');
         const date = day+'/'+month+'/'+year;
         return date;
