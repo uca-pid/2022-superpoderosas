@@ -3,7 +3,6 @@ import "../../App.css"
 import { useFrequency } from  '../../Context/FrequencyContext'
 import { useAmount } from "../../Context/AmountContext"
 import { useSubscriptionPeriod } from "../../Context/SubscriptionContext"
-import { DATETIME } from "mysql/lib/protocol/constants/types"
 
 const ModalWithConfirmationAndDetails = (props) =>{
   const { selectedAmount} = useAmount();
