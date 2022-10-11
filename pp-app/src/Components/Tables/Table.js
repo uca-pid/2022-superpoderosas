@@ -4,6 +4,7 @@ import { ChevronDoubleLeftIcon, ChevronLeftIcon, ChevronRightIcon, ChevronDouble
 import { Button, PageButton } from './Buttons'
 import { classNames } from './Utils'
 import { SortIcon, SortUpIcon, SortDownIcon } from './Icons'
+import FilterSelect from './FilterSelect'
 
 // Define a default UI for filtering
 function GlobalFilter({
@@ -48,7 +49,7 @@ export function SelectColumnFilter({
   // Render a multi-select box
   return (
     <label className="flex gap-x-2 items-baseline">
-      <span className="text-gray-700">{render("Header")}: </span>
+      <span className="text-gray-700 font-Pop-R">{render("Header")}: </span>
       <select
         className="rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
         name={id}
@@ -89,6 +90,7 @@ export function StatusPill({ value }) {
 };
 
 function Table({ columns, data }) {
+  
   const {
     getTableProps,
     getTableBodyProps,
@@ -121,21 +123,13 @@ function Table({ columns, data }) {
 
   return (
     <>
-      <div className="sm:flex sm:gap-x-2">
+      <div className="flex justify-between sm:gap-x-2">
         <GlobalFilter
           preGlobalFilteredRows={preGlobalFilteredRows}
           globalFilter={state.globalFilter}
           setGlobalFilter={setGlobalFilter}
         />
-        {headerGroups.map((headerGroup) =>
-          headerGroup.headers.map((column) =>
-            column.Filter ? (
-              <div className="mt-2 sm:mt-0" key={column.id}>
-                {column.render("Filter")}
-              </div>
-            ) : null
-          )
-        )}
+        <FilterSelect headerGroups={headerGroups}/>
       </div>
       {/* table */}
       <div className="mt-4 flex flex-col">

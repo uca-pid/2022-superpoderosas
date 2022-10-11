@@ -68,13 +68,13 @@ const ModifyStatePopUp = ( ) => {
       "Tu donación ha sido pausada con éxito!"  :  "Tu donación ha sido cancelada con éxito!"
           }body={""} buttonText={"Continuar"}></Modal>
     ) : null}
-        <Popover>
+        <Popover className={"grid relative"}>
             <Popover.Button className="justify-self-end lightgreyBgTranslucentHover rounded-3xl md:rounded-xl lg:basis-2/7 w-fit py-2 px-5">
             <div className="justify-center flex z-50 space-x-4 overflow-hidden mx-auto lg:flex-row">
                 <FontAwesomeIcon icon={faEllipsisV} />
             </div>
             </Popover.Button>
-            <Popover.Panel className={"absolute mt-4 p-3 rounded-lg almostWhiteBg grayBorder space-y-2"}>
+            <Popover.Panel className={"absolute top-0 right-0 mt-4 p-3 rounded-lg almostWhiteBg grayBorder space-y-2"}>
                 <div className="space-y-2">
                 <button onClick={()=>{setCancellationRequest(true);setShowModalWithConfirmation(true)}} className='w-full text-left z-50 relative font-Pop-M text-gray-400 duration-700 hover:text-gray-500 focus:text-gray-500 tracking-[0.5px] grayBottomBorder block px-1 py-2 text-base '>
                     Cancelar Subscripción
