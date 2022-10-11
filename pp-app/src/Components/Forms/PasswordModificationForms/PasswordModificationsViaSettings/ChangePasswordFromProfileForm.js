@@ -22,7 +22,7 @@ const ChangePasswordFromProfileForm = (props) => {
   const [confirmationMessage, setConfirmationMessage] = useState("");
   const [passwordShown, setPasswordShown] = useState(false);
   const [newPasswordShown, setNewPasswordShown] = useState(false);
-  const [password2Shown, setassword2Shown] = useState(false);
+  const [password2Shown, setPassword2Shown] = useState(false);
 
   const continuePostNavigationSuccessful = () => {
     setShowModal(true);
@@ -41,7 +41,7 @@ const ChangePasswordFromProfileForm = (props) => {
   const togglePassword2 = () => {
     // When the handler is invoked
     // inverse the boolean state of passwordShown
-    setPasswordShown(!passwordShown);
+    setPassword2Shown(!password2Shown);
   };
 
   function closeModal() {
@@ -156,7 +156,7 @@ const ChangePasswordFromProfileForm = (props) => {
                 validations={[ValidationFunctions.required]}
               />
               </div>
-              <div className="py-2"><FontAwesomeIcon onClick={togglePassword2} icon={newPasswordShown ? "fa-solid fa-eye-slash" : "fa-solid fa-eye"} color='#000' size={14} /></div>
+              <div className="py-2"><FontAwesomeIcon onClick={togglePassword2} icon={password2Shown ? "fa-solid fa-eye-slash" : "fa-solid fa-eye"} color='#000' size={14} /></div>
             </div>
           </div>
         </div>
