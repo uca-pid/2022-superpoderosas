@@ -4,8 +4,8 @@ const required = (value) => {
     if (!value) {
       console.log("required!");
       return (
-        <div className="alert redText alert-danger text-base m-0" role="alert">
-          This field is required!
+        <div className="alert redText alert-danger text-base my-2 mx-0" role="alert">
+          ¡Este campo es obligatorio!
         </div>
       );
     }
@@ -14,8 +14,8 @@ const required = (value) => {
     if (!isEmail(value)) {
       console.log("invalid email!");
       return (
-        <div className="alert redText alert-danger text-base m-0" role="alert">
-          This is not a valid email.
+        <div className="alert redText alert-danger text-base my-2 mx-0" role="alert">
+        Mail no válido.
         </div>
       );
     }
@@ -23,18 +23,18 @@ const required = (value) => {
   const vstrings = (value) => {
     var regName = /^[a-zA-Z]+ [a-zA-Z]+$/;
     if(!regName.test(value)){
-      <div className="alert redText alert-danger text-base m-0" role="alert">
-          This is not a valid name.
+       <div className="alert redText alert-danger text-base my-2 mx-0" role="alert">
+          Debe ser solamente texto, no puede contener otro tipo de caracteres.
         </div>
     }else{
       alert('Valid name given.');
     }
   };
   const vpassword = (value) => {
-    if (value.length < 6 || value.length > 40) {
+    if (value.length < 6 || value.length > 20) {
       return (
-        <div className="alert redText alert-danger text-base m-0" role="alert">
-          The password must be between 6 and 40 characters.
+        <div className="alert redText alert-danger text-base my-2 mx-0 " role="alert">
+          La contraseña tiene que tener al menos 10 caracteres y como máximo 20.
         </div>
       );
     }

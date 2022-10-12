@@ -111,12 +111,12 @@ const ChangePasswordFromProfileForm = (props) => {
 
         <div className="tracking-wide font-Pop-M font-medium uppercase blackText font-bold">Cambiar contraseña </div>
         <div className="space-y-4 rounded-md mb-[-5px] flex-rows">
-          <div className="relative h-fit pb-6">
+          <div className="h-fit relative">
             <div className="inline-block align-top flex flex-row bg-transparent h-12 justify-between rounded-xl border text-gray-900 border-gray-300 px-10 focus:z-10 font-Pop-R tracking-[0.5px] text-[12pt] focus:outline-none greenBorderWhenFocus form-control">
-              <div className="">
+              <div className="flex flex-col h-fit">
               <Input
                 type={(!passwordShown) ? "password" : "text"}
-                className="mb-2 border-transparent placeholder-gray-600 focus:border-transparent focus:ring-0 focus:outline-none"
+                className="border-transparent placeholder-gray-600 focus:border-transparent focus:ring-0 focus:outline-none"
                 name="oldpassword"
                 value={oldpassword}
                 placeholder="Contraseña antigua"
@@ -127,28 +127,26 @@ const ChangePasswordFromProfileForm = (props) => {
               <div className="py-2"><FontAwesomeIcon onClick={togglePassword} icon={newPasswordShown ? "fa-solid fa-eye-slash" : "fa-solid fa-eye"} color='#000' size={14} /></div>
             </div>
           </div>
-          <div className="relative h-fit pb-6">
-            <div className="inline-block align-top flex flex-row bg-transparent h-12 justify-between rounded-xl border text-gray-900 border-gray-300 px-10 focus:z-10 font-Pop-R tracking-[0.5px] text-[12pt] focus:outline-none greenBorderWhenFocus form-control">
-              <div className="">
+          <div className="h-auto align-top">
+            <div className="flex flex-row bg-transparent h-12 justify-between rounded-xl border text-gray-900 border-gray-300 px-10 focus:z-10 font-Pop-R tracking-[0.5px] text-[12pt] focus:outline-none greenBorderWhenFocus form-control">    
               <Input
                 type={(!newPasswordShown) ? "password" : "text"}
-                className="mb-2 border-transparent placeholder-gray-600 focus:border-transparent focus:ring-0 focus:outline-none"
+                className="border-transparent placeholder-gray-600 focus:border-transparent focus:ring-0 focus:outline-none"
                 name="password"
                 value={password}
                 placeholder="Contraseña nueva"
                 onChange={onChangePassword}
                 validations={[ValidationFunctions.required, ValidationFunctions.vpassword]}
               />
-              </div>
               <div className="py-2"><FontAwesomeIcon onClick={toggleNewPassword} icon={newPasswordShown ? "fa-solid fa-eye-slash" : "fa-solid fa-eye"} color='#000' size={14} /></div>
             </div>
           </div>
-          <div className="relative h-fit pb-6">
+          <div className="h-fit relative">
             <div className="inline-block align-top flex flex-row bg-transparent h-12 justify-between rounded-xl border text-gray-900 border-gray-300 px-10 focus:z-10 font-Pop-R tracking-[0.5px] text-[12pt] focus:outline-none greenBorderWhenFocus form-control">
               <div className="">
               <Input
                 type={(!password2Shown) ? "password" : "text"}
-                className="mb-2 border-transparent placeholder-gray-600 focus:border-transparent focus:ring-0 focus:outline-none"
+                className="border-transparent placeholder-gray-600 focus:border-transparent focus:ring-0 focus:outline-none"
                 name="password2"
                 value={password2}
                 placeholder="Confirmar contraseña"

@@ -96,7 +96,7 @@ export default function Login(props) {
               return (
                 <Input
                   type={input.type}
-                  className="relative bg-transparent h-12 block w-full rounded-xl   border border-gray-300 px-6 py-2 text-gray-900 placeholder-gray-600 focus:z-10 placeholderText focus:outline-none placeholderTextOnInput sm:text-sm form-control"
+                  className="relative flex justify-around bg-transparent h-12 block w-full rounded-xl   border border-gray-300 px-6 py-2 text-gray-900 placeholder-gray-600 focus:z-10 placeholderText focus:outline-none placeholderTextOnInput sm:text-sm form-control"
                   name={input.name}
                   value={input.value}
                   placeholder={input.placeholder}
