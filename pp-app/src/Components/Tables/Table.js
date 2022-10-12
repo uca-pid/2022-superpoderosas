@@ -85,7 +85,7 @@ export function StatusPill({ value }) {
       }
     >
       {status}
-    </span>
+    </div>
   );
 };
 
