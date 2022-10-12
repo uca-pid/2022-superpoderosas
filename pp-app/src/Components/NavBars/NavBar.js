@@ -1,6 +1,6 @@
 import { Fragment } from 'react'
 import { Popover, Transition } from '@headlessui/react'
-import { XMarkIcon } from '@heroicons/react/24/outline'
+//import { XMarkIcon } from '@heroicons/react/24/outline'
 import "../../Fonts/Poppins-Bold.ttf"
 import { useNavigate } from "react-router-dom"
 import "./navBar.css"
@@ -72,7 +72,7 @@ export default function NavBar() {
                 
                 <div className="px-5 pt-4 justify-self-end grid ">
                     <Popover.Button className="rounded-md p-2 text-white place-self-end" >
-                    <XMarkIcon className="h-8 w-8" aria-hidden="true" />
+                    {/*<XMarkIcon className="h-8 w-8" aria-hidden="true" />*/}
                     </Popover.Button>
                 </div>
                   

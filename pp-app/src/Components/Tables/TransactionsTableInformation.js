@@ -63,24 +63,24 @@ const columns =[
   },
   {
     Header: "Monto",
-    accessor: 'monto',
+    accessor: 'amount',
     Filter: SelectColumnFilter,  // new
     filter: 'includes',
   },
   {
     Header: "Modo",
-    accessor: 'modo',
+    accessor: 'type',
     Filter: SelectColumnFilter,  // new
     filter: 'includes',
   },
   {
     Header: "Fecha de Pago",
-    accessor: "fechaPago",
+    accessor: "paymentDate",
     Filter: SelectColumnFilter,  // new
     filter: 'includes',
   },{
     Header: "Estado",
-    accessor: "estado",
+    accessor: "transactionState.state",
     Cell: StatusPill,
     Filter: SelectColumnFilter,  // new
     filter: 'includes',

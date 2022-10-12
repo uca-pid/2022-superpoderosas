@@ -12,7 +12,7 @@ const BaseInformationPage = () => {
       <AdminNavBar currentUser={currentUser}></AdminNavBar>
       {currentUser ? (
         <div className="px-80">
-        <Table data={TransactionTableInformation.data} columns={TransactionTableInformation.columns}></Table>
+        <Table startData={TransactionTableInformation.data} columns={TransactionTableInformation.columns}></Table>
         </div>
       ) : (
       <></>

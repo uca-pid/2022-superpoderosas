@@ -1,10 +1,12 @@
 import React from 'react'
+import { useEffect } from 'react'
 import { useTable, useFilters, useGlobalFilter, useAsyncDebounce, useSortBy, usePagination } from 'react-table'
 import { ChevronDoubleLeftIcon, ChevronLeftIcon, ChevronRightIcon, ChevronDoubleRightIcon } from '@heroicons/react/solid'
 import { Button, PageButton } from './Buttons'
 import { classNames } from './Utils'
 import { SortIcon, SortUpIcon, SortDownIcon } from './Icons'
 import FilterSelect from './FilterSelect'
+import AdminServices from '../../services/transactions.service'
 
 // Define a default UI for filtering
 function GlobalFilter({
@@ -72,15 +74,25 @@ export function SelectColumnFilter({
 
 export function StatusPill({ value }) {
   const status = value ? value.toLowerCase() : "unknown";
+  var stat = "unknown"
+  if(status === "a"){
+    var stat = "aceptada"
+  }
+  else if(status ==="p"){
+    var stat = "pendiente"
+  }
+  else if(status === "r"){
+    var stat = "rechazada"
+  }
 
   return (
     <div
       className={
         classNames(
           "px-3 py-1 uppercase leading-wide font-bold text-xs rounded-full shadow-sm",
-          status.startsWith("aceptada") ? "bg-green-100 text-green-800" : null,
-          status.startsWith("pendiente") ? "bg-yellow-100 text-yellow-800" : null,
-          status.startsWith("rechazada") ? "bg-red-100 text-red-800" : null,
+          stat.startsWith("aceptada") ? "bg-green-100 text-green-800" : null,
+          stat.startsWith("pendiente") ? "bg-yellow-100 text-yellow-800" : null,
+          stat.startsWith("rechazada") ? "bg-red-100 text-red-800" : null,
         )
       }
     >
@@ -89,8 +101,9 @@ export function StatusPill({ value }) {
   );
 };
 
-function Table({ columns, data }) {
-  
+function Table({ startData, columns }) {
+  const [data, setData] = React.useState(startData)
+  const [offset, setOffset] = React.useState(0)
   const {
     getTableProps,
     getTableBodyProps,
@@ -120,6 +133,12 @@ function Table({ columns, data }) {
     useSortBy,
     usePagination, 
   )
+  useEffect(() => {
+    AdminServices.getTransactions(offset).then(res=>{
+      res? setData(res.data) : setData(startData)
+      console.log(res.data)
+    });
+  }, [offset])
 
   return (
     <>
