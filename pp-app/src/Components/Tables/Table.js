@@ -6,6 +6,9 @@ import { Button, PageButton } from './Buttons'
 import { classNames } from './Utils'
 import { SortIcon, SortUpIcon, SortDownIcon } from './Icons'
 import FilterSelect from './FilterSelect'
+import "../../App.css"
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faSearch } from '@fortawesome/fontawesome-free-solid'
 import AdminServices from '../../services/transactions.service'
 
 // Define a default UI for filtering
@@ -14,24 +17,23 @@ function GlobalFilter({
   globalFilter,
   setGlobalFilter,
 }) {
-  const count = preGlobalFilteredRows.length
   const [value, setValue] = React.useState(globalFilter)
   const onChange = useAsyncDebounce(value => {
     setGlobalFilter(value || undefined)
   }, 200)
 
   return (
-    <label className="flex gap-x-2 items-baseline">
-      <span className="text-gray-700">Search: </span>
+    <label className="px-6 flex flex-row gap-x-2 w-fit items-baseline border rounded-xl border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
+      <FontAwesomeIcon icon={faSearch} color="gray" className='pt-2' />
       <input
         type="text"
-        className="rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+        className="rounded-md font-Pop-R text-base border-transparent focus:border-transparent focus:ring-0"
         value={value || ""}
         onChange={e => {
           setValue(e.target.value);
           onChange(e.target.value);
         }}
-        placeholder={`${count} records...`}
+        placeholder="Buscar transacción . . . ."
       />
     </label>
   )
@@ -74,36 +76,32 @@ export function SelectColumnFilter({
 
 export function StatusPill({ value }) {
   const status = value ? value.toLowerCase() : "unknown";
-  var stat = "unknown"
-  if(status === "a"){
-    var stat = "aceptada"
-  }
-  else if(status ==="p"){
-    var stat = "pendiente"
-  }
-  else if(status === "r"){
-    var stat = "rechazada"
-  }
-
   return (
     <div
       className={
         classNames(
-          "px-3 py-1 uppercase leading-wide font-bold text-xs rounded-full shadow-sm",
-          stat.startsWith("aceptada") ? "bg-green-100 text-green-800" : null,
-          stat.startsWith("pendiente") ? "bg-yellow-100 text-yellow-800" : null,
-          stat.startsWith("rechazada") ? "bg-red-100 text-red-800" : null,
+          "px-3 py-1 uppercase w-fit font-Pop-M text-base rounded-full",
+          status.startsWith("A") ? "bg-[#0f693849] text-gray-800" : null,
+          status.startsWith("P") ? "bg-gray-100 text-gray-800" : null,
+          status.startsWith("R") ? "bg-[#eb820144] text-gray-800" : null,
         )
       }
     >
-      {status}
+      {(status==="A") 
+      ? "Aceptada" 
+      : ((status==="P") 
+      ? "Pendiente"
+      : ((status==="R") 
+      ? "Rechazada"
+      : "")
+      )}
     </div>
   );
 };
 
 function Table({ startData, columns }) {
   const [data, setData] = React.useState(startData)
-  const [offset, setOffset] = React.useState(0)
+  const [offset] = React.useState(0)
   const {
     getTableProps,
     getTableBodyProps,
@@ -138,10 +136,10 @@ function Table({ startData, columns }) {
       res? setData(res.data) : setData(startData)
       console.log(res.data)
     });
-  }, [offset])
+  }, [offset, startData])
 
   return (
-    <>
+    <div className='space-y-6'>
       <div className="flex justify-between sm:gap-x-2">
         <GlobalFilter
           preGlobalFilteredRows={preGlobalFilteredRows}
@@ -162,7 +160,7 @@ function Table({ startData, columns }) {
                       {headerGroup.headers.map(column => (
                         <th
                           scope="col"
-                          className="group px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                          className="group px-6 py-3 text-left text-base font-Pop-R text-gray-500 uppercase"
                           {...column.getHeaderProps(column.getSortByToggleProps())}
                         >
                           <div className="flex items-center justify-between">
@@ -198,7 +196,7 @@ function Table({ startData, columns }) {
                               role="cell"
                             >
                               {cell.column.Cell.name === "defaultRenderer"
-                                ? <div className="text-sm text-gray-500">{cell.render('Cell')}</div>
+                                ? <div className="text-base text-gray-500 font-Pop-L">{cell.render('Cell')}</div>
                                 : cell.render('Cell')
                               }
                             </td>
@@ -220,22 +218,22 @@ function Table({ startData, columns }) {
           <Button onClick={() => nextPage()} disabled={!canNextPage}>Next</Button>
         </div>
         <div className="hidden sm:flex-1 sm:flex sm:items-center sm:justify-between">
-          <div className="flex gap-x-2 items-baseline">
-            <span className="text-sm text-gray-700">
-              Page <span className="font-medium">{state.pageIndex + 1}</span> of <span className="font-medium">{pageOptions.length}</span>
+          <div className="flex gap-x-2 items-baseline space-x-4">
+            <span className="text-base font-Pop-R text-gray-700">
+              Page <span className="font-Pop-R text-base">{state.pageIndex + 1}</span> of <span className="font-Pop-R text-base">{pageOptions.length}</span>
             </span>
             <label>
               <span className="sr-only">Items Per Page</span>
               <select
-                className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+                className="mt-1 block w-full font-Pop-L text-base rounded-md border-gray-300 shadow-sm focus:border-gray-300 focus:ring-0"
                 value={state.pageSize}
                 onChange={e => {
                   setPageSize(Number(e.target.value))
                 }}
               >
                 {[5, 10, 20].map(pageSize => (
-                  <option key={pageSize} value={pageSize}>
-                    Show {pageSize}
+                  <option key={pageSize} value={pageSize} className="">
+                    Mostrar {pageSize}
                   </option>
                 ))}
               </select>
@@ -277,7 +275,7 @@ function Table({ startData, columns }) {
           </div>
         </div>
       </div>
-    </>
+    </div>
   )
 }
 

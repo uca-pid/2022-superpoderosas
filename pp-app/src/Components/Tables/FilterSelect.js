@@ -7,7 +7,7 @@ const FilterSelect = ({headerGroups}) => {
   return (
     <>
     <Popover className={"grid relative"}>
-    <Popover.Button className="justify-self-end lightgreyBgTranslucentHover rounded-3xl md:rounded-xl lg:basis-2/7 w-fit py-2 px-5" >
+    <Popover.Button className="justify-self-end lightgreyBgTranslucentHover rounded-3xl md:rounded-xl lg:basis-2/7 w-fit py-2 px-5 focus:ring-0" >
         <div className="justify-center flex z-50 space-x-4 overflow-hidden mx-auto lg:flex-row">
         <FontAwesomeIcon icon={faFilter} color="gray"/>
         </div>
