@@ -104,6 +104,7 @@ function Table({ startData, columns }) {
   const [offset, setOffset] = React.useState(0)
   const handleMoreData = (e) =>{
     AdminServices.getTransactions(10,20).then(res=>{
+      res? setData(data.concat(res.data)) : setData(data)
       console.log(res.data)
     });
   }
