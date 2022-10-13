@@ -99,15 +99,16 @@ export function StatusPill({ value }) {
   );
 };
 
-function Table({ startData, columns }) {
-  const [data, setData] = React.useState(startData)
-  const [offset, setOffset] = React.useState(0)
-  const handleMoreData = (e) =>{
-    AdminServices.getTransactions(10,20).then(res=>{
-      res? setData(data.concat(res.data)) : setData(data)
-      console.log(res.data)
-    });
-  }
+function Table({ columns }) {
+  const emptyRows = [{
+  id: "",
+  userId: "",
+  monto: "",
+  modo: "",
+  fechaPago: '',
+  estado: ""}];
+  const [data, setData] = React.useState(emptyRows)
+  //const [offset, setOffset] = React.useState(0)
   const {
     getTableProps,
     getTableBodyProps,
@@ -139,13 +140,17 @@ function Table({ startData, columns }) {
   )
   useEffect(() => {
     AdminServices.getTransactions(20,0).then(res=>{
-      res? setData(res.data) : setData(startData)
-      console.log(res.data)
+      res? setData(res.data) : setData();
     });
-    setOffset(10)
-    console.log(offset)
-  }, [offset,startData])
+  }, []);
 
+  const handleMoreData = (e) =>{
+    //const currentPage = state.pageIndex;
+    AdminServices.getTransactions(10,20).then(res=>{
+      res? setData(data.concat(res.data)) : setData(data)
+    });
+    nextPage();
+  }
   return (
     <div className='space-y-6'>
       <div className="flex justify-between sm:gap-x-2">
@@ -265,9 +270,7 @@ function Table({ startData, columns }) {
                 <ChevronLeftIcon className="h-5 w-5 text-gray-400" aria-hidden="true" />
               </PageButton>
               <PageButton
-                onClick={() => {
-                  nextPage();
-                  handleMoreData();}}
+                onClick={() => handleMoreData()}
                 disabled={!canNextPage
                 }>
                 <span className="sr-only">Next</span>
