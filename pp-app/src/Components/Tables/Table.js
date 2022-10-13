@@ -81,17 +81,17 @@ export function StatusPill({ value }) {
       className={
         classNames(
           "px-3 py-1 uppercase w-fit font-Pop-M text-base rounded-full",
-          status.startsWith("A") ? "bg-[#0f693849] text-gray-800" : null,
-          status.startsWith("P") ? "bg-gray-100 text-gray-800" : null,
-          status.startsWith("R") ? "bg-[#eb820144] text-gray-800" : null,
+          status.startsWith("a") ? "bg-[#0f693849] text-gray-800" : null,
+          status.startsWith("p") ? "bg-gray-100 text-gray-800" : null,
+          status.startsWith("r") ? "bg-[#eb820144] text-gray-800" : null,
         )
       }
     >
-      {(status==="A") 
+      {(status==="a") 
       ? "Aceptada" 
-      : ((status==="P") 
+      : ((status==="p") 
       ? "Pendiente"
-      : ((status==="R") 
+      : ((status==="r") 
       ? "Rechazada"
       : "")
       )}
@@ -101,7 +101,12 @@ export function StatusPill({ value }) {
 
 function Table({ startData, columns }) {
   const [data, setData] = React.useState(startData)
-  const [offset] = React.useState(0)
+  const [offset, setOffset] = React.useState(0)
+  const handleMoreData = (e) =>{
+    AdminServices.getTransactions(10,20).then(res=>{
+      console.log(res.data)
+    });
+  }
   const {
     getTableProps,
     getTableBodyProps,
@@ -132,11 +137,13 @@ function Table({ startData, columns }) {
     usePagination, 
   )
   useEffect(() => {
-    AdminServices.getTransactions(offset).then(res=>{
+    AdminServices.getTransactions(20,0).then(res=>{
       res? setData(res.data) : setData(startData)
       console.log(res.data)
     });
-  }, [offset, startData])
+    setOffset(10)
+    console.log(offset)
+  }, [offset,startData])
 
   return (
     <div className='space-y-6'>
@@ -257,7 +264,9 @@ function Table({ startData, columns }) {
                 <ChevronLeftIcon className="h-5 w-5 text-gray-400" aria-hidden="true" />
               </PageButton>
               <PageButton
-                onClick={() => nextPage()}
+                onClick={() => {
+                  nextPage();
+                  handleMoreData();}}
                 disabled={!canNextPage
                 }>
                 <span className="sr-only">Next</span>
