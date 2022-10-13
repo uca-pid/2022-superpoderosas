@@ -20,15 +20,15 @@ export default function App() {
           <Route exact path={"/signup"} element={<RegistrationPage/>} />
           <Route exact path="/ChangePasswordPage" element={<ChangePasswordPage />} />
           <Route exact path="/resetPassword/:token" element={<PasswordResetPage />} />
+          <Route exact path="/profile" element={<Profile />} />
           {(AuthService.getCurrentUser()) ?
           (
           (isAdmin())  ?
           <>
-          <Route exact path="/profile" element={<BaseInformationPage></BaseInformationPage>} />
+          <Route exact path="/donaciones" element={<BaseInformationPage></BaseInformationPage>} />
           </>
           :
           <>
-          <Route exact path="/profile" element={<Profile />} />
           <Route exact path="/donar" element={<DonarPage/>} />
           </>
           )

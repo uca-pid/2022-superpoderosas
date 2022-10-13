@@ -19,14 +19,24 @@ const Settings = () => {
   const onCloseChangePasswordForm = () => setRequestToChangePassword(false);
   const onCloseChangeDonationForm = () => setRequestToChangeDonation(false);
   const {subscriptionData} = useCurrentUser()
+  const isAdmin = () => {
+    return JSON.stringify((AuthService.getCurrentUser()).roles) === JSON.stringify(["ROLE_ADMIN"]);
+  };
 
   return (
     <>
     <div className="static z-10 flex flex-col space-y-10 min-w-screen pb-10">
+        {(!isAdmin) ? 
         <div className = "z-10 px-10 md:px-20 lg:px-80 basis-1/3 greyBg darkGrayBorder space-y-2 md:space-y-3 lg:space-y-4 py-8 md:py-10 lg:py-16 mt-20">
-            <div className="z-10 font-Pop-SB tracking-[0.8px] text-[26px] md:text-[30px] lg:text-[32px] blackText">Bievenida {currentUser.name}!</div>
+            <div className="z-10 font-Pop-SB tracking-[0.8px] text-[26px] md:text-[30px] lg:text-[32px] blackText">Bienvenida {currentUser.name}!</div>
             <div className="z-10 font-Pop-L blackText text-[18px] md:text-[20px] lg:text-[22px]">Gracias por ser parte de nuestra comunidad</div>
-        </div>   
+        </div>  
+        :
+        <div className = "z-10 px-10 md:px-20 lg:px-80 basis-1/3 greyBg space-y-2 md:space-y-3 lg:space-y-4 py-8 md:py-4 lg:py-4 mt-20">
+        </div> 
+        }
+        
+
         <div className = " px-5 md:px-20 lg:px-80 lg:basis-2/3 flex flex-col lg:flex-row w-full lg:space-x-10 space-y-10 lg:space-y-0">
             <div className="lg:basis-1/2 darkGrayBorder rounded-lg flex flex-col">
                 <div className="greyBg darkGrayBottomBorder p-7 blackText font-Pop-M uppercase text-lg md:text-xl tracking-wider font-medium">Perfil de Usuario</div>

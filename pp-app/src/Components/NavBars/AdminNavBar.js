@@ -12,8 +12,9 @@ import LogoPataPila_Colores from "../Images/LogoPataPila_Colores.jpg";
 import avatar from "../Images/avatar.jpeg";
 
 const adminNavigation =[
-  { name: 'Reportes' },
-  { name: 'Transacciones'},
+  { name: 'Ajustes', path: "/profile"},
+  { name: 'Donaciones', path:"/donaciones"},
+  { name: 'Reportes'},
 ]
 
 export default function AdminNavBar(props) {
@@ -58,7 +59,7 @@ export default function AdminNavBar(props) {
                     <Popover.Panel className={"mt-4 p-3 rounded-2xl reallyLightgreyBg grayBorder space-y-2"}>
                       <div className="md-round space-y-2">                
                       {adminNavigation.map((item) => (
-                        <div key={item.name} className='z-50 relative font-Pop-M uppercase darkGrayText font-medium tracking-[0.5px] grayBottomBorder block px-1 py-2 text-[12pt] duration-300 hover:text-[13pt] focus:text-[13pt]'>
+                        <div key={item.name} onClick={()=>navigate(item.path)} className='z-50 relative font-Pop-M uppercase darkGrayText font-medium tracking-[0.5px] grayBottomBorder block px-1 py-2 text-[12pt] duration-300 hover:text-[13pt] focus:text-[13pt]'>
                           {item.name}
                         </div>
                         ))}

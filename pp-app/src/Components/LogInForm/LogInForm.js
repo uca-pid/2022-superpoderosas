@@ -31,6 +31,10 @@ export default function Login(props) {
     setMail(email);
   };
 
+  const isAdmin = () => {
+    return JSON.stringify((AuthService.getCurrentUser()).roles) === JSON.stringify(["ROLE_ADMIN"]);
+  };
+
   const onChangePassword = (e) => {
     const password = e.target.value;
     setPassword(password);
@@ -43,6 +47,7 @@ export default function Login(props) {
       AuthService.login(email, password).then(
         () => {
           navigate("/profile");
+
           window.location.reload();
         },
         (error) => {

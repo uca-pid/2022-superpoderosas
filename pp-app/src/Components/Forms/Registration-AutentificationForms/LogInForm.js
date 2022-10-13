@@ -28,6 +28,10 @@ export default function Login(props) {
   const navigateToChangePassword = () => {
     navigate('/changePasswordPage');
   }
+  
+  const isAdmin = () => {
+    return JSON.stringify((AuthService.getCurrentUser()).roles) === JSON.stringify(["ROLE_ADMIN"]);
+  };
 
   function navigateToRegistrationPage(event) {
     navigate("/signup");
@@ -49,6 +53,9 @@ export default function Login(props) {
     if (checkBtn.current.context._errors.length === 0) {
       AuthService.login(email, password).then(
         () => {
+          console.log(isAdmin);
+          if(isAdmin)
+
           navigate("/profile");
           window.location.reload();
         },
