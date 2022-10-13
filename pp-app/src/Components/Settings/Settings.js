@@ -32,7 +32,7 @@ const Settings = () => {
             <div className="z-10 font-Pop-L blackText text-[18px] md:text-[20px] lg:text-[22px]">Gracias por ser parte de nuestra comunidad</div>
         </div>  
         :
-        <div className = "z-10 px-10 md:px-20 lg:px-80 basis-1/3 greyBg space-y-2 md:space-y-3 lg:space-y-4 py-8 md:py-4 lg:py-4 mt-20">
+        <div className = "z-10 px-10 md:px-20 lg:px-80 basis-1/3  space-y-2 md:space-y-3 lg:space-y-4 py-8 md:py-4 lg:py-4 mt-20">
         </div> 
         }
         
