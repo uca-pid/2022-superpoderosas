@@ -53,10 +53,7 @@ export default function Login(props) {
     if (checkBtn.current.context._errors.length === 0) {
       AuthService.login(email, password).then(
         () => {
-          console.log(isAdmin);
-          if(isAdmin)
-
-          navigate("/profile");
+          navigate("/home");
           window.location.reload();
         },
         (error) => {

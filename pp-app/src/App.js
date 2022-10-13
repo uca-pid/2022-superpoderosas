@@ -25,10 +25,12 @@ export default function App() {
           (
           (isAdmin())  ?
           <>
+          <Route exact path="/home" element={<BaseInformationPage></BaseInformationPage>} />
           <Route exact path="/donaciones" element={<BaseInformationPage></BaseInformationPage>} />
           </>
           :
           <>
+          <Route exact path="/home" element={<Profile />} />
           <Route exact path="/donar" element={<DonarPage/>} />
           </>
           )
