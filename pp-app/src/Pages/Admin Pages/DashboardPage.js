@@ -11,7 +11,7 @@ const DashboardPage = () => {
   const currentUser = AuthService.getCurrentUser();
 
   useEffect(() => {
-    DonationService.subscriptionsByMonth(10,2021).then(res=>{console.log(res);});
+    DonationService.subscriptionsByMonth(10,2022).then(res=>{console.log(res);});
   }, [currentUser.id])
 
   const data=[
