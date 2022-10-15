@@ -7,7 +7,7 @@ const data = [
     monto: "3455",
     modo: "oneTimeOnly",
     fechaPago: '2/11/2022',
-    estado: "Pendiente"
+    estado: "Rechazada"
   },
   {
     id: "2",
