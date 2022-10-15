@@ -45,7 +45,7 @@ const getSubscription = async (userId) => {
 
 const subscriptionsByMonth = async (month,year) => {
   try {
-    const response = await axios.post(API_URL + "subscriptionsByMonth",{
+    const response = await axios.post(API_URL + "getSubscriptionsStatesByMonth",{
       month,
       year,
     });
