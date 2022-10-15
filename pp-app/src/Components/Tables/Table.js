@@ -1,78 +1,14 @@
 import React from 'react'
 import { useEffect } from 'react'
-import { useTable, useFilters, useGlobalFilter, useAsyncDebounce, useSortBy, usePagination } from 'react-table'
+import { useTable, useFilters, useGlobalFilter, useSortBy, usePagination } from 'react-table'
 import { ChevronDoubleLeftIcon, ChevronLeftIcon, ChevronRightIcon, ChevronDoubleRightIcon } from '@heroicons/react/solid'
 import { Button, PageButton } from './Buttons'
 import { classNames } from './Utils'
 import { SortIcon, SortUpIcon, SortDownIcon } from './Icons'
 import FilterSelect from './FilterSelect'
 import "../../App.css"
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faSearch } from '@fortawesome/fontawesome-free-solid'
+import { GlobalFilter } from './Filers'
 import AdminServices from '../../services/transactions.service'
-
-// Define a default UI for filtering
-function GlobalFilter({
-  preGlobalFilteredRows,
-  globalFilter,
-  setGlobalFilter,
-}) {
-  const [value, setValue] = React.useState(globalFilter)
-  const onChange = useAsyncDebounce(value => {
-    setGlobalFilter(value || undefined)
-  }, 200)
-
-  return (
-    <label className="px-6 flex flex-row gap-x-2 w-fit items-baseline border rounded-xl border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
-      <FontAwesomeIcon icon={faSearch} color="gray" className='pt-2' />
-      <input
-        type="text"
-        className="rounded-md font-Pop-R text-base border-transparent focus:border-transparent focus:ring-0"
-        value={value || ""}
-        onChange={e => {
-          setValue(e.target.value);
-          onChange(e.target.value);
-        }}
-        placeholder="Buscar transacción . . . ."
-      />
-    </label>
-  )
-}
-
-export function SelectColumnFilter({
-  column: { filterValue, setFilter, preFilteredRows, id, render },
-}) {
-  const options = React.useMemo(() => {
-    const options = new Set()
-    preFilteredRows.forEach(row => {
-      options.add(row.values[id])
-    })
-    return [...options.values()]
-  }, [id, preFilteredRows])
-
-  // Render a multi-select box
-  return (
-    <label className="flex gap-x-2 items-baseline">
-      <span className="text-gray-700 font-Pop-R">{render("Header")}: </span>
-      <select
-        className="rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
-        name={id}
-        id={id}
-        value={filterValue}
-        onChange={e => {
-          setFilter(e.target.value || undefined)
-        }}
-      >
-        <option value="">All</option>
-        {options.map((option, i) => (
-          <option key={i} value={option}>
-            {option}
-          </option>
-        ))}
-      </select>
-    </label>
-  )
-}
 
 export function StatusPill({ value }) {
   const status = value ? value.toLowerCase() : "unknown";

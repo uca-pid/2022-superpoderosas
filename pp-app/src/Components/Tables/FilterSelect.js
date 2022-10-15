@@ -12,7 +12,7 @@ const FilterSelect = ({headerGroups}) => {
         <FontAwesomeIcon icon={faFilter} color="gray"/>
         </div>
     </Popover.Button>
-    <Popover.Panel className={"absolute top-0 right-0 mt-16 p-3 rounded-lg almostWhiteBg grayBorder space-y-6 w-fit"} >
+    <Popover.Panel className={"p-10 absolute top-0 right-0 mt-16 p-3 rounded-lg almostWhiteBg grayBorder space-y-6 w-fit"} >
         {headerGroups.map((headerGroup) =>
           headerGroup.headers.map((column) =>
             column.Filter ? (

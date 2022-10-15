@@ -1,4 +1,5 @@
-import { SelectColumnFilter, StatusPill } from './Table'  // new
+import { StatusPill } from './Table'
+import { SelectColumnFilter, TextSearchFilter } from './Filers'
 const data = [
   {
     id: "1",
@@ -98,20 +99,19 @@ const columns =[
   {
     Header: "id",
     accessor: 'id',
-    Filter: SelectColumnFilter,  // new
-    filter: 'includes',
+    Filter: TextSearchFilter,
+    filter: "rankedMatchSorter",
   },
   {
     Header: "ID de Usuario",
     accessor: 'userId',
-    Filter: SelectColumnFilter,  // new
-    filter: 'includes',
+    Filter: TextSearchFilter,
+    filter: "rankedMatchSorter",
   },
   {
     Header: "Monto",
     accessor: 'amount',
-    Filter: SelectColumnFilter,  // new
-    filter: 'includes',
+    //Filter: RangeFilter,
   },
   {
     Header: "Modo",
