@@ -1,5 +1,5 @@
 import { StatusPill } from './Table'
-import { SelectColumnFilter, TextSearchFilter } from './Filers'
+import { SelectColumnFilter, TextSearchFilter, DateRangeColumnFilter, dateBetweenFilterFn } from './Filers'
 const data = [
   {
     id: "1",
@@ -122,8 +122,8 @@ const columns =[
   {
     Header: "Fecha de Pago",
     accessor: "paymentDate",
-    Filter: SelectColumnFilter,  // new
-    filter: 'includes',
+    Filter: DateRangeColumnFilter,
+    filter: dateBetweenFilterFn
   },{
     Header: "Estado",
     accessor: "transactionState.state",

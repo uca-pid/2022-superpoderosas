@@ -83,7 +83,7 @@ function Table({ columns }) {
   const handleMoreData = (e) =>{
     //const currentPage = state.pageIndex;
     AdminServices.getTransactions(10,20).then(res=>{
-      res? setData(data.concat(res.data)) : setData(data)
+      res? setData(data.concat(res.data)) : setData(emptyRows)
     });
     nextPage();
   }

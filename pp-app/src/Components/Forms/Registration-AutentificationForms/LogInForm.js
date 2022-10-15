@@ -29,10 +29,6 @@ export default function Login(props) {
     navigate('/changePasswordPage');
   }
   
-  const isAdmin = () => {
-    return JSON.stringify((AuthService.getCurrentUser()).roles) === JSON.stringify(["ROLE_ADMIN"]);
-  };
-
   function navigateToRegistrationPage(event) {
     navigate("/signup");
   }

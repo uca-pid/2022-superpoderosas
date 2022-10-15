@@ -82,3 +82,72 @@ export function GlobalFilter({
       </label>
     )
   }
+
+export function dateBetweenFilterFn(rows, id, filterValues) {
+    const sd = filterValues[0] ? new Date(filterValues[0]) : undefined
+    const ed = filterValues[1] ? new Date(filterValues[1]) : undefined
+
+    if (ed || sd) {
+      return rows.filter(r => {
+        const cellDate = new Date(r.values[id])
+        let result
+        if (ed && sd) {
+          result = cellDate >= sd && cellDate <= ed
+        } else if (sd){
+          result = cellDate >= sd
+        } else if (ed){
+          result = cellDate <= ed
+        }
+        return result
+      })
+    } else {
+      return rows
+    }
+  }
+
+export function DateRangeColumnFilter({
+    column: {
+      filterValue = [],
+      preFilteredRows,
+      setFilter,
+      id
+    }})
+  {
+    const [min, max] = React.useMemo(() => {
+      let min = preFilteredRows.length ? new Date(preFilteredRows[0].values[id]) : new Date(0)
+      let max = preFilteredRows.length ? new Date(preFilteredRows[0].values[id]) : new Date(0)
+  
+      preFilteredRows.forEach(row => {
+        const rowDate = new Date(row.values[id])
+  
+        min = rowDate <= min ? rowDate : min
+        max = rowDate >= max ? rowDate : max
+      })
+  
+      return [min, max]
+    }, [id, preFilteredRows])
+  
+    return (
+      <div>
+        <input
+          min={min.toISOString().slice(0, 10)}
+          onChange={e => {
+            const val = e.target.value
+            setFilter((old = []) => [val ? val : undefined, old[1]])
+          }}
+          type="date"
+          value={filterValue[0] || ''}
+        />
+        {' to '}
+        <input
+          max={max.toISOString().slice(0, 10)}
+          onChange={e => {
+            const val = e.target.value
+            setFilter((old = []) => [old[0], val ? val.concat('T23:59:59.999Z') : undefined])
+          }}
+          type="date"
+          value={filterValue[1]?.slice(0, 10) || ''}
+        />
+      </div>
+    )
+  }
