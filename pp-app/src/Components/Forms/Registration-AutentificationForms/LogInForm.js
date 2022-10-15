@@ -53,7 +53,7 @@ export default function Login(props) {
     if (checkBtn.current.context._errors.length === 0) {
       AuthService.login(email, password).then(
         () => {
-          navigate("/home");
+          navigate("/inicio");
           window.location.reload();
         },
         (error) => {

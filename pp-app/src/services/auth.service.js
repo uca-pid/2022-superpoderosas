@@ -34,15 +34,11 @@ const login = (email, password) => {
       return response.data;
     });
 };
-
 const sendMailTokenToResetPassword = (email) => {
   return axios.post(API_URL + "sendMailTokenToResetPassword", {
       email,
     })
 };
-
-
-
 const logout = () => {
   localStorage.removeItem("user");
   return axios.post(API_URL + "signout").then((response) => {

@@ -43,11 +43,25 @@ const getSubscription = async (userId) => {
   }
 }
 
+const subscriptionsByMonth = async (month,year) => {
+  try {
+    const response = await axios.post(API_URL + "subscriptionsByMonth",{
+      month,
+      year,
+    });
+    return response;
+  } catch (e) {
+      console.log(e);
+  }
+}
+
+
 const DonationService = {
   generateTransaction,
   generateSubscription,
   getSubscription,
   modifySubscriptionState,
-  modifySubscription
+  modifySubscription,
+  subscriptionsByMonth
 }
 export default DonationService;

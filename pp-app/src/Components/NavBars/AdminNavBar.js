@@ -14,7 +14,7 @@ import avatar from "../Images/avatar.jpeg";
 const adminNavigation =[
   { name: 'Ajustes', path: "/profile"},
   { name: 'Donaciones', path:"/donaciones"},
-  { name: 'Reportes'},
+  { name: 'Reportes', path:"/reportes"},
 ]
 
 export default function AdminNavBar(props) {
