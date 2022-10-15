@@ -2,17 +2,13 @@ import React from "react";
 import AuthService from "../../services/auth.service";
 import AdminNavBar from "../../Components/NavBars/AdminNavBar";
 import DonationService from '../../services/donations.service'
-import { useEffect } from "react";
-import DChartModule from "../../Components/Dashboards/DChartModule";
+import { useEffect, useState } from "react";
+import ChartModule from "../../Components/Dashboards/ChartModule";
 import { MonthlySubscriptionStateContextProvider } from "../../Context/MonthlySubscriptionStateContext";
 import FilterDate from "../../Components/Dashboards/FilterDate";
 
 const DashboardPage = () => {
   const currentUser = AuthService.getCurrentUser();
-
-  useEffect(() => {
-    DonationService.subscriptionsByMonth(10,2022).then(res=>{console.log(res);});
-  }, [currentUser.id])
 
   const data=[
   {tittle: "Mes",options:[{ value: '1', label: 'Enero'},
@@ -40,10 +36,10 @@ const DashboardPage = () => {
       <AdminNavBar currentUser={currentUser}></AdminNavBar>
       {currentUser ? ( 
         <MonthlySubscriptionStateContextProvider>
-          <div className="flex sm:flex-row"> 
-          <div className="px-4 lg:px-40 mt-5 flex lg:flex-row flex-col w-full h-screen">
+          <div className="px-5 md:px-10 lg:px-80 flex sm:flex-row"> 
+          <div className="mt-5 flex lg:flex-row flex-col w-full h-screen">
             <div className="lg:basis-1/2 sm:basis-8/10 flex flex-col">
-              <div className="pl-5 flex flex flex-row space-x-10">
+              <div className="flex flex flex-row space-x-10">
                 {/* <div className="flex">
                   <FilterDate tittle="Month" data={months}></FilterDate> 
                 </div>
@@ -51,7 +47,7 @@ const DashboardPage = () => {
                   <FilterDate tittle="Year" data={years}></FilterDate>
                 </div> */}
               </div>
-              <DChartModule></DChartModule>
+              <ChartModule data={data}></ChartModule>
             </div>
             <div className="lg:basis-1/2 sm:basis-2/10 flex justify-end">
                 <div className="pt-8 flex flex-col">
