@@ -51,7 +51,7 @@ const DashboardPage = () => {
                     </div>
                   </div>
 
-                  <div className="lg:basis-1/2 flex flex-col space-y-10">
+                  <div className="lg:basis-1/2 flex flex-col space-y-10 pb-10">
                     <div className="darkGrayBorder rounded-lg h-fit">
                       <TotalAmountModule data={data}></TotalAmountModule>
                     </div>

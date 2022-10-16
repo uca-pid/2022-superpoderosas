@@ -3,7 +3,9 @@ import {useMonthlySubscriptionStateContext} from  '../../Context/MonthlySubscrip
 import SubsTotalAmountChart from './SubsTotalAmountChart';
 
 export default function BarChartModule(props) {
+  
   const { year, month } = useMonthlySubscriptionStateContext();
+
   return (
         <>    
         <div className="greyBg darkGrayBottomBorder flex  flex-col space-y-1 p-7">
