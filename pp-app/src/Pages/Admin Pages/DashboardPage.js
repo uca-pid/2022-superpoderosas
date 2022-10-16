@@ -32,34 +32,30 @@ const DashboardPage = () => {
 
   return (
     <>
-      <div className="space-y-20 mx-auto relative z-10 pb-8 sm:pb-16 md:pb-20 lg:pb-28 xl:pb-32 h-screen bg-cover place-content-center">
+      <div className="space-y-20 mx-auto z-10 pb-8 sm:pb-16 md:pb-20 lg:pb-28 xl:pb-32 h-screen bg-cover place-content-center">
       <AdminNavBar currentUser={currentUser}></AdminNavBar>
       {currentUser ? ( 
         <MonthlySubscriptionStateContextProvider>
-          <div className="px-5 md:px-10 lg:px-80 flex sm:flex-row"> 
-          <div className="mt-5 flex lg:flex-row flex-col w-full h-screen">
-            <div className="lg:basis-1/2 sm:basis-8/10 flex flex-col">
-              <div className="flex flex flex-row space-x-10">
-                {/* <div className="flex">
-                  <FilterDate tittle="Month" data={months}></FilterDate> 
-                </div>
-                <div className="flex">
-                  <FilterDate tittle="Year" data={years}></FilterDate>
-                </div> */}
+
+        <div className = "flex justify-between flex-row z-10 px-10 md:px-20 lg:px-80 greyBg darkGrayBorder space-y-1 md:space-y-3 lg:space-y-4 py-8 md:py-10 lg:py-16 mt-20">
+              <div className="basis-8/10 flex z-10 font-Pop-SB tracking-[0.8px] text-[26px] md:text-[30px] lg:text-[32px] blackText">REPORTES</div>
+              <div className="basis-2/10 flex justify-end right-0">
+                      <FilterDate data={data}></FilterDate>
               </div>
-              <ChartModule data={data}></ChartModule>
-            </div>
-            <div className="lg:basis-1/2 sm:basis-2/10 flex justify-end">
-                <div className="pt-8 flex flex-col">
-                    <FilterDate data={data}></FilterDate>
-                </div>
-                <div className="flex">
-                </div>
-            <div>
-          </div>
-            </div>
-          </div>
         </div>
+
+        <div className="px-5 md:px-20 lg:px-80 flex flex-col lg:flex-row w-full lg:space-x-10 space-y-10 lg:space-y-0"> 
+                  <div className="lg:basis-1/2 flex flex-col space-y-10">
+                    <div className="darkGrayBorder rounded-lg h-fit">
+                      <ChartModule data={data}></ChartModule>
+                    </div>
+                  </div>
+                  <div className="lg:basis-1/2 flex flex-col space-y-10">
+                  <div className="darkGrayBorder rounded-lg h-fit">
+                    </div>
+                  </div>
+        </div>
+
         </MonthlySubscriptionStateContextProvider>  
       ) : (
       <></>
@@ -69,3 +65,4 @@ const DashboardPage = () => {
   );
 };
 export default DashboardPage;
+
