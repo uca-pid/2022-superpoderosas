@@ -3,7 +3,7 @@ import Chart from 'chart.js';
 import { useEffect } from 'react';
 import {useMonthlySubscriptionStateContext} from  '../../Context/MonthlySubscriptionStateContext'
 
-export default function SubsTotalAmountChart(props) {
+export default function BarChart(props) {
   const { chartData, year,month } = useMonthlySubscriptionStateContext();
   const getLabel = (option) => {
     return option.label;

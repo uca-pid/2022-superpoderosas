@@ -3,7 +3,7 @@ import Chart from 'chart.js';
 import { useEffect } from 'react';
 import {useMonthlySubscriptionStateContext} from  '../../Context/MonthlySubscriptionStateContext'
 
-export default function SubsStatesChart(props) {
+export default function PieChart(props) {
   const { chartData, year,month } = useMonthlySubscriptionStateContext();
 
   useEffect(() => {

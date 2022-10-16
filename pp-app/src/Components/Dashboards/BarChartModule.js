@@ -1,6 +1,6 @@
 import React from 'react';
 import {useMonthlySubscriptionStateContext} from  '../../Context/MonthlySubscriptionStateContext'
-import SubsTotalAmountChart from './SubsTotalAmountChart';
+import BarChart from './BarChart';
 
 export default function BarChartModule(props) {
 
@@ -14,7 +14,7 @@ export default function BarChartModule(props) {
  
         </div>  
          <div className="flex p-7 flex-[0_0_auto]"> 
-            <SubsTotalAmountChart data={props.data}></SubsTotalAmountChart>
+            <BarChart data={props.data}></BarChart>
           </div>
           
   </>

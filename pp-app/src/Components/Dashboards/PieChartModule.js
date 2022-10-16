@@ -1,6 +1,6 @@
 import React from 'react';
 import {useMonthlySubscriptionStateContext} from  '../../Context/MonthlySubscriptionStateContext'
-import SubsStatesChart from './SubsStatesChart';
+import PieChart from './PieChart';
 
 export default function PieChartModule(props) {
   const { year, month, chartData } = useMonthlySubscriptionStateContext();
@@ -23,7 +23,7 @@ export default function PieChartModule(props) {
           
            <div className="flex p-7 flex-[0_0_auto]">
                     {!(noChartData()) ?
-                      <SubsStatesChart></SubsStatesChart>
+                      <PieChart></PieChart>
                       :
                       <div className='text-center font-Pop-R text-xl text-gray-400'>
                         No hay datos para mostrar para el mes y año seleccionados.
