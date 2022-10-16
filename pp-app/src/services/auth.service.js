@@ -50,6 +50,16 @@ const getCurrentUser = () => {
   return JSON.parse(localStorage.getItem("user"));
 };
 
+const findUserById = async (id) => {
+    try {
+      const response = await axios.post(API_URL + "findUserById", {
+        id,
+      });
+      return response;
+    } catch (e) {
+        console.log(e);
+    }
+};
 
 
 const AuthService = {
@@ -60,5 +70,6 @@ const AuthService = {
   sendMailTokenToResetPassword,
   updatePasswordViaEmail,
   updatePasswordViaSettings,
+  findUserById
 }
 export default AuthService;

@@ -1,122 +1,30 @@
 import { StatusPill } from './Table'
-import { SelectColumnFilter, TextSearchFilter, DateRangeColumnFilter, dateBetweenFilterFn } from './Filers'
-const data = [
-  {
-    id: "1",
-    userId: "4",
-    monto: "3455",
-    modo: "oneTimeOnly",
-    fechaPago: '2/11/2022',
-    estado: "Pendiente"
-  },
-  {
-    id: "2",
-    userId: "5",
-    monto: "10982",
-    modo: "recurrent",
-    fechaPago: '12/8/2022',
-    estado: "Rechazada"
-  },
-  {
-    id: "3",
-    userId: "6",
-    monto: "9897",
-    modo: "oneTimeOnly",
-    fechaPago: '23/10/2022',
-    estado: "Pendiente"
-  },{
-    id: "4",
-    userId: "7",
-    monto: "4554",
-    modo: "oneTimeOnly",
-    fechaPago: '14/10/2022',
-    estado: "Aceptada",
-  },{
-    id: "5",
-    userId: "67",
-    monto: "9866",
-    modo: "recurrent",
-    fechaPago: '2/12/2022',
-    estado: "Aceptada",
-  },
-  {
-    id: "6",
-    userId: "8",
-    monto: "432",
-    modo: "oneTimeOnly",
-    fechaPago: '10/10/2022',
-    estado: "Pendiente",
-  },  
-  {
-      id: "1",
-      userId: "4",
-      monto: "3455",
-      modo: "oneTimeOnly",
-      fechaPago: '2/11/2022',
-      estado: "Pendiente"
-    },
-    {
-      id: "2",
-      userId: "5",
-      monto: "10982",
-      modo: "recurrent",
-      fechaPago: '12/8/2022',
-      estado: "Rechazada"
-    },
-    {
-      id: "3",
-      userId: "6",
-      monto: "9897",
-      modo: "oneTimeOnly",
-      fechaPago: '23/10/2022',
-      estado: "Pendiente"
-    },{
-      id: "4",
-      userId: "7",
-      monto: "4554",
-      modo: "oneTimeOnly",
-      fechaPago: '14/10/2022',
-      estado: "Aceptada",
-    },{
-      id: "5",
-      userId: "67",
-      monto: "9866",
-      modo: "recurrent",
-      fechaPago: '2/12/2022',
-      estado: "Aceptada",
-    },
-    {
-      id: "6",
-      userId: "8",
-      monto: "432",
-      modo: "oneTimeOnly",
-      fechaPago: '10/10/2022',
-      estado: "Pendiente",
-    },
-]
+import { SelectModoFilter, SelectStateFilter, NumberSearchFilter, DateRangeColumnFilter, dateBetweenFilterFn, AmountRangeColumnFilter, amountBetweenFilterFn } from './Filters'
 
 const columns =[
   {
     Header: "id",
     accessor: 'id',
-    Filter: TextSearchFilter,
+    Filter: NumberSearchFilter,
     filter: "rankedMatchSorter",
   },
   {
     Header: "ID de Usuario",
     accessor: 'userId',
-    Filter: TextSearchFilter,
+    Filter: NumberSearchFilter,
     filter: "rankedMatchSorter",
+    Link: "openSideBarWithUser",
   },
   {
     Header: "Monto",
     accessor: 'amount',
-    //Filter: RangeFilter,
+    Filter: AmountRangeColumnFilter,
+    filter: amountBetweenFilterFn,
   },
   {
     Header: "Modo",
     accessor: 'type',
-    Filter: SelectColumnFilter,  // new
+    Filter: SelectModoFilter,
     filter: 'includes',
   },
   {
@@ -128,13 +36,12 @@ const columns =[
     Header: "Estado",
     accessor: "transactionState.state",
     Cell: StatusPill,
-    Filter: SelectColumnFilter,  // new
+    Filter: SelectStateFilter,  // new
     filter: 'includes',
   }
 ]
 
 const TransactionTableInformation = {
-    data,
     columns
   }
   export default TransactionTableInformation;

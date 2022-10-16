@@ -1,29 +1,22 @@
 import React from "react";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faFilter } from '@fortawesome/fontawesome-free-solid'
-import { Popover } from '@headlessui/react'
-
-const FilterSelect = ({headerGroups}) => {
+const FilterSelect = ({headerGroups, clearFilters}) => {
   return (
     <>
-    <Popover className={"grid relative"}>
-    <Popover.Button className="justify-self-end lightgreyBgTranslucentHover rounded-3xl md:rounded-xl lg:basis-2/7 w-fit py-2 px-5 focus:ring-0" >
-        <div className="justify-center flex z-50 space-x-4 overflow-hidden mx-auto lg:flex-row">
-        <FontAwesomeIcon icon={faFilter} color="gray"/>
-        </div>
-    </Popover.Button>
-    <Popover.Panel className={"p-10 absolute top-0 right-0 mt-16 p-3 rounded-lg almostWhiteBg grayBorder space-y-6 w-fit"} >
-        {headerGroups.map((headerGroup) =>
-          headerGroup.headers.map((column) =>
-            column.Filter ? (
-              <div className="mt-2 sm:mt-0" key={column.id}>
-                {column.render("Filter")}
-              </div>
-            ) : null
-          )
-        )}
-    </Popover.Panel>
-    </Popover>
+    <div className="rounded-xl border darkGrayBorder bg-white flex flex-col space-y-10 p-16 ">
+      <div className="font-Pop-M text-xl text-gray-500">Filtros</div>
+      <div className="grid grid-cols-3 gap-y-2">
+          {headerGroups.map((headerGroup) =>
+            headerGroup.headers.map((column) =>
+              column.Filter ? (
+                <div className="px-2 m-5" key={column.id}>
+                  {column.render("Filter")}
+                </div>
+              ) : null
+            )
+          )}
+      </div>
+      <button className="font-Pop-M text-lg greenText uppercase w-full text-end" onClick={clearFilters}>Borrar filtros</button>
+    </div>
     </>
   );
 };
