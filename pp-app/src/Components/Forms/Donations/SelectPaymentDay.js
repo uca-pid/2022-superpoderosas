@@ -20,7 +20,7 @@ const SelectPaymentDay = ( ) => {
             <div className="md:basis-1/2"> 
                   <LocalizationProvider dateAdapter={AdapterDayjs}>
                     <DesktopDatePicker
-                      inputFormat="MM/DD/YYYY"
+                      inputFormat="YYYY-MM-DD"
                       disablePast
                       value={paymentDay}
                       onChange={(newPaymentDay) => {

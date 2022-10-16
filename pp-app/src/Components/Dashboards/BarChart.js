@@ -14,16 +14,9 @@ export default function BarChart(props) {
     return option.label;
   }
   
-  const get = (e) =>{
+  const get = () =>{
     var date= "2022-10"
-    for (var i = 0; i < 12; i++) {
-      data.push(axios.post(API_URL + "getMonthIncome", {
-        date,
-      }))
-    }
-    Promise.all(data).then(() => {
-        console.log('done')
-    })
+      AdminServices.getMonthlyIncome(date).then(res=>{console.log(res);});
   }
   useEffect(() => {
     get()

@@ -24,6 +24,7 @@ const ChangeDonationFromProfileForm = (props) =>{
   const { selectedAmount} = useAmount()
   const { subsPeriod, paymentDay} = useSubscriptionPeriod()
   const [message, setMessage] = useState("");
+  console.log(paymentDay);
 
   const closeModalWithConfirmation = () => {
     setShowModalWithConfirmation(false);
@@ -65,7 +66,7 @@ const ChangeDonationFromProfileForm = (props) =>{
     e.preventDefault();
     setMessage("");
     if (isFormValid()) {
-      DonationService.modifySubscription(subscriptionData.id, selectedAmount, parseInt(subsPeriod.value), paymentDay).then(
+      DonationService.modifySubscription(subscriptionData.id, selectedAmount, parseInt(subsPeriod.value), paymentDay.format('YYYY-MM-DD')).then(
         () => {
           setShowModal(true);
           setIfUserWantsToModifySubs(false);
