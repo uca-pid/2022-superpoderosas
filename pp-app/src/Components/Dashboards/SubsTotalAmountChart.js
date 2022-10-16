@@ -12,11 +12,11 @@ export default function SubsTotalAmountChart(props) {
   useEffect(() => {
     let config = {
       type: "bar",
-      label: 'RESUMEN DE COBRANZAS',
       data: {
         labels: Array.from(props.data[0].options,(option) => getLabel(option)),
         datasets: [
           {
+            label: 'RESUMEN DE COBRANZAS',
             data: [23,533,823,538,15,249,240,200,487,650,764,357],
             backgroundColor: [
               'rgba(88, 214, 141)',
