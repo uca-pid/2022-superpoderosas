@@ -3,31 +3,14 @@ import Chart from 'chart.js';
 import { useEffect } from 'react';
 import {useMonthlySubscriptionStateContext} from  '../../Context/MonthlySubscriptionStateContext'
 
-export default function SubsChart(props) {
+export default function SubsStatesChart(props) {
   const { chartData, year,month } = useMonthlySubscriptionStateContext();
-  console.log(chartData + year + month);
-
-//   const addData = (chart, label, data) => {
-//     chart.data.labels.push(label);
-//     chart.data.datasets.forEach((dataset) => {
-//         dataset.data.push(data);
-//     });
-//     chart.update();
-// }
-
-// const removeData = (chart) => {
-//     chart.data.labels.pop();
-//     chart.data.datasets.forEach((dataset) => {
-//         dataset.data.pop();
-//     });
-//     chart.update();
-// }
 
   useEffect(() => {
     let config = {
       type: "pie",
       data: {
-        labels: ['Activas', 'Pausadas', 'Canceladas'],
+        labels: ['Activas','Pausadas','Canceladas'],
         datasets: [
           {
             data: chartData,

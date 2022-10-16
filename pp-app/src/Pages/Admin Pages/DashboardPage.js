@@ -1,9 +1,9 @@
 import React from "react";
 import AuthService from "../../services/auth.service";
 import AdminNavBar from "../../Components/NavBars/AdminNavBar";
-import DonationService from '../../services/donations.service'
-import { useEffect, useState } from "react";
-import ChartModule from "../../Components/Dashboards/ChartModule";
+import PieChartModule from "../../Components/Dashboards/PieChartModule";
+import BarChartModule from "../../Components/Dashboards/BarChartModule";
+import TotalAmountModule from "../../Components/Dashboards/TotalAmountModule";
 import { MonthlySubscriptionStateContextProvider } from "../../Context/MonthlySubscriptionStateContext";
 import FilterDate from "../../Components/Dashboards/FilterDate";
 
@@ -47,13 +47,19 @@ const DashboardPage = () => {
         <div className="px-5 md:px-20 lg:px-80 flex flex-col lg:flex-row w-full lg:space-x-10 space-y-10 lg:space-y-0"> 
                   <div className="lg:basis-1/2 flex flex-col space-y-10">
                     <div className="darkGrayBorder rounded-lg h-fit">
-                      <ChartModule data={data}></ChartModule>
+                      <PieChartModule data={data}></PieChartModule>
                     </div>
                   </div>
+
                   <div className="lg:basis-1/2 flex flex-col space-y-10">
-                  <div className="darkGrayBorder rounded-lg h-fit">
+                    <div className="darkGrayBorder rounded-lg h-fit">
+                      <TotalAmountModule data={data}></TotalAmountModule>
+                    </div>
+                    <div className="lg:basis-1/2 darkGrayBorder rounded-lg h-fit lg:mb-0"> 
+                      <BarChartModule data={data}></BarChartModule> 
                     </div>
                   </div>
+                  
         </div>
 
         </MonthlySubscriptionStateContextProvider>  

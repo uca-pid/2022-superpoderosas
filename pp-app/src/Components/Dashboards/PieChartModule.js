@@ -1,9 +1,10 @@
 import React from 'react';
 import {useMonthlySubscriptionStateContext} from  '../../Context/MonthlySubscriptionStateContext'
-import SubsChart from './SubsChart';
+import SubsStatesChart from './SubsStatesChart';
 
-export default function ChartModule(props) {
+export default function PieChartModule(props) {
   const { year, month } = useMonthlySubscriptionStateContext();
+
   return (
     <>      
           <div className="greyBg darkGrayBottomBorder flex  flex-col space-y-1 p-7">
@@ -12,7 +13,7 @@ export default function ChartModule(props) {
           </div>
           
            <div className="flex p-7 flex-[0_0_auto]"> 
-              <SubsChart ></SubsChart>
+              <SubsStatesChart></SubsStatesChart>
             </div>
             
     </>
