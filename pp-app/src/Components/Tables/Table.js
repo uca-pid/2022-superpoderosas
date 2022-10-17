@@ -11,6 +11,7 @@ import { faFilter, faChevronUp } from '@fortawesome/fontawesome-free-solid'
 import "../../App.css"
 import { GlobalFilter } from './Filters'
 import { useSelectionOnTable } from '../../Context/SelectionsOnTable'
+import { ScrollRestoration } from 'react-router-dom'
 
 export function StatusPill({ value }) {
   const status = value ? value.toLowerCase() : "unknown";
@@ -32,6 +33,12 @@ export function StatusPill({ value }) {
       : ((status==="r") 
       ? "Rechazada"
       : "")
+      )}
+      {(status ==="p") && (
+        <>
+        <FontAwesomeIcon className='px-4' onClick={() => alert("aceptar")} icon={"fa fa-check"} color='#000' size={14} />
+        <FontAwesomeIcon onClick={() => alert("cancelar")} icon={"fa fa-ban"} color='#000' size={14} />
+        </>
       )}
     </div>
   );
