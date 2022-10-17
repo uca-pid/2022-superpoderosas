@@ -1,8 +1,10 @@
 import { useSelectionOnTable } from "../../Context/SelectionsOnTable"
 import { useEffect, useState } from "react";
-const Sidebar = (props) => {
-  const {showSidebar, setShowSidebar, setSelectedUser, selectedUserInfotmation} = useSelectionOnTable();
+
+const Sidebar = ({displaySubscriptionInformation}) => {
+  const {showSidebar, setShowSidebar, setSelectedUser, selectedUserInfotmation, selectedUserSubs} = useSelectionOnTable();
   const [userData, setUserData] = useState([{}])
+  const [subscriptionData, setSubscriptionData] = useState([{}])
   const closeSidebar= () => {
     setShowSidebar(false);
       setSelectedUser(null);
@@ -10,7 +12,29 @@ const Sidebar = (props) => {
 
   useEffect(() => {
     if (selectedUserInfotmation) setUserData([{title: "Nombre y Apellido", information: selectedUserInfotmation.name+' '+selectedUserInfotmation.lastname}, {title: "Id del usuario", information: selectedUserInfotmation.id},{title:"Email", information:selectedUserInfotmation.email}]);
-  }, [selectedUserInfotmation])
+    if (displaySubscriptionInformation && selectedUserSubs){  
+    setSubscriptionData([
+      {title: "Id de la subscripción", information: selectedUserSubs.id}, 
+      {title: "Monto", information: selectedUserSubs.amount},
+      {title: "Frecuencia", information: (selectedUserSubs.frequency === 1) 
+                                          ? "1 vez al mes":
+                                        ((selectedUserSubs.frequency === 2) 
+                                          ? "1 vez cada 3 meses"
+                                          :((selectedUserSubs.frequency === 3)
+                                          ? "1 vex cada 6 meses"
+                                          :((selectedUserSubs.frequency === 4)
+                                          ? "1 vez cada 1 año"
+                                          :"")))},
+      {title: "Estado", information: (selectedUserSubs.subscriptionState.state === "A") 
+                                          ? "Activa":
+                                         ((selectedUserSubs.subscriptionState.state === "P") 
+                                          ? "Pausada"
+                                          :((selectedUserSubs.subscriptionState.state === "C")
+                                          ? "Cancelada"
+                                          :""))},
+      {title:"Fecha del próximo pago", information:selectedUserSubs.nextPaymentDate}, 
+      {title:"Fecha del último pago", information:selectedUserSubs.lastPaymentDate}]);}
+  }, [selectedUserInfotmation, displaySubscriptionInformation, selectedUserSubs])
   
 
     return (
@@ -38,6 +62,21 @@ const Sidebar = (props) => {
                 );})}
                 </div>
               </div>
+              { (displaySubscriptionInformation && selectedUserSubs) ?
+              <div className="flex flex-col">
+                <div className="p-10 text-2xl w-full font-Pop-M greenBg border-2 text-white">Subscripción del Usuario</div>
+                <div className="p-10 grid grid-cols-2 gap-4">
+                {subscriptionData.map((data) => {
+                    return (
+                        <div key={data.title} className="blackText flex flex-col space-y-2 lg:space-y-3">
+                            <div className="tracking-wide text-lg font-Pop-M uppercase greenText">{data.title}</div>
+                            <div className="font-Pop-R text-lg text-gray-500">{data.information}</div>
+                        </div>
+                );})}
+                </div>
+              </div>
+              :<></>
+              }
             </div>
             : <></>}
           </>

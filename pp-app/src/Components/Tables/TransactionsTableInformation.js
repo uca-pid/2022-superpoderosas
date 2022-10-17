@@ -1,4 +1,4 @@
-import { StatusPill } from './Table'
+import { StatusPillTransactions, TransactionType, OpenSideBarFromUser } from './SpecialCells';
 import { SelectModoFilter, SelectStateFilter, NumberSearchFilter, DateRangeColumnFilter, dateBetweenFilterFn, AmountRangeColumnFilter, amountBetweenFilterFn } from './Filters'
 
 const columns =[
@@ -11,9 +11,9 @@ const columns =[
   {
     Header: "ID de Usuario",
     accessor: 'userId',
+    Cell: OpenSideBarFromUser,
     Filter: NumberSearchFilter,
     filter: "rankedMatchSorter",
-    Link: "openSideBarWithUser",
   },
   {
     Header: "Monto",
@@ -24,6 +24,7 @@ const columns =[
   {
     Header: "Modo",
     accessor: 'type',
+    Cell: TransactionType,
     Filter: SelectModoFilter,
     filter: 'includes',
   },
@@ -35,7 +36,7 @@ const columns =[
   },{
     Header: "Estado",
     accessor: "transactionState.state",
-    Cell: StatusPill,
+    Cell: StatusPillTransactions,
     Filter: SelectStateFilter,  // new
     filter: 'includes',
   }

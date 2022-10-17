@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSearch } from '@fortawesome/fontawesome-free-solid'
 import Inputs from '../Utiles/Inputs'
 import React, { useState, useEffect } from 'react';
+import Labels from '../Utiles/Labels'
 
 const capitalizeFirst = str => {
   return str.charAt(0).toUpperCase() + str.slice(1);
@@ -27,7 +28,7 @@ export function GlobalFilter({
           setValue(value);
           onChange(value);
         }}
-        placeholder="Buscar transacción . . . ."/>
+        placeholder="Buscar . . . ."/>
       </label>
     )
   }
@@ -36,6 +37,8 @@ export function NumberSearchFilter({
   column: { filterValue, setFilter, render }
 }) {
   return (
+    <div className='flex flex-col space-y-2'>
+    <Labels.FilterLabel text= {"Filtrar según el " + (render("Header").toLowerCase())}></Labels.FilterLabel>
     <div className="flex flex-row items-baseline">
     <Inputs.BottomLineNumberInput
         id="standard-search" 
@@ -45,6 +48,7 @@ export function NumberSearchFilter({
           setFilter(value || undefined); 
         }}
       />
+    </div>
     </div>
   );
 }
@@ -61,7 +65,7 @@ export function SelectModoFilter({
       optionsSet.add(row.values[id])
     })
     optionsSet.forEach(row => {
-      options.push({ value: row, label: row})
+      determineLabelOfState(row, options)
     })
     return [...options.values()]
   }, [id, preFilteredRows]);
@@ -72,6 +76,8 @@ export function SelectModoFilter({
   
   return (
     <>
+    <div className='flex flex-col space-y-2'>
+      <Labels.FilterLabel text= {"Filtrar según el " + (render("Header").toLowerCase())}></Labels.FilterLabel>
     <Inputs.SelectInput  
                       options={options}
                       value={shownSelection} 
@@ -80,8 +86,14 @@ export function SelectModoFilter({
                         setShownSelection({value: e.value, label: e.value});
                         setFilter(e.value || undefined);
                       }}/>
+    </div>
     </>
   )
+  function determineLabelOfState(row, options) {
+    if (row === "onlyTime")
+      options.push({ value: row, label: "Donaciones de una única vez" })
+    if (row === "recurrent")
+      options.push({ value: row, label: "Transacciones generadas por subscripciones" })}
 }
 
 export function SelectStateFilter({
@@ -107,6 +119,8 @@ export function SelectStateFilter({
   
   return (
     <>
+    <div className='flex flex-col space-y-2'>
+    <Labels.FilterLabel text= {"Filtrar según el " + (render("Header").toLowerCase())}></Labels.FilterLabel>
     <Inputs.SelectInput  
                 options={options}
                 value={shownSelection} 
@@ -115,6 +129,7 @@ export function SelectStateFilter({
                   setShownSelection({value: e.value, label: e.value});
                   setFilter(e.value || undefined);
                 }}/>
+    </div>
     </>
   )
 
@@ -125,6 +140,53 @@ export function SelectStateFilter({
       options.push({ value: row, label: "Pendiente" })
     if (row === "R")
       options.push({ value: row, label: "Rechazada" })
+  }
+}
+
+export function SelectStateFilterSubscriptions({
+  column: { filterValue, setFilter, preFilteredRows, id, render },
+}) {
+  const noValueSelected = {value: "Estado", label:"Estado"};
+  const [shownSelection, setShownSelection] = useState(noValueSelected);
+  const options = React.useMemo(() => {
+    const optionsSet = new Set()
+    const options = []
+    preFilteredRows.forEach(row => {
+      optionsSet.add(row.values[id])
+    })
+    optionsSet.forEach(row => {
+      determineLabelOfState(row, options)
+    })
+    return [...options.values()]
+  }, [id, preFilteredRows]);
+
+  useEffect(() => {
+    if (!filterValue) setShownSelection({value: "Estado", label:"Estado"}) ;
+  }, [filterValue])
+  
+  return (
+    <>
+    <div className='flex flex-col space-y-2'>
+    <Labels.FilterLabel text= {"Filtrar según el " + (render("Header").toLowerCase())}></Labels.FilterLabel>
+    <Inputs.SelectInput  
+                options={options}
+                value={shownSelection} 
+                placeholder={capitalizeFirst((render("Header")).toLowerCase())}
+                onChange={e => {
+                  setShownSelection({value: e.value, label: e.value});
+                  setFilter(e.value || undefined);
+                }}/>
+    </div>
+    </>
+  )
+
+  function determineLabelOfState(row, options) {
+    if (row === "A")
+      options.push({ value: row, label: "Activa" })
+    if (row === "P")
+      options.push({ value: row, label: "Pausada" })
+    if (row === "C")
+      options.push({ value: row, label: "Cancelada" })
   }
 }
 
@@ -155,7 +217,8 @@ export function DateRangeColumnFilter({
       filterValue = [],
       preFilteredRows,
       setFilter,
-      id
+      id,
+      render
     }})
   {
     const [min, max] = React.useMemo(() => {
@@ -173,6 +236,8 @@ export function DateRangeColumnFilter({
     }, [id, preFilteredRows])
   
     return (
+      <div className='flex flex-col space-y-2'>
+      <Labels.FilterLabel text= {"Filtrar según la " + (render("Header").toLowerCase())}></Labels.FilterLabel>
       <div className = "flex flex-row grid-cols-5 space-x-4">
         <Inputs.BottomLineDateInput
           min={min.toISOString().slice(0, 10)}
@@ -189,6 +254,7 @@ export function DateRangeColumnFilter({
           }}
           value={filterValue[1]?.slice(0, 10) || ''}
         />
+      </div>
       </div>
     )
 }
@@ -219,9 +285,12 @@ export function AmountRangeColumnFilter({
     column: {
       filterValue = [],
       setFilter,
+      render,
     }})
   {
     return (
+      <div className='flex flex-col space-y-2'>
+      <Labels.FilterLabel text= {"Filtrar según el " + (render("Header").toLowerCase())}></Labels.FilterLabel>
       <div className="grid grid-cols-5">
         <Inputs.BottomLineNumberInput
           placeholder="Monto"
@@ -239,5 +308,54 @@ export function AmountRangeColumnFilter({
           }}
         />
       </div>
+      </div>
     )
+}
+
+export function SelectPeriodicidadFilter({
+  column: { filterValue, setFilter, preFilteredRows, id, render },
+}) {
+  const noValueSelected = {value:"Frecuencia de pago", label:"Frecuencia de pago"};
+  const [shownSelection, setShownSelection] = useState(noValueSelected);
+  const options = React.useMemo(() => {
+    const optionsSet = new Set()
+    const options = []
+    preFilteredRows.forEach(row => {
+      optionsSet.add(row.values[id])
+    })
+    optionsSet.forEach(row => {
+      determineLabelOfState(row, options)
+    })
+    return [...options.values()]
+  }, [id, preFilteredRows]);
+
+  useEffect(() => {
+    if (!filterValue) setShownSelection({value: "Frecuencia de pago", label:"Frecuencia de pago"}) ;
+  }, [filterValue])
+  
+  return (
+    <>
+    <div className='flex flex-col space-y-2'>
+      <Labels.FilterLabel text= {"Filtrar según la " + (render("Header").toLowerCase())}></Labels.FilterLabel>
+    <Inputs.SelectInput  
+                      options={options}
+                      value={shownSelection} 
+                      placeholder={capitalizeFirst((render("Header")).toLowerCase())}
+                      onChange={e => {
+                        setShownSelection({value: e.value, label: e.value});
+                        setFilter(e.value || undefined);
+                      }}/>
+    </div>
+    </>
+  )
+   function determineLabelOfState(row, options) {
+    if (row === 1)
+      options.push({ value: row, label: "1 vez al mes" })
+    if (row === 2)
+      options.push({ value: row, label: "1 vez cada 3 meses" })
+    if (row === 3)
+      options.push({ value: row, label: "1 vez cada 6 meses" })
+    if (row === 4)
+      options.push({ value: row, label: "1 vez cada 1 año" })
+  }
 }
