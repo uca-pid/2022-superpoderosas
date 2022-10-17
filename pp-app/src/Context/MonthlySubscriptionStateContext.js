@@ -21,12 +21,12 @@ export function MonthlySubscriptionStateContextProvider(props) {
   }
   const setChartDataBasedOnMonthlySubs = (data) =>{
     initializeChartData();
-    data.data.map((item)=>{
-        if(item.state=="A"){
+    data.data.foreach((item)=>{
+        if(item.state==="A"){
           incrementNumber(0);
-        }else if(item.state=="P"){
+        }else if(item.state==="P"){
           incrementNumber(1);
-        }else if(item.state=="C"){
+        }else if(item.state==="C"){
           incrementNumber(2);
         }
       })

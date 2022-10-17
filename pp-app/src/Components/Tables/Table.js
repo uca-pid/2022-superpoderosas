@@ -39,6 +39,7 @@ export function StatusPill({ value }) {
 };
 
 function Table({ columns }) {
+  const skipPageResetRef = React.useRef()
   const {setShowSidebar, setSelectedUser} = useSelectionOnTable();
   const excuteRelatedFuntion = (functionName , value) =>{
     if(functionName === "openSideBarWithUser") {
@@ -78,6 +79,13 @@ function Table({ columns }) {
   } = useTable({
     columns,
     data,
+    autoResetPage: !skipPageResetRef.current,
+    autoResetExpanded: !skipPageResetRef.current,
+    autoResetGroupBy: !skipPageResetRef.current,
+    autoResetSelectedRows: !skipPageResetRef.current,
+    autoResetSortBy: !skipPageResetRef.current,
+    autoResetFilters: !skipPageResetRef.current,
+    autoResetRowState: !skipPageResetRef.current,
   },
     useFilters, 
     useGlobalFilter,
@@ -85,12 +93,17 @@ function Table({ columns }) {
     usePagination, 
   )
   useEffect(() => {
+    skipPageResetRef.current = false
     AdminServices.getTransactions(20,0).then(res=>{
       res? setData(res.data) : setData();
     });
   }, []);
 
+ 
+  
+
   const handleMoreData = (e) =>{
+    skipPageResetRef.current = true
     AdminServices.getTransactions(10,20).then(res=>{
       res? setData(data.concat(res.data)) : setData(emptyRows)
     });
