@@ -1,5 +1,6 @@
 import { classNames } from './Utils'
 import { useSelectionOnTable} from '../../Context/SelectionsOnTable';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 export function OpenSideBarFromUser({value}){
   const {setSelectedUser, setShowSidebar} = useSelectionOnTable()
@@ -32,6 +33,12 @@ export function StatusPillTransactions({ value }) {
         ? "Rechazada"
         : "")
         )}
+        {(status ==="p") && (
+        <>
+        <FontAwesomeIcon className='px-4' onClick={() => alert("aceptar")} icon={"fa fa-check"} color='#000' size={14} />
+        <FontAwesomeIcon onClick={() => alert("cancelar")} icon={"fa fa-ban"} color='#000' size={14} />
+        </>
+      )}
       </div>
     );
   };

@@ -1,9 +1,6 @@
 import React from "react";
 import AuthService from "../../services/auth.service";
 import AdminNavBar from "../../Components/NavBars/AdminNavBar";
-import PieChartModule from "../../Components/Dashboards/PieChartModule";
-import BarChartModule from "../../Components/Dashboards/BarChartModule";
-import TotalAmountModule from "../../Components/Dashboards/TotalAmountModule";
 import { MonthlySubscriptionStateContextProvider } from "../../Context/MonthlySubscriptionStateContext";
 import FilterDate from "../../Components/Dashboards/FilterDate";
 import { OpenChartsContextProvider } from "../../Context/OpenChartsContext";
@@ -11,26 +8,6 @@ import DashboardSection from "../../Components/Dashboards/DashboardSection";
 
 const DashboardPage = () => {
   const currentUser = AuthService.getCurrentUser();
-
-  const data=[
-  {tittle: "Mes",options:[{ value: '1', label: 'Enero'},
-  { value: 2, label: 'Febrero'},
-  { value: 3, label: 'Marzo'},
-  { value: 4, label: 'Abril'},
-  { value: 5, label: 'Mayo'},
-  { value: 6, label: 'Junio'},
-  { value: 7, label: 'Julio'},
-  { value: 8, label: 'Agosto'},
-  { value: 9, label: 'Septiembre'},
-  { value: 10, label: 'Octubre'},
-  { value: 11, label: 'Noviembre'},
-  { value: 12, label: 'Diciembre'}]
-  },
-  {tittle: "Año",options:[
-  { value: 2021, label: '2021'},
-  { value: 2022, label: '2022'},]
-  }
-  ];
 
   return (
     <>
@@ -42,7 +19,7 @@ const DashboardPage = () => {
         <div className = "flex justify-between flex-row z-10 px-10 md:px-20 lg:px-80 greyBg darkGrayBorder space-y-1 md:space-y-3 lg:space-y-4 py-8 md:py-10 lg:py-16 mt-20">
               <div className="basis-8/10 flex z-10 font-Pop-SB tracking-[0.8px] text-[26px] md:text-[30px] lg:text-[32px] blackText">REPORTES</div>
               <div className="basis-2/10 flex justify-end right-0">
-                      <FilterDate data={data}></FilterDate>
+                      <FilterDate></FilterDate>
               </div>
         </div>
         <DashboardSection></DashboardSection>
