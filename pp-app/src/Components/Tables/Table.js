@@ -3,49 +3,15 @@ import { useEffect } from 'react'
 import { useTable, useFilters, useGlobalFilter, useSortBy, usePagination } from 'react-table'
 import { ChevronDoubleLeftIcon, ChevronLeftIcon, ChevronRightIcon, ChevronDoubleRightIcon } from '@heroicons/react/solid'
 import { Button, PageButton } from './Buttons'
-import { classNames } from './Utils'
 import { SortIcon, SortUpIcon, SortDownIcon } from './Icons'
 import FilterSelect from './FilterSelect'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faFilter, faChevronUp } from '@fortawesome/fontawesome-free-solid'
 import "../../App.css"
 import { GlobalFilter } from './Filters'
-import { useSelectionOnTable } from '../../Context/SelectionsOnTable'
-
-export function StatusPill({ value }) {
-  const status = value ? value.toLowerCase() : "unknown";
-  return (
-    <div
-      className={
-        classNames(
-          "px-3 py-1 uppercase w-fit font-Pop-M text-base rounded-full",
-          status.startsWith("a") ? "bg-[#0f693849] text-gray-800" : null,
-          status.startsWith("p") ? "bg-gray-100 text-gray-800" : null,
-          status.startsWith("r") ? "bg-[#eb820144] text-gray-800" : null,
-        )
-      }
-    >
-      {(status==="a") 
-      ? "Aceptada" 
-      : ((status==="p") 
-      ? "Pendiente"
-      : ((status==="r") 
-      ? "Rechazada"
-      : "")
-      )}
-    </div>
-  );
-};
 
 function Table({ columns, functionToLoadData }) {
   const skipPageResetRef = React.useRef()
-  const {setShowSidebar, setSelectedUser} = useSelectionOnTable();
-  const excuteRelatedFuntion = (functionName , value) =>{
-    if(functionName === "openSideBarWithUser") {
-      setShowSidebar(true); 
-      setSelectedUser(value);
-    }
-  }
   const emptyRows = [{
   id: "",
   userId: "",
@@ -94,8 +60,9 @@ function Table({ columns, functionToLoadData }) {
     skipPageResetRef.current = false
     functionToLoadData(20,0).then(res=>{
       res? setData(res.data) : setData();
+      console.log(res)
     });
-  }, []);
+  }, [functionToLoadData]);
 
  
 
@@ -185,10 +152,7 @@ function Table({ columns, functionToLoadData }) {
                                   role="cell"
                                 >
                                   {cell.column.Cell.name === "defaultRenderer"
-                                    ? ( cell.column.Link ?
-                                    <button className="text-base text-gray-500 font-Pop-L hover:decoration-gray-500 hover:underline hover:underline-offset-4" onClick={()=>excuteRelatedFuntion(cell.column.Link, cell.value)}>{cell.render('Cell')}</button>
-                                    :
-                                    <div className="text-base text-gray-500 font-Pop-L">{cell.render('Cell')}</div>)
+                                    ? <div className="text-base text-gray-500 font-Pop-L">{cell.render('Cell')}</div>
                                     : cell.render('Cell')
                                   }
                                 </td>

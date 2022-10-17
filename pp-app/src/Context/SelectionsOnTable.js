@@ -1,5 +1,6 @@
 import React, { useState, useMemo, useEffect } from 'react';
 import AuthService from "../services/auth.service"
+import DonationService from "../services/donations.service";
 
 const SelectionOnTableContext = React.createContext()
 
@@ -7,8 +8,10 @@ export function SelectionOnTableContexProvider (props) {
   const [selectedUser, setSelectedUser] = useState(null);
   const [showSidebar, setShowSidebar] = useState(false);
   const [selectedUserInfotmation, setSelectedUserInfotmation] = useState(null)
+  const [selectedUserSubs, setSelectedUserSubs] = useState(null)
   useEffect(() => {
     AuthService.findUserById(selectedUser).then(res=>{res? setSelectedUserInfotmation(res.data) : setSelectedUserInfotmation(null)});
+    DonationService.getSubscription(selectedUser).then(res=>{res? setSelectedUserSubs(res.data) : setSelectedUserSubs(null)});
   }, [selectedUser])
   const value = useMemo(() => {
     return {
@@ -16,9 +19,10 @@ export function SelectionOnTableContexProvider (props) {
         setSelectedUser,
         showSidebar,
         setShowSidebar,
-        selectedUserInfotmation
+        selectedUserInfotmation,
+        selectedUserSubs
     }
-  }, [selectedUser, showSidebar, selectedUserInfotmation])
+  }, [selectedUser, showSidebar, selectedUserInfotmation, selectedUserSubs])
 
   return (
     <SelectionOnTableContext.Provider value={value}>

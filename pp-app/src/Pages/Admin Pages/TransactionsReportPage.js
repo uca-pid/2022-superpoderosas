@@ -18,7 +18,7 @@ const TransactionReportPage = () => {
       {currentUser ? (
       <>
       <div className="almostWhiteBg">
-        <Sidebar/>
+        <Sidebar displaySubscriptionInformation/>
         <div className = "z-10 px-10 md:px-20 lg:px-80 basis-1/3 lighterGreyBg darkGrayBorder space-y-2 md:space-y-3 lg:space-y-4 py-8 md:py-10 lg:py-12 mt-20">
           <div className="z-10 font-Pop-SB tracking-[0.8px] text-[26px] md:text-[30px] lg:text-[26px] blackText">Reporte Transacciones</div>
           <div className="z-10 font-Pop-L blackText text-[18px] md:text-[20px] lg:text-[20px]">Reporte historico de las transacciones realizadas</div>
