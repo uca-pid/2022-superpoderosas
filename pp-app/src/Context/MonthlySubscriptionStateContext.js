@@ -14,13 +14,10 @@ export function MonthlySubscriptionStateContextProvider(props) {
   const setMonthsIncome = ()=>{
     const a=[];
     datesValues[0].options.map((m)=>{
-      //const date = [year, m.value].join('-');
-      console.log(m)
-      AdminServices.getMonthlyIncome(m.value).then((res)=>{a.push(res.data.total)});
-      setMonthlyAmounts(a);
+      AdminServices.getMonthlyIncome(m.value).then((res)=>{console.log(res);a.push(res.data.total)})
     })
+    setMonthlyAmounts(a);
   }
-  console.log(monthlyAmounts)
 
   const incrementNumber = index => {
     setChartData(existingItems => {
@@ -62,7 +59,7 @@ export function MonthlySubscriptionStateContextProvider(props) {
       setChartData,
       monthlyAmounts
     }
-  }, [month, year, chartData,monthlyAmounts])
+  }, [month, year, chartData, monthlyAmounts])
 
   return (
     <MonthlySubscriptionStateContext.Provider value={value}>
