@@ -3,7 +3,6 @@ import {useMonthlySubscriptionStateContext} from  '../../Context/MonthlySubscrip
 import BarChart from './BarChart';
 
 export default function BarChartModule(props) {
-
   const { year, month } = useMonthlySubscriptionStateContext();
 
   return (
@@ -14,7 +13,7 @@ export default function BarChartModule(props) {
  
         </div>  
          <div className="flex p-7 flex-[0_0_auto]"> 
-            <BarChart data={props.data}></BarChart>
+            <BarChart></BarChart>
           </div>
           
   </>

@@ -2,33 +2,11 @@ import React from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faFilter } from '@fortawesome/fontawesome-free-solid'
 import { Popover } from '@headlessui/react'
-import DonationService from '../../services/donations.service'
+import datesValues from "../../Values/datesValues";
 import { useMonthlySubscriptionStateContext } from "../../Context/MonthlySubscriptionStateContext";
 
 const FilterDate = (props) => {
-  const { year, setYear, month, setMonth, setChartData, chartData } = useMonthlySubscriptionStateContext();
-
-  // const incrementNumber = index => {
-  //   setChartData(existingItems => {
-  //     return [
-  //       ...existingItems.slice(0, index),
-  //       existingItems[index] + 1,
-  //       ...existingItems.slice(index + 1),
-  //     ]
-  //   })
-  // }
-
-  // const setChartDataBasedOnMonthlySubs = (data) =>{
-  //   data.data.map((item)=>{
-  //       if(item.state=="A"){
-  //         incrementNumber(0);
-  //       }else if(item.state=="P"){
-  //         incrementNumber(1);
-  //       }else if(item.state=="C"){
-  //         incrementNumber(2);
-  //       }
-  //     })
-  //  }
+  const { year, setYear, month, setMonth,  } = useMonthlySubscriptionStateContext();
 
   const setFilter =(value, tittle) => {
     if (tittle === "Mes"){
@@ -36,7 +14,6 @@ const FilterDate = (props) => {
     }else{
       setYear(value);
     }
-    // DonationService.subscriptionsByMonth(month,year).then(res=>{setChartDataBasedOnMonthlySubs(res);});
   }
   const getValue =(tittle) => {
     if (tittle === "Mes"){
@@ -55,7 +32,7 @@ const FilterDate = (props) => {
           </div>
       </Popover.Button>
       <Popover.Panel className={"p-10 absolute top-0 right-0 mt-16 p-3 rounded-lg almostWhiteBg grayBorder space-y-6 w-fit"} >
-          {props.data.map((dataItem) => (
+          {datesValues.map((dataItem) => (
               <label className="flex gap-x-2 items-baseline">
               <span className="text-gray-700 font-Pop-R">{dataItem.tittle}</span>
               <select

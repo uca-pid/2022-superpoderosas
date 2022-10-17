@@ -1,33 +1,25 @@
 import React from 'react';
 import Chart from 'chart.js';
-import { useEffect, useState } from 'react';
-import AdminServices from '../../services/transactions.service'
+import { useEffect } from 'react';
 import {useMonthlySubscriptionStateContext} from  '../../Context/MonthlySubscriptionStateContext'
-import axios from "axios";
-const API_URL = "http://localhost:8080/api/payment/";
+import datesValues from '../../Values/datesValues';
 
 export default function BarChart(props) {
-  const { chartData, year,month } = useMonthlySubscriptionStateContext();
-  const [data, setData] = React.useState([])
+  const { chartData,monthlyAmounts } = useMonthlySubscriptionStateContext();
 
   const getLabel = (option) => {
     return option.label;
   }
-  
-  const get = () =>{
-    var date= "2022-10"
-      AdminServices.getMonthlyIncome(date).then(res=>{console.log(res);});
-  }
+
   useEffect(() => {
-    get()
     let config = {
       type: "bar",
-      label: 'RESUMEN DE COBRANZAS',
       data: {
-        labels: Array.from(props.data[0].options,(option) => getLabel(option)),
+        labels: Array.from(datesValues[0].options,(option) => getLabel(option)),
         datasets: [
           {
-            data: [23,533,823,538,15,249,240,200,487,650,764,357],
+            label: 'RESUMEN DE COBRANZAS',
+            data: monthlyAmounts,
             backgroundColor: [
               'rgba(88, 214, 141)',
               'rgba(244, 208, 63)',
@@ -57,7 +49,7 @@ export default function BarChart(props) {
     };
     let ctx = document.getElementById("bar").getContext('2d');
     window.myBar = new Chart(ctx, config);
-  }, [chartData]);
+  }, [chartData, monthlyAmounts]);
   return (
     <>
       <canvas id="bar"></canvas>
