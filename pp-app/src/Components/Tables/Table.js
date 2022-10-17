@@ -10,7 +10,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faFilter, faChevronUp } from '@fortawesome/fontawesome-free-solid'
 import "../../App.css"
 import { GlobalFilter } from './Filters'
-import AdminServices from '../../services/transactions.service'
 import { useSelectionOnTable } from '../../Context/SelectionsOnTable'
 
 export function StatusPill({ value }) {
@@ -38,7 +37,7 @@ export function StatusPill({ value }) {
   );
 };
 
-function Table({ columns }) {
+function Table({ columns, functionToLoadData }) {
   const skipPageResetRef = React.useRef()
   const {setShowSidebar, setSelectedUser} = useSelectionOnTable();
   const excuteRelatedFuntion = (functionName , value) =>{
@@ -56,7 +55,6 @@ function Table({ columns }) {
   estado: ""}];
   const [data, setData] = React.useState(emptyRows)
   const [showFilterPanel , setShowFilterPanel] = useState(false)
-  //const [offset, setOffset] = React.useState(0)
   const {
     getTableProps,
     getTableBodyProps,
@@ -94,17 +92,16 @@ function Table({ columns }) {
   )
   useEffect(() => {
     skipPageResetRef.current = false
-    AdminServices.getTransactions(20,0).then(res=>{
+    functionToLoadData(20,0).then(res=>{
       res? setData(res.data) : setData();
     });
   }, []);
 
  
-  
 
   const handleMoreData = (e) =>{
     skipPageResetRef.current = true
-    AdminServices.getTransactions(10,20).then(res=>{
+    functionToLoadData(10,20).then(res=>{
       res? setData(data.concat(res.data)) : setData(emptyRows)
     });
     nextPage();

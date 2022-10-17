@@ -7,8 +7,9 @@ import AuthService from './services/auth.service';
 import { Routes, Route } from "react-router-dom";
 import RegistrationPage from './Pages/Registration-Autentification.js/RegistrationPage';
 import DonarPage from './Pages/Donations/Donar';
-import BaseInformationPage from './Pages/Admin Pages/BaseInformationPage';
+import TransactionReportPage from './Pages/Admin Pages/TransactionsReportPage';
 import DashboardPage from './Pages/Admin Pages/DashboardPage';
+import SubscriptionReportPage from './Pages/Admin Pages/SubscriptionReportPage';
 //a la ruta de /profile estaría bueno ponerle /home en ambos casos
 
 export default function App() {
@@ -26,8 +27,9 @@ export default function App() {
           (
           (isAdmin())  ?
           <>
-          <Route exact path="/inicio" element={<BaseInformationPage></BaseInformationPage>} />
-          <Route exact path="/donaciones" element={<BaseInformationPage></BaseInformationPage>} />
+          <Route exact path="/inicio" element={<TransactionReportPage></TransactionReportPage>} />
+          <Route exact path="/reporteTransacciones" element={<TransactionReportPage></TransactionReportPage>} />
+          <Route exact path="/reporteSubscripciones" element={<SubscriptionReportPage></SubscriptionReportPage>} />
           <Route exact path="/reportes" element={<DashboardPage></DashboardPage>} />
           </>
           :

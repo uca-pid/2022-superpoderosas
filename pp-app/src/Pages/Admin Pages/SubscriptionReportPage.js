@@ -5,8 +5,10 @@ import Table from "../../Components/Tables/Table";
 import TransactionTableInformation from "../../Components/Tables/TransactionsTableInformation";
 import Sidebar from "../../Components/Utiles/SideBar";
 import { SelectionOnTableContexProvider } from "../../Context/SelectionsOnTable";
+import AdminServices from "../../services/transactions.service";
 
-const BaseInformationPage = () => {
+const SubscriptionReportPage = () => {
+  const getTransactionsForTable = (min, max) => AdminServices.getTransactions(min,max);
   const currentUser = AuthService.getCurrentUser();
   return (
     <SelectionOnTableContexProvider>
@@ -22,7 +24,7 @@ const BaseInformationPage = () => {
           <div className="z-10 font-Pop-L blackText text-[18px] md:text-[20px] lg:text-[20px]">Reporte historico de las transacciones realizadas</div>
         </div>
         <div className="px-80 mt-10">  
-          <Table columns={TransactionTableInformation.columns}></Table>
+          <Table columns={TransactionTableInformation.columns} functionToLoadData={getTransactionsForTable}></Table>
         </div>
       </div>
       </>
@@ -34,4 +36,4 @@ const BaseInformationPage = () => {
     </SelectionOnTableContexProvider>
   );
 };
-export default BaseInformationPage;
+export default SubscriptionReportPage;

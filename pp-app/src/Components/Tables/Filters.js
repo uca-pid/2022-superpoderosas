@@ -19,7 +19,7 @@ export function GlobalFilter({
     }, 200)
   
     return (
-      <label className="px-6 flex flex-row gap-x-2 w-fit items-baseline border rounded-xl border-[#f3f1f1] shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
+      <label className="px-6 bg-white flex flex-row gap-x-2 w-fit items-baseline border rounded-xl border-[#f3f1f1] shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
         <FontAwesomeIcon icon={faSearch} color="gray" className='pt-2' />
         <Inputs.BoxInput 
         value={value || ""}
