@@ -97,8 +97,6 @@ function Table({ columns, functionToLoadData }) {
     });
   }, []);
 
- 
-
   const handleMoreData = (e) =>{
     skipPageResetRef.current = true
     functionToLoadData(10,20).then(res=>{
