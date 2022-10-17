@@ -7,6 +7,13 @@ const getTransactions = (limit, offset) => {
   });
 };
 
+const getSubscriptions = (limit, offset) => {
+  return axios.post(API_URL + "getSubscriptions", {
+    limit,
+    offset,
+  });
+};
+
 const getMonthlyIncome = (date) => {
   return axios.post(API_URL + "getMonthIncome", {
     date,
@@ -16,6 +23,7 @@ const getMonthlyIncome = (date) => {
 const AdminServices = {
     getTransactions,
     getMonthlyIncome,
+    getSubscriptions,
   }
 
 export default AdminServices;
