@@ -7,7 +7,15 @@ const getTransactions = (limit, offset) => {
   });
 };
 
+const getMonthlyIncome = (date) => {
+  return axios.post(API_URL + "getMonthIncome", {
+    date,
+  });
+};
+
 const AdminServices = {
     getTransactions,
+    getMonthlyIncome,
   }
+
 export default AdminServices;

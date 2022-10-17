@@ -1,22 +1,39 @@
 import React from 'react';
 import Chart from 'chart.js';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
+import AdminServices from '../../services/transactions.service'
 import {useMonthlySubscriptionStateContext} from  '../../Context/MonthlySubscriptionStateContext'
+import axios from "axios";
+const API_URL = "http://localhost:8080/api/payment/";
 
 export default function SubsTotalAmountChart(props) {
   const { chartData, year,month } = useMonthlySubscriptionStateContext();
+  const [data, setData] = React.useState([])
+
   const getLabel = (option) => {
     return option.label;
   }
-
+  
+  const get = (e) =>{
+    var date= "2022-10"
+    for (var i = 0; i < 12; i++) {
+      data.push(axios.post(API_URL + "getMonthIncome", {
+        date,
+      }))
+    }
+    Promise.all(data).then(() => {
+        console.log('done')
+    })
+  }
   useEffect(() => {
+    get()
     let config = {
       type: "bar",
+      label: 'RESUMEN DE COBRANZAS',
       data: {
         labels: Array.from(props.data[0].options,(option) => getLabel(option)),
         datasets: [
           {
-            label: 'RESUMEN DE COBRANZAS',
             data: [23,533,823,538,15,249,240,200,487,650,764,357],
             backgroundColor: [
               'rgba(88, 214, 141)',
