@@ -14,10 +14,10 @@ export default function BarChartModule(props) {
           <div className="flex flex-[0_0_auto] blackText font-Pop-M uppercase text-lg md:text-xl tracking-wider font-medium">{year}</div>
         </div>  
          <div className="flex p-7 flex-[0_0_auto]" onClick={()=> setShowBarChart(true)}>
-            <div class="chart-container" style={{position: 'relative', alignContent:'center', height:'50vh', width:'65vh'}}> 
-              <BarChart ></BarChart>
-            </div>
-          </div>     
+          <div class="chart-container" style={{position: 'relative', height:'50vh', width:'65vh'}}> 
+            <BarChart data={props.data}></BarChart>
+          </div>
+        </div>     
   </>
   );
 }
