@@ -14,7 +14,7 @@ export function MonthlySubscriptionStateContextProvider(props) {
   const setMonthsIncome = ()=>{
     const a=[];
     datesValues[0].options.map((m)=>{
-      AdminServices.getMonthlyIncome(m.value).then((res)=>{console.log(res);a.push(res.data.total)})
+      AdminServices.getMonthlyIncome(m.value).then((res)=>{console.log(res,m.value);a.push(res.data.total)})
     })
     setMonthlyAmounts(a);
   }

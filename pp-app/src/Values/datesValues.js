@@ -13,7 +13,6 @@ const datesValues=[
     { value: 12, label: 'Diciembre'}]
     },
     {tittle: "Año",options:[
-    { value: 2021, label: '2021'},
     { value: 2022, label: '2022'},]
     }
 ];

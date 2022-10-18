@@ -5,8 +5,7 @@ import {useMonthlySubscriptionStateContext} from  '../../Context/MonthlySubscrip
 import datesValues from '../../Values/datesValues';
 
 export default function BarChart(props) {
-  const { chartData,monthlyAmounts } = useMonthlySubscriptionStateContext();
-  console.log(monthlyAmounts);
+  const { monthlyAmounts } = useMonthlySubscriptionStateContext();
   const getLabel = (option) => {
     return option.label;
   }
@@ -49,7 +48,7 @@ export default function BarChart(props) {
     };
     let ctx = document.getElementById("bar").getContext('2d');
     window.myBar = new Chart(ctx, config);
-  }, [chartData]);
+  }, []);
   return (
     <>
       <canvas id="bar"></canvas>

@@ -5,10 +5,7 @@ import datesValues from '../../Values/datesValues';
 export default function TotalAmountModule(props) {
 
   const { year, month, monthlyAmounts } = useMonthlySubscriptionStateContext();
-
-  useEffect(()=>{
-
-  },[month, monthlyAmounts])
+  console.log(monthlyAmounts);
 
   return (
         <>    
