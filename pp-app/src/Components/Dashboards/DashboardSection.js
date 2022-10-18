@@ -4,6 +4,7 @@ import BarChartModule from "./BarChartModule";
 import TotalAmountModule from "./TotalAmountModule";
 import { useOpenChartsContext } from "../../Context/OpenChartsContext";
 import ChartModal from "./ChartsModal";
+import BarChart from "./BarChart";
 
 const DashboardSection = () => {
   const {showBarChart} = useOpenChartsContext();
@@ -31,7 +32,7 @@ const DashboardSection = () => {
     <>
         <div className="px-5 md:px-20 lg:px-80 flex flex-col lg:flex-row w-full lg:space-x-10 space-y-10 lg:space-y-0"> 
         {showBarChart ? 
-         <ChartModal></ChartModal>   
+         <ChartModal chart={<BarChart data={data}></BarChart>}></ChartModal>   
         :
         <></>}
             <div className="lg:basis-1/2 flex flex-col space-y-10">

@@ -3,7 +3,7 @@ import React, { useState, useMemo } from 'react';
 const OpenChartsContext = React.createContext()
 
 export function OpenChartsContextProvider (props) {
-  const [showBarChart, setShowBarChart] = useState(false);
+  const [showBarChart, setShowBarChart] = useState(true);
  
   const value = useMemo(() => {
     return {

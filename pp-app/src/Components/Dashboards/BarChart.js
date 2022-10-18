@@ -38,7 +38,7 @@ export default function BarChart(props) {
         ],
       },
       options: {
-        maintainAspectRatio: true,
+        maintainAspectRatio: false,
         responsive: true,
         scales: {
           y: {
