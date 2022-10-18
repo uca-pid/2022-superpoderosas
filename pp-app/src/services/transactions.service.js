@@ -20,10 +20,18 @@ const getMonthIncome =  (month) => {
     });
 }
 
+const modifyTransactionState =  (transactionId,state) => {
+  return axios.post(API_URL + "modifyTransactionState",{
+    transactionId,  
+    state
+    });
+}
+
 const AdminServices = {
     getTransactions,
     getMonthIncome,
     getSubscriptions,
+    modifyTransactionState
   }
 
 export default AdminServices;
