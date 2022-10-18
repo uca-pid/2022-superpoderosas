@@ -12,34 +12,14 @@ export function MonthlySubscriptionStateContextProvider(props) {
   const [year, setYear] = useState(new Date().getFullYear())
   const [ chartData, setChartData ] = useState([]);
   const [monthlyAmounts, setMonthlyAmounts] = useState([]);
-  //const datesValuesCopy=[1,2,3,4,5,6,7,8,9,10,11,12];
 
-  const setMonthsIncome = ()=>{
-    const a=[];
-    datesValues[0].options.map((m)=>{
-      AdminServices.getMonthIncome(m.value).then((res)=>{a.push(res.data.total)})
-    })
-    setMonthlyAmounts(a);
-  }
-
-  /*const setMonthsIncome = () =>{
-    Promise.all(
-      datesValuesCopy.map((month) => axios
-        .post("http://localhost:8080/api/payment/getMonthIncome",{
-          month
-        })
-        .then(res => res.data)
-      )
-    )
-    .then((allData) => {
-      const combined = datesValuesCopy.map((p, i) => (allData[i].total));
-      setMonthlyAmounts(combined);
-      console.log(monthlyAmounts)
-    })
-    .catch((error) => {
-      console.log(error);
-    });
-  }*/
+  const setMonthsIncome = async () => {
+    const options = datesValues[0].options
+    for (const el of options) {
+        await AdminServices.getMonthIncome(el.value).then(res => setMonthlyAmounts(prev => [...prev, res.data.total]))
+    }
+    console.log(monthlyAmounts)
+}
 
   const incrementNumber = index => {
     setChartData(existingItems => {
@@ -68,7 +48,7 @@ export function MonthlySubscriptionStateContextProvider(props) {
   
   useEffect(() => {
     DonationService.subscriptionsByMonth(month,year).then(res=>{setChartDataBasedOnMonthlySubs(res);});
-    AdminServices.getMonthIncome(10).then((res)=>{console.log("NCIE TRUE"+res.data.total+10);})
+    //AdminServices.getMonthIncome(10).then((res)=>{console.log("NCIE TRUE"+res.data.total+10);})
     setMonthsIncome();
   }, [month,year])
 
