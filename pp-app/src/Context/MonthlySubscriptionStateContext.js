@@ -2,6 +2,8 @@ import React, { useState, useMemo, useEffect } from 'react'
 import DonationService from '../services/donations.service'
 import AdminServices from '../services/transactions.service'
 import datesValues from '../Values/datesValues'
+import axios from "axios";
+
 const MonthlySubscriptionStateContext = React.createContext()
 
 
@@ -10,6 +12,7 @@ export function MonthlySubscriptionStateContextProvider(props) {
   const [year, setYear] = useState(new Date().getFullYear())
   const [ chartData, setChartData ] = useState([]);
   const [monthlyAmounts, setMonthlyAmounts] = useState([]);
+  //const datesValuesCopy=[1,2,3,4,5,6,7,8,9,10,11,12];
 
   const setMonthsIncome = ()=>{
     const a=[];
@@ -18,6 +21,25 @@ export function MonthlySubscriptionStateContextProvider(props) {
     })
     setMonthlyAmounts(a);
   }
+
+  /*const setMonthsIncome = () =>{
+    Promise.all(
+      datesValuesCopy.map((month) => axios
+        .post("http://localhost:8080/api/payment/getMonthIncome",{
+          month
+        })
+        .then(res => res.data)
+      )
+    )
+    .then((allData) => {
+      const combined = datesValuesCopy.map((p, i) => (allData[i].total));
+      setMonthlyAmounts(combined);
+      console.log(monthlyAmounts)
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+  }*/
 
   const incrementNumber = index => {
     setChartData(existingItems => {
