@@ -14,7 +14,7 @@ export function MonthlySubscriptionStateContextProvider(props) {
   const setMonthsIncome = ()=>{
     const a=[];
     datesValues[0].options.map((m)=>{
-      AdminServices.getMonthlyIncome(m.value).then((res)=>{console.log(res,m.value);a.push(res.data.total)})
+      AdminServices.getMonthIncome(m.value).then((res)=>{a.push(res.data.total)})
     })
     setMonthlyAmounts(a);
   }
@@ -46,6 +46,7 @@ export function MonthlySubscriptionStateContextProvider(props) {
   
   useEffect(() => {
     DonationService.subscriptionsByMonth(month,year).then(res=>{setChartDataBasedOnMonthlySubs(res);});
+    AdminServices.getMonthIncome(10).then((res)=>{console.log("NCIE TRUE"+res.data.total+10);})
     setMonthsIncome();
   }, [month,year])
 

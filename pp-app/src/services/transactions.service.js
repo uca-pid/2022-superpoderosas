@@ -14,15 +14,15 @@ const getSubscriptions = (limit, offset) => {
   });
 };
 
-const getMonthlyIncome = (date) => {
-  return axios.post(API_URL + "getMonthIncome", {
-    date,
-  });
-};
+const getMonthIncome =  (month) => {
+  return axios.post(API_URL + "getMonthIncome",{
+      month,
+    });
+}
 
 const AdminServices = {
     getTransactions,
-    getMonthlyIncome,
+    getMonthIncome,
     getSubscriptions,
   }
 
