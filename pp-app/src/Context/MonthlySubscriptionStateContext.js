@@ -9,18 +9,27 @@ export function MonthlySubscriptionStateContextProvider(props) {
   const [month, setMonth] = useState(new Date().getMonth() + 1)
   const [year, setYear] = useState(new Date().getFullYear())
   const [monthlyData, setMonthlyData] = useState([]);
+  const [subsData, setSubsData] = useState([]);
 
   const noChartData = (chartData) => {
     var sum =0;
-    chartData.map((item) => {
+    for(const item of chartData){
       sum=sum+item;
-    })
+    }
     return sum ===0;
   }
+
+  /*  const setMonthsIncome = async () => {
+    const options = datesValues[0].options
+    for (const el of options) {
+        await AdminServices.getMonthIncome(el.value).then(res => setMonthlyAmounts(prev => [...prev, res.data.total]))
+    }
+    console.log(monthlyAmounts)
+}*/
   const setMonthsIncome = async () => {
     const options = datesValues[0].options;
     for (const el of options) {
-        DonationService.subscriptionsByMonth(el.value,year).then(res=> {setChartDataBasedOnMonthlySubs(res, el)});
+        await DonationService.subscriptionsByMonth(el.value,year).then(res=> {setChartDataBasedOnMonthlySubs(res, el)});
     }
   }
 
@@ -30,14 +39,15 @@ export function MonthlySubscriptionStateContextProvider(props) {
     var c=0;
     var amount = 0;
     var newMonthData ={};
-    res.data.map((item)=>{
-        if(item.state=="A"){
-          a=a+1;
-        }else if(item.state=="P"){
-          p=p+1;
-        }else if(item.state=="C"){
-          c=c+1
-    }}) 
+    for(const item of res.data){
+      if(item.state=="A"){
+      a=a+1;
+      }else if(item.state=="P"){
+        p=p+1;
+      }else if(item.state=="C"){
+        c=c+1
+      }
+    } 
     if(!(noChartData([a,p,c]))){//Chequear total!=0 aca(llamamos a getmonthincome antes) y si es asi seteamos monthlydata
       AdminServices.getMonthIncome(el.value).then(res => 
         {
