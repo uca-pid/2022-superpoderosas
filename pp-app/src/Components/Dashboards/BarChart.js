@@ -16,24 +16,40 @@ export default function BarChart(props) {
       type: "bar",
       data: {
         labels: Array.from(datesValues[0].options,(option) => getLabel(option)),
+        showInLegend: false, 
         datasets: [
           {
             label: 'RESUMEN DE COBRANZAS',
+            indexLabel: "hey",
             data: monthlyAmounts,
             backgroundColor: [
-              'rgba(88, 214, 141)',
-              'rgba(244, 208, 63)',
-              'rgba(236, 112, 99)',
-              'rgba(235, 152, 78)',
-              'rgba(69, 179, 157)',
-              'rgba(175, 122, 197)',
-              'rgba(118, 215, 196)',
-              'rgba(84, 153, 199)',
-              'rgba(245, 176, 65)',
-              'rgba(212, 225, 87)',
-              'rgba(133, 193, 233 )',
-              'rgba(240, 98, 146)',
-            ]
+              'rgba(165, 192, 135)',
+              'rgba(131, 157, 154)',
+              'rgba(235, 131, 1)',
+              '#0B4725',
+              '#911229',
+              '#141B41',
+              '#2D080A',
+              '#9DBBAE',
+              '#525328',
+              '#E75A0D',
+              '#2F4858',
+              '#98838F',
+            ],
+            hoverBackgroundColor: [
+              "#87AB5F",
+              "#AFC0BE",
+              "#FE9A20",
+              "#116a37",
+              "#C81939",
+              "#3A4DBB",
+              "#570F13",
+              "#7BA391",
+              "#7B7C3C",
+              "#F3712B",
+              "#4F7892",
+              "#856F7C",
+            ], 
           },
         ],
       },
@@ -42,9 +58,14 @@ export default function BarChart(props) {
         responsive: true,
         scales: {
           y: {
-            beginAtZero: true
+            beginAtZero: true,
           }
-        }
+        },
+        legend:{
+          display: false
+        },
+        
+        
       }
     };
     let ctx = document.getElementById("bar").getContext('2d');

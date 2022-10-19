@@ -23,7 +23,7 @@ const DashboardSection = () => {
         <></>}
         {(showPieChart)? 
          <ChartModal 
-            chart={<PieChart ></PieChart>} 
+            chart={<PieChart legendSize="20"></PieChart>} 
             chartContainerStyle={{ height:'60vh', width:'100vh'}}
             label = {PieChartLabel}/>
         : 
