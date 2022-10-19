@@ -1,6 +1,8 @@
 import { classNames } from './Utils'
 import { useSelectionOnTable} from '../../Context/SelectionsOnTable';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import AdminServices from '../../services/transactions.service'
+import { faWindowMinimize } from '@fortawesome/fontawesome-free-solid';
 
 export function OpenSideBarFromUser({value}){
   const {setSelectedUser, setShowSidebar} = useSelectionOnTable()
@@ -12,8 +14,12 @@ export function OpenSideBarFromUser({value}){
     </button>
   );
 }
-export function StatusPillTransactions({ value }) {
+export function StatusPillTransactions({ value, row }) {
     const status = value ? value.toLowerCase() : "unknown";
+    const updateState = async (state) =>{
+      await AdminServices.modifyTransactionState(row.original.id,state)
+      window.location.reload()}
+
     return (
       <div
         className={
@@ -35,8 +41,8 @@ export function StatusPillTransactions({ value }) {
         )}
         {(status ==="p") && (
         <>
-        <FontAwesomeIcon className='px-4' onClick={() => alert("aceptar")} icon={"fa fa-check"} color='#000' size={14} />
-        <FontAwesomeIcon onClick={() => alert("cancelar")} icon={"fa fa-ban"} color='#000' size={14} />
+        <FontAwesomeIcon className='px-4' onClick={() => updateState("A")} icon={"fa fa-check"} color='#000' size={14} />
+        <FontAwesomeIcon onClick={() => updateState("R")} icon={"fa fa-ban"} color='#000' size={14} />
         </>
       )}
       </div>
