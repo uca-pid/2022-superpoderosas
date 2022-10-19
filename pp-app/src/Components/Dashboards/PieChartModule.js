@@ -5,20 +5,11 @@ import { useOpenChartsContext } from '../../Context/OpenChartsContext';
 
 export default function PieChartModule(props) {
   const {setShowPieChart} = useOpenChartsContext();
-  const { chartData } = useMonthlySubscriptionStateContext();
-
-  const noChartData = ( ) => {
-      var sum =0;
-      chartData.map((item) => {
-        sum=sum+item;
-      })
-      return sum ===0;
-  }
 
   return (
     <>     
            {props.label}
-           <div className="flex p-7 flex-[0_0_auto]" onClick={()=>{if(!noChartData()) setShowPieChart(true)}}>
+           {/* <div className="flex p-7 flex-[0_0_auto]" onClick={()=>{if(!noChartData()) setShowPieChart(true)}}>
               {!(noChartData()) ?
                 <PieChart legendSize="16" ></PieChart>
                 :
@@ -26,6 +17,9 @@ export default function PieChartModule(props) {
                   No hay datos para mostrar para el mes y año seleccionados.
                 </div>
               } 
+            </div> */}
+            <div className="flex p-7 flex-[0_0_auto]" onClick={() => setShowPieChart(true)}>             
+                <PieChart></PieChart>
             </div>
             
     </>

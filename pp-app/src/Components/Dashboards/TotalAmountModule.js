@@ -1,11 +1,18 @@
+import { getValue } from '@mui/system';
 import {React, useEffect, useState} from 'react';
 import {useMonthlySubscriptionStateContext} from  '../../Context/MonthlySubscriptionStateContext'
 import datesValues from '../../Values/datesValues';
 
 export default function TotalAmountModule(props) {
+  const { year, month, monthlyData } = useMonthlySubscriptionStateContext();
 
-  const { year, month, monthlyAmounts } = useMonthlySubscriptionStateContext();
-  console.log(monthlyAmounts);
+  const getValue = () => {
+    for (const md of monthlyData){
+      if(md.value == month){
+        return md.amount
+      }
+    }
+  }
 
   return (
         <>    
@@ -28,7 +35,7 @@ export default function TotalAmountModule(props) {
             type='text'
             disabled
             autoFocus
-            value = {monthlyAmounts[month-1]}
+            value = {getValue()}
             className='shrink md:basis-3/4 self-center border-none focus:outline-none focus:border-transparent focus:ring-0 text-sm md:text-xl lg:text-xl '>
           </input>
           <div className='self-center md:basis-1/8 text-sm md:text-xl lg:text-xl'>

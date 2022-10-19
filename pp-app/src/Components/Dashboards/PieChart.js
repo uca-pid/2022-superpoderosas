@@ -4,7 +4,15 @@ import { useEffect } from 'react';
 import {useMonthlySubscriptionStateContext} from  '../../Context/MonthlySubscriptionStateContext'
 
 export default function PieChart(props) {
-  const { chartData } = useMonthlySubscriptionStateContext();
+  const { monthlyData, year,month } = useMonthlySubscriptionStateContext();
+
+  const pieChartData = () =>{
+    for (const md of monthlyData){
+      if(md.value == month){
+          return md.subsStates;
+      }
+    }
+  }
 
   useEffect(() => {
     let config = {
@@ -14,7 +22,7 @@ export default function PieChart(props) {
         datasets: [
           {
             label: 'ESTADO DE LAS SUBSCRIPCIONES',
-            data: chartData,
+            data: pieChartData(),
             backgroundColor: [
               'rgba(165, 192, 135)',
               'rgba(131, 157, 154)',
@@ -45,7 +53,7 @@ export default function PieChart(props) {
     let ctx = document.getElementById("pie").getContext('2d');
     ctx.height = 1000;
     window.myBar = new Chart(ctx, config);
-  }, [chartData]);
+  }, [monthlyData]);
   return (
     <>
       <canvas id="pie"></canvas>
