@@ -2,7 +2,6 @@ import React, { useState, useMemo, useEffect } from 'react'
 import DonationService from '../services/donations.service'
 import AdminServices from '../services/transactions.service'
 import datesValues from '../Values/datesValues'
-import axios from "axios";
 
 const MonthlySubscriptionStateContext = React.createContext()
 

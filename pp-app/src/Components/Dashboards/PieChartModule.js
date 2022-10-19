@@ -2,8 +2,10 @@ import React from 'react';
 import {useMonthlySubscriptionStateContext} from  '../../Context/MonthlySubscriptionStateContext'
 import PieChart from './PieChart';
 import datesValues from '../../Values/datesValues';
+import { useOpenChartsContext } from '../../Context/OpenChartsContext';
 
 export default function PieChartModule(props) {
+  const {setShowPieChart} = useOpenChartsContext();
   const { year, month, chartData } = useMonthlySubscriptionStateContext();
 
   const noChartData = ( ) => {
@@ -21,7 +23,7 @@ export default function PieChartModule(props) {
                         <div className="flex flex-[0_0_auto] blackText font-Pop-M uppercase text-lg md:text-xl tracking-wider font-medium">{datesValues[0].options[month-1].label} de {year}</div>
           </div>
           
-           <div className="flex p-7 flex-[0_0_auto]">
+           <div className="flex p-7 flex-[0_0_auto]" onClick={()=>{if(!noChartData()) setShowPieChart(true)}}>
                     {!(noChartData()) ?
                       <PieChart></PieChart>
                       :

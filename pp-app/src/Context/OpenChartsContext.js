@@ -4,13 +4,16 @@ const OpenChartsContext = React.createContext()
 
 export function OpenChartsContextProvider (props) {
   const [showBarChart, setShowBarChart] = useState(false);
+  const [showPieChart, setShowPieChart] = useState(false);
  
   const value = useMemo(() => {
     return {
         showBarChart,
-        setShowBarChart
+        setShowBarChart,
+        showPieChart, 
+        setShowPieChart
     }
-  }, [showBarChart])
+  }, [showBarChart, showPieChart])
 
   return (
     <OpenChartsContext.Provider value={value}>

@@ -5,16 +5,26 @@ import TotalAmountModule from "./TotalAmountModule";
 import { useOpenChartsContext } from "../../Context/OpenChartsContext";
 import ChartModal from "./ChartsModal";
 import BarChart from "./BarChart";
+import PieChart from "./PieChart";
 
 const DashboardSection = () => {
-  const {showBarChart} = useOpenChartsContext();
+  const {showBarChart, showPieChart, noChartData} = useOpenChartsContext();
   return (
     <>
         <div className="px-10 md:px-20 lg:px-80 flex flex-col lg:flex-row w-full lg:space-x-10 space-y-10 lg:space-y-0"> 
-        {showBarChart ? 
+        {(showBarChart) ? 
          <ChartModal chart={<BarChart ></BarChart>}></ChartModal>   
         :
         <></>}
+        {(showPieChart && !noChartData)? 
+         <ChartModal chart={<PieChart ></PieChart>}></ChartModal>   
+        :((noChartData)
+        ? <div className='text-center font-Pop-R text-xl text-gray-400'>
+          No hay datos para mostrar para el mes y año seleccionados.
+          </div>   
+        :
+        <></>
+        )}
             <div className="lg:basis-1/2 flex flex-col space-y-10">
             <div className="darkGrayBorder rounded-lg h-fit">
                 <PieChartModule ></PieChartModule>
