@@ -6,7 +6,8 @@ import datesValues from "../../Values/datesValues";
 import { useMonthlySubscriptionStateContext } from "../../Context/MonthlySubscriptionStateContext";
 
 const FilterDate = (props) => {
-  const { year, setYear, month, setMonth,  } = useMonthlySubscriptionStateContext();
+  const { year, setYear, month, setMonth, monthlyData} = useMonthlySubscriptionStateContext();
+  console.log(monthlyData);
 
   const setFilter =(value, tittle) => {
     if (tittle === "Mes"){
@@ -44,11 +45,23 @@ const FilterDate = (props) => {
                 }}
               >
                 <option className={"font-Pop-R"} value="">Seleccionar</option>
+                { (dataItem.tittle=="Mes") ?
+                <>
+                {monthlyData.map((option) => (
+                  <option key={option.value} value={option.value}>
+                    {option.label}
+                  </option>
+                ))}
+                </>
+                :
+                <>
                 {dataItem.options.map((option) => (
                   <option key={option.value} value={option.value}>
                     {option.label}
                   </option>
                 ))}
+                </>
+               }
               </select>
             </label>
           ))}

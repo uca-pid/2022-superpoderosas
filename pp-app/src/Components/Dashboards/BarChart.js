@@ -2,24 +2,19 @@ import React from 'react';
 import Chart from 'chart.js';
 import { useEffect } from 'react';
 import {useMonthlySubscriptionStateContext} from  '../../Context/MonthlySubscriptionStateContext'
-import datesValues from '../../Values/datesValues';
 
 export default function BarChart(props) {
-  const { monthlyAmounts } = useMonthlySubscriptionStateContext();
-  console.log(monthlyAmounts)
-  const getLabel = (option) => {
-    return option.label;
-  }
+  const { monthlyData } = useMonthlySubscriptionStateContext();
 
   useEffect(() => {
     let config = {
       type: "bar",
       data: {
-        labels: Array.from(datesValues[0].options,(option) => getLabel(option)),
+        labels: Array.from(monthlyData,(m)=>m.label),
         datasets: [
           {
             label: 'RESUMEN DE COBRANZAS',
-            data: monthlyAmounts,
+            data: Array.from(monthlyData,(m)=>m.amount),
             backgroundColor: [
               'rgba(88, 214, 141)',
               'rgba(244, 208, 63)',
@@ -49,7 +44,7 @@ export default function BarChart(props) {
     };
     let ctx = document.getElementById("bar").getContext('2d');
     window.myBar = new Chart(ctx, config);
-  }, [monthlyAmounts]);
+  }, [monthlyData]);
   return (
     <>
       <canvas id="bar"></canvas>

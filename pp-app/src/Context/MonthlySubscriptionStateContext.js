@@ -5,49 +5,52 @@ import datesValues from '../Values/datesValues'
 
 const MonthlySubscriptionStateContext = React.createContext()
 
-
 export function MonthlySubscriptionStateContextProvider(props) {
   const [month, setMonth] = useState(new Date().getMonth() + 1)
   const [year, setYear] = useState(new Date().getFullYear())
-  const [ chartData, setChartData ] = useState([]);
-  const [monthlyAmounts, setMonthlyAmounts] = useState([]);
+  const [monthlyData, setMonthlyData] = useState([]);
 
-  const setMonthsIncome = async () => {
-    const options = datesValues[0].options
-    for (const el of options) {
-        await AdminServices.getMonthIncome(el.value).then(res => setMonthlyAmounts(prev => [...prev, res.data.total]))
-    }
-    console.log(monthlyAmounts)
-}
-
-  const incrementNumber = index => {
-    setChartData(existingItems => {
-      return [
-        ...existingItems.slice(0, index),
-        existingItems[index] + 1,
-        ...existingItems.slice(index + 1),
-      ]
+  const noChartData = (chartData) => {
+    var sum =0;
+    chartData.map((item) => {
+      sum=sum+item;
     })
+    return sum ===0;
   }
-  const initializeChartData = () =>{
-    setChartData([0,0,0]);
+  const setMonthsIncome = async () => {
+    const options = datesValues[0].options;
+    for (const el of options) {
+        DonationService.subscriptionsByMonth(el.value,year).then(res=> {setChartDataBasedOnMonthlySubs(res, el)});
+    }
   }
-  const setChartDataBasedOnMonthlySubs = (res) =>{
-    initializeChartData();
+
+  const setChartDataBasedOnMonthlySubs = (res, el) =>{
+    var a =0;
+    var p=0;
+    var c=0;
+    var amount = 0;
+    var newMonthData ={};
     res.data.map((item)=>{
         if(item.state=="A"){
-          incrementNumber(0);
+          a=a+1;
         }else if(item.state=="P"){
-          incrementNumber(1);
+          p=p+1;
         }else if(item.state=="C"){
-          incrementNumber(2);
+          c=c+1
+    }}) 
+    if(!(noChartData([a,p,c]))){//Chequear total!=0 aca(llamamos a getmonthincome antes) y si es asi seteamos monthlydata
+      AdminServices.getMonthIncome(el.value).then(res => 
+        {
+        amount = res.data.total;
+        newMonthData ={value:el.value, subsStates: [a,p,c],  amount:amount, label:el.label};
+        setMonthlyData(prev => [...prev, newMonthData]);
         }
-      })
-   }
+      )
+      console.log(monthlyData);
+    }
+}
   
   useEffect(() => {
-    DonationService.subscriptionsByMonth(month,year).then(res=>{setChartDataBasedOnMonthlySubs(res);});
-    //AdminServices.getMonthIncome(10).then((res)=>{console.log("NCIE TRUE"+res.data.total+10);})
     setMonthsIncome();
   }, [month,year])
 
@@ -57,11 +60,9 @@ export function MonthlySubscriptionStateContextProvider(props) {
       setMonth,
       year, 
       setYear,
-      chartData,
-      setChartData,
-      monthlyAmounts
+      monthlyData
     }
-  }, [month, year, chartData, monthlyAmounts])
+  }, [month, year, monthlyData])
 
   return (
     <MonthlySubscriptionStateContext.Provider value={value}>
