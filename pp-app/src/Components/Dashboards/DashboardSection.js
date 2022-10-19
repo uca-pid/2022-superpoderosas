@@ -6,39 +6,47 @@ import { useOpenChartsContext } from "../../Context/OpenChartsContext";
 import ChartModal from "./ChartsModal";
 import BarChart from "./BarChart";
 import PieChart from "./PieChart";
+import ChartLabels from "./ChartLabels";
 
 const DashboardSection = () => {
-  const {showBarChart, showPieChart, noChartData} = useOpenChartsContext();
+  const {showBarChart, showPieChart} = useOpenChartsContext();
+  const { BarChartLabel, PieChartLabel } = ChartLabels();
   return (
     <>
-        <div className="px-10 md:px-20 lg:px-80 flex flex-col lg:flex-row w-full lg:space-x-10 space-y-10 lg:space-y-0"> 
+    <div className="px-10 md:px-20 lg:px-80 flex flex-col lg:flex-row w-full lg:space-x-10 space-y-10 lg:space-y-0"> 
         {(showBarChart) ? 
-         <ChartModal chart={<BarChart ></BarChart>} chartContainerStyle={{ height:'60vh', width:'100vh'}}></ChartModal>   
+         <ChartModal 
+            chart={<BarChart ></BarChart>} 
+            chartContainerStyle={{ height:'60vh', width:'100vh'}}
+            label = {BarChartLabel}/>   
         :
         <></>}
-        {(showPieChart && !noChartData)? 
-         <ChartModal chart={<PieChart ></PieChart>} chartContainerStyle={{ height:'fit', width:'100vh'}}></ChartModal>   
-        :((noChartData)
-        ? <div className='text-center font-Pop-R text-xl text-gray-400'>
-          No hay datos para mostrar para el mes y año seleccionados.
-          </div>   
-        :
+        {(showPieChart)? 
+         <ChartModal 
+            chart={<PieChart ></PieChart>} 
+            chartContainerStyle={{ height:'60vh', width:'100vh'}}
+            label = {PieChartLabel}/>
+        : 
         <></>
-        )}
-            <div className="lg:basis-1/2 flex flex-col space-y-10">
+        }
+        <div className="lg:basis-1/2 flex flex-col space-y-10">
+        <div className="darkGrayBorder rounded-lg h-fit">
+            <PieChartModule 
+                label={PieChartLabel}
+            />
+        </div>
+        </div>
+        <div className="lg:basis-1/2 flex flex-col space-y-10 pb-10">
             <div className="darkGrayBorder rounded-lg h-fit">
-                <PieChartModule ></PieChartModule>
+                <TotalAmountModule ></TotalAmountModule>
             </div>
+            <div className="darkGrayBorder rounded-lg h-fit lg:mb-0"> 
+                <BarChartModule
+                label={BarChartLabel}
+                />
             </div>
-            <div className="lg:basis-1/2 flex flex-col space-y-10 pb-10">
-              <div className="darkGrayBorder rounded-lg h-fit">
-                  <TotalAmountModule ></TotalAmountModule>
-              </div>
-              <div className="darkGrayBorder rounded-lg h-fit lg:mb-0"> 
-                  <BarChartModule ></BarChartModule> 
-              </div>
-            </div>         
-       </div>
+        </div>         
+    </div>
     </>
   );
 };
