@@ -13,11 +13,11 @@ const DashboardSection = () => {
     <>
         <div className="px-10 md:px-20 lg:px-80 flex flex-col lg:flex-row w-full lg:space-x-10 space-y-10 lg:space-y-0"> 
         {(showBarChart) ? 
-         <ChartModal chart={<BarChart ></BarChart>}></ChartModal>   
+         <ChartModal chart={<BarChart ></BarChart>} chartContainerStyle={{ height:'60vh', width:'100vh'}}></ChartModal>   
         :
         <></>}
         {(showPieChart && !noChartData)? 
-         <ChartModal chart={<PieChart ></PieChart>}></ChartModal>   
+         <ChartModal chart={<PieChart ></PieChart>} chartContainerStyle={{ height:'fit', width:'100vh'}}></ChartModal>   
         :((noChartData)
         ? <div className='text-center font-Pop-R text-xl text-gray-400'>
           No hay datos para mostrar para el mes y año seleccionados.
