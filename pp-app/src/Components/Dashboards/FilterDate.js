@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faFilter } from '@fortawesome/fontawesome-free-solid'
 import { Popover } from '@headlessui/react'
 import datesValues from "../../Values/datesValues";
+import Inputs from '../Utiles/Inputs'
 import { useMonthlySubscriptionStateContext } from "../../Context/MonthlySubscriptionStateContext";
 
 const FilterDate = (props) => {
