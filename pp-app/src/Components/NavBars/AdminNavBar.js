@@ -15,7 +15,7 @@ const adminNavigation =[
   { name: 'Ajustes', path: "/profile"},
   { name: 'Reporte Transacciones', path:"/reporteTransacciones"},
   { name: 'Reporte Subscripciones', path:"/reporteSubscripciones"},
-  { name: 'Reporte', path:"/reportes"},
+  { name: 'Dashboard', path:"/reportes"},
 ]
 
 export default function AdminNavBar(props) {

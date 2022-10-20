@@ -23,7 +23,7 @@ const userNavigation =[
 ]
 
 const adminNavigation =[
-  { name: 'Reportes' },
+  { name: 'Dashboard' },
   { name: 'Transacciones'},
 ]
 
