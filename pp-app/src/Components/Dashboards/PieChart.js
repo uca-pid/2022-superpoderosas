@@ -1,19 +1,19 @@
 import React from 'react';
 import Chart from 'chart.js';
-import { useEffect } from 'react';
+import { useEffect} from 'react';
 import {useMonthlySubscriptionStateContext} from  '../../Context/MonthlySubscriptionStateContext'
 
 export default function PieChart(props) {
-  const { monthlyData, year,month } = useMonthlySubscriptionStateContext();
+  const { monthlyData, month } = useMonthlySubscriptionStateContext();
 
   const pieChartData = () =>{
     for (const md of monthlyData){
-      if(md.value == month){
+      if(md.value === month){
           return md.subsStates;
       }
     }
-  }
-
+  } 
+  
   useEffect(() => {
     let config = {
       type: "pie",
@@ -53,7 +53,7 @@ export default function PieChart(props) {
     let ctx = document.getElementById("pie").getContext('2d');
     ctx.height = 1000;
     window.myBar = new Chart(ctx, config);
-  }, [monthlyData]);
+  }, [monthlyData, props.legendSize]);
   return (
     <>
       <canvas id="pie"></canvas>

@@ -9,7 +9,6 @@ export function MonthlySubscriptionStateContextProvider(props) {
   const [month, setMonth] = useState(new Date().getMonth() + 1)
   const [year, setYear] = useState(new Date().getFullYear())
   const [monthlyData, setMonthlyData] = useState([]);
-  const [subsData, setSubsData] = useState([]);
 
   const noChartData = (chartData) => {
     var sum =0;
@@ -81,7 +80,7 @@ export function MonthlySubscriptionStateContextProvider(props) {
       setMonth,
       year, 
       setYear,
-      monthlyData
+      monthlyData,
     }
   }, [month, year, monthlyData])
 

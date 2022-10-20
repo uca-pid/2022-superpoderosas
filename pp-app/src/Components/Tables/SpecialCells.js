@@ -2,7 +2,6 @@ import { classNames } from './Utils'
 import { useSelectionOnTable} from '../../Context/SelectionsOnTable';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import AdminServices from '../../services/transactions.service'
-import { faWindowMinimize } from '@fortawesome/fontawesome-free-solid';
 
 export function OpenSideBarFromUser({value}){
   const {setSelectedUser, setShowSidebar} = useSelectionOnTable()
