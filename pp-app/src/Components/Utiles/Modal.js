@@ -16,13 +16,13 @@ const Modal = (props) =>{
               <div className="  space-y-9 p-12 rounded-lg relative flex flex-col w-auto bg-white outline-none focus:outline-none">
                 {/*header*/}
                 <div className="flex items-start justify-between rounded-t">
-                  <h3 className="font-Pop-SB text-[20pt] tracking-[0px] blackText">
+                  <h3 className="font-Pop-SB text-base tracking-[0px] blackText">
                     {props.header}
                   </h3>
                 </div>
                 {/*body*/}
                 <div className="relative flex-auto">
-                  <p className="leading-relaxed font-Pop-R text-[15pt] text-medium tracking-[0.2px] blackText">
+                  <p className="leading-relaxed font-Pop-R text-sm text-medium tracking-[0.2px] blackText">
                    {props.body}
                   </p>
                 </div>
