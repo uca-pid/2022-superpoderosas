@@ -37,7 +37,7 @@ const BoxInput = (props) => {
     <>        
         <input
           type="text"
-          className="rounded-md font-Pop-R text-base border-transparent focus:border-transparent focus:ring-0"
+          className="rounded-md font-Pop-R text-sm md:text-xs border-transparent focus:border-transparent focus:ring-0"
           value={props.value}
           onChange={onChangeInput}
           placeholder={props.placeholder}
@@ -56,7 +56,7 @@ const BottomLineInput = (props) => {
     <>        
         <input
           type="text"
-          className= "mt-1 basis-2/5 font-Pop-R text-12 border-4 text-gray-500 border-t-transparent border-l-transparent border-r-transparent focus:ring-0 focus:border-t-transparent focus:border-l-transparent focus:border-r-transparent border-b-[#E1EAD7] focus:border-b-[#E1EAD7]"
+          className= "mt-1 basis-2/5 font-Pop-R text-sm md:text-xs border-2 text-gray-500 border-t-transparent border-l-transparent border-r-transparent focus:ring-0 focus:border-t-transparent focus:border-l-transparent focus:border-r-transparent border-b-[#E1EAD7] focus:border-b-[#E1EAD7]"
           value={props.value}
           onChange={onChangeInput}
           placeholder={props.placeholder}
@@ -75,7 +75,7 @@ const BottomLineNumberInput = (props) => {
     <>        
         <input
           type="number"
-          className= "mt-1 w-full col-span-2 font-Pop-R text-12 border-4 text-gray-500 border-t-transparent border-l-transparent border-r-transparent focus:ring-0 focus:border-t-transparent focus:border-l-transparent focus:border-r-transparent border-b-[#E1EAD7] focus:border-b-[#E1EAD7]"
+          className= "mt-1 w-full col-span-2 font-Pop-R text-sm md:text-xs border-2 text-gray-500 border-t-transparent border-l-transparent border-r-transparent focus:ring-0 focus:border-t-transparent focus:border-l-transparent focus:border-r-transparent border-b-[#E1EAD7] focus:border-b-[#E1EAD7]"
           value={props.value}
           onChange={onChangeInput}
           placeholder={props.placeholder}
@@ -92,10 +92,10 @@ const stylesForSelect = {
     backgroundColor: "white",
     '&:hover': { 
           border: 'transparent', 
-          borderBottom: '4px solid #E1EAD7', }, 
+          borderBottom: '2px solid #E1EAD7', }, 
 
           border: 'transparent', 
-          borderBottom: '4px solid #E1EAD7',
+          borderBottom: '2px solid #E1EAD7',
           boxShadow: 'none', 
 }),
   option: (styles, { data, isDisabled, isFocused, isSelected}) => {
@@ -125,7 +125,7 @@ const stylesForSelect = {
 const SelectInput = (props) => {
   return (
     <>        
-    <Select className="md:basis-1/2 border-gray-300 relative bg-transparent h-auto w-full placeholder-gray-600 focus:z-10 font-Pop-R  text-12 focus:outline-none greenBorderWhenFocus form-control" styles={stylesForSelect} 
+    <Select className="md:basis-1/2 text-sm md:text-xs border-gray-300 relative bg-transparent h-auto w-full placeholder-gray-600 focus:z-10 font-Pop-R focus:outline-none greenBorderWhenFocus form-control" styles={stylesForSelect} 
               options={props.options}
               value={props.value} 
               placeholder={props.placeholder}
@@ -149,7 +149,7 @@ const BottomLineDateInput = (props) => {
           onChange={onChangeInput}
           type="date"
           value={props.value}
-          className="mt-1 font-Pop-R col-span-2 text-12 border-4 text-gray-500 border-t-transparent border-l-transparent border-r-transparent focus:ring-0 focus:border-t-transparent focus:border-l-transparent focus:border-r-transparent border-b-[#E1EAD7] focus:border-b-[#E1EAD7]"
+          className="mt-1 font-Pop-R col-span-2 text-sm md:text-xs border-2 text-gray-500 border-t-transparent border-l-transparent border-r-transparent focus:ring-0 focus:border-t-transparent focus:border-l-transparent focus:border-r-transparent border-b-[#E1EAD7] focus:border-b-[#E1EAD7]"
           />
           :
             ((props.min) ?
@@ -158,7 +158,7 @@ const BottomLineDateInput = (props) => {
             onChange={onChangeInput}
             type="date"
             value={props.value}
-            className="mt-1 font-Pop-R col-span-2 text-12 border-4 text-gray-500 border-t-transparent border-l-transparent border-r-transparent focus:ring-0 focus:border-t-transparent focus:border-l-transparent focus:border-r-transparent border-b-[#E1EAD7] focus:border-b-[#E1EAD7]"
+            className="mt-1 font-Pop-R col-span-2 text-sm md:text-xs border-2 text-gray-500 border-t-transparent border-l-transparent border-r-transparent focus:ring-0 focus:border-t-transparent focus:border-l-transparent focus:border-r-transparent border-b-[#E1EAD7] focus:border-b-[#E1EAD7]"
             />
             :
               ((props.max)?
@@ -167,14 +167,14 @@ const BottomLineDateInput = (props) => {
               onChange={onChangeInput}
               type="date"
               value={props.value}
-              className="mt-1 font-Pop-R col-span-2 text-12 border-4 text-gray-500 border-t-transparent border-l-transparent border-r-transparent focus:ring-0 focus:border-t-transparent focus:border-l-transparent focus:border-r-transparent border-b-[#E1EAD7] focus:border-b-[#E1EAD7]"
+              className="mt-1 font-Pop-R col-span-2 text-sm md:text-xs border-2 text-gray-500 border-t-transparent border-l-transparent border-r-transparent focus:ring-0 focus:border-t-transparent focus:border-l-transparent focus:border-r-transparent border-b-[#E1EAD7] focus:border-b-[#E1EAD7]"
               />
               :
               <input
                 onChange={onChangeInput}
                 type="date"
                 value={props.value}
-                className="mt-1 font-Pop-R col-span-2 text-12 border-4 text-gray-500 border-t-transparent border-l-transparent border-r-transparent focus:ring-0 focus:border-t-transparent focus:border-l-transparent focus:border-r-transparent border-b-[#E1EAD7] focus:border-b-[#E1EAD7]"
+                className="mt-1 font-Pop-R col-span-2 text-sm md:text-xs border-2 text-gray-500 border-t-transparent border-l-transparent border-r-transparent focus:ring-0 focus:border-t-transparent focus:border-l-transparent focus:border-r-transparent border-b-[#E1EAD7] focus:border-b-[#E1EAD7]"
                 />)
             )
     }

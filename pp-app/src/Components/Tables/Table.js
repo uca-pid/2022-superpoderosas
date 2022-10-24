@@ -101,7 +101,7 @@ function Table({ columns, functionToLoadData }) {
         <FilterSelect headerGroups={headerGroups} clearFilters={() => setAllFilters([])}/>
         : null
         }
-        <div className='bg-white rounded-xl shadow-sm p-10 darkGrayBorder'>
+        <div className='bg-white rounded-xl shadow-sm px-10 py-6 darkGrayBorder'>
           {/* table */}
           <div className="mt-4 flex flex-col">
             <div className="-my-2 overflow-x-auto -mx-4 sm:-mx-6 lg:-mx-8">
@@ -114,7 +114,7 @@ function Table({ columns, functionToLoadData }) {
                           {headerGroup.headers.map(column => (
                             <th
                               scope="col"
-                              className="group px-6 py-3 text-left text-base font-Pop-R text-gray-500 uppercase"
+                              className="group px-6 py-3 text-left text-sm font-Pop-R text-gray-500 uppercase"
                               {...column.getHeaderProps(column.getSortByToggleProps())}
                             >
                               <div className="flex items-center justify-between">
@@ -122,10 +122,10 @@ function Table({ columns, functionToLoadData }) {
                                 <span>
                                   {column.isSorted
                                     ? column.isSortedDesc
-                                      ? <SortDownIcon className="w-4 h-4 text-gray-400" />
-                                      : <SortUpIcon className="w-4 h-4 text-gray-400" />
+                                      ? <SortDownIcon className="w-3 h-3 text-gray-400" />
+                                      : <SortUpIcon className="w-3 h-3 text-gray-400" />
                                     : (
-                                      <SortIcon className="w-4 h-4 text-gray-400" />
+                                      <SortIcon className="w-3 h-3 text-gray-400" />
                                     )}
                                 </span>
                               </div>
@@ -146,11 +146,11 @@ function Table({ columns, functionToLoadData }) {
                               return (
                                 <td
                                   {...cell.getCellProps()}
-                                  className="px-6 py-4 whitespace-nowrap"
+                                  className="px-6 py-2 whitespace-nowrap"
                                   role="cell"
                                 >
                                   {cell.column.Cell.name === "defaultRenderer"
-                                    ? <div className="text-base text-gray-500 font-Pop-L">{cell.render('Cell')}</div>
+                                    ? <div className="text-xs text-gray-500 font-Pop-L">{cell.render('Cell')}</div>
                                     : cell.render('Cell')
                                   }
                                 </td>
@@ -173,13 +173,13 @@ function Table({ columns, functionToLoadData }) {
             </div>
             <div className="hidden sm:flex-1 sm:flex sm:items-center sm:justify-between">
               <div className="flex gap-x-2 items-baseline space-x-4">
-                <span className="text-base font-Pop-R text-gray-700">
-                  Page <span className="font-Pop-R text-base">{state.pageIndex + 1}</span> of <span className="font-Pop-R text-base">{pageOptions.length}</span>
+                <span className="text-xs font-Pop-R text-gray-700">
+                  Page <span className="font-Pop-R text-xs">{state.pageIndex + 1}</span> of <span className="font-Pop-R text-xs">{pageOptions.length}</span>
                 </span>
                 <label>
                   <span className="sr-only">Items Per Page</span>
                   <select
-                    className="mt-1 block w-full font-Pop-L text-base rounded-md border-gray-300 shadow-sm focus:border-gray-300 focus:ring-0"
+                    className="mt-1 block w-full font-Pop-L text-xs rounded-md border-gray-300 shadow-sm focus:border-gray-300 focus:ring-0"
                     value={state.pageSize}
                     onChange={e => {
                       setPageSize(Number(e.target.value))
@@ -201,21 +201,21 @@ function Table({ columns, functionToLoadData }) {
                     disabled={!canPreviousPage}
                   >
                     <span className="sr-only">First</span>
-                    <ChevronDoubleLeftIcon className="h-5 w-5 text-gray-400" aria-hidden="true" />
+                    <ChevronDoubleLeftIcon className="h-3 w-3 text-gray-400" aria-hidden="true" />
                   </PageButton>
                   <PageButton
                     onClick={() => previousPage()}
                     disabled={!canPreviousPage}
                   >
                     <span className="sr-only">Previous</span>
-                    <ChevronLeftIcon className="h-5 w-5 text-gray-400" aria-hidden="true" />
+                    <ChevronLeftIcon className="h-3 w-3 text-gray-400" aria-hidden="true" />
                   </PageButton>
                   <PageButton
                     onClick={() => handleMoreData()}
                     disabled={!canNextPage
                     }>
                     <span className="sr-only">Next</span>
-                    <ChevronRightIcon className="h-5 w-5 text-gray-400" aria-hidden="true" />
+                    <ChevronRightIcon className="h-3 w-3 text-gray-400" aria-hidden="true" />
                   </PageButton>
                   <PageButton
                     className="rounded-r-md"
@@ -223,7 +223,7 @@ function Table({ columns, functionToLoadData }) {
                     disabled={!canNextPage}
                   >
                     <span className="sr-only">Last</span>
-                    <ChevronDoubleRightIcon className="h-5 w-5 text-gray-400" aria-hidden="true" />
+                    <ChevronDoubleRightIcon className="h-3 w-3 text-gray-400" aria-hidden="true" />
                   </PageButton>
                 </nav>
               </div>

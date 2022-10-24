@@ -20,8 +20,8 @@ export function GlobalFilter({
     }, 200)
   
     return (
-      <label className="px-6 bg-white flex flex-row gap-x-2 w-fit items-baseline border rounded-xl border-[#f3f1f1] shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
-        <FontAwesomeIcon icon={faSearch} color="gray" className='pt-2' />
+      <label className="px-6 py-1 bg-white flex flex-row gap-x-2 w-fit items-baseline border rounded-xl border-[#f3f1f1] shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
+        <FontAwesomeIcon icon={faSearch} color="gray" className='pt-1' size='2' />
         <Inputs.BoxInput 
         value={value || ""}
         onChange={value => {
@@ -37,7 +37,7 @@ export function NumberSearchFilter({
   column: { filterValue, setFilter, render }
 }) {
   return (
-    <div className='flex flex-col space-y-2'>
+    <div className='flex flex-col '>
     <Labels.FilterLabel text= {"Filtrar según el " + (render("Header").toLowerCase())}></Labels.FilterLabel>
     <div className="flex flex-row items-baseline">
     <Inputs.BottomLineNumberInput
@@ -76,7 +76,7 @@ export function SelectModoFilter({
   
   return (
     <>
-    <div className='flex flex-col space-y-2'>
+    <div className='flex flex-col '>
       <Labels.FilterLabel text= {"Filtrar según el " + (render("Header").toLowerCase())}></Labels.FilterLabel>
     <Inputs.SelectInput  
                       options={options}
@@ -119,7 +119,7 @@ export function SelectStateFilter({
   
   return (
     <>
-    <div className='flex flex-col space-y-2'>
+    <div className='flex flex-col '>
     <Labels.FilterLabel text= {"Filtrar según el " + (render("Header").toLowerCase())}></Labels.FilterLabel>
     <Inputs.SelectInput  
                 options={options}
@@ -166,7 +166,7 @@ export function SelectStateFilterSubscriptions({
   
   return (
     <>
-    <div className='flex flex-col space-y-2'>
+    <div className='flex flex-col '>
     <Labels.FilterLabel text= {"Filtrar según el " + (render("Header").toLowerCase())}></Labels.FilterLabel>
     <Inputs.SelectInput  
                 options={options}
@@ -236,7 +236,7 @@ export function DateRangeColumnFilter({
     }, [id, preFilteredRows])
   
     return (
-      <div className='flex flex-col space-y-2'>
+      <div className='flex flex-col '>
       <Labels.FilterLabel text= {"Filtrar según la " + (render("Header").toLowerCase())}></Labels.FilterLabel>
       <div className = "flex flex-row grid-cols-5 space-x-4">
         <Inputs.BottomLineDateInput
@@ -246,7 +246,7 @@ export function DateRangeColumnFilter({
           }}
           value={filterValue[0] || ''}
         />
-         <div className='text-center' style={{ fontFamily: 'Poppins-Regular', fontSize: 16, color: "gray", marginTop: 18}}> a </div>
+         <div className='text-center' style={{ fontFamily: 'Poppins-Regular', fontSize: 12, color: "gray", marginTop: 18}}> a </div>
         <Inputs.BottomLineDateInput
           max={max.toISOString().slice(0, 10)}
           onChange={val => {
@@ -289,7 +289,7 @@ export function AmountRangeColumnFilter({
     }})
   {
     return (
-      <div className='flex flex-col space-y-2'>
+      <div className='flex flex-col '>
       <Labels.FilterLabel text= {"Filtrar según el " + (render("Header").toLowerCase())}></Labels.FilterLabel>
       <div className="grid grid-cols-5">
         <Inputs.BottomLineNumberInput
@@ -299,7 +299,7 @@ export function AmountRangeColumnFilter({
             setFilter((old = []) => [val ? val : undefined, old[1]])
           }} 
         />
-        <div className="text-center" style={{ fontFamily: 'Poppins-Regular', fontSize: 16, color: "gray", marginTop: 18}}> y </div>
+        <div className="text-center" style={{ fontFamily: 'Poppins-Regular', fontSize: 12, color: "gray", marginTop: 18}}> y </div>
         <Inputs.BottomLineNumberInput
           placeholder="Monto"
           value={filterValue[1] || ''}
@@ -335,7 +335,7 @@ export function SelectPeriodicidadFilter({
   
   return (
     <>
-    <div className='flex flex-col space-y-2'>
+    <div className='flex flex-col '>
       <Labels.FilterLabel text= {"Filtrar según la " + (render("Header").toLowerCase())}></Labels.FilterLabel>
     <Inputs.SelectInput  
                       options={options}

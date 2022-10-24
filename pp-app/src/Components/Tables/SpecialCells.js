@@ -2,14 +2,20 @@ import { classNames } from './Utils'
 import { useSelectionOnTable} from '../../Context/SelectionsOnTable';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import AdminServices from '../../services/transactions.service'
+import AuthService from '../../services/auth.service';
+import { useState, useEffect } from 'react';
 
 export function OpenSideBarFromUser({value}){
-  const {setSelectedUser, setShowSidebar} = useSelectionOnTable()
-
+  const {setSelectedUser, setShowSidebar} = useSelectionOnTable();
+  const [user, setUser] = useState(null)
+  useEffect(() => {
+    AuthService.findUserById(value).then(res=>setUser(res.data))
+  }, [value])
+  
   return(
-    <button className="text-base text-gray-500 font-Pop-L hover:decoration-gray-500 hover:underline hover:underline-offset-4" 
+    <button className="text-xs text-gray-500 font-Pop-L hover:decoration-gray-500 hover:underline hover:underline-offset-4" 
           onClick={()=>{setShowSidebar(true); setSelectedUser(value)}}>
-    {value}
+    {user ? user.email : value}
     </button>
   );
 }
@@ -23,7 +29,7 @@ export function StatusPillTransactions({ value, row }) {
       <div
         className={
           classNames(
-            "px-3 py-1 uppercase w-fit font-Pop-M text-base rounded-full",
+            "px-3 py-1 uppercase w-fit font-Pop-M text-xs rounded-full",
             status.startsWith("a") ? "bg-[#0f693849] text-gray-800" : null,
             status.startsWith("p") ? "bg-gray-100 text-gray-800" : null,
             status.startsWith("r") ? "bg-[#eb820144] text-gray-800" : null,
@@ -54,7 +60,7 @@ export function StatusPillSubscriptions({ value }) {
       <div
         className={
           classNames(
-            "px-3 py-1 uppercase w-fit font-Pop-M text-base rounded-full",
+            "px-3 py-1 uppercase w-fit font-Pop-M text-xs rounded-full",
             status.startsWith("a") ? "bg-[#0f693849] text-gray-800" : null,
             status.startsWith("p") ? "bg-gray-100 text-gray-800" : null,
             status.startsWith("c") ? "bg-[#eb820144] text-gray-800" : null,
@@ -76,7 +82,7 @@ export function StatusPillSubscriptions({ value }) {
 export function PaymentFrecuency({ value }) {
     return (
       <div
-        className="text-base text-gray-500 font-Pop-L"
+        className="text-xs text-gray-500 font-Pop-L"
       >
          {(value===1) 
         ? '1 vez al mes'
@@ -96,7 +102,7 @@ export function PaymentFrecuency({ value }) {
 export function TransactionType({ value }) {
     return (
       <div
-        className="text-base text-gray-500 font-Pop-L"
+        className="text-xs text-gray-500 font-Pop-L"
       >
          {(value==="onlyTime") 
         ? 'donación de una única vez'

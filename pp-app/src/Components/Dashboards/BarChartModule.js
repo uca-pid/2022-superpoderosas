@@ -6,10 +6,9 @@ export default function BarChartModule(props) {
   const {setShowBarChart} = useOpenChartsContext();
 
   return (
-        <>    
-         {props.label}  
+        <>   
          <div className="flex p-7 flex-[0_0_auto] self-center" onClick={()=> setShowBarChart(true)}>
-          <div className="chart-container" style={{position: 'relative', height:'50vh', width:'65vh'}}> 
+          <div className="chart-container" style={{position: 'relative', height:'50vh', width:'60vh'}}> 
             <BarChart></BarChart>
           </div>
         </div>     

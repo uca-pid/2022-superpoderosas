@@ -5,7 +5,7 @@ import "../../App.css"
 const FilterLabel = ({ text}) => {
   return (
     <>   
-    <div className='font-Pop-R text-gray-500'>{text}</div>
+    <div className='font-Pop-R text-gray-500 text-xs'>{text}</div>
     </>
   )
 }

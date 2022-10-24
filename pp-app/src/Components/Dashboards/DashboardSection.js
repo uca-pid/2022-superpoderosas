@@ -7,13 +7,17 @@ import ChartModal from "./ChartsModal";
 import BarChart from "./BarChart";
 import PieChart from "./PieChart";
 import ChartLabels from "./ChartLabels";
+import { useMonthlySubscriptionStateContext } from "../../Context/MonthlySubscriptionStateContext";
+import Card from "../Utiles/Card";
+import datesValues from "../../Values/datesValues";
+import TwoColumnsPage from "../Utiles/TwoColumnsPage";
 
 const DashboardSection = () => {
   const {showBarChart, showPieChart} = useOpenChartsContext();
   const { BarChartLabel, PieChartLabel } = ChartLabels();
+  const { year, month } = useMonthlySubscriptionStateContext();
   return (
-    <>
-    <div className="px-10 md:px-20 lg:px-80 flex flex-col lg:flex-row w-full lg:space-x-10 space-y-10 lg:space-y-0"> 
+    <div> 
         {(showBarChart) ? 
          <ChartModal 
             chart={<BarChart ></BarChart>} 
@@ -29,25 +33,36 @@ const DashboardSection = () => {
         : 
         <></>
         }
-        <div className="lg:basis-1/2 flex flex-col space-y-10">
-        <div className="darkGrayBorder rounded-lg h-fit">
-            <PieChartModule 
-                label={PieChartLabel}
-            />
-        </div>
-        </div>
-        <div className="lg:basis-1/2 flex flex-col space-y-10 pb-10">
-            <div className="darkGrayBorder rounded-lg h-fit">
-                <TotalAmountModule ></TotalAmountModule>
-            </div>
-            <div className="darkGrayBorder rounded-lg h-fit lg:mb-0"> 
-                <BarChartModule
-                label={BarChartLabel}
+        <TwoColumnsPage
+            column1={
+                <>
+                <Card 
+                title="estado de las subscripciones" 
+                subtitle={datesValues[0].options[month - 1].label + " de " + year}
+                content={<PieChartModule label={PieChartLabel}></PieChartModule>}
                 />
-            </div>
-        </div>         
+                <Card 
+                    title={
+                        (month<(new Date().getMonth() + 1) && year===(new Date().getFullYear()))?
+                        "IMPORTE TOTAL COBRADO"
+                        :
+                        "IMPORTE TOTAL A COBRAR"
+                        }
+                    subtitle={datesValues[0].options[month-1].label + " de " + year}
+                    content={<TotalAmountModule></TotalAmountModule>}
+                />
+                </>
+            }
+            column2={
+                <Card
+                title="REPORTE COBRANZAS"
+                subtitle = {year}
+                content={<BarChartModule></BarChartModule>}
+            />
+            }
+        />
+              
     </div>
-    </>
   );
 };
 export default DashboardSection;

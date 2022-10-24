@@ -50,23 +50,23 @@ export default function VerifyEmailForm(props) {
 
   return (
     <>
-      <div className="min-h-full md:items-center mb-10 justify-items-center grid px-4 md:pb-9 mt-3 lg:mt-20 px-8 pt-10 lg:px-8 mt-3 lg:mt-20">
-        <div className="grid content-center w-full rounded-3xl max-w-md space-y-2 bg-white bg-opacity-90 lg:mx-60 drop-shadow-2xl p-8 md:p-16 h-4/5 md:h-2/3 lg:h-4/5 my-5 lg:my-10">
-          <div className="md:mt-8">
+      <div className="min-h-full md:items-center mb-10 justify-items-center grid px-4 md:pb-9  ">
+        <div className="grid content-center w-full rounded-3xl max-w-md space-y-2 bg-white bg-opacity-90 lg:mx-60 drop-shadow-2xl p-8 md:p-14 md:py-6 h-fit my-5 lg:my-10">
+          <div className="">
               <img
-              className="mx-auto h-[150px] md:h-40 w-auto "
+              className="mx-auto h-32 w-auto"
               src={LogoHerramienta}
               alt="LogoHerramienta"
               />
           </div>
 
           <div className="grid justify-items-center mb-4">
-                <div className="gray-300 font-Pop-R tracking-[0.5px] uppercase text-[18pt] font-semibold text-center">
+                <div className="gray-300 font-Pop-SB tracking-[0.5px] uppercase text-base text-center">
                   ¿Tienes problemas para iniciar sesión?
                 </div>
           </div>
           <div className="grid justify-items-center mb-10">
-                <div className="text-slate-600 text-center font-Pop-M tracking-[0.5px] text-[11pt]">
+                <div className="text-slate-600 text-center font-Pop-M tracking-[0.5px] text-sm">
                 Ingresa tu correo electrónico y te enviaremos un enlace para que recuperes el acceso a tu cuenta.
                 </div>
           </div>
@@ -75,7 +75,7 @@ export default function VerifyEmailForm(props) {
             <div className="-space-y-px rounded-md mt-2">
             <Input
                   type="text"
-                  className="relative bg-transparent h-12 block w-full rounded-xl border border-gray-300 px-6 py-2 text-gray-900 placeholder-gray-600 focus:z-10 font-Pop-R text-[12pt] tracking-[0.5px] focus:outline-none greenBorderWhenFocus form-control"
+                  className="relative bg-transparent block w-full rounded-xl border border-gray-300 px-6 py-3 text-gray-900 placeholder-gray-600 focus:z-10 font-Pop-R text-xs tracking-[0.5px] focus:outline-none greenBorderWhenFocus form-control"
                   name="email"
                   value={email}
                   placeholder="Email"
@@ -86,11 +86,11 @@ export default function VerifyEmailForm(props) {
     
             <Buttons.SolidGreenButton text={"Enviar enlace"} color={"greenBg"} margins={"my-5 md:my-7"} onClick={handleEmailChangeRequest}/> 
 
-            <div className="flex flex-rows justify-center mt-4 mb-5 md:mb-10">
-                <div className="gray-300 font-Pop-R tracking-[0.5px] text-[11pt] md:text-[12pt]">
+            <div className="flex flex-rows justify-center mb-5 md:mb-10">
+                <div className="gray-300 font-Pop-R tracking-[0.5px] text-sm">
                   ¿No tienes una cuenta?
                 </div>
-                <button className="ml-3 mb-3 yellowText greenTextHover font-Pop-R tracking-[0.5px] text-[12pt] md:text-[12pt] font-semibold" onClick={navigateToRegistrationPage} >
+                <button className="ml-3 mb-3 yellowText greenTextHover font-Pop-SB tracking-[0.5px] text-sm" onClick={navigateToRegistrationPage} >
                   Regístrate
                 </button>
             </div> 

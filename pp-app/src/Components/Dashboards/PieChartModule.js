@@ -7,11 +7,11 @@ export default function PieChartModule(props) {
 
   return (
     <>     
-           {props.label}
-            <div className="flex p-7 flex-[0_0_auto]" onClick={() => setShowPieChart(true)}>             
-                <PieChart legendSize="16"></PieChart>
-            </div>
-            
+      <div className="flex p-7 flex-[0_0_auto] h-[35vh]" onClick={() => setShowPieChart(true)}>  
+        <div className="chart-container" style={{position: 'relative', height:'50vh', width:'50vh'}}>            
+          <PieChart legendSize="15"></PieChart>
+        </div>
+      </div>      
     </>
   );
 }

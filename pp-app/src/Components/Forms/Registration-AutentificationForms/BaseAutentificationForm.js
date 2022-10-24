@@ -56,7 +56,7 @@ export default function BaseAutetificationForm(props) {
                   validations={input.validations}
                 />
                 {input.type === "password" &&(
-                  <span className="pt-2 px-2"><FontAwesomeIcon onClick={togglePassword} icon={passwordShown? "fa-solid fa-eye-slash": "fa-solid fa-eye"} color='#000'size={14} /></span>
+                  <span className="pt-1 px-2"><FontAwesomeIcon onClick={togglePassword} icon={passwordShown? "fa-solid fa-eye-slash": "fa-solid fa-eye"} color='#000'size={8} /></span>
                 )}
                 </div>
                 </>

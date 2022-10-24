@@ -51,7 +51,7 @@ export default function PieChart(props) {
       }
     };
     let ctx = document.getElementById("pie").getContext('2d');
-    ctx.height = 1000;
+    ctx.height = 100;
     window.myBar = new Chart(ctx, config);
   }, [monthlyData, props.legendSize]);
   return (
