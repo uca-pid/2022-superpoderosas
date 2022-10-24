@@ -1,22 +1,29 @@
 import React from "react";
-import "../../../App.css"
-import Amounts from './Amounts'
+import "../../../../App.css"
+import Amounts from '../Amounts'
 import { useState } from 'react'
-import DashedLine from '../../Utiles/DashedLine'
-import { useAmount } from  '../../../Context/AmountContext'
-import {useSubscriptionPeriod} from  '../../../Context/SubscriptionContext'
-import SelectSubscriptionPeriod from './SelectSubscriptionPeriod'
-import SelectPaymentDay from './SelectPaymentDay'
-import { useSubModContext } from "../../../Context/SubscriptionModificationContext";
-import Buttons from "../../Utiles/Butttons";
-import { useCurrentUser } from "../../../Context/CurrentUserContext";
-import DonationService from "../../../services/donations.service";
-import ModalWithConfirmationAndDetails from "../../Utiles/ModalWithConfirmationAndDetails";
-import Modal from "../../Utiles/Modal";
+import DashedLine from '../../../Utiles/DashedLine'
+import { useAmount } from  '../../../../Context/AmountContext'
+import {useSubscriptionPeriod} from  '../../../../Context/SubscriptionContext'
+import SubscriptionPeriod from './SubscriptionPeriod'
+import SelectPaymentDay from '../SelectPaymentDay'
+import { useSubModContext } from "../../../../Context/SubscriptionModificationContext";
+import Buttons from "../../../Utiles/Butttons";
+import { useCurrentUser } from "../../../../Context/CurrentUserContext";
+import DonationService from "../../../../services/donations.service";
+import ModalWithConfirmationAndDetails from "../../../Utiles/ModalWithConfirmationAndDetails";
+import Modal from "../../../Utiles/Modal";
 import SubscriptionAmountImpactMessage from "./SubscriptionAmountImpactMessage";
-import SubscriptionImpactForSelectedAmount from "./SubscriptionImpactForSelectedAmount";
-import Messages from "../Messages";
-
+import SubscriptionImpactForSelectedAmount from "../SubscriptionImpactForSelectedAmount";
+import Messages from "../../Messages";
+import CustomAmountInput from './CustomAmountInput'
+const determineExplanationTextForPaymentDay = (subsPeriod, userWantsToModifySubs) => {
+  return(userWantsToModifySubs ? 
+        ((subsPeriod.value === "1") ?
+        "¿Qué día del mes quiere que se realize el pago?"
+        :"¿Qué día quiere donar?")
+      : "Fecha del Próximo Pago")
+}
 const ChangeDonationFromProfileForm = (props) =>{
   const {userWantsToModifySubs, setIfUserWantsToModifySubs} = useSubModContext();
   const {subscriptionData} = useCurrentUser();
@@ -25,7 +32,6 @@ const ChangeDonationFromProfileForm = (props) =>{
   const { selectedAmount} = useAmount()
   const { subsPeriod, paymentDay} = useSubscriptionPeriod()
   const [message, setMessage] = useState("");
-  console.log(paymentDay);
 
   const closeModalWithConfirmation = () => {
     setShowModalWithConfirmation(false);
@@ -103,14 +109,18 @@ const ChangeDonationFromProfileForm = (props) =>{
       "Tu donación ha sido modificada con éxito!"  :  "Tu donación ha sido activada con éxito!"
           }body={""} buttonText={"Continuar"}></Modal>
     ) : null}
-    <div className="p-8 md:p-11 lg:p-11">
+    <div className="p-6 md:p-6 lg:py-8 lg:px-11">
     <div className='flex flex-col space-y-8 md:space-y-6'>
-      <Amounts></Amounts>
+      <Amounts showOptions={userWantsToModifySubs} customAmountInput={<CustomAmountInput/>}></Amounts>
       <SubscriptionImpactForSelectedAmount></SubscriptionImpactForSelectedAmount>
       <DashedLine></DashedLine>
       <div className='space-y-6'>
-        <SelectSubscriptionPeriod></SelectSubscriptionPeriod>
-        <SelectPaymentDay></SelectPaymentDay>
+        <SubscriptionPeriod></SubscriptionPeriod>
+        <SelectPaymentDay 
+          explanationText={determineExplanationTextForPaymentDay(subsPeriod, userWantsToModifySubs)}
+          initialValue={subscriptionData.paymentDay}
+          disabled ={!userWantsToModifySubs}  
+        />
       </div>
       {message && (
         <Messages.ErrorMessage message={message}/>
@@ -120,8 +130,8 @@ const ChangeDonationFromProfileForm = (props) =>{
         <DashedLine></DashedLine>
         <SubscriptionAmountImpactMessage></SubscriptionAmountImpactMessage>
         <div className="flex flex-row justify-between space-x-6 w-full">
-        <Buttons.IndicationButton text={"Cancelar"} onClick={()=>{setIfUserWantsToModifySubs(false); setMessage("")}} customStyle={"w-full basis-1/2 text-gray-500 greyBg w-full text-gray-500 hover:bg-gray-300 focus:bg-gray-300 "}></Buttons.IndicationButton>
-        <Buttons.IndicationButton  text={"Modificar"} customStyle={"basis-1/2 text-white greenBg yellowBgHover w-full"} onClick={()=>{setShowModalWithConfirmation(true)}}></Buttons.IndicationButton>
+          <Buttons.IndicationButton text={"Cancelar"} onClick={()=>{setIfUserWantsToModifySubs(false); setMessage("")}} customStyle={"w-full basis-1/2 text-gray-500 greyBg w-full text-gray-500 hover:bg-gray-300 focus:bg-gray-300 "}></Buttons.IndicationButton>
+          <Buttons.IndicationButton  text={"Modificar"} customStyle={"basis-1/2 text-white greenBg yellowBgHover w-full"} onClick={()=>{setShowModalWithConfirmation(true)}}></Buttons.IndicationButton>
         </div>
       </div>
       :
@@ -143,3 +153,4 @@ const ChangeDonationFromProfileForm = (props) =>{
 }
 
 export default ChangeDonationFromProfileForm;
+

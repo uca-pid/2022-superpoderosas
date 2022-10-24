@@ -48,7 +48,7 @@ export default function BaseAutetificationForm(props) {
                 <div className= "relative flex flex-row justify-between bg-transparent h-auto block w-full rounded-xl border border-gray-300 px-2 focus:z-10 focus:outline-none greenBorderWhenFocus form-control">
                 <Input
                   type={(input.type==="password" && !passwordShown)? "password" : "text"}
-                  className="bg-transparent block w-full border-transparent py-2 text-gray-900 placeholder-red focus:border-transparent focus:ring-0 font-Pop-R text-sm focus:outline-none"
+                  className="bg-transparent block w-full border-transparent py-2 text-gray-900 placeholder-red focus:border-transparent focus:ring-0 font-Pop-R text-xs focus:outline-none"
                   name={input.name}
                   value={input.value}
                   placeholder={input.placeholder}

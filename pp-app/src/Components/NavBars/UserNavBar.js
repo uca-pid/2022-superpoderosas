@@ -51,7 +51,7 @@ export default function UserNavBar(props) {
                 </div>
             </div>
             </Popover.Button>
-            <Popover.Panel className={"mt-4 p-2 rounded-2xl reallyLightgreyBg grayBorder space-y-2"}>
+            <Popover.Panel className={"z-70 fixed mt-12 p-2 w-fit justify-self-end rounded-2xl reallyLightgreyBg grayBorder space-y-2"}>
               <div className="md-round space-y-2">  
               {props.navigation.map((item) => (
                 <button key={item.name} onClick={()=>navigate(item.path)} className='w-full text-left z-50 relative font-Pop-M text-sm uppercase darkGrayText font-medium tracking-[0.5px] grayBottomBorder block px-1 py-2 text-[10pt] duration-300 hover:text-[11pt] focus:text-[11pt]'>

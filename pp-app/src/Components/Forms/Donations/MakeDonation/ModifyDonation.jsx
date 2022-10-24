@@ -12,7 +12,7 @@ const ModifyDonation = () => {
   return (
     <>
       <button onClick={modifyDonationInSettings}
-        className="rounded-xl p-4 h-auto w-full text-center greenBg yellowBgHover font-Pop-SB text-xl md:text-2xl text-white">
+        className="rounded-xl p-3 h-auto w-full text-center greenBg yellowBgHover font-Pop-SB text-base text-white">
         Ir a Ajustes
       </button>
     </>

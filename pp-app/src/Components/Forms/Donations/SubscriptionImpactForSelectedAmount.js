@@ -2,7 +2,7 @@ import { useAmount } from  '../../../Context/AmountContext'
 import impactSubsValues from '../../../Values/impactSubsValues'
 import { useState, useEffect } from 'react'
 
-const DonationImpactForSelectedAmount = () => {
+const SubscriptionImpactForSelectedAmount = () => {
     const { selectedAmount } = useAmount()
     const [amountImpact , setAmountImpact] = useState(impactSubsValues[selectedAmount])
 
@@ -12,7 +12,7 @@ const DonationImpactForSelectedAmount = () => {
 
   return (
     <>
-    <div className='text-center font-Pop-R text-xl text-gray-400'>
+    <div className='text-center font-Pop-R text-sm text-gray-400'>
     {
     defineImpact(selectedAmount,amountImpact)
     }
@@ -21,7 +21,7 @@ const DonationImpactForSelectedAmount = () => {
   )
 }
 
-export default DonationImpactForSelectedAmount
+export default SubscriptionImpactForSelectedAmount
 
 function defineImpact(selectedAmount,amountImpact) {
     return (selectedAmount !== 0) ?
@@ -31,7 +31,7 @@ function defineImpact(selectedAmount,amountImpact) {
 }
 
 function defineImpactIfAmountIsCero() {
-    return "Brindá atención nutricional a niños/as."
+    return "Brindas atención nutricional a niños/as."
 }
 
 function defineImpactIfAmountIsNotCero(amountImpact) {

@@ -1,6 +1,7 @@
-import { useAmount } from  '../../../Context/AmountContext'
-import impactSubsValues from '../../../Values/impactSubsValues'
+import { useAmount } from  '../../../../Context/AmountContext'
+import impactSubsValues from '../../../../Values/impactSubsValues'
 import { useState, useEffect } from 'react'
+import AmountImpactMessage from '../AmountImpactMessage'
 
 const SubscriptionAmountImpactMessage = () => {;
     const { selectedAmount } = useAmount()
@@ -12,11 +13,7 @@ const SubscriptionAmountImpactMessage = () => {;
 
   return (
     <>
-    <div className='text-center font-Pop-R text-xl text-gray-400'>
-    {
-    defineSubscriptionImpactMessage(selectedAmount, amountImpact)
-    }
-    </div>
+        <AmountImpactMessage message={defineSubscriptionImpactMessage(selectedAmount, amountImpact)}/>
     </>
   )
 }

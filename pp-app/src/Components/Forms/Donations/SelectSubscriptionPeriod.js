@@ -1,5 +1,5 @@
-import subscriptionPeriod from "../../../Values/subscriptionPeriod"
-import {useSubscriptionPeriod} from  '../../../Context/SubscriptionContext'
+import subscriptionPeriod from "../../../Values/subscriptionPeriod";
+import { useSubscriptionPeriod } from "../../../Context/SubscriptionContext";
 import Select from 'react-select';
 
 const SelectSubscriptionPeriod = ( ) => {
@@ -7,6 +7,7 @@ const SelectSubscriptionPeriod = ( ) => {
   const onChangeSubsPeriod = (e) => {
     setSubsPeriod(e);
   };
+ 
   const colourStyles = {
     control: (base, state) => ({
       ...base,
@@ -27,7 +28,7 @@ const SelectSubscriptionPeriod = ( ) => {
         : isFocused
         ? "#f5f8f2"
         : "white",
-      padding: 10,
+      padding: 8,
       cursor: isDisabled ? 'not-allowed' : 'default',
       
       };
@@ -36,16 +37,16 @@ const SelectSubscriptionPeriod = ( ) => {
     singleValue:(styles, { data }) => ({
       ...styles,
       color: "#6c3333",
-      padding: 10,
+      padding: 6,
       borders: "red",
     }),
   };
   
     return (
       <div className="space-y-4">
-      <div className="font-Pop-R text-lg text-gray-400">¿Cada cuanto desea donar?</div>
+      <div className="font-Pop-R text-sm text-gray-400">¿Cada cuanto desea donar?</div>
         <div className="flex flex-row">
-          <Select className="md:basis-1/2 border-gray-300 relative bg-transparent h-auto w-full placeholder-gray-600 focus:z-10 font-Pop-M tracking-[0.5px] text-lg focus:outline-none greenBorderWhenFocus form-control" styles={colourStyles} 
+          <Select className="md:basis-1/2 border-gray-300 relative bg-transparent h-auto w-full placeholder-gray-600 focus:z-10 font-Pop-M tracking-[0.5px] text-sm focus:outline-none greenBorderWhenFocus form-control" styles={colourStyles} 
                         options={subscriptionPeriod}
                         value={subsPeriod} 
                         placeholder="Seleccione la frecuencia de pago"

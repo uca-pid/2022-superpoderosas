@@ -1,10 +1,10 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEllipsisV } from '@fortawesome/free-solid-svg-icons';
 import { Popover } from '@headlessui/react';
-import DonationService from '../../../services/donations.service';
-import { useCurrentUser } from '../../../Context/CurrentUserContext';
-import ModalWithConfirmationAndDetails from "../../Utiles/ModalWithConfirmationAndDetails";
-import Modal from "../../Utiles/Modal";
+import DonationService from '../../../../services/donations.service';
+import { useCurrentUser } from '../../../../Context/CurrentUserContext';
+import ModalWithConfirmationAndDetails from "../../../Utiles/ModalWithConfirmationAndDetails";
+import Modal from "../../../Utiles/Modal";
 import { useState } from 'react'
 
 const ModifyStatePopUp = ( ) => {

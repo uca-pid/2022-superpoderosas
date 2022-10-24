@@ -21,8 +21,7 @@ const ModalWithConfirmationAndDetails = (props) =>{
         const date = day+'/'+month+'/'+year;
         return date;
       }else{
-        console.log("2");
-        return paymentDay.format("DD/MM/YYYY");
+        return paymentDay;
       }
     }
     return(
@@ -35,13 +34,13 @@ const ModalWithConfirmationAndDetails = (props) =>{
               <div className="  space-y-9 p-12 rounded-lg relative flex flex-col w-auto bg-white outline-none focus:outline-none">
                 {/*header*/}
                 <div className="flex items-start justify-between rounded-t">
-                  <h3 className="font-Pop-SB text-[20pt] tracking-[0px] purpleText">
+                  <h3 className="font-Pop-SB text-base purpleText">
                     {props.header}
                   </h3>
                 </div>
                 {/*body*/}
                 <div className="relative flex flex-col space-y-10">
-                    <div className="font-Pop-M flex flex-wrap space-x-1 leading-relaxed font-Pop-R text-[15pt] text-medium tracking-[0.2px] purpleText">
+                    <div className="font-Pop-M flex flex-wrap space-x-1 leading-relaxed font-Pop-R text-sm tracking-[0.2px] purpleText">
                       <p>Se </p><p>{props.action}</p><p>una donacion de </p>
                       <p className="underline decoration-[#eb8301] decoration-wavy underline-offset-4">${selectedAmount}</p>
                       <p>, </p>
@@ -50,13 +49,13 @@ const ModalWithConfirmationAndDetails = (props) =>{
                        <p className="underline decoration-[#eb8301] decoration-wavy underline-offset-4">{(calculateDate())}</p>
                        <p>.</p>
                     </div>
-                  <p className="text-center font-Pop-R text-lg text-gray-400">
+                  <p className="text-center font-Pop-R text-sm text-gray-400">
                    {props.body}
                   </p>
                 </div>
                 <div className="flex items-center flex-rows justify-between">
-                <button onClick={closeModal} className="mx-3 py-3 h-fit px-7 greyBg rounded-xl tracking-widest font-Pop-M uppercase font-medium text-gray-500 duration-700 hover:bg-gray-300 focus:bg-gray-300  hover:text-white focus:text-white text-lg">Cancelar</button>
-                <button onClick={saveChangesFromModal} text="Guardar Cambios" className="mx-3 py-3 h-fit px-7 bg-[#0F6938] text-white rounded-xl tracking-widest font-Pop-M uppercase font-medium duration-700 hover:bg-[#6c3333] focus:bg-[#6c3333]  text-lg">Guardar Cambios</button>
+                <button onClick={closeModal} className="mx-3 py-3 h-fit px-7 greyBg rounded-xl tracking-widest font-Pop-M uppercase font-medium text-gray-500 duration-700 hover:bg-gray-300 focus:bg-gray-300  hover:text-white focus:text-white text-xs">Cancelar</button>
+                <button onClick={saveChangesFromModal} text="Guardar Cambios" className="mx-3 py-3 h-fit px-7 bg-[#0F6938] text-white rounded-xl tracking-widest font-Pop-M uppercase font-medium duration-700 hover:bg-[#6c3333] focus:bg-[#6c3333]  text-xs">Guardar Cambios</button>
                 </div>
               </div>
             </div>

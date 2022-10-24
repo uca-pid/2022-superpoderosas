@@ -1,4 +1,4 @@
-import { useFrequency } from  '../../../Context/FrequencyContext'
+import { useFrequency } from  '../../../../Context/FrequencyContext'
 
 const FrequencyButton = ({ label, value, position }) => {
   const { selectedFrequency, setSelectedFrequency } = useFrequency()

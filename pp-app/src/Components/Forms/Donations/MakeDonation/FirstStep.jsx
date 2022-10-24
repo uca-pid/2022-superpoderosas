@@ -1,24 +1,30 @@
-import { AmountContextProvider } from  '../../../Context/AmountContext'
-import Amounts from './Amounts'
+import Amounts from '../Amounts'
 import StartDonation from './StartDonation'
 import ModifyDonation from './ModifyDonation'
 import DonationAmountImpactMessage from './DonationAmountImpactMessage'
 import ModifyDonationMessage from './ModifyDonationMessage'
-import DashedLine from '../../Utiles/DashedLine'
-import { useFrequency } from  '../../../Context/FrequencyContext'
-import SelectSubscriptionPeriod from './SelectSubscriptionPeriod'
-import { SubscriptionContextProvider } from '../../../Context/SubscriptionContext'
-import { useCurrentUser } from "../../../Context/CurrentUserContext";
-import SelectPaymentDay from './SelectPaymentDay'
+import DashedLine from '../../../Utiles/DashedLine'
+import { useFrequency } from  '../../../../Context/FrequencyContext'
+import SelectSubscriptionPeriod from '../SelectSubscriptionPeriod'
+import { useCurrentUser } from "../../../../Context/CurrentUserContext";
+import CustomAmountInput from './CustomAmountInput'
+import SelectPaymentDay from '../SelectPaymentDay'
 import StepTitle from './StepTitle';
+import { useSubscriptionPeriod } from '../../../../Context/SubscriptionContext'
+import SubscriptionImpactForSelectedAmount from '../SubscriptionImpactForSelectedAmount'
+const determineExplanationTextForPaymentDay = (subsPeriod) => {
+  return ((subsPeriod.value === "1") ?
+    "¿Qué día del mes quiere que se realize el pago?"
+    :"¿Qué día quiere comenzar a donar?")
+  }
 
 const FirstStep = ({ setStep }) => {
   const { selectedFrequency } = useFrequency()
   const {subscriptionData} = useCurrentUser()
+  const { subsPeriod } = useSubscriptionPeriod()
 
   return (
-    <AmountContextProvider>
-    <SubscriptionContextProvider>
+    <>
     <StepTitle 
       titleText={!(subscriptionData) || (selectedFrequency===1) ? 
       'Únase a la lucha contra la desnutrición infantil' 
@@ -29,8 +35,9 @@ const FirstStep = ({ setStep }) => {
         )}/>  
       {(selectedFrequency===1) ? 
       <>
-      <div className='flex flex-col space-y-10'>
-        <Amounts></Amounts>
+      <div className='flex flex-col space-y-6'>
+        <Amounts showOptions={true} customAmountInput={<CustomAmountInput/>}></Amounts>
+        <SubscriptionImpactForSelectedAmount/>
         <DashedLine></DashedLine>
         <DonationAmountImpactMessage></DonationAmountImpactMessage>
         <StartDonation setStep={setStep}/>  
@@ -40,12 +47,17 @@ const FirstStep = ({ setStep }) => {
       <>
       {!subscriptionData ?
       <>
-        <div className='flex flex-col space-y-10'>
-          <Amounts></Amounts>
+        <div className='flex flex-col space-y-6'>
+          <Amounts showOptions={true} customAmountInput={<CustomAmountInput/>}></Amounts>
+          <SubscriptionImpactForSelectedAmount/>
           <DashedLine></DashedLine>
           <div className='space-y-6'>
             <SelectSubscriptionPeriod></SelectSubscriptionPeriod>
-            <SelectPaymentDay></SelectPaymentDay>
+            <SelectPaymentDay 
+              explanationText={determineExplanationTextForPaymentDay(subsPeriod)}
+              initialValue={null}
+              disabled ={false}  
+            />
           </div>
           <DashedLine></DashedLine>
           <DonationAmountImpactMessage></DonationAmountImpactMessage>
@@ -63,8 +75,7 @@ const FirstStep = ({ setStep }) => {
       }
       </>
       }
-    </SubscriptionContextProvider>
-    </AmountContextProvider>
+      </>
   )
 }
 

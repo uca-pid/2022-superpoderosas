@@ -1,7 +1,8 @@
-import { useAmount } from  '../../../Context/AmountContext'
-import { useFrequency } from  '../../../Context/FrequencyContext'
-import impactSubsValues from '../../../Values/impactSubsValues'
+import { useAmount } from  '../../../../Context/AmountContext'
+import { useFrequency } from  '../../../../Context/FrequencyContext'
+import impactSubsValues from '../../../../Values/impactSubsValues'
 import { useState, useEffect } from 'react'
+import AmountImpactMessage from '../AmountImpactMessage'
 
 const DonationAmountImpactMessage = () => {;
     const { selectedAmount } = useAmount()
@@ -14,11 +15,7 @@ const DonationAmountImpactMessage = () => {;
 
   return (
     <>
-    <div className='text-center font-Pop-R text-xl text-gray-400'>
-    {
-    defineDonationImpactMessage(selectedAmount, selectedFrequency, amountImpact)
-    }
-    </div>
+        <AmountImpactMessage message={defineDonationImpactMessage(selectedAmount, amountImpact, selectedFrequency)}/>
     </>
   )
 }
