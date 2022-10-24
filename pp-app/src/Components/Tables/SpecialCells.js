@@ -15,7 +15,7 @@ export function OpenSideBarFromUser({value}){
   return(
     <button className="text-xs text-gray-500 font-Pop-L hover:decoration-gray-500 hover:underline hover:underline-offset-4" 
           onClick={()=>{setShowSidebar(true); setSelectedUser(value)}}>
-    {user ? user.email : value}
+      {user ? user.email : value}
     </button>
   );
 }
