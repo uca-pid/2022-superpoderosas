@@ -6,6 +6,7 @@ import Form from "react-validation/build/form";
 import CheckButton from "react-validation/build/button";
 import Input from "react-validation/build/input";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import Messages from "../Messages";
 
 export default function BaseAutetificationForm(props) {
   const form = useRef();
@@ -29,7 +30,7 @@ export default function BaseAutetificationForm(props) {
   return (
     <>
       <div className="md:items-center mb-10 justify-items-center grid px-4 sm:px-6 lg:px-8 lg:justify-items-end">
-        <div className="grid content-center h-fit w-full rounded-3xl w-fit lg:w-1/4 space-y-4 bg-white bg-opacity-90 lg:mx-16 drop-shadow-2xl p-8 md:px-12 md:py-6">
+        <div className="grid content-center h-fit w-full rounded-3xl lg:w-1/4 space-y-4 bg-white bg-opacity-90 lg:mx-16 drop-shadow-2xl p-8 md:px-12 md:py-6">
           <div className="">
               <img
               className="mx-auto h-32 w-auto"
@@ -83,11 +84,7 @@ export default function BaseAutetificationForm(props) {
             </div> 
 
             {message && (
-            <div className="grid form-group justify-items-center pb-4">
-              <div className="alert redText alert-danger text-[13pt] justify-items-center" role="alert">
-                {message}
-              </div>
-            </div>
+            <Messages.ErrorMessage message={message}/>
             )}
             
             <CheckButton style={{ display: "none" }} ref={checkBtn} />

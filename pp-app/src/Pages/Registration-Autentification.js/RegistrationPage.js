@@ -12,7 +12,14 @@ export default function RegistrationPage() {
     <>  
       <ImagePageContainer content={
         <>
-        <NavBar></NavBar>
+        <NavBar 
+        navigation={[
+          { name: '¿Por qué desnutrición?', href: 'https://patapila.org/desnutricion.php' },
+          { name: 'Nuestro Trabajo', href: 'https://patapila.org/impacto.php' },
+          { name: 'Sobre Nosotros', href: 'https://patapila.org/nosotros.php' },
+          { name: 'Involucrate', href: 'https://patapila.org/involucrate.php' },
+        ]}
+        />
         <RegistrationForm></RegistrationForm>
         </>
       }/>

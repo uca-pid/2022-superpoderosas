@@ -69,18 +69,18 @@ const ModifyStatePopUp = ( ) => {
           }body={""} buttonText={"Continuar"}></Modal>
     ) : null}
         <Popover className={"grid relative"}>
-            <Popover.Button className="focus:ring-0 justify-self-end lightgreyBgTranslucentHover rounded-3xl md:rounded-xl lg:basis-2/7 w-fit py-2 px-5">
+            <Popover.Button className="focus:ring-0 justify-self-end lightgreyBgTranslucentHover rounded-3xl md:rounded-xl lg:basis-2/7 w-fit px-5">
             <div className="justify-center flex z-50 space-x-4 overflow-hidden mx-auto lg:flex-row">
                 <FontAwesomeIcon icon={faEllipsisV} />
             </div>
             </Popover.Button>
             <Popover.Panel className={"absolute top-0 right-0 mt-4 p-3 rounded-lg almostWhiteBg grayBorder space-y-2"}>
                 <div className="space-y-2">
-                <button onClick={()=>{setCancellationRequest(true);setShowModalWithConfirmation(true)}} className='w-full text-left z-50 relative font-Pop-M text-gray-400 duration-700 hover:text-gray-500 focus:text-gray-500 tracking-[0.5px] grayBottomBorder block px-1 py-2 text-base '>
+                <button onClick={()=>{setCancellationRequest(true);setShowModalWithConfirmation(true)}} className='w-full text-left z-50 relative text-gray-400 duration-700 font-Pop-M hover:text-gray-500 focus:text-gray-500 tracking-[0.5px] grayBottomBorder block px-1 py-2 text-xs'>
                     Cancelar Subscripción
                 </button>
                 {(subscriptionData.subscriptionState.state !== 'P') ?
-                <button onClick={()=>{setShowModalWithConfirmation(true)}} className='w-full text-left z-50 relative font-Pop-M text-gray-400 duration-700 hover:text-gray-500 focus:text-gray-500 font-Pop-M tracking-[0.5px] block px-1 py-2 text-base'>
+                <button onClick={()=>{setShowModalWithConfirmation(true)}} className='w-full text-left z-50 relative text-gray-400 duration-700 hover:text-gray-500 focus:text-gray-500 font-Pop-M tracking-[0.5px] block px-1 py-2 text-xs'>
                     Pausar Subscripción
                 </button>
                 : null

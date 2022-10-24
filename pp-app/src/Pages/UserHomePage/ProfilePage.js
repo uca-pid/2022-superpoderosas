@@ -1,8 +1,8 @@
 import React from "react";
 import AuthService from "../../services/auth.service";
 import Settings from "../../Components/Settings/Settings";
-import ProfileNavBar from "../../Components/NavBars/ProfileNavBar";
-import AdminNavBar from "../../Components/NavBars/AdminNavBar";
+import UserNavBar from "../../Components/NavBars/UserNavBar";
+import navigationOptions from "../../Components/NavBars/navigationOptions";
 import { CurrentUserContextProvider} from "../../Context/CurrentUserContext";
 
 const Profile = () => {
@@ -16,9 +16,9 @@ const Profile = () => {
       {(currentUser) ? (
       <>
       {(isAdmin())  ?
-          <AdminNavBar currentUser={currentUser}></AdminNavBar>
+        <UserNavBar navigation={navigationOptions.adminNavigation} currentUser={currentUser}/>
           :
-        <ProfileNavBar currentUser={currentUser}></ProfileNavBar>}
+        <UserNavBar navigation={navigationOptions.userNavigation} currentUser={currentUser}/>}
         <CurrentUserContextProvider>
         <Settings></Settings>
         </CurrentUserContextProvider>

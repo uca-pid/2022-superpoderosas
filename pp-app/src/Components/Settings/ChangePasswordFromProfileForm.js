@@ -1,7 +1,7 @@
 import "../../App.css"
 import '../../Pages/Profile Page/profile.css'
 import "../../Pages/Registration-Autentification.js/IntroductionPage.css"
-import Buttons from "../Utiles/Butttons"
+import Messages from "../Forms/Messages";
 import "../../Components/LogInForm/LogIn.css";
 import React, { useState, useRef } from "react";
 import Form from "react-validation/build/form";
@@ -119,11 +119,7 @@ const ChangePasswordFromProfileForm = (props) =>{
             </div>
 
             {message && (
-              <div className="grid form-group pb-4 justify-items-center pb-4 mb:-mt-10  lg:-mt-7">
-                <div className="alert text-center redText infoText uppercase alert-danger text-[13pt] justify-items-center" role="alert">
-                  {message}
-                </div>
-              </div>
+              <Messages.ErrorMessage message={message}/>
               )}
 
             <div className="flex flex-rows justify-between pt-4">
@@ -134,11 +130,7 @@ const ChangePasswordFromProfileForm = (props) =>{
             <CheckButton style={{ display: "none" }} ref={checkBtn} />
 
               {confirmationMessage && (
-              <div className="grid form-group justify-items-center pb-4 mb:-mt-10  lg:-mt-7">
-              <div className="alert text-center greenText infoText uppercase alert-danger text-[13pt] justify-items-center" role="alert">
-                {confirmationMessage}
-              </div>
-              </div>
+              <Messages.ConfirmationMessage message={confirmationMessage}/>
             )}
               
             </Form>

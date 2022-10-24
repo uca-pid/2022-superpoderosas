@@ -52,7 +52,7 @@ const ProfileNavBarButton = ({ text, onClick}) => {
       <>   
               <div>
                 <button
-                  className = "block w-full px-1 py-2 text-left greenText uppercase font-Pop-M tracking-[0.5px] text-[12pt] duration-300 hover:text-[13pt] focus:text-[13pt]"
+                  className = "block w-full px-1 py-2 text-left greenText uppercase font-Pop-M tracking-[0.5px] text-[10pt] duration-300 hover:text-[11pt] focus:text-[11pt]"
                   onClick = {onClick}
                 >
                   {text}

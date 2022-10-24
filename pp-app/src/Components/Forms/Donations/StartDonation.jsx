@@ -6,6 +6,7 @@ import DonationService from '../../../services/donations.service'
 import AuthService from '../../../services/auth.service'
 import ModalWithDetails from "../../Utiles/ModalWithDetails";
 import { useNavigate } from "react-router-dom"
+import Messages from '../Messages'
 
 const StartDonation = ({ setStep }) => {
   const { selectedFrequency } = useFrequency();
@@ -91,11 +92,7 @@ const StartDonation = ({ setStep }) => {
         {(selectedFrequency === 1)  ? "Donar" : "Donar periódicamente"}
       </button>
        {message && (
-        <div className="grid form-group justify-items-center pb-4">
-          <div className="alert redText font-Pop-SB alert-danger text-lg justify-items-center" role="alert">
-            {message}
-          </div>
-        </div>
+        <Messages.ErrorMessage message={message}/>
         )}
     </>
   )

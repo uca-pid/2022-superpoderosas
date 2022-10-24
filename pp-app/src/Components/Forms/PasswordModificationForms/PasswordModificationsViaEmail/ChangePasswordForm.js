@@ -10,6 +10,7 @@ import { useParams } from 'react-router-dom';
 import Modal from "../../../Utiles/Modal"
 import ValidationFunctions from "../../../../functions/validations";
 import "../../../../App.css"
+import Messages from "../../Messages";
 
 export default function ChangePasswordForm(props)  {
   const form = useRef();
@@ -124,11 +125,7 @@ export default function ChangePasswordForm(props)  {
             <CheckButton style={{ display: "none" }} ref={checkBtn} />
 
           {message && (
-            <div className="grid form-group justify-items-center pb-4">
-              <div className="alert redText alert-danger text-[13pt] justify-items-center" role="alert">
-                {message}
-              </div>
-            </div>
+            <Messages.ErrorMessage message={message}/>
             )}
             
           </Form>

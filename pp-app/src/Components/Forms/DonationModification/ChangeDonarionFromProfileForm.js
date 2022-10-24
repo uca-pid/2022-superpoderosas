@@ -15,6 +15,7 @@ import ModalWithConfirmationAndDetails from "../../Utiles/ModalWithConfirmationA
 import Modal from "../../Utiles/Modal";
 import SubscriptionAmountImpactMessage from "./SubscriptionAmountImpactMessage";
 import SubscriptionImpactForSelectedAmount from "./SubscriptionImpactForSelectedAmount";
+import Messages from "../Messages";
 
 const ChangeDonationFromProfileForm = (props) =>{
   const {userWantsToModifySubs, setIfUserWantsToModifySubs} = useSubModContext();
@@ -112,11 +113,7 @@ const ChangeDonationFromProfileForm = (props) =>{
         <SelectPaymentDay></SelectPaymentDay>
       </div>
       {message && (
-        <div className="grid form-group justify-items-center pb-4">
-          <div className="alert redText font-Pop-SB alert-danger text-lg justify-items-center" role="alert">
-            {message}
-          </div>
-        </div>
+        <Messages.ErrorMessage message={message}/>
         )}
       {userWantsToModifySubs ?
       <div className="flex flex-col justify-between space-y-8 w-full md:space-y-6">

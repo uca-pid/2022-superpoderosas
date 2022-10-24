@@ -7,6 +7,7 @@ import AuthService from "../../../../services/auth.service";
 import Input from "react-validation/build/input";
 import { useNavigate } from "react-router-dom";
 import ValidationFunctions from "../../../../functions/validations";
+import Messages from "../../Messages";
 import "../../../../App.css"
 export default function VerifyEmailForm(props) {
   const form = useRef();
@@ -94,18 +95,10 @@ export default function VerifyEmailForm(props) {
                 </button>
             </div> 
             {message && (
-            <div className="grid form-group justify-items-center pb-4 mb:-mt-10 lg:-mt-7">
-              <div className="alert text-center redText font-Pop-M  tracking-[0.5px] uppercase alert-danger text-[13pt] justify-items-center" role="alert">
-                {message}
-              </div>
-            </div>
+            <Messages.ErrorMessage message={message}/>
             )}
             {confirmationMessage && (
-              <div className="grid form-group justify-items-center pb-4 mb:-mt-10  lg:-mt-7">
-              <div className="alert text-center greenText font-Pop-M tracking-[0.5px] uppercase alert-danger text-[13pt] justify-items-center" role="alert">
-                {confirmationMessage}
-              </div>
-              </div>
+              <Messages.ConfirmationMessage message={confirmationMessage}/>
             )}
             <CheckButton style={{ display: "none" }} ref={checkBtn} />
           </Form>

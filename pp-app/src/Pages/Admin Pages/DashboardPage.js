@@ -1,10 +1,11 @@
 import React from "react";
 import AuthService from "../../services/auth.service";
-import AdminNavBar from "../../Components/NavBars/AdminNavBar";
 import { MonthlySubscriptionStateContextProvider } from "../../Context/MonthlySubscriptionStateContext";
 import FilterDate from "../../Components/Dashboards/FilterDate";
 import { OpenChartsContextProvider } from "../../Context/OpenChartsContext";
 import DashboardSection from "../../Components/Dashboards/DashboardSection";
+import UserNavBar from "../../Components/NavBars/UserNavBar";
+import navigationOptions from "../../Components/NavBars/navigationOptions";
 
 const DashboardPage = () => {
   const currentUser = AuthService.getCurrentUser();
@@ -12,7 +13,7 @@ const DashboardPage = () => {
   return (
     <>
       <div className="space-y-20 mx-auto z-10 pb-8 sm:pb-16 md:pb-20 lg:pb-28 xl:pb-32 h-screen bg-cover place-content-center">
-      <AdminNavBar currentUser={currentUser}></AdminNavBar>
+      <UserNavBar navigation={navigationOptions.adminNavigation} currentUser={currentUser}/>
       {currentUser ? ( 
         <MonthlySubscriptionStateContextProvider>
         <OpenChartsContextProvider>
@@ -36,4 +37,3 @@ const DashboardPage = () => {
   );
 };
 export default DashboardPage;
-

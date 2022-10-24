@@ -1,6 +1,7 @@
 import React from "react";
 import AuthService from "../../services/auth.service";
-import AdminNavBar from "../../Components/NavBars/AdminNavBar";
+import UserNavBar from "../../Components/NavBars/UserNavBar";
+import navigationOptions from "../../Components/NavBars/navigationOptions";
 import Table from "../../Components/Tables/Table";
 import TransactionTableInformation from "../../Components/Tables/TransactionsTableInformation";
 import Sidebar from "../../Components/Utiles/SideBar";
@@ -14,7 +15,7 @@ const TransactionReportPage = () => {
     <SelectionOnTableContexProvider>
     <>
     <div className="space-y-20 mx-auto z-10 pb-8 sm:pb-16 md:pb-20 lg:pb-28 xl:pb-32 h-screen bg-cover place-content-center">
-      <AdminNavBar currentUser={currentUser}></AdminNavBar>
+    <UserNavBar navigation={navigationOptions.adminNavigation} currentUser={currentUser}/>
       {currentUser ? (
       <>
       <div className="almostWhiteBg">

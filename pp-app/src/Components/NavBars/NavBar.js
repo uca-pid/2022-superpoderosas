@@ -1,6 +1,5 @@
 import { Fragment } from 'react'
 import { Popover, Transition } from '@headlessui/react'
-//import { XMarkIcon } from '@heroicons/react/24/outline'
 import "../../Fonts/Poppins-Bold.ttf"
 import { useNavigate } from "react-router-dom"
 import "./navBar.css"
@@ -10,14 +9,7 @@ import fontawesome from '@fortawesome/fontawesome'
 import { faBars } from '@fortawesome/fontawesome-free-solid'
 fontawesome.library.add(faBars);
 
-const navigation = [
-  { name: '¿Por qué desnutrición?', href: 'https://patapila.org/desnutricion.php' },
-  { name: 'Nuestro Trabajo', href: 'https://patapila.org/impacto.php' },
-  { name: 'Sobre Nosotros', href: 'https://patapila.org/nosotros.php' },
-  { name: 'Involucrate', href: 'https://patapila.org/involucrate.php' },
-]
-
-export default function NavBar() {
+export default function NavBar(props) {
   const navigate = useNavigate();
   function navigateToLogIn(){
       navigate("/login");
@@ -45,11 +37,13 @@ export default function NavBar() {
                         </div>
                     </div>
                     <div className="justify-end mx-auto flex-1 hidden lg:basis-3/5 lg:pr-4 lg:pt-8 lg:flex lg:flex-row">
-                    {navigation.map((item) => (
+                    {(props.navigation)?
+                    props.navigation.map((item) => (
                       <a key={item.name} href={item.href} className='font-Pop-B uppercase text-white duration-[0.3s] text-sm px-6 inline-block mt-2 position-relative-nowrap yellowTextHover'>
                         {item.name}
                       </a>
-                    ))}
+                    ))
+                  :<></>}
                     <button onClick={navigateToLogIn} className = {"font-Pop-B uppercase text-white text-sm mx-3 px-6 py-2 position-relative-nowrap duration-[0.3s] inline-block bg-white whiteBorder greenText rounded-lg hover:bg-transparent hover:text-white  focus:bg-transparent focus:text-white"}>Iniciar Sesión</button>
                   </div>
                 </div>
@@ -77,7 +71,8 @@ export default function NavBar() {
                   
                 <div className="overflow-hidden rounded-lg bg-white shadow-md ring-1 ring-black ring-opacity-5">
                   <div className="space-y-1 px-2 pt-2 z-50">
-                    {navigation.map((item) => (
+                    {(props.navigation)?
+                    props.navigation.map((item) => (
                       <a
                         key={item.name}
                         href={item.href}
@@ -85,7 +80,9 @@ export default function NavBar() {
                       >
                         {item.name}
                       </a>
-                    ))}
+                    ))
+                  :
+                  <></>}
                   </div>
                     <button className="z-50 block rounded-md px-5 py-4 text-sm font-Pop-B uppercase tracking-[0.5px] yellowBg text-white w-full greenBgHover" onClick={navigateToLogIn}>Iniciar Sesión</button> 
                 </div>

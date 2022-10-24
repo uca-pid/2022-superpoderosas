@@ -1,7 +1,8 @@
 import React from "react"
 import "../../App.css"
 import AuthService from "../../services/auth.service";
-import ProfileNavBar from "../../Components/NavBars/ProfileNavBar";
+import UserNavBar from "../../Components/NavBars/UserNavBar";
+import navigationOptions from "../../Components/NavBars/navigationOptions";
 import FirstStep from '../../Components/Forms/Donations/FirstStep';
 import FrequencySection from '../../Components/Forms/Donations/FrequencySection';
 import { FrequencyContextProvider } from '../../Context/FrequencyContext';
@@ -13,7 +14,7 @@ const DonarPage = () => {
   return (
     <>
       <div className="mx-auto relative z-10 pb-8 sm:pb-16 md:pb-20 lg:pb-28 xl:pb-32 h-screen bg-cover place-content-center">
-      <ProfileNavBar currentUser={currentUser}></ProfileNavBar>
+      <UserNavBar navigation={navigationOptions.userNavigation} currentUser={currentUser}/>
         {currentUser ? (
         <div className="min-h-screen min-w-screen greenBg mt-20 px-5 py-16 md:p-16 md:p-20 flex flex-row justify-cente">
             <div className="bg-white h-fit w-screen rounded-xl lg:basis-2/5 p-10 md:p-16 lg:p-20 space-y-3">

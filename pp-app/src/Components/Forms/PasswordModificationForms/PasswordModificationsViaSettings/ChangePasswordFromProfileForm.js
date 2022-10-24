@@ -8,6 +8,7 @@ import { useNavigate } from "react-router-dom";
 import ValidationFunctions from "../../../../functions/validations";
 import "../../../../App.css"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import Messages from "../../Messages";
 
 const ChangePasswordFromProfileForm = (props) => {
   const form = useRef();
@@ -29,18 +30,12 @@ const ChangePasswordFromProfileForm = (props) => {
   };
 
   const togglePassword = () => {
-    // When the handler is invoked
-    // inverse the boolean state of passwordShown
     setPasswordShown(!passwordShown);
   };
   const toggleNewPassword = () => {
-    // When the handler is invoked
-    // inverse the boolean state of passwordShown
     setNewPasswordShown(!newPasswordShown);
   };
   const togglePassword2 = () => {
-    // When the handler is invoked
-    // inverse the boolean state of passwordShown
     setPassword2Shown(!password2Shown);
   };
 
@@ -100,6 +95,7 @@ const ChangePasswordFromProfileForm = (props) => {
 
     }
   };
+
   return (
     <>
 
@@ -107,76 +103,58 @@ const ChangePasswordFromProfileForm = (props) => {
         <Modal value={showModal} onChange={closeModal} header={"Tu contraseña ha sido cambiada con exito!"} body={""} buttonText={"Continuar"}></Modal>
       ) : null}
 
-      <Form className="p-11 blackText flex flex-col space-y-5" onSubmit={handlePasswordChange} ref={form}>
+      <Form className="px-11 py-8 blackText flex flex-col space-y-6" onSubmit={handlePasswordChange} ref={form}>
 
-        <div className="tracking-wide font-Pop-M font-medium uppercase blackText font-bold">Cambiar contraseña </div>
-        <div className="space-y-4 rounded-md mb-[-5px] flex-rows">
-          <div className="h-fit relative">
-            <div className="inline-block align-top flex flex-row bg-transparent h-12 justify-between rounded-xl border text-gray-900 border-gray-300 px-10 focus:z-10 font-Pop-R tracking-[0.5px] text-[12pt] focus:outline-none greenBorderWhenFocus form-control">
-              <div className="flex flex-col h-fit">
-              <Input
-                type={(!passwordShown) ? "password" : "text"}
-                className="border-transparent placeholder-gray-600 focus:border-transparent focus:ring-0 focus:outline-none"
-                name="oldpassword"
-                value={oldpassword}
-                placeholder="Contraseña antigua"
-                onChange={onChangeOldPassword}
-                validations={[ValidationFunctions.required]}
-              />
-              </div>
-              <div className="py-2"><FontAwesomeIcon onClick={togglePassword} icon={newPasswordShown ? "fa-solid fa-eye-slash" : "fa-solid fa-eye"} color='#000' size={14} /></div>
-            </div>
-          </div>
-          <div className="h-auto align-top">
-            <div className="flex flex-row bg-transparent h-12 justify-between rounded-xl border text-gray-900 border-gray-300 px-10 focus:z-10 font-Pop-R tracking-[0.5px] text-[12pt] focus:outline-none greenBorderWhenFocus form-control">    
-              <Input
+        <div className="tracking-wide font-Pop-SB uppercase blackText text-sm">Cambiar contraseña </div>
+        <div className="space-y-4 rounded-md mb-[-5px] flex-rows "> 
+          <div className= "relative flex flex-row justify-between bg-transparent h-auto block w-full rounded-xl border border-gray-300 px-2 focus:z-10 focus:outline-none greenBorderWhenFocus form-control">
+            <Input
+              type={(!passwordShown) ? "password" : "text"}
+              className="bg-transparent block w-full border-transparent py-2 text-gray-900 placeholder-red focus:border-transparent focus:ring-0 font-Pop-R text-sm focus:outline-none"
+              name="oldpassword"
+              value={oldpassword}
+              placeholder="Contraseña antigua"
+              onChange={onChangeOldPassword}
+              validations={[ValidationFunctions.required]}
+            />
+            <span className="pt-2 px-2"><FontAwesomeIcon onClick={togglePassword} icon={passwordShown? "fa-solid fa-eye-slash": "fa-solid fa-eye"} color='#000'size={14} /></span>
+          </div>  
+          <div className= "relative flex flex-row justify-between bg-transparent h-auto block w-full rounded-xl border border-gray-300 px-2 focus:z-10 focus:outline-none greenBorderWhenFocus form-control">
+            <Input
                 type={(!newPasswordShown) ? "password" : "text"}
-                className="border-transparent placeholder-gray-600 focus:border-transparent focus:ring-0 focus:outline-none"
+                className="bg-transparent block w-full border-transparent py-2 text-gray-900 placeholder-red focus:border-transparent focus:ring-0 font-Pop-R text-sm focus:outline-none"
                 name="password"
                 value={password}
                 placeholder="Contraseña nueva"
                 onChange={onChangePassword}
                 validations={[ValidationFunctions.required, ValidationFunctions.vpassword]}
-              />
-              <div className="py-2"><FontAwesomeIcon onClick={toggleNewPassword} icon={newPasswordShown ? "fa-solid fa-eye-slash" : "fa-solid fa-eye"} color='#000' size={14} /></div>
-            </div>
+            />
+            <span className="pt-2 px-2"><FontAwesomeIcon onClick={toggleNewPassword} icon={newPasswordShown? "fa-solid fa-eye-slash": "fa-solid fa-eye"} color='#000'size={14} /></span>
           </div>
-          <div className="h-fit relative">
-            <div className="inline-block align-top flex flex-row bg-transparent h-12 justify-between rounded-xl border text-gray-900 border-gray-300 px-10 focus:z-10 font-Pop-R tracking-[0.5px] text-[12pt] focus:outline-none greenBorderWhenFocus form-control">
-              <div className="">
-              <Input
-                type={(!password2Shown) ? "password" : "text"}
-                className="border-transparent placeholder-gray-600 focus:border-transparent focus:ring-0 focus:outline-none"
-                name="password2"
-                value={password2}
-                placeholder="Confirmar contraseña"
-                onChange={onChangePassword2}
-                validations={[ValidationFunctions.required]}
-              />
-              </div>
-              <div className="py-2"><FontAwesomeIcon onClick={togglePassword2} icon={password2Shown ? "fa-solid fa-eye-slash" : "fa-solid fa-eye"} color='#000' size={14} /></div>
-            </div>
+          <div className= "relative flex flex-row justify-between bg-transparent h-auto block w-full rounded-xl border border-gray-300 px-2 focus:z-10 focus:outline-none greenBorderWhenFocus form-control">
+            <Input
+              type={(!password2Shown) ? "password" : "text"}
+              className="bg-transparent block w-full border-transparent py-2 text-gray-900 placeholder-red focus:border-transparent focus:ring-0 font-Pop-R text-sm focus:outline-none"
+              name="password2"
+              value={password2}
+              placeholder="Confirmar contraseña"
+              onChange={onChangePassword2}
+              validations={[ValidationFunctions.required]}
+            />
+            <span className="pt-2 px-2"><FontAwesomeIcon onClick={togglePassword2} icon={password2Shown? "fa-solid fa-eye-slash": "fa-solid fa-eye"} color='#000'size={14} /></span>
           </div>
         </div>
 
         {message && (
-          <div className=" grid form-group pb-4 justify-items-center pb-4 mb:-mt-10  lg:-mt-7">
-            <div className="alert text-center redText font-Pop-M tracking-[0.5px] uppercase alert-danger text-[13pt] justify-items-center" role="alert">
-              {message}
-            </div>
-          </div>
+          <Messages.ErrorMessage message={message}/>
         )}
         {confirmationMessage && (
-          <div className="grid form-group justify-items-center pb-4 mb:-mt-10  lg:-mt-7">
-            <div className="alert text-center greenText font-Pop-M tracking-[0.5px] uppercase alert-danger text-[13pt] justify-items-center" role="alert">
-              {confirmationMessage}
-            </div>
-          </div>
+          <Messages.ConfirmationMessage message={confirmationMessage}/>
         )}
 
         <div className="flex flex-rows justify-between pt-4">
-          <button onClick={closeForm} className="mx-3 py-3 h-fit px-7 greyBg rounded-xl tracking-widest font-Pop-M uppercase font-medium text-gray-500 duration-700 hover:bg-gray-300 focus:bg-gray-300  hover:text-white focus:text-white text-lg">Cancelar</button>
-          <button onClick={null} className="mx-3 py-3 h-fit px-7 bg-[#0F6938] text-white rounded-xl tracking-widest font-Pop-M uppercase font-medium duration-700 hover:bg-[#6c3333] focus:bg-[#6c3333]  text-lg">Guardar Cambios</button>
+          <button onClick={closeForm} className="mx-3 py-3 h-fit px-7 greyBg rounded-xl tracking-widest font-Pop-M uppercase text-gray-500 duration-700 hover:bg-gray-300 focus:bg-gray-300  hover:text-white focus:text-white text-sm">Cancelar</button>
+          <button onClick={null} className="mx-3 py-3 h-fit px-7 bg-[#0F6938] text-white rounded-xl tracking-widest font-Pop-M uppercase duration-700 hover:bg-[#6c3333] focus:bg-[#6c3333]  text-sm">Guardar Cambios</button>
         </div>
 
         <CheckButton style={{ display: "none" }} ref={checkBtn} />
