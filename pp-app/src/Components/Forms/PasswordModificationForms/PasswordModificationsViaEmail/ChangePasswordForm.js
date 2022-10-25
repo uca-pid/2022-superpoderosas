@@ -81,11 +81,11 @@ export default function ChangePasswordForm(props)  {
        {showModal ? (
         <Modal value={showModal} onChange={closeModal} header={"Tu contraseña ha sido cambiada con exito!"} body={"Inicie sesión para continuar contribuyendo a la comunidad."} buttonText={"Ir a iniciar sesión"}></Modal>
       ) : null}
-      <div className="min-h-full md:items-center mb-10 justify-items-center grid px-4 md:pb-9 mt-3 lg:mt-20 px-8 pt-10 lg:px-8 mt-3 lg:mt-20">
-        <div className="grid content-center w-full rounded-3xl max-w-md space-y-2 bg-white bg-opacity-90 lg:mx-60 drop-shadow-2xl p-8 md:p-16 h-4/5 md:h-2/3 lg:h-4/5 my-5 lg:my-10">
-         <div className="">
+      <div className="min-h-full md:items-center mb-10 justify-items-center grid px-4 md:pb-9  ">
+        <div className="grid content-center w-full rounded-3xl max-w-sm space-y-2 bg-white bg-opacity-90 lg:mx-60 drop-shadow-2xl p-8 md:p-14 md:py-6 h-fit my-5 lg:my-20">
+          <div className="">
               <img
-              className="mx-auto h-40 w-auto"
+              className="mx-auto h-32 w-auto"
               src={LogoHerramienta}
               alt="LogoHerramienta"
               />
@@ -93,16 +93,16 @@ export default function ChangePasswordForm(props)  {
 
            <Form className="" onSubmit={handlePasswordChange} ref={form}>
 
-           <div className="grid justify-items-center mb-9">
-                <div className="gray-300 font-Pop-R uppercase tracking-[0.5px] text-[18pt] font-semibold text-center">
+           <div className="grid justify-items-center mb-5">
+                <div className="gray-300 font-Pop-SB uppercase tracking-[0.5px] text-base text-center">
                   Cambiar contraseña
                 </div>
           </div>
 
-            <div className="space-y-3 rounded-md mb-[-5px]">       
+            <div className="space-y-2 rounded-md mt-2">       
                 <Input
                   type="password"
-                  className="relative bg-transparent h-12 block w-full rounded-xl border border-gray-300 px-6 py-2 text-gray-900 placeholder-gray-600 focus:z-10  font-Pop-R  text-[12pt] tracking-[0.5px] focus:outline-none greenBorderWhenFocus form-control"
+                  className="relative bg-transparent block w-full rounded-xl border border-gray-300 px-6 py-2 text-gray-900 placeholder-gray-600 focus:z-10 font-Pop-R text-xs tracking-[0.5px] focus:outline-none greenBorderWhenFocus form-control"
                   name="password"
                   value={password}
                   placeholder="Contraseña nueva"
@@ -111,7 +111,7 @@ export default function ChangePasswordForm(props)  {
                 />
                 <Input
                   type="password"
-                  className="relative bg-transparent h-12 block w-full rounded-xl border border-gray-300 px-6 py-2 text-gray-900 placeholder-gray-600 focus:z-10 font-Pop-R  text-[12pt] tracking-[0.5px] focus:outline-none greenBorderWhenFocus form-control"
+                  className="relative bg-transparent block w-full rounded-xl border border-gray-300 px-6 py-2 text-gray-900 placeholder-gray-600 focus:z-10 font-Pop-R text-xs tracking-[0.5px] focus:outline-none greenBorderWhenFocus form-control"
                   name="password2"
                   value={password2}
                   placeholder="Confirmar contraseña"
