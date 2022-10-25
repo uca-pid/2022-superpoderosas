@@ -10,8 +10,7 @@ export default function BarChart(props) {
     let config = {
       type: "bar",
       data: {
-        labels: Array.from(monthlyData,(m)=>m.label),
-        showInLegend: false, 
+        labels: Array.from(monthlyData,(m)=>m.label), 
         datasets: [
           {
             label: 'RESUMEN DE COBRANZAS',
@@ -48,7 +47,6 @@ export default function BarChart(props) {
         ],
       },
       options: {
-        showTooltips: false,
         maintainAspectRatio: false,
         responsive: true,
         scales: {
