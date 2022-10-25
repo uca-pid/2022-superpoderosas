@@ -4,8 +4,9 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import AdminServices from '../../services/transactions.service'
 import AuthService from '../../services/auth.service';
 import { useState, useEffect } from 'react';
+import RoundIndicatorWithTooltip from '../Utiles/RoundIndicatorWithTooltip';
 
-export function OpenSideBarFromUser({value}){
+export function OpenSideBarFromUser({value, row}){
   const {setSelectedUser, setShowSidebar} = useSelectionOnTable();
   const [user, setUser] = useState(null)
   useEffect(() => {
@@ -13,9 +14,13 @@ export function OpenSideBarFromUser({value}){
   }, [value])
   
   return(
-    <button className="text-xs text-gray-500 font-Pop-L hover:decoration-gray-500 hover:underline hover:underline-offset-4" 
-          onClick={()=>{setShowSidebar(true); setSelectedUser(value)}}>
-      {user ? user.email : value}
+    <button 
+      className="text-xs flex flex-row text-gray-500 font-Pop-L hover:decoration-gray-500 hover:underline hover:underline-offset-4" 
+      onClick={()=>{setShowSidebar(true); setSelectedUser(value)}}>
+      <div>{user ? user.email : value}</div>
+      {(row.id ==='0') ? 
+        <div className='ml-1'><RoundIndicatorWithTooltip size="h-2 w-2" tooltipContent="Haz click aquí o en cualquier email para obtener más información acerca de el usuario."></RoundIndicatorWithTooltip></div>
+        : <></>}
     </button>
   );
 }

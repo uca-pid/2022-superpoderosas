@@ -11,10 +11,7 @@ import { useMonthlySubscriptionStateContext } from "../../Context/MonthlySubscri
 import Card from "../Utiles/Card";
 import datesValues from "../../Values/datesValues";
 import TwoColumnsPage from "../Utiles/TwoColumnsPage";
-import {
-  Button,
-  Tooltip
-} from "@material-tailwind/react";
+import RoundIndicatorWithTooltip from "../Utiles/RoundIndicatorWithTooltip";
 
 const DashboardSection = () => {
   const {showBarChart, showPieChart} = useOpenChartsContext();
@@ -45,12 +42,7 @@ const DashboardSection = () => {
                 subtitle={datesValues[0].options[month - 1].label + " de " + year}
                 content={
                     <div class="flex flex-col">
-                    <Tooltip className={"font-Pop-R w-40 p-3"} content="Haz click en cualquier gráfico para expandirlo" placement="right-start">
-                    <Button className={"w-fit self-end h-fit shadow-none"} class="flex h-3 w-3 self-end" data-tooltip-target="tooltip-right" data-tooltip-placement="right" type="button" >
-                        <span class="animate-ping absolute inline-flex h-3 w-3 rounded-full bg-[#7BA391] opacity-75"></span>
-                        <span class="relative inline-flex rounded-full h-3 w-3 bg-[#7BA391]"></span>
-                    </Button>
-                    </Tooltip>
+                    <div className="p-2 self-end"><RoundIndicatorWithTooltip size="h-3 w-3" tooltipContent="Haz click en cualquier gráfico para expandirlo" /></div>
                     <PieChartModule label={PieChartLabel}></PieChartModule>
                     </div>}
                 />
