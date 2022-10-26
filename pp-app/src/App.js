@@ -10,6 +10,7 @@ import DonarPage from './Pages/Donations/Donar';
 import TransactionReportPage from './Pages/Admin Pages/TransactionsReportPage';
 import DashboardPage from './Pages/Admin Pages/DashboardPage';
 import SubscriptionReportPage from './Pages/Admin Pages/SubscriptionReportPage';
+import RefferalsPage from './Pages/Registration-Autentification.js/RefferalsPage';
 //a la ruta de /profile estaría bueno ponerle /home en ambos casos
 
 export default function App() {
@@ -19,6 +20,7 @@ export default function App() {
         <Routes>
           <Route exact path={"/"} element={<LoginPage />} />
           <Route exact path={"/login"} element={<LoginPage />} />
+          <Route exact path={"/signup/:refferalId"} element={<RefferalsPage/>} />
           <Route exact path={"/signup"} element={<RegistrationPage/>} />
           <Route exact path="/ChangePasswordPage" element={<ChangePasswordPage />} />
           <Route exact path="/resetPassword/:token" element={<PasswordResetPage />} />

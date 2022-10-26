@@ -30,7 +30,7 @@ export default function BaseAutetificationForm(props) {
   return (
     <>
       <div className="md:items-center mb-10 justify-items-center grid px-4 sm:px-6 lg:px-8 lg:justify-items-end">
-        <div className="grid content-center h-fit w-full rounded-3xl lg:w-1/4 space-y-4 bg-white bg-opacity-90 lg:mx-16 drop-shadow-2xl p-8 md:px-12 md:py-6">
+        <div className={`${props.extraStyles} grid content-center h-fit w-full rounded-3xl lg:w-1/4 space-y-4 bg-white bg-opacity-90 lg:mx-16 drop-shadow-2xl p-8 md:px-12 md:py-6`}>
           <div className="">
               <img
               className="mx-auto h-32 w-auto"

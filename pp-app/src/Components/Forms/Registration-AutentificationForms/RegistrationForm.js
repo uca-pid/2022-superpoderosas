@@ -7,7 +7,7 @@ import Modal from "../../Utiles/Modal";
 import ValidationFunctions from "../../../functions/validations"
 import BaseAutetificationForm from "./BaseAutentificationForm";
 
-export default function RegistrationForm() {
+export default function RegistrationForm(props) {
   const [showModal, setShowModal] = React.useState(false);
   const [name, setName] = useState("");
   const [lastname, setLastname] = useState("");
@@ -73,6 +73,7 @@ export default function RegistrationForm() {
         (response) => {
           setMessage(response.data.message);
           setSuccessful(true);
+          //Aca se debería agregar el usuario registrado a props.refferalUser (más facil con un contador de a los usuarios a los que refirio pero la mejor opcion seria un arrgelo con los id de estos usuarios)
           continuePostNavigationSuccessful();
         },
         (error) => {
@@ -146,6 +147,7 @@ export default function RegistrationForm() {
         actionAfterSeparationLine= "Inicia sesión"
         logo = {LogoLucha}
         validationOfSamePasswordActive
+        extraStyles={props.extraStyles}
       />
      )}
     </>
