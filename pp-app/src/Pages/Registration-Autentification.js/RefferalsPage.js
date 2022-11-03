@@ -13,7 +13,7 @@ export default function RefferalsPage() {
   const [refferalUser, setRefferalUser]= useState(null);
   useEffect(() => {
     AuthService.findUserById(params.refferalId).then((response) => {setRefferalUser(response.data)});    
-  }, [params.refferalUser])
+  }, [params.refferalUser, params.refferalId]);
   return (
     <> 
     { refferalUser ?
@@ -28,7 +28,7 @@ export default function RefferalsPage() {
         ]}
         />
         <div className="flex flex-row px-24">
-          <div className=" basis-1/2 mt-20 font-Pop-SB text-white text-[20pt] tracking-[0px] mx-10 lg:mx-30">
+          <div className=" basis-1/2 mt-20 text-end font-Pop-SB text-white text-[20pt] tracking-[0px] mx-10 lg:mx-30">
             <div className="mt-5">
             Usted ha sigo referido por {refferalUser.name} {refferalUser.lastName}
             </div>
@@ -36,7 +36,7 @@ export default function RefferalsPage() {
             Registrese para luchar junto a nosotros y {refferalUser.name} {refferalUser.lastName} contra la desnutrición infantil. 
             </div>
           </div>
-          <div className="basis-1/2 flex w-full"><RegistrationForm extraStyles="w-full lg:w-3/4" refferalUser={refferalUser}></RegistrationForm></div>
+          <div className="basis-1/2 flex w-full"><RegistrationForm extraStyles="lg:w-3/4" refferalUser={refferalUser}></RegistrationForm></div>
         </div>
         </>
       }/>
