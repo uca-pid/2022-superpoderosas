@@ -23,7 +23,7 @@ const StartDonation = ({ setStep }) => {
 
   const closeModal = () => {
     setShowModal(false);
-    navigate("/profile");
+    navigate("/inicio");
     window.location.reload();
   };
 

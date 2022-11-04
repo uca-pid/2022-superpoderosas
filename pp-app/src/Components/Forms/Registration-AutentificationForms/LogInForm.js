@@ -77,6 +77,7 @@ export default function Login(props) {
       textAfterSeparationLine="¿No tenés cuenta?"
       actionAfterSeparationLine= "Registrate"
       logo = {LogoCorazon}
+      extraStyles="lg:w-1/4"
     />
     </>
   );

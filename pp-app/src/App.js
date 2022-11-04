@@ -1,4 +1,4 @@
-import Profile from './Pages/UserHomePage/ProfilePage';
+import UserSettings from './Pages/UserHomePage/UserSettingsPage';
 import LoginPage from './Pages/Registration-Autentification.js/LoginPage';
 import ChangePasswordPage from './Pages/ChangeViaMailPasswordPages/PasswordResetEmailPage';
 import PasswordResetPage from './Pages/ChangeViaMailPasswordPages/PasswordResetPage';
@@ -11,6 +11,7 @@ import TransactionReportPage from './Pages/Admin Pages/TransactionsReportPage';
 import DashboardPage from './Pages/Admin Pages/DashboardPage';
 import SubscriptionReportPage from './Pages/Admin Pages/SubscriptionReportPage';
 import RefferalsPage from './Pages/Registration-Autentification.js/RefferalsPage';
+import UserHome from './Pages/UserHomePage/UserHomePage';
 //a la ruta de /profile estaría bueno ponerle /home en ambos casos
 
 export default function App() {
@@ -24,7 +25,6 @@ export default function App() {
           <Route exact path={"/signup"} element={<RegistrationPage/>} />
           <Route exact path="/ChangePasswordPage" element={<ChangePasswordPage />} />
           <Route exact path="/resetPassword/:token" element={<PasswordResetPage />} />
-          <Route exact path="/profile" element={<Profile />} />
           {(AuthService.getCurrentUser()) ?
           (
           (isAdmin())  ?
@@ -36,7 +36,8 @@ export default function App() {
           </>
           :
           <>
-          <Route exact path="/inicio" element={<Profile />} />
+          <Route exact path="/inicio" element={<UserHome />} />
+          <Route exact path="/settings" element={<UserSettings />} />
           <Route exact path="/donar" element={<DonarPage/>} />
           </>
           )

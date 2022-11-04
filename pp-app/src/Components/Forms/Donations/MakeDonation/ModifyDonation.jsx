@@ -6,7 +6,7 @@ const ModifyDonation = () => {
   const navigate = useNavigate();
 
   const modifyDonationInSettings = () => {
-    navigate("/profile");
+    navigate("/settings");
   };
 
   return (

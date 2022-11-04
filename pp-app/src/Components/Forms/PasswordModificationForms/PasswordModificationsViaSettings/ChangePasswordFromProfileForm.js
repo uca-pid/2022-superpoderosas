@@ -41,7 +41,7 @@ const ChangePasswordFromProfileForm = (props) => {
 
   function closeModal() {
     setShowModal(false);
-    navigate("/profile");
+    navigate("/settings");
     window.location.reload();
   };
 

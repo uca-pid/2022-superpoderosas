@@ -5,7 +5,7 @@ import UserNavBar from "../../Components/NavBars/UserNavBar";
 import navigationOptions from "../../Components/NavBars/navigationOptions";
 import { CurrentUserContextProvider} from "../../Context/CurrentUserContext";
 
-const Profile = () => {
+const UserSettings = () => {
   const currentUser = AuthService.getCurrentUser();
   const isAdmin = () => {
     return JSON.stringify((AuthService.getCurrentUser()).roles) === JSON.stringify(["ROLE_ADMIN"]);
@@ -31,4 +31,4 @@ const Profile = () => {
     </>
   );
 };
-export default Profile;
+export default UserSettings;
