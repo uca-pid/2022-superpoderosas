@@ -69,7 +69,7 @@ const MilestonesBox = (props) => {
   };
 
 const MilestonesProgress = () => {
-  const lastMilestoneAchived=2;  
+  const lastMilestoneAchived=3;  
   return (
     <>
     <div className="py-10 md:py-16">

@@ -6,6 +6,7 @@ import { CurrentUserContextProvider} from "../../Context/CurrentUserContext";
 import UserInformationSection from "../../Components/Profile/UserInformationSection";
 import CopyLinkSection from "../../Components/Profile/CopyLinkSection";
 import MilestonesProgress from "../../Components/Profile/MilestonesProgress";
+import LatestActivity from "../../Components/Profile/LatestActivty";
 
 const UserHome = () => {
   const currentUser = AuthService.getCurrentUser();
@@ -29,8 +30,9 @@ const UserHome = () => {
             <div className="basis-2/3">
               <MilestonesProgress/>
             </div>
-            <div className="basis-1/3">
+            <div className="basis-1/3 flex flex-col space-y-4">
               <CopyLinkSection/>
+              <LatestActivity/>
             </div>
           </div>
         
