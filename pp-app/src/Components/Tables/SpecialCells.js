@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import AdminServices from '../../services/transactions.service'
 import AuthService from '../../services/auth.service';
 import { useState, useEffect } from 'react';
-import RoundIndicatorWithTooltip from '../Utiles/RoundIndicatorWithTooltip';
+import InformationTooltips from '../Utiles/InformationDisplayTooltip';
 
 export function OpenSideBarFromUser({value, row}){
   const {setSelectedUser, setShowSidebar} = useSelectionOnTable();
@@ -19,7 +19,7 @@ export function OpenSideBarFromUser({value, row}){
       onClick={()=>{setShowSidebar(true); setSelectedUser(value)}}>
       <div>{user ? user.email : value}</div>
       {(row.id ==='0') ? 
-        <div className='ml-1'><RoundIndicatorWithTooltip size="h-2 w-2" tooltipContent="Haz click aquí o en cualquier email para obtener más información acerca de el usuario."></RoundIndicatorWithTooltip></div>
+        <div className='ml-1'><InformationTooltips.InstructionTooltip size="h-2 w-2" tooltipContent="Haz click aquí o en cualquier email para obtener más información acerca de el usuario."/></div>
         : <></>}
     </button>
   );

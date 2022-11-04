@@ -11,7 +11,7 @@ import { useMonthlySubscriptionStateContext } from "../../Context/MonthlySubscri
 import Card from "../Utiles/Card";
 import datesValues from "../../Values/datesValues";
 import TwoColumnsPage from "../Utiles/TwoColumnsPage";
-import RoundIndicatorWithTooltip from "../Utiles/RoundIndicatorWithTooltip";
+import InformationTooltips from "../Utiles/InformationDisplayTooltip";
 
 const DashboardSection = () => {
   const {showBarChart, showPieChart} = useOpenChartsContext();
@@ -42,7 +42,7 @@ const DashboardSection = () => {
                 subtitle={datesValues[0].options[month - 1].label + " de " + year}
                 content={
                     <div class="flex flex-col">
-                    <div className="p-2 self-end"><RoundIndicatorWithTooltip size="h-3 w-3" tooltipContent="Haz click en cualquier gráfico para expandirlo" /></div>
+                    <div className="p-2 self-end"><InformationTooltips.InstructionTooltip size="h-3 w-3" tooltipContent="Haz click en cualquier gráfico para expandirlo" /></div>
                     <PieChartModule label={PieChartLabel}></PieChartModule>
                     </div>}
                 />

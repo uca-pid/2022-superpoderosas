@@ -12,7 +12,6 @@ import DashboardPage from './Pages/Admin Pages/DashboardPage';
 import SubscriptionReportPage from './Pages/Admin Pages/SubscriptionReportPage';
 import RefferalsPage from './Pages/Registration-Autentification.js/RefferalsPage';
 import UserHome from './Pages/UserHomePage/UserHomePage';
-//a la ruta de /profile estaría bueno ponerle /home en ambos casos
 
 export default function App() {
   return (

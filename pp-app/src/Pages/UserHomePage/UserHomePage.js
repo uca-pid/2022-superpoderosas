@@ -3,6 +3,8 @@ import AuthService from "../../services/auth.service";
 import UserNavBar from "../../Components/NavBars/UserNavBar";
 import navigationOptions from "../../Components/NavBars/navigationOptions";
 import { CurrentUserContextProvider} from "../../Context/CurrentUserContext";
+import UserInformationSection from "../../Components/Profile/UserInformationSection";
+import CopyLinkSection from "../../Components/Profile/CopyLinkSection";
 
 const UserHome = () => {
   const currentUser = AuthService.getCurrentUser();
@@ -19,6 +21,15 @@ const UserHome = () => {
           :
         <UserNavBar navigation={navigationOptions.userNavigation} currentUser={currentUser}/>}
         <CurrentUserContextProvider>
+
+          <UserInformationSection></UserInformationSection>
+          
+          <div className="flex flex-row px-10 md:px-32">
+            <div className="basis-2/3"></div>
+            <div className="basis-1/3 bg-black">
+              <CopyLinkSection/>
+            </div>
+          </div>
         
         </CurrentUserContextProvider>
         </>
