@@ -5,6 +5,7 @@ import navigationOptions from "../../Components/NavBars/navigationOptions";
 import { CurrentUserContextProvider} from "../../Context/CurrentUserContext";
 import UserInformationSection from "../../Components/Profile/UserInformationSection";
 import CopyLinkSection from "../../Components/Profile/CopyLinkSection";
+import MilestonesProgress from "../../Components/Profile/MilestonesProgress";
 
 const UserHome = () => {
   const currentUser = AuthService.getCurrentUser();
@@ -24,9 +25,11 @@ const UserHome = () => {
 
           <UserInformationSection></UserInformationSection>
           
-          <div className="flex flex-row px-10 md:px-32">
-            <div className="basis-2/3"></div>
-            <div className="basis-1/3 bg-black">
+          <div className="flex flex-row px-10 md:px-32 space-x-20">
+            <div className="basis-2/3">
+              <MilestonesProgress/>
+            </div>
+            <div className="basis-1/3">
               <CopyLinkSection/>
             </div>
           </div>
