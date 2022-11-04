@@ -1,10 +1,40 @@
 import React from "react";
 
+const LatestActivityInfo = [
+  {
+   text: "Has creado tu perfil",
+   date: "23/06/2020"
+  },
+  {
+    text: "Has iniciado una Subscripción",
+    date: "15/08/2020"
+  },
+  {
+    text: "Has pausado tu Subscripción",
+    date: "23/08/2020"
+  }
+]
+
 const LatestActivity = () => {
   return (
     <>
-    <div className="border bg-white rounded-md -mt-7 p-6 space-y-4">
-    HOLA
+    <div className="border bg-white  rounded-md">
+      <div class="px-8 mb-4 rounded-lg py-5">
+        <div class="pb-3 text-base font-Pop-M text-gray-800 border-b border-gray-200">Última Actividad</div>
+        <ol className="relative border-l border-gray-400 mt-5 flex flex-col space-y-5">
+          {LatestActivityInfo.map((activity) => (
+                <>
+                <li className="">
+                  <span class="flex absolute -left-1.5 justify-center items-center w-3 h-3 rounded-full ring-4 ring-white bg-gray-400"/>
+                  <div class="text-gray-700 flex flex-row items-center justify-between border border-gray-300 rounded-lg py-2 px-3 ml-5">
+                      <div class="text-xs font-Pop-R">{activity.text}</div>
+                      <div class="text-xs font-Pop-L">{activity.date}</div>
+                  </div>
+                </li>
+                </>
+            ))} 
+        </ol>
+      </div>
     </div>
    </>
   );

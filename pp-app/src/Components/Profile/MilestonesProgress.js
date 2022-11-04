@@ -48,8 +48,8 @@ const MilestonesBox = (props) => {
                 type={props.type}
                 description={props.description}/>
             : null}               
-        <li class="mb-10 ml-10">
-            <span class="flex absolute -left-4 justify-center items-center w-8 h-8 bg-blue-200 rounded-full ring-8 ring-white greenBg">
+            <li class="mb-10 ml-10 bg-white">
+            <span class="flex absolute -left-4 justify-center items-center w-8 h-8 bg-blue-200 rounded-full ring-8 ring-[#f6f7f36b] greenBg">
                 <FontAwesomeIcon icon={faHeartPulse} className="h-4 w-4" color="white"/>
             </span>
             <div className="flex flex-row space-x-4 border border-gray-200 rounded-xl px-5 py-4">
@@ -73,7 +73,7 @@ const MilestonesProgress = () => {
   return (
     <>
     <div className="py-10 md:py-16">
-        <ol class="relative border-l border-[#0f693893] dark:border-gray-700">
+        <ol class="relative border-l border-[#0f693893]">
             {MileStones.filter(milestone => Number(milestone.num) <= lastMilestoneAchived).map((milestone) => (
                 <>
                 <MilestonesBox
