@@ -73,6 +73,7 @@ export default function RegistrationForm(props) {
         (response) => {
           setMessage(response.data.message);
           setSuccessful(true);
+          //(props.refferalUser) ? se le agrega el referrido :null;
           //Aca se debería agregar el usuario registrado a props.refferalUser (más facil con un contador de a los usuarios a los que refirio pero la mejor opcion seria un arrgelo con los id de estos usuarios)
           continuePostNavigationSuccessful();
         },

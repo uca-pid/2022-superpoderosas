@@ -26,11 +26,11 @@ const UserHome = () => {
 
           <UserInformationSection></UserInformationSection>
           
-          <div className="flex flex-col md:flex-row px-10 md:px-32 md:space-x-16 bg-[#f6f7f36b]">
-            <div className="basis-3/5">
+          <div className="flex flex-col md:flex-row px-10 md:px-12 lg:px-32 md:space-x-5 lg:space-x-16 bg-[#f6f7f36b]">
+            <div className="md:basis-3/5">
               <MilestonesProgress/>
             </div>
-            <div className="basis-2/5 flex flex-col space-y-4">
+            <div className="md:basis-2/5 flex flex-col space-y-4">
               <CopyLinkSection/>
               <LatestActivity/>
             </div>

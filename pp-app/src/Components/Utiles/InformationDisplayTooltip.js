@@ -20,8 +20,8 @@ const InstructionTooltip = (props) => {
 const BasicInfoTooltip = (props) => {
   return ( 
     <>
-    <Tooltip className={"font-Pop-R w-52 z-40 p-3 font-sm mt-7 text-center"} content={props.content} placement="right-start">
-      <Button className={`shadow-none py-0.5 px-1 h-4 w-4`} data-tooltip-target="tooltip-right" data-tooltip-placement="right" type="button" >
+    <Tooltip className={"font-Pop-R w-52 z-40 p-3 font-xs md:font-sm mt-4 md:mt-7 text-center"} content={props.content} placement="right-start">
+      <Button className={`shadow-none py-0.5 px-1`} data-tooltip-target="tooltip-right" data-tooltip-placement="right" type="button" >
           <div class={`rounded-full bg-[#7BA391] h-4 w-4 text-white text-center font-Pop-L`}>?</div>
       </Button>
     </Tooltip>  
