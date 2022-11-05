@@ -24,7 +24,7 @@ const MileStoneModal = (props) =>{
                         <div className="font-Pop-M uppercase text-xs text-center greenBg text-white rounded-xl p-1">Meta alcanzada</div>
                     </div>
                     <div className="flex flex-col justify-center space-y-4">
-                        <div class="mb-1 text-xl font-Pop-M text-gray-900 text-center blackText"> {props.type} </div>
+                        <div class="mb-1 text-xl font-Pop-M text-gray-900 text-center blackText"> {props.title} </div>
                         <div className="text-center font-Pop-L text-sm px-14">{props.description}</div>
                         <div class="block mb-2 text-xs font-Pop-L leading-none text-gray-500 text-center">Ganado el 7 de Diciembre, 2021</div>
                     </div>
@@ -45,7 +45,7 @@ const MilestonesBox = (props) => {
             <MileStoneModal 
                 onCloseModal={()=>setModal(false)}
                 image={props.image}
-                type={props.type}
+                title={props.title}
                 description={props.description}/>
             : null}               
             <li class="mb-10 ml-10 bg-white">
@@ -59,7 +59,7 @@ const MilestonesBox = (props) => {
                     alt="MilestoneImage"
                 />
                 <div className="flex flex-col justify-center">
-                    <h3 class="mb-1 text-base font-Pop-R text-gray-900 "> {props.title} <button onClick={()=>setModal(true)} className="hover:underline underline-offset-2">{props.type}</button></h3>
+                    <h3 class="mb-1 text-base font-Pop-R text-gray-900 "> Has alcanzado un hito <button onClick={()=>setModal(true)} className="hover:underline underline-offset-2">{props.title}</button></h3>
                     <time class="block mb-2 text-sm font-Pop-L leading-none text-gray-400">Ganado el 7 de Diciembre, 2021</time>
                 </div>
             </div>
@@ -79,7 +79,6 @@ const MilestonesProgress = () => {
                 <MilestonesBox
                 image={milestone.image}
                 title={milestone.title}
-                type={milestone.type}
                 description={milestone.description}
                 />
                 </>

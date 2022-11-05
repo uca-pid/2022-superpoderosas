@@ -6,29 +6,25 @@ const MileStones =[
     {
     num:1,
     image:PersonitasFondoAmarrillo,
-    title:"Has alcanzado un hito",
-    type:"¡Te has unido a La Comunidad!",
+    title:"¡Te has unido a La Comunidad!",
     description:"El 6 de mayo de 2020, Sofía se convirtió en el miembro 2.089 de La Comunidad. Las donaciones mensuales de los miembros cambian vidas cada día. La Comunidad garantiza que podamos aumentar nuestro impacto y llegar a más personas. "
     },
     {
     num:2,
     image:Medico,
-    title:"Has alcanzado un hito",
-    type:"¡Eres un/a joven miembro!",
+    title:"¡Eres un/a joven miembro!",
     description:"El 6 de mayo de 2020, Sofía se convirtió en el miembro 2.089 de La Comunidad. Las donaciones mensuales de los miembros cambian vidas cada día. La Comunidad garantiza que podamos aumentar nuestro impacto y llegar a más personas."
     },
     {
     num:3,
     image:Handhake,
-    title:"Has alcanzado un hito",
-    type:"¡Miembro Comprometido!",
+    title:"¡Miembro Comprometido!",
     description:"El 6 de mayo de 2020, Sofía se convirtió en el miembro 2.089 de La Comunidad. Las donaciones mensuales de los miembros cambian vidas cada día. La Comunidad garantiza que podamos aumentar nuestro impacto y llegar a más personas. "
     },
     {
     num:4,
     image:Certificate,
-    title:"Sofía ha alcanzado un hito",
-    type:"¡Miembro por un año!",
+    title:"¡Miembro por un año!",
     description:"El 6 de mayo de 2020, Sofía se convirtió en el miembro 2.089 de La Comunidad. Las donaciones mensuales de los miembros cambian vidas cada día. La Comunidad garantiza que podamos aumentar nuestro impacto y llegar a más personas."
     }
 ]
