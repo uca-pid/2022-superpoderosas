@@ -17,6 +17,13 @@ const generateSubscription = (userId, amount, type, frequency, nextPaymentDate) 
   });
 };
 
+const addReferred = (userReferredId, userReferrerId) => {
+  return axios.post(API_URL + "addReferred", {
+    userReferredId,
+    userReferrerId,
+  });
+};
+
 const modifySubscriptionState  = (subscriptionId, state) => {
   return axios.post(API_URL + "modifySubscriptionState", {
     subscriptionId,
@@ -62,6 +69,7 @@ const DonationService = {
   getSubscription,
   modifySubscriptionState,
   modifySubscription,
-  subscriptionsByMonth
+  subscriptionsByMonth,
+  addReferred
 }
 export default DonationService;
