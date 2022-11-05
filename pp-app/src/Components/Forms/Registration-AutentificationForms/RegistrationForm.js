@@ -3,6 +3,7 @@ import LogoLucha from "../../Images/Lucha.png"
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom"
 import AuthService from "../../../services/auth.service";
+import DonationService from "../../../services/donations.service";
 import Modal from "../../Utiles/Modal";
 import ValidationFunctions from "../../../functions/validations"
 import BaseAutetificationForm from "./BaseAutentificationForm";
@@ -73,8 +74,9 @@ export default function RegistrationForm(props) {
         (response) => {
           setMessage(response.data.message);
           setSuccessful(true);
-          //(props.refferalUser) ? se le agrega el referrido :null;
-          //Aca se debería agregar el usuario registrado a props.refferalUser (más facil con un contador de a los usuarios a los que refirio pero la mejor opcion seria un arrgelo con los id de estos usuarios)
+          if(props.refferalUser){
+            DonationService.addReferred(response.data.id,props.refferalUser.id);
+          }
           continuePostNavigationSuccessful();
         },
         (error) => {
