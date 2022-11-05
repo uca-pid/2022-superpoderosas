@@ -7,6 +7,7 @@ import AuthService from '../../../../services/auth.service'
 import ModalWithDetails from "../../../Utiles/ModalWithDetails";
 import { useNavigate } from "react-router-dom"
 import Messages from '../../Messages'
+import ActServices from '../../../../services/activities.service'
 
 const StartDonation = ({ setStep }) => {
   const { selectedFrequency } = useFrequency();
@@ -16,6 +17,13 @@ const StartDonation = ({ setStep }) => {
   const navigate = useNavigate();
   const currentUser = AuthService.getCurrentUser();
   const [showModal, setShowModal] = useState(false);
+
+  const newSubscriptionEvenctDescription = (amount,nextPaymentDate) =>{
+    return {title: "Te has subscipto!", description: "Has iniciado una subscripicon de "+amount+" que tiene como proxima fecha de pago "+nextPaymentDate+"."}
+  }
+  const newOneTimeDonationEvenctDescription = (amount) =>{
+    return {title: "Has realizado una donacion de única vez!", description: "Has realizado una donacion de "+amount+"."}
+  }
 
   useEffect(() => {
     setMessage("");
@@ -48,6 +56,9 @@ const StartDonation = ({ setStep }) => {
       DonationService.generateSubscription(currentUser.id, selectedAmount, selectedFrequency, subsPeriod.value, paymentDay.format('YYYY-MM-DD')).then(
         () => {
           setShowModal(true);
+          ActServices.createActivity(newSubscriptionEvenctDescription(selectedAmount,paymentDay.format('YYYY-MM-DD')).title, newSubscriptionEvenctDescription(selectedAmount,paymentDay.format('YYYY-MM-DD')).description, currentUser.id). then(
+            (res)=> console.log(res)
+          )
           //navigate("a donde querramos mandar");
           //window.location.reload();
         },
@@ -64,6 +75,9 @@ const StartDonation = ({ setStep }) => {
         DonationService.generateTransaction(currentUser.id, selectedAmount,"onlyTime").then(
           () => {
             setShowModal(true);
+            ActServices.createActivity(newOneTimeDonationEvenctDescription(selectedAmount).title, newOneTimeDonationEvenctDescription(selectedAmount).description, currentUser.id). then(
+              (res)=> console.log(res)
+            )
             //navigate("a donde querramos mandar");
             //window.location.reload();
           },

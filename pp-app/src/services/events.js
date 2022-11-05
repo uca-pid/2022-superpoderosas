@@ -11,11 +11,11 @@ const cancelledSubscriptionEvenctDescription = (subscripcion) =>{
 }
 
 const pausedSubscriptionEvenctDescription = (subscripcion) =>{
-    return {title: "Subscripcion pausada", description: "Has cancelado una subscripción de "+subscripcion.amount+" que se cobraba "+subscripcion.frecuency }
+    return {title: "Subscripcion pausada", description: "Has pausado una subscripción de "+subscripcion.amount+" que se cobraba "+subscripcion.frecuency }
 }
 
 const modificationSubscriptionEvenctDescription = (subscripcion) =>{
-    return {title: "Has modificado tu subscripcion", description: "El nuevo monto es de "+subscripcion.amount+", se cobra "+subscripcion.frecuency+ " y la próxima fecha de pago es "+subscripcion.nextPaymentDate }
+    return {title: "Has modificado tu subscripcion", description: "El monto es de "+subscripcion.amount+", se cobra "+subscripcion.frecuency+ " y la próxima fecha de pago es "+subscripcion.nextPaymentDate }
 }
 
 const refferalEventDescription = (user) =>{

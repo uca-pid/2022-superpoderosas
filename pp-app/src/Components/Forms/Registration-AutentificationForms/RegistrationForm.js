@@ -7,6 +7,7 @@ import DonationService from "../../../services/donations.service";
 import Modal from "../../Utiles/Modal";
 import ValidationFunctions from "../../../functions/validations"
 import BaseAutetificationForm from "./BaseAutentificationForm";
+import ActServices from "../../../services/activities.service";
 
 export default function RegistrationForm(props) {
   const [showModal, setShowModal] = React.useState(false);
@@ -17,6 +18,11 @@ export default function RegistrationForm(props) {
   const [password2, setPassword2] = useState("");
   const [successful, setSuccessful] = useState(false);
   const navigate = useNavigate();
+  const userRegistredEventDescription = {title: "Te has unido a la Comunidad!", description: "" };
+
+  function refferalEventDescription(name,lastName){
+    return {title: "Has referido a un amigo!", description: "Has referido a "+name+" "+lastName+"."}
+  }
 
   function closeModal() {
     setShowModal(false);
@@ -77,6 +83,12 @@ export default function RegistrationForm(props) {
           if(props.refferalUser){
             DonationService.addReferred(response.data.id,props.refferalUser.id);
           }
+          ActServices.createActivity(userRegistredEventDescription.title, userRegistredEventDescription.description, response.data.id). then(
+            (res)=> console.log(res)
+          )
+          ActServices.createActivity(refferalEventDescription(name,lastname).title, refferalEventDescription(name,lastname).description, response.data.id). then(
+            (res)=> console.log(res)
+          )
           continuePostNavigationSuccessful();
         },
         (error) => {

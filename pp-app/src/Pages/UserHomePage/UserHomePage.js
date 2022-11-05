@@ -7,6 +7,7 @@ import UserInformationSection from "../../Components/Profile/UserInformationSect
 import CopyLinkSection from "../../Components/Profile/CopyLinkSection";
 import MilestonesProgress from "../../Components/Profile/MilestonesProgress";
 import LatestActivity from "../../Components/Profile/LatestActivty";
+import ActServices from "../../services/activities.service";
 
 const UserHome = () => {
   const currentUser = AuthService.getCurrentUser();
@@ -40,7 +41,6 @@ const UserHome = () => {
         </>
       ) : (
       <></>
-
     )}
     </div> 
     </>
