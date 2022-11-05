@@ -1,12 +1,14 @@
-import React from "react";
+import React, {useEffect} from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faHeartPulse } from "@fortawesome/free-solid-svg-icons";
 import MileStones from "../../Values/milestones";
+import AuthService from "../../services/auth.service";
 
 const MileStoneModal = (props) =>{
     function closeModal() {
         props.onCloseModal();
     }
+    
     return(
         <>
           <div className="darkGreyBg justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none">
@@ -69,20 +71,27 @@ const MilestonesBox = (props) => {
   };
 
 const MilestonesProgress = () => {
-  const lastMilestoneAchived=3;  
+  const [milestones, setMilestones] = React.useState([]);
+  const currentUser = AuthService.getCurrentUser();
+  useEffect(() => {
+    AuthService.getUserMilestones(currentUser.id).then(resp=> setMilestones(resp.data.milestones));
+  }, [currentUser.id]);
   return (
     <>
     <div className="py-10 lg:py-16">
-        <ol class="relative border-l border-[#0f693893]">
-            {MileStones.filter(milestone => Number(milestone.num) <= lastMilestoneAchived).map((milestone) => (
+        <ol className="relative border-l border-[#0f693893]">
+            {
+            (milestones) ?
+            milestones.map((milestone) => (
                 <>
                 <MilestonesBox
-                image={milestone.image}
+                image={MileStones[milestone.id-1].image}
                 title={milestone.title}
                 description={milestone.description}
                 />
                 </>
-            ))}                  
+            ))
+          :null}                  
         </ol>
     </div>
     </>

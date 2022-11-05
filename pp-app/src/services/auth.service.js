@@ -62,6 +62,17 @@ const findUserById = async (id) => {
 };
 
 
+const getUserMilestones = async (userId) => {
+  try {
+    const response = await axios.post("http://localhost:8080/api/milestone/getUserWithMilestones", {
+      userId,
+    });
+    return response;
+  } catch (e) {
+      console.log(e);
+  }
+};
+
 const AuthService = {
   register,
   login,
@@ -70,6 +81,8 @@ const AuthService = {
   sendMailTokenToResetPassword,
   updatePasswordViaEmail,
   updatePasswordViaSettings,
-  findUserById
+  findUserById,
+
+  getUserMilestones
 }
 export default AuthService;
