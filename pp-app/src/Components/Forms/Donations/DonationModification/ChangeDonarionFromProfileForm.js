@@ -17,6 +17,9 @@ import SubscriptionAmountImpactMessage from "./SubscriptionAmountImpactMessage";
 import SubscriptionImpactForSelectedAmount from "../SubscriptionImpactForSelectedAmount";
 import Messages from "../../Messages";
 import CustomAmountInput from './CustomAmountInput'
+import ActServices from "../../../../services/activities.service";
+import AuthService from "../../../../services/auth.service";
+
 const determineExplanationTextForPaymentDay = (subsPeriod, userWantsToModifySubs) => {
   return(userWantsToModifySubs ? 
         ((subsPeriod.value === "1") ?
@@ -31,7 +34,17 @@ const ChangeDonationFromProfileForm = (props) =>{
   const [showModal, setShowModal] = useState(false);
   const { selectedAmount} = useAmount()
   const { subsPeriod, paymentDay} = useSubscriptionPeriod()
+  const currentUser = AuthService.getCurrentUser();
   const [message, setMessage] = useState("");
+
+  const modificationSubscriptionEvenctDescription = (amount, frecuency, nextPaymentDate) =>{
+    return {title: "Has modificado una subscripcion", description: "El monto es de "+amount+", se cobra "+frecuency+ " y la proxima fecha de pago es el "+nextPaymentDate+"." }
+  }
+
+  const resetSubscriptionEvenctDescription = (amount, frecuency, nextPaymentDate) =>{
+    return {title: "Has reanudado una subscripcion", description: "Has reanudado una subscripcion de "+amount+", que se cobra "+frecuency+ " y la proxima fecha de pago es el "+nextPaymentDate+"." }
+  }
+
   const closeModalWithConfirmation = () => {
     setShowModalWithConfirmation(false);
   };
@@ -45,6 +58,9 @@ const ChangeDonationFromProfileForm = (props) =>{
     DonationService.modifySubscriptionState(subscriptionData.id, 'A').then(
         () => {
           setShowModal(true);
+          ActServices.createActivity(resetSubscriptionEvenctDescription(selectedAmount,subsPeriod.label,paymentDay).title, resetSubscriptionEvenctDescription(selectedAmount,subsPeriod.label,paymentDay).description, currentUser.id). then(
+            (res)=> console.log(res)
+          )
         },
         (error) => {
           const resMessage =
@@ -76,6 +92,9 @@ const ChangeDonationFromProfileForm = (props) =>{
         () => {
           setShowModal(true);
           setIfUserWantsToModifySubs(false);
+          ActServices.createActivity(modificationSubscriptionEvenctDescription(selectedAmount,subsPeriod.label,paymentDay).title, modificationSubscriptionEvenctDescription(selectedAmount,subsPeriod.label,paymentDay).description, currentUser.id). then(
+            (res)=> console.log(res)
+          )
         },
         (error) => {
           const resMessage =

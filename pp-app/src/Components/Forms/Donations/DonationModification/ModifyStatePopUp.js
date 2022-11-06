@@ -7,6 +7,10 @@ import ModalWithConfirmationAndDetails from "../../../Utiles/ModalWithConfirmati
 import ModalWithWrittenConfirmation from "../../../Utiles/ModalWithWrittenConfirmation"
 import Modal from "../../../Utiles/Modal";
 import { useState } from 'react'
+import { useAmount } from  '../../../../Context/AmountContext'
+import {useSubscriptionPeriod} from  '../../../../Context/SubscriptionContext'
+import ActServices from "../../../../services/activities.service";
+import AuthService from "../../../../services/auth.service";
 
 const ModifyStatePopUp = ( ) => {
   
@@ -14,7 +18,18 @@ const ModifyStatePopUp = ( ) => {
     const [showModalWithConfirmation, setShowModalWithConfirmation] = useState(false);
     const [showModalWithWrittenConfirmation, setShowModalWithWrittenConfirmation] = useState(false);
     const [showModal, setShowModal] = useState(false);
+    const { selectedAmount} = useAmount()
+    const { subsPeriod, paymentDay} = useSubscriptionPeriod()
     const [cancellationRequest, setCancellationRequest] = useState(false);
+    const currentUser = AuthService.getCurrentUser();
+
+    const cancelledSubscriptionEvenctDescription = (amount, frequency) =>{
+      return {title: "Has cancelado una subscripcion", description: "Has cancelado una subscripcion de "+amount+" que se cobraba "+frequency+"."}
+    }
+    
+    const pausedSubscriptionEvenctDescription = (amount, frequency) =>{
+        return {title: "as cancelado una subscripcion", description: "Has pausado una subscripcion de "+amount+" que se cobraba "+frequency+"."}
+    }
 
     const closeModalWithConfirmation = () => {
       setShowModalWithConfirmation(false);
@@ -34,6 +49,9 @@ const ModifyStatePopUp = ( ) => {
         DonationService.modifySubscriptionState(subscriptionData.id, 'C').then(
             () => {
               setShowModal(true);
+              ActServices.createActivity(cancelledSubscriptionEvenctDescription(selectedAmount,subsPeriod.label).title, cancelledSubscriptionEvenctDescription(selectedAmount,subsPeriod.label).description, currentUser.id). then(
+                (res)=> console.log(res)
+              )
             },
             (error) => {
               const resMessage =
@@ -49,6 +67,9 @@ const ModifyStatePopUp = ( ) => {
         DonationService.modifySubscriptionState(subscriptionData.id, 'P').then(
             () => {
               setShowModal(true);
+              ActServices.createActivity(pausedSubscriptionEvenctDescription(selectedAmount,subsPeriod.label).title, pausedSubscriptionEvenctDescription(selectedAmount,subsPeriod.label).description, currentUser.id). then(
+                (res)=> console.log(res)
+              )
             },
             (error) => {
               const resMessage =
