@@ -1,33 +1,16 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useState } from 'react'
 import ActServices from "../../services/activities.service";
-import { useCurrentUser } from "../../Context/CurrentUserContext";
 import AuthService from "../../services/auth.service";
-
-// const LatestActivityInfo = [
-//   {
-//    text: "Has creado tu perfil",
-//    body:"Tu perfil fue creado",
-//    date: "23/06/2020"
-//   },
-//   {
-//     text: "Has iniciado una Subscripción",
-//     body:"Tu perfil fue creado",
-//     date: "15/08/2020"
-//   },
-//   {
-//     text: "Has pausado tu Subscripción",
-//     body:"Tu perfil fue creado",
-//     date: "23/08/2020"
-//   }
-// ]
 
 const LatestActivity = () => {
   const currentUser = AuthService.getCurrentUser();
   const [activities, setActivities] = useState([]);
-  ActServices.getUserActivities(currentUser.id). then(
-    (res)=> setActivities(res.data)
-  )
+  useEffect(() => {
+    ActServices.getUserActivities(currentUser.id).then(
+      (res)=> setActivities(res.data)
+    )
+}, [currentUser.id])
   return (
     <>
     <div className="border bg-white  rounded-md">

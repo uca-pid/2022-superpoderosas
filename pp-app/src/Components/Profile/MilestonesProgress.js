@@ -1,8 +1,9 @@
 import React, {useEffect} from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faHeartPulse } from "@fortawesome/free-solid-svg-icons";
-import MileStones from "../../Values/milestones";
 import AuthService from "../../services/auth.service";
+import ImageService from "../../services/images.service";
+import Handhake from "../Images/Handshake.png"
 
 const MileStoneModal = (props) =>{
     function closeModal() {
@@ -41,12 +42,18 @@ const MileStoneModal = (props) =>{
 
 const MilestonesBox = (props) => {
     const [modal, setModal] = React.useState(false);
+    const [milestoneImage, setMilestoneImage] = React.useState("");
+    useEffect(() => {
+        ImageService.getMilestoneUrl(props.id)
+        .then(res => 
+          res? setMilestoneImage(res) : setMilestoneImage(Handhake));
+    }, [props.id])
     return (
       <>  
         {modal ?
             <MileStoneModal 
                 onCloseModal={()=>setModal(false)}
-                image={props.image}
+                image={milestoneImage}
                 title={props.title}
                 description={props.description}/>
             : null}               
@@ -57,7 +64,7 @@ const MilestonesBox = (props) => {
             <div className="flex flex-row space-x-4 border border-gray-200 rounded-xl px-2 md:px-5 py-4">
                 <img
                     className="object-cover h-20 w-20 md:h-24 md:w-24 rounded "
-                    src={props.image}
+                    src={milestoneImage}
                     alt="MilestoneImage"
                 />
                 <div className="flex flex-col justify-center">
@@ -85,7 +92,7 @@ const MilestonesProgress = () => {
             milestones.map((milestone) => (
                 <>
                 <MilestonesBox
-                image={MileStones[milestone.id-1].image}
+                id={milestone.id}
                 title={milestone.title}
                 description={milestone.description}
                 />

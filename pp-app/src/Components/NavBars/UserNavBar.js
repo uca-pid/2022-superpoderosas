@@ -3,15 +3,17 @@ import { Popover } from '@headlessui/react'
 import AuthService from "../../services/auth.service";
 import "../../Fonts/Poppins-Bold.ttf"
 import { useNavigate } from "react-router-dom"
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./navBar.css"
 import "../../App.css"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import Buttons from "../Utiles/Butttons";
 import LogoPataPila_Colores from "../Images/LogoPataPila_Colores.jpg";
 import avatar from "../Images/avatar.jpeg";
+import ImageService from '../../services/images.service';
 
 export default function UserNavBar(props) {
+  const [imgSrc, setImgSrc] = useState(avatar);
   const navigate = useNavigate();
   const userName = props.currentUser.name;
   const userLastName = props.currentUser.lastname;
@@ -21,6 +23,13 @@ export default function UserNavBar(props) {
     navigate("/login");
     window.location.reload();
   };
+
+  useEffect(() => {
+    ImageService.getImageUrl().then((url) => {
+      setImgSrc(url);
+    });
+  }, []);
+
 
   return (
     <>
@@ -42,7 +51,7 @@ export default function UserNavBar(props) {
           <Popover className={"grid"}>
             <Popover.Button className="justify-self-end lightgreyBgTranslucentHover rounded-3xl md:rounded-xl lg:basis-2/7 w-fit py-2 px-5">
             <div className="justify-center  flex z-50 space-x-4 overflow-hidden mx-auto lg:flex-row">
-                <img className="h-6 w-6 rounded-full ring-2 ring-white" src={avatar} alt="avatar"></img>
+                <img className="h-6 w-6 rounded-full" src={imgSrc} alt="avatar"></img>
                 <div className='mt-1 hidden md:flex lg:flex font-Pop-SB uppercase blackText duration-[0.3s] tracking-[1px] text-sm'>
                   {userName} {userLastName}
                 </div>
